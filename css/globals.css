@@ -1,0 +1,25 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:400|Inria+Sans:700|Poppins:400,700|Open+Sans:var(--open-sans-regular-16-font-weight),var(--open-sans-semibold-22-font-weight),700,var(--semantic-strong-font-weight),var(--semantic-button-font-weight),var(--open-sans-italic-16-font-weight),var(--semantic-label-font-weight),400,var(--open-sans-regular-14-font-weight),var(--semantic-link-font-weight),var(--open-sans-regular-15-font-weight),italic|Jost:var(--semantic-heading-1-font-weight),700,600,var(--jost-semibold-12-upper-font-weight),var(--semantic-heading-2-font-weight),var(--semantic-heading-3-font-weight),400,var(--semantic-heading-4-font-weight),500|Inter:var(--semantic-item-font-weight),400,var(--inter-regular-26-font-weight)");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+html{
+  scroll-behavior: smooth;
+}
+a {
+  color: inherit;
+  /* Inherit color from parent */
+  text-decoration: none;
+  /* Optional: Remove underline */
+}
