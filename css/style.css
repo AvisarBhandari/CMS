@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: relative;
+  position: static;
   background-color: #ffffff;
 }
 .feedback,
@@ -214,11 +214,6 @@
   object-fit: cover;
 }
 
-.header {
-  display: flex;
-
-  background-color: #37517edb;
-}
 
  .div {
   display: flex;
@@ -243,19 +238,21 @@
   position: relative;
 }
 
-.frame .header {
+.header {
   display: flex;
   width: 1903px;
   height: 96px;
+  z-index:100;
   align-items: center;
   justify-content: center;
   gap: 354px;
   padding: 15px 300px 15px 216px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: #37517edb;
+  background-color: #37517e;
 }
+
 
 .frame .logo {
   margin-top: -14.5px;
@@ -395,7 +392,7 @@ button.learn-more .circle {
   margin: 0;
   width: 3rem;
   height: 3rem;
-  background: #282936;
+  background: #4b658e;
   border-radius: 1.625rem;
 }
 
@@ -738,7 +735,7 @@ button:hover .button-text {
   letter-spacing: var(--semantic-heading-1-letter-spacing);
   line-height: var(--semantic-heading-1-line-height);
   font-size: var(--semantic-heading-1-font-size);
-  animation: spin 4.5s infinite;
+  animation: spin 6.5s infinite;
 }
 
 @keyframes spin {
@@ -949,6 +946,8 @@ button:hover .button-text {
   padding: 6.25px 0px;
   position: relative;
   margin-right: -213px;
+  top: -43px;
+  left: 266px;
 }
 
 .frame .play-circle-wrapper {
@@ -1622,12 +1621,13 @@ button:hover .button-text {
   flex: 0 0 auto;
 }
 
-.frame .img {
+
+.img-contect{
   position: relative;
-  width: 20px;
-  height: 20px;
-  filter: invert(29%) sepia(73%) saturate(747%) hue-rotate(172deg) brightness(95%) contrast(92%);
-  object-fit: contain;
+    width: 20px;
+    height: 20px;
+    filter: invert(29%) sepia(73%) saturate(747%) hue-rotate(172deg) brightness(95%) contrast(92%);
+    object-fit: contain;
 }
 
 .arrow{
@@ -2778,6 +2778,10 @@ button:hover .button-text {
   align-self: stretch;
   width: 100%;
   flex: 0 0 auto;
+  transition: all 0.5s ease;
+}
+.container-48:hover .img-contect{
+  filter: grayscale(100%);
 }
 
 .frame .overlay-wrapper {
@@ -3910,7 +3914,7 @@ ul.skills3 li:after {
 }
 
 ul.skills li:hover {
-  filter: brightness(1.5);
+  filter: brightness(1);
   transition: var(--t1);
 }
 

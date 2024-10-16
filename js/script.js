@@ -1,3 +1,4 @@
+function swiper(){
 const swiper = new Swiper('.swiper', {
             loop: true,
             speed: 600,
@@ -30,7 +31,7 @@ const swiper = new Swiper('.swiper', {
           });
 
           console.log(swiper);
-
+        }
 
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
