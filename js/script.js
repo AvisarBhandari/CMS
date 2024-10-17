@@ -95,3 +95,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const elementsToObserve = [
+    { selector: '.container-4', class: 'fadeinleft' },
+    { selector: '.hero-img-png', class: 'zoom' },
+    { selector: '.skills-png', class: 'fadeinleft' },
+    { selector: '.container-11', class: 'fadeinright' },
+    { selector: '.div-benifit', class: 'zoom' },
+    { selector: '.text-wrapper-7', class: 'zoom' },
+    { selector: '.heading-wrapper', class: 'flash' },
+    { selector: '.container-54', class: 'fadeinleft' },
+    { selector: '.learn-more', class: 'fadeinright' },
+    { selector: '.div-about', class: 'fadeinright' },
+    { selector: '.heading-10', class: 'flash' },
+    { selector: '.container-19', class: 'flash' },
+    { selector: '.background-border', class: 'fadeinleft' },
+    { selector: '.form', class: 'fadeinright' },
+  ];
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add the animation class when the element is in view
+        const classToAdd = elementsToObserve.find(item => item.selector === `.${entry.target.className}`)?.class;
+        if (classToAdd) {
+          entry.target.classList.add(classToAdd);
+        }
+        // Optionally, unobserve the element after it has been animated
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  // Observe each element
+  elementsToObserve.forEach(item => {
+    const element = document.querySelector(item.selector);
+    if (element) {
+      observer.observe(element);
+    }
+  });
+});
