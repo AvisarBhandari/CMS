@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./css/signup.css" />
+    <link rel="stylesheet" href="./css/globals.css" />
+    <link rel="stylesheet" href="./css/styleguide.css" />
+    <script src="./js/signup.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-section">
+        <img src="./img/about.png" alt="Sign Up Image" />
+      </div>
+      <div class="form-section">
+        <div class="logo">
+          <img src="./img/untitled-1-1.png" alt="Logo" />
+        </div>
+        <h2 class="signup">Sign up</h2>
+        <p class="intro-text">
+          Let's get you all set up so you can access your account.
+        </p>
+        <form action="#" method="POST">
+          <div class="input-group">
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="first-name"
+                name="first_name"
+                required
+                placeholder=" "
+              />
+              <label for="first-name" class="label">First Name</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="last-name"
+                name="last_name"
+                required
+                placeholder=" "
+              />
+              <label for="last-name" class="label">Last Name</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="student-id"
+                name="student_id"
+                required
+                placeholder=" "
+              />
+              <label for="student-id" class="label">Student Id</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder=" "
+              />
+              <label for="phone" class="label">Phone Number</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder=" "
+              />
+              <label for="password" class="label">Password</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm_password"
+                required
+                placeholder=" "
+              />
+              <label for="confirm-password" class="label"
+                >Confirm Password</label
+              >
+            </div>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" name="terms" required />
+            <label
+              >I agree to all the <a href="#">Terms</a> and
+              <a href="#">Privacy Policies</a></label
+            >
+          </div>
+          <button type="submit" class="btn">Create account</button>
+          <p class="login-text">
+            Already have an account? <a href="#">Login</a>
+          </p>
+          <p class="or-option">Or sign up with</p>
+          <div class="social-icons">
+            <a href="https://twitter.com" target="_blank" class="link-margin-4">
+              <div class="container-64">
+                <div class="symbol">
+                  <img
+                    class="social"
+                    src="./img/Twitter.svg"
+                    alt="Twitter Icon"
+                  />
+                </div>
+              </div>
+            </a>
+
+            <a href="https://github.com" target="_blank" class="link-margin-4">
+              <div class="container-64">
+                <div class="symbol">
+                  <img
+                    class="social"
+                    src="./img/Github.svg"
+                    alt="Github Icon"
+                  />
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="link-margin-4"
+            >
+              <div class="container-64">
+                <div class="symbol">
+                  <img
+                    class="social"
+                    src="./img/Instagram.svg"
+                    alt="Instagram Icon"
+                  />
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="link-margin-4"
+            >
+              <div class="container-64">
+                <div class="symbol">
+                  <img
+                    class="social"
+                    src="./img/Facebook.svg"
+                    alt="Facebook Icon"
+                  />
+                </div>
+              </div>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
