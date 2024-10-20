@@ -136,3 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+function ty(){
+  alert('Thank you for your submission we will not reply nor care about your submission');
+
+}

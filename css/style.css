@@ -874,7 +874,7 @@ button:hover .button-text {
 
 
 
-.loader {
+.load {
   color: rgb(255, 255, 255);
   font-family: var(--semantic-heading-1-font-family);
   font-style: var(--semantic-heading-1-font-style);
@@ -898,15 +898,15 @@ button:hover .button-text {
 }
 
 .title-main{
-  margin-top: 44px;
-  margin-left: 20px;
+margin-top: 180px;
+  margin-left: 21px;
 }
 
 .words {
   overflow: hidden;
   position: relative;
   height: 60px;
-  margin-top: 44px;
+  margin-top: 179px;
 }
 
 .word {
@@ -2035,6 +2035,7 @@ button:hover .button-text {
   letter-spacing: var(--open-sans-regular-14-letter-spacing);
   line-height: var(--open-sans-regular-14-line-height);
   font-style: var(--open-sans-regular-14-font-style);
+  text-align: left;
 }
 
 .frame .container-29 {
@@ -3548,6 +3549,7 @@ button:hover .button-text {
   font-size: 14px;
   letter-spacing: 0;
   line-height: 21px;
+  text-align: left;
 }
 
  .text-wrapper-33 {
@@ -3620,6 +3622,7 @@ button:hover .button-text {
   letter-spacing: var(--semantic-heading-4-letter-spacing);
   line-height: var(--semantic-heading-4-line-height);
   font-style: var(--semantic-heading-4-font-style);
+  text-align: left;
 }
 
  .list-2 {
@@ -3737,6 +3740,7 @@ button:hover .button-text {
   letter-spacing: var(--open-sans-regular-14-letter-spacing);
   line-height: var(--open-sans-regular-14-line-height);
   font-style: var(--open-sans-regular-14-font-style);
+  text-align: left;
 }
 
  .container-63 {

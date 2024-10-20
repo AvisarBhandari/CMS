@@ -1,23 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="../css/loading.css" />
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="../css/styleguide.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
+    <script src="../js/loading.js"></script>
     <script src="../js/script.js"></script>
     
   </head>
-  <body onload="javascript:swiper()">
+  <body>
+        <div class="loading">
+          <div class="loader">
+            <div>
+              <ul>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+                <li>
+                  <svg fill="currentColor" viewBox="0 0 90 120">
+                    <path
+                      d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+                    </path>
+                  </svg>
+                </li>
+              </ul>
+            </div><span>Loading</span>
+          </div>
+        </div>
     <div class="frame" id="home">
       <div class="div">
         <div class="section">
           <header class="header">
             <div class="logo">
               <div class="overlap-group">
-                <a href="#home">
+                <a href="landing.html">
                 <img class="untitled" src="../img/untitled-1.png" />
                 <div class="text-wrapper">Academy</div>
                 <div class="text-wrapper-2">Keeper</div>
@@ -43,7 +96,7 @@
                   </div>
                   <div class="div-wrapper">
                     <div class="link">
-                      <div class="home-wrapper"><div class="home header-anime">Features</div></div>
+                      <div class="home-wrapper"><div class="home header-anime"><a href="about.html"> Features </a> </div></div>
                     </div>
                   </div>
                   <div class="div-wrapper">
@@ -54,7 +107,11 @@
                 </div>
               </div>
               <div class="link-wrapper">
-                <div class="link-3"><div class="text-wrapper-4">Get Started</div></div>
+                <div class="link-3">
+                  <a href="signup.html">
+                  <div class="text-wrapper-4">Get Started</div>
+                </a>
+                </div>
               </div>
             </div>
           </header>
@@ -70,7 +127,7 @@
 
 
 
-                          <div class="loader">
+                          <div class="load">
                             <div class="words">
                               <span class="word spin">Transform</span>
                               <span class="word spin">Optimize</span>
@@ -96,7 +153,7 @@
                       </div>
                     </div>
                     <div class="container-5">
-                      
+                      <a href="signup.html">
                       <button class="cssbuttons-io-button">
                         Get started
                         <div class="icon">
@@ -107,7 +164,7 @@
                           </svg>
                         </div>
                       </button>
-
+                      </a>
 
                       <div class="link-margin-2">
                         <a href="" target="_blank" rel="noopener noreferrer"
@@ -116,8 +173,8 @@
                             <div class="div-wrapper">
                               <div class="home-wrapper"><div class="home-2">Watch Video</div></div>
                             </div>
-                          </div></a
-                        >
+                          </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -312,6 +369,7 @@
                         </div>
                       </div>
                     </div>
+                    <a href="tel:+977 9823671584">
                     <div class="container-48">
                       <div class="overlay-wrapper">
                         <div class="overlay-2">
@@ -325,6 +383,8 @@
                         <div class="div"><div class="text-wrapper-27">+977 9823671584</div></div>
                       </div>
                     </div>
+                    </a>
+                    <a href="mailto:info@Academy Keeper.com">
                     <div class="container-48">
                       <div class="overlay-wrapper">
                         <div class="overlay-2">
@@ -340,6 +400,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
 
 
 
@@ -351,25 +412,25 @@
                         <div class="container-51">
                           <div class="label-your-name">Your Name</div>
                           
-                          <input class="input" type="text" name="" id="">
+                          <input class="input" required type="text" name="" id="">
                         </div>
                       </div>
                       <div class="margin-10">
                         <div class="container-51">
                           <div class="label-your-email">Your Email</div>
-                          <input class="input" type="email" name="c_email" id="">
+                          <input class="input" type="email" required name="c_email" id="">
                         </div>
                       </div>
                       <div class="margin-11">
                         <div class="container-51">
                           <div class="label-subject">Subject</div>
-                          <input class="subject" type="text" name="c_subject" id="">
+                          <input class="subject" required type="text" name="c_subject" id="">
                         </div>
                       </div>
                       <div class="margin-12">
                         <div class="container-52">
                           <div class="label-message">Message</div>
-                          <textarea class="textarea" name="textarea" id="" cols="90" rows="10">
+                          <textarea class="textarea" required name="textarea" id="" cols="90" rows="10">
 
                           </textarea>
                           
@@ -377,7 +438,13 @@
                       </div>
                       <div class="margin-13">
                         <div class="button-wrapper">
-                          <button class="link-3"><div class="text-wrapper-28">Send Message</div></button>
+                          <button class="link-3" onclick="ty()"><div class="text-wrapper-28">
+                            
+
+                            
+                            Send Message
+                            
+                          </div></button>
                           </form>
                         </div>
                       </div>
@@ -420,6 +487,7 @@
                     <div class="container-60">
                       <p class="text-wrapper-15">Parsa Bazaar, Mahendra Hwy, Khairahani 44202</p>
                     </div>
+                    <a href="tel:+977 9823671587">
                     <div class="strong-phone-wrapper">
                       <p class="div-3">
                         <span class="text-wrapper-33">Phone:</span>
@@ -427,6 +495,7 @@
                         <span class="text-wrapper-35">+977 9823671584 </span>
                       </p>
                     </div>
+                    </a>
                     <div class="div">
                       <p class="div-3">
                         <span class="text-wrapper-33">Email:</span>
@@ -452,7 +521,7 @@
                       <div class="margin-18"><div class="symbol-6">
                         <img class="footer_pointy_thing" src="../img/Chevron up.svg" alt="">
                       </div></div>
-                      <div class="div-wrapper"><div class="text-wrapper-37"><a href="#about">About</a></div></div>
+                      <div class="div-wrapper"><div class="text-wrapper-37"><a href="about.html">About</a></div></div>
                     </div>
                     <div class="item-3">
                       <div class="margin-18"><div class="symbol-6">
@@ -551,7 +620,8 @@
             </div>
           </div>
         </footer>
-      </div>
-    </div>
+
+
+    
   </body>
 </html>
