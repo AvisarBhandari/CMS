@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
         phone: document.getElementById("phone"),
         password: document.getElementById("password"),
         confirmPassword: document.getElementById("confirm-password"),
-        terms: document.querySelector("input[name='terms']")
+        terms: document.querySelector("input[name='terms']"),
+        college: document.getElementById("college"),
+        role: document.querySelector('input[name="role"]:checked') // Added for role
     };
 
     form.addEventListener("submit", function (event) {
@@ -56,6 +58,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Validate the college input field in real-time
+    inputs.college.addEventListener("input", function () {
+        clearErrors();
+        if (!validateCollegeName(inputs.college.value)) {
+            showError(inputs.college, "College name must contain only letters and spaces and be between 1 and 80 characters long.");
+        }
+    });
+
+    // Validate the role selection in real-time
+    document.querySelectorAll('input[name="role"]').forEach((radio) => {
+        radio.addEventListener("change", function () {
+            clearErrors();
+            if (!validateRoleSelected()) {
+                showError(radio, "You must select a role");
+            }
+        });
+    });
+
     function validateForm() {
         let isValid = true;
 
@@ -73,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Validate student ID, phone number, and other fields
         for (const key in inputs) {
-            if (key !== 'terms' && !validateRequired(inputs[key].value)) {
+            if (key !== 'terms' && key !== 'role' && key !== 'college' && !validateRequired(inputs[key].value)) {
                 showError(inputs[key], `${key.replace(/([A-Z])/g, ' $1')} is required`);
                 isValid = false;
             }
@@ -102,6 +122,19 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("You must agree to the terms and conditions");
             isValid = false;
         }
+
+        // Validate college input
+        if (!validateCollegeName(inputs.college.value)) {
+            showError(inputs.college, "College name must contain only letters and be between 1 and 80 characters long.");
+            isValid = false;
+        }
+
+        // Validate role selection
+        if (!validateRoleSelected()) {
+            showError(inputs.role, "You must select a role");
+            isValid = false;
+        }
+
         return isValid;
     }
 
@@ -121,6 +154,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function validatePassword(password) {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
         return passwordRegex.test(password); // Return true if the password matches the regex
+    }
+
+    function validateCollegeName(collegeName) {
+        const nameRegex = /^[A-Za-z\s]+$/; // Allow only alphabetic characters and spaces
+        return collegeName.length >= 1 && collegeName.length <= 80 && nameRegex.test(collegeName); // Check length and regex
+    }
+
+    function validateRoleSelected() {
+        return document.querySelector('input[name="role"]:checked') !== null; // Check if a radio button is selected
     }
 
     function showError(input, message) {
