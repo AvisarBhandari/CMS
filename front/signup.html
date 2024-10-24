@@ -107,12 +107,13 @@
             <div class="input-wrapper">
               <input
                 type="text"
-                id="student-id"
-                name="student_id"
+                id="id"
+                name="id"
                 required
-                placeholder=" "
+                placeholder="          Eg.STU-1234-2024"
               />
-              <label for="student-id" class="label">Student Id</label>
+              <label for="id" class="label">ID</label>
+              <small id="note">Please follow the format: 'STU' for students, 'TEA' for teachers, 'ADM' for admins.</small>
             </div>
             <div class="input-wrapper">
               <input
@@ -123,23 +124,6 @@
                 placeholder=" "
               />
               <label for="phone" class="label">Phone Number</label>
-            </div>
-          </div>
-          <div class="input-group">
-            <div class="radiobutton">
-              <label>Your Role:</label>
-              <input type="radio" id="admin" name="role" value="Admin" />
-              <label for="admin">Admin</label>
-              <input
-                type="radio"
-                id="student"
-                name="role"
-                value="student"
-                checked
-              />
-              <label for="student">Student</label>
-              <input type="radio" id="teacher" name="role" value="Teacher" />
-              <label for="teacher">Teacher</label>
             </div>
           </div>
           <div class="input-wrapper">
@@ -195,7 +179,6 @@
               </div>
             </div>
           </a>
-
           <a href="https://github.com" target="_blank" class="link-margin-4">
             <div class="container-64">
               <div class="symbol">

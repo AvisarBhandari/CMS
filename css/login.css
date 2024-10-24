@@ -58,7 +58,7 @@ body {
   color: black;
   position: absolute;
   height: 117px;
-  top: 60px;
+  top: 50px;
   font-family: "Inknut Antiqua", Helvetica;
   font-weight: 400;
   font-size: 20px;
@@ -70,7 +70,7 @@ body {
   color:black;
   position: absolute;
   height: 17px;
-  top: 80px;
+  top: 85px;
   left: 42px;
   font-family: "Inria Sans", Helvetica;
   font-weight: 700;
@@ -114,6 +114,36 @@ h2 {
   font-size: 1rem;
 }
 
+
+
+.radiobutton {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+
+.radiobutton input[type="radio"] {
+  margin-right: 8px;
+}
+
+.radiobutton label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.radiobutton input[type="radio"]:hover + label {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.radiobutton input[type="radio"]:checked + label {
+  color: #0056b3;
+  font-weight: bold;
+}
 .label {
   position: absolute;
   top: 10px;

@@ -131,35 +131,6 @@ p {
   font-size: 1rem;
 }
 
-.radiobutton {
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 30px;
-  align-items: center;
-}
-
-.radiobutton input[type="radio"] {
-  margin-right: 8px;
-}
-
-.radiobutton label {
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-}
-
-.radiobutton input[type="radio"]:hover + label {
-  color: #007bff;
-  font-weight: bold;
-}
-
-.radiobutton input[type="radio"]:checked + label {
-  color: #0056b3;
-  font-weight: bold;
-}
-
 .label {
   position: absolute;
   left: 10px;
@@ -199,6 +170,13 @@ p {
 .checkbox-group a {
   color: #007bff;
   text-decoration: none;
+}
+
+.input-wrapper small {
+  display: block;        
+  margin-top: 5px;    
+  color: #555;         
+  line-height: 1.5;     
 }
 
 .btn {
