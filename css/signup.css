@@ -272,7 +272,7 @@ p {
 }
 
 .login-text {
-  position: ;
+  position:relative ;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 40px;
@@ -289,33 +289,6 @@ p {
 .login-text a {
   color: #007bff;
   text-decoration: none;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  gap: 10px;
-}
-
-.social-icons a {
-  margin: 0 10px;
-  transition: filter 0.5s ease;
-}
-
-.social-icons a:hover {
-  filter: invert(29%) sepia(73%) saturate(747%) hue-rotate(172deg)
-    brightness(95%) contrast(92%);
-}
-
-.social-icons img {
-  width: 30px;
-}
-
-.social {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
 }
 
 .container-64 {
