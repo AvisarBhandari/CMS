@@ -54,87 +54,41 @@
             <label for="student" class="label">Student</label>
           </div>
         </div>
-        <h2>Login</h2>
-        <p class="intro-text">Login to access your Academy Keeper Account</p>
-        <form action="#" method="post" id="login-form">
-          <div class="input-group">
-            <div class="input-wrapper">
-              <input type="text" id="id" name="id" required placeholder=" " />
-              <label for="id" class="label">ID</label>
-            </div>
-            <div class="input-wrapper">
-              <input type="text" id="college" name="college" placeholder="" />
-              <label for="college" class="label">College</label>
-            </div>
-            <div class="input-wrapper">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                placeholder=" "
-              />
-              <label for="password" class="label">Password</label>
-            </div>
+
+
+        <div class="input-group">
+          <div class="input-wrapper">
+            <input type="text" id="id" name="id" required placeholder=" " />
+            <label for="id" class="label">ID</label>
           </div>
-          <div class="checkbox-group">
-            <div>
-              <input type="checkbox" id="remember-me" name="remember-me" />
-              <label for="remember-me">Remember me</label>
-            </div>
-            <div id="forgot-pass">
-              <a href="#">Forgot password?</a>
-            </div>
+          <div class="input-wrapper">
+            <input type="text" id="college" name="college" placeholder="" />
+            <label for="college" class="label">College</label>
           </div>
-          <button type="submit" class="btn">Login</button>
-          <p class="login-text">
-            Don't have an account? <a href="signup.html">Sign up</a>
-          </p>
-          <p class="or-option">Or login with</p>
-        </form>
-        <div class="social-icons">
-          <a href="https://twitter.com" target="_blank" class="link-margin-4">
-            <div class="container-64">
-              <div class="symbol">
-                <img
-                  class="social"
-                  src="../img/Twitter.svg"
-                  alt="Twitter Icon"
-                />
-              </div>
-            </div>
-          </a>
-          <a href="https://github.com" target="_blank" class="link-margin-4">
-            <div class="container-64">
-              <div class="symbol">
-                <img class="social" src="../img/Github.svg" alt="Github Icon" />
-              </div>
-            </div>
-          </a>
-          <a href="https://instagram.com" target="_blank" class="link-margin-4">
-            <div class="container-64">
-              <div class="symbol">
-                <img
-                  class="social"
-                  src="../img/Instagram.svg"
-                  alt="Instagram Icon"
-                />
-              </div>
-            </div>
-          </a>
-          <a href="https://facebook.com" target="_blank" class="link-margin-4">
-            <div class="container-64">
-              <div class="symbol">
-                <img
-                  class="social"
-                  src="../img/Facebook.svg"
-                  alt="Facebook Icon"
-                />
-              </div>
-            </div>
-          </a>
+          <div class="input-wrapper">
+            <input type="password" id="password" name="password" required placeholder=" " />
+            <label for="password" class="label">Password</label>
+          </div>
         </div>
-      </div>
+        <div class="checkbox-group">
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" name="remember-me" />
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div id="forgot-pass">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <button type="submit" class="btn">Login</button>
+
+
+        <p class="login-text">
+          Don't have an account? <a class="signup" href="signup.html">Sign up</a>
+        </p>
+      </form>
     </div>
-  </body>
+
+  </div>
+</body>
+
 </html>
