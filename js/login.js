@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         clearErrors();
         let isValid = validateForm();
 
-        if (isValid) {
-            alert("Login successful!");
-            form.reset(); // Optionally reset the form
-        }
+        // if (isValid) {
+        //     alert("Login successful!");
+        //     // form.reset();
+        // }
     });
 
     // Event listeners for real-time validation
