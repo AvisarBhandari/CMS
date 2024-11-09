@@ -21,6 +21,13 @@
 </head>
 
 <body id="page-top">
+<?php
+// Start the session to access the session variables
+session_start();
+
+// Get the data from session
+$total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
+?>
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
@@ -143,7 +150,9 @@
                                         <path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
                                     </svg></div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">123</h2>
+                                    <h2 class="fw-bold mb-0">
+                                        <?php  echo $total_students;?>
+                                    </span></h2>
                                     <p class="mb-0">Today'sStudent</p>
                                 </div>
                             </div>
