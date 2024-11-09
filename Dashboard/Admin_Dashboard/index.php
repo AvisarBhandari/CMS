@@ -17,9 +17,27 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label-button-label.css">
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+
+    
 </head>
 
 <body id="page-top">
+<?php
+// Start the session to access the session variables
+session_start();
+
+// Get the data from session
+$total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
+$total_faculty = isset($_SESSION['total_faculty']) ? $_SESSION['total_faculty'] : 0;
+$attendancePercentage = isset($_SESSION['attendancePercentage']) ? $_SESSION['attendancePercentage'] : 0;
+$totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
+
+
+
+
+?>
+
+
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
@@ -141,7 +159,11 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total Student</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>40,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>
+                                            <?php
+                                            echo $total_students;
+                                            ?>
+                                            </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person fa-2x text-gray-300">
                                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"></path>
@@ -156,7 +178,11 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Total Faculty</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>100</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>
+                                                <?php
+                                            echo $total_faculty ;
+                                            ?>
+                                            </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-96 0 512 512" width="1em" height="1em" fill="currentColor" class="fa-2x text-gray-300">
                                                 <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -174,11 +200,20 @@
                                             <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Attendance Rate</span></div>
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>
+                                                        <?php 
+                                                        echo $attendancePercentage."%";
+                                                        ?>
+                                                    </span></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm">
-                                                        <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                                                        <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" 
+                                                        style="width: 
+                                                        <?php 
+                                                        echo $attendancePercentage."%";
+                                                        ?>
+                                                        ;"><span class="visually-hidden">50%</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,8 +228,12 @@
                                 <div class="card-body">
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
-                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Active Courses</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Total Courses</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>
+                                                <?php
+                                                echo $totalCourse;
+                                                ?>
+                                            </span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-book fa-2x text-gray-300"></i></div>
                                     </div>
@@ -519,6 +558,9 @@
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+
 </body>
 
 </html>
