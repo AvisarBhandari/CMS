@@ -26,4 +26,26 @@ echo json_encode([
 ]);
 
 $conn->close();
+
+// SQL 
+// CREATE TABLE finance (
+//     id INT AUTO_INCREMENT PRIMARY KEY,
+//     month VARCHAR(20) NOT NULL,
+//     earnings DECIMAL(10, 2) NOT NULL,
+//     expenditures DECIMAL(10, 2) NOT NULL
+// );
+// INSERT INTO finance (month, earnings, expenditures) VALUES
+// ('Jan', 10000.00, 5000.00),
+// ('Feb', 15000.00, 7000.00),
+// ('Mar', 12000.00, 8000.00),
+// ('Apr', 17000.00, 6000.00),
+// ('May', 16000.00, 10000.00),
+// ('Jun', 19000.00, 11000.00),
+// ('Jul', 21000.00, 8000.00),
+// ('Aug', 22000.00, 9500.00),
+// ('Sep', 25000.00, 10500.00),
+// ('Oct', 20000.00, 15000.00),
+// ('Nov', 18000.00, 13000.00),
+// ('Dec', 23000.00, 14000.00);
+
 ?>
