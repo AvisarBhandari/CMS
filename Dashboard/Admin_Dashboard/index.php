@@ -18,24 +18,24 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
 
-    
+
 </head>
 
 <body id="page-top">
-<?php
-// Start the session to access the session variables
-session_start();
+    <?php
+    // Start the session to access the session variables
+    session_start();
 
-// Get the data from session
-$total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
-$total_faculty = isset($_SESSION['total_faculty']) ? $_SESSION['total_faculty'] : 0;
-$attendancePercentage = isset($_SESSION['attendancePercentage']) ? $_SESSION['attendancePercentage'] : 0;
-$totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
-
-
+    // Get the data from session
+    $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
+    $total_faculty = isset($_SESSION['total_faculty']) ? $_SESSION['total_faculty'] : 0;
+    $attendancePercentage = isset($_SESSION['attendancePercentage']) ? $_SESSION['attendancePercentage'] : 0;
+    $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
 
 
-?>
+
+
+    ?>
 
 
     <div id="wrapper">
@@ -160,10 +160,10 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total Student</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>
-                                            <?php
-                                            echo $total_students;
-                                            ?>
-                                            </span></div>
+                                                    <?php
+                                                    echo $total_students;
+                                                    ?>
+                                                </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person fa-2x text-gray-300">
                                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"></path>
@@ -179,10 +179,10 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Total Faculty</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>
-                                                <?php
-                                            echo $total_faculty ;
-                                            ?>
-                                            </span></div>
+                                                    <?php
+                                                    echo $total_faculty;
+                                                    ?>
+                                                </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-96 0 512 512" width="1em" height="1em" fill="currentColor" class="fa-2x text-gray-300">
                                                 <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -201,17 +201,17 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-auto">
                                                     <div class="text-dark fw-bold h5 mb-0 me-3"><span>
-                                                        <?php 
-                                                        echo $attendancePercentage."%";
-                                                        ?>
-                                                    </span></div>
+                                                            <?php
+                                                            echo $attendancePercentage . "%";
+                                                            ?>
+                                                        </span></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm">
-                                                        <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" 
-                                                        style="width: 
-                                                        <?php 
-                                                        echo $attendancePercentage."%";
+                                                        <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 
+                                                        <?php
+                                                        echo $attendancePercentage . "%";
                                                         ?>
                                                         ;"><span class="visually-hidden">50%</span></div>
                                                     </div>
@@ -230,10 +230,10 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Total Courses</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>
-                                                <?php
-                                                echo $totalCourse;
-                                                ?>
-                                            </span></div>
+                                                    <?php
+                                                    echo $totalCourse;
+                                                    ?>
+                                                </span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-book fa-2x text-gray-300"></i></div>
                                     </div>
@@ -248,7 +248,9 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
                                     <h6 class="text-primary fw-bold m-0">Earnings Overview</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;,&quot;20000&quot;,&quot;25000&quot;,&quot;15000&quot;,&quot;10000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;},{&quot;label&quot;:&quot;Expenditures&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;1000&quot;,&quot;500&quot;,&quot;5000&quot;,&quot;20000&quot;,&quot;23000&quot;,&quot;10000&quot;,&quot;2497&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;1500&quot;,&quot;4000&quot;],&quot;backgroundColor&quot;:&quot;rgba(229,5,58,0.04)&quot;,&quot;borderColor&quot;:&quot;rgba(229,5,58,0.49)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                    <div class="chart-container" style="position: relative; height: 300px ;">
+                                        <canvas  id="earningsChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -558,6 +560,8 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse']: 0;
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/earning_data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
