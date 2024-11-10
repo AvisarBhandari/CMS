@@ -202,42 +202,76 @@
                                                 </svg>&nbsp;Add Faculty</button>
                                             <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
                                                 <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
-                                                <form style="padding-bottom: 0px;">
-                                                    <div style="margin-top: 30px;margin-right: -1px;">
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                <form style="padding-bottom: 0px;" id="facultyForm">
+                                                    <div style="margin-top: 30px; margin-right: -1px;">
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Faculty ID</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="text" name="teacher_code" placeholder="Enter Faculty ID" required="" min="8" max="8" pattern="^TEA-\d{4}-\d{4}$" maxlength="13" minlength="1" autofocus=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Faculty Name</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="text" name="teacher_name" placeholder="Enter Faculty Name" required="" minlength="2" maxlength="25" autofocus=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Faculty ID</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="text" name="faculty_id" id="faculty_id" placeholder="Enter Faculty ID" required="" pattern="^TEA-\d{4}-\d{4}$" maxlength="13" minlength="13" autofocus="">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Faculty Name</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" type="text" name="faculty_name" id="faculty_name" placeholder="Enter Faculty Name" required="" minlength="2" maxlength="25">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Position</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="text" required="" name="position" autofocus="" autocomplete="off" placeholder="Enter Position Name" minlength="2" maxlength="25"></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Address&nbsp;</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="number" name="address " required="" placeholder="Enter Address" min="1" max="25"></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Position</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="text" name="position" id="position" placeholder="Enter Position Name" required="" minlength="2" maxlength="25">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Address</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" type="text" name="address" id="address" placeholder="Enter Address" required="" minlength="5" maxlength="50">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>D.O.B</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="date" name="dob" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Start date&nbsp;</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="date" style="width: 247.85px;" required=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>D.O.B</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="date" name="dob" id="dob" required="">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Start Date</strong>
+                                                                </div>
+                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px; padding-left: 50px; padding-top: 2px;">
+                                                                    <input class="form-control" type="date" name="start_date" id="start_date" style="width: 247.85px;" required="">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Salary&nbsp;</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="number" name="salary" min="3" max="8" placeholder="Enter the Salary" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Phone number&nbsp;</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="tel" name="Phone_no" placeholder="Enter the Phone Number " required="" pattern="(98|97)\d{8}$" maxlength="13" minlength="10"></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Salary</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="number" name="salary" id="salary" placeholder="Enter Salary" required="" min="3000" max="100000">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Phone Number</strong>
+                                                                </div>
+                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px; padding-left: 50px; padding-top: 2px;">
+                                                                    <input class="form-control" type="tel" name="phone_number" id="phone_number" placeholder="Enter Phone Number" required="" pattern="(98|97)\d{8}" maxlength="10" minlength="10">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
+                                                    <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Add Faculty">
+                                                </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -395,10 +429,12 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/insert_faculty_member.js"></script>
+    <script src="assets/js/validate_faculty.members.js"></script>
 </body>
-
 </html>
