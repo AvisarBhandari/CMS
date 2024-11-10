@@ -249,21 +249,24 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-container" style="position: relative; height: 300px ;">
-                                        <canvas  id="earningsChart"></canvas>
+                                        <canvas id="earningsChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-5 col-xl-4" data-aos="fade-left" data-aos-duration="1200">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Students with Pending Fees</h6>
+                            <div class="card shadow-lg mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center bg-light" style="height: 57.4px;">
+                                    <h6 class="text-dark fw-bold m-0">Students Fee Payment Overview</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Paid&quot;,&quot;Pending&quot;,&quot;Partially Paid&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;fees&quot;,&quot;backgroundColor&quot;:[&quot;rgb(30,122,109)&quot;,&quot;rgb(249,232,20)&quot;,&quot;rgb(229,5,58)&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[&quot;2000&quot;,&quot;1500&quot;,&quot;1000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;,&quot;fontColor&quot;:&quot;#6777ef&quot;,&quot;fontSize&quot;:14},&quot;reverse&quot;:false,&quot;position&quot;:&quot;bottom&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;display&quot;:false}}}"></canvas></div>
+                                <div class="card-body p-3">
+                                    <div class="chart-area">
+                                        <canvas id="feechart" style="margin-left: 100px;"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-lg-6 mb-4">
@@ -561,6 +564,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/earning_data.js"></script>
+    <script src="assets/js/fee_data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
