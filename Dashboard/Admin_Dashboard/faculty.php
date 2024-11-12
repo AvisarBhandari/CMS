@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
 </head>
+
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
@@ -162,36 +164,36 @@
                     </div>
                 </div>
                 <div class="container">
-    <div class="row">
-        <!-- Grade Overview Card -->
-        <div class="col-12 col-md-6 col-xl-5">
-            <div class="card shadow mb-4" data-aos="flip-left" data-aos-duration="750" data-aos-delay="350" style="box-shadow: 0px 0px 20px 0px;">
-                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px; box-shadow: 0px 0px;">
-                    <h6 class="text-primary fw-bold m-0">Grade Overview</h6>
-                </div>
-                <div class="card-body p-0" style="box-shadow: 0px 0px;">
-                    <div class="chart-area">
-                        <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Active&quot;,&quot;On Leave&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Status&quot;,&quot;backgroundColor&quot;:[&quot;rgb(0,183,96)&quot;,&quot;#f7e859&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[890,65]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;text&quot;:&quot;Grade&quot;,&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;}}}"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="row">
+                        <!-- Grade Overview Card -->
+                        <div class="col-12 col-md-6 col-xl-5">
+                            <div class="card shadow mb-4" data-aos="flip-left" data-aos-duration="750" data-aos-delay="350" style="box-shadow: 0px 0px 20px 0px;">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px; box-shadow: 0px 0px;">
+                                    <h6 class="text-primary fw-bold m-0">Grade Overview</h6>
+                                </div>
+                                <div class="card-body p-0" style="box-shadow: 0px 0px;">
+                                    <div class="chart-area">
+                                        <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Active&quot;,&quot;On Leave&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Status&quot;,&quot;backgroundColor&quot;:[&quot;rgb(0,183,96)&quot;,&quot;#f7e859&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[890,65]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;text&quot;:&quot;Grade&quot;,&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;}}}"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- Teacher Absence Patterns Card -->
-        <div class="col-12 col-md-6 col-xl-7">
-            <div class="card shadow mb-4" data-aos="flip-right" data-aos-duration="750" data-aos-delay="200" style="box-shadow: 0px 0px 20px;">
-                <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Monthly Teacher Absences</p>
-                </div>
-                <div class="card-body" style="height: 352px;">
-                    <div class="chart-area">
-                        <canvas id="absenceChart"></canvas>
+                        <!-- Teacher Absence Patterns Card -->
+                        <div class="col-12 col-md-6 col-xl-7">
+                            <div class="card shadow mb-4" data-aos="flip-right" data-aos-duration="750" data-aos-delay="200" style="box-shadow: 0px 0px 20px;">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Monthly Teacher Absences</p>
+                                </div>
+                                <div class="card-body" style="height: 352px;">
+                                    <div class="chart-area">
+                                        <canvas id="absenceChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
                 <div class="container-fluid">
                     <div class="card shadow" data-aos="flip-up" data-aos-duration="700" data-aos-delay="400">
@@ -202,10 +204,13 @@
                             <div class="row">
                                 <div class="col-md-6 text-nowrap">
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                </svg>&nbsp;Add Faculty</button>
+                                                </svg>&nbsp;Add Faculty
+                                            </button>
                                             <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px ;position:relative;left:100px">
                                                 <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;" id="dropdownbtn">Add Faculty</h3>
                                                 <form style="padding-bottom: 0px;" id="facultyForm">
@@ -226,7 +231,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                
+
                                                         <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
@@ -243,14 +248,14 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                
+
                                                         <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row mb-xxl-3">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
                                                                     <strong>D.O.B</strong>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <input class="form-control" type="date" name="dob" id="dob" required>
+                                                                    <input class="form-control" type="date" id="dob" name="dob" style="width: 247.85px;" required>
                                                                 </div>
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
                                                                     <strong>Start Date</strong>
@@ -260,7 +265,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                
+
                                                         <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row mb-xxl-3">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
@@ -277,18 +282,48 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
+                                                        
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                               
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Department</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control" name="department" id="department" required>
+                                                                        <option value="">Select Department</option>
+                                                                        <option value="BCA">BCA</option>
+                                                                        <option value="BBS">BBS</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 30px; padding-top: 8px; padding-left: 50px; position:relative ;left:150px;">
+                                                                    <strong>Status</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="position:relative ;left:200px;">
+                                                                    <select class="form-control" name="status" id="status" required>
+                                                                        <option value="">Select Status</option>
+                                                                        <option value="Active">Active</option>
+                                                                        <option value="Inactive">Inactive</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                            
+
                                                     <input type="hidden" id="edit_mode" name="edit_mode" value="add">
-                                                    <input type="hidden" id="faculty_id_hidden" name="faculty_id_hidden">        
+                                                    <input type="hidden" id="faculty_id_hidden" name="faculty_id_hidden">
                                                     <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Add Faculty">
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
                                         <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="position: relative; top:-45px; left:150px" type="button">
+                                            <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="position: relative; top:-45px; left:180px" type="button">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
@@ -314,7 +349,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                    
+
                                                         <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
@@ -328,8 +363,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                    
-                                                        
+
+
                                                         <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Mark Attendance">
                                                     </div>
                                                 </form>
@@ -345,6 +380,7 @@
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
+                                            <th>Departmrnt</th>
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Position</th>
@@ -352,14 +388,16 @@
                                             <th>DOB</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+                                            <th>Status</th>
                                             <th><strong>Actions</strong></th>
                                         </tr>
                                     </thead>
                                     <tbody id="faculty_table_body">
-                                        
+
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>Departmrnt</th>
                                             <td><strong>ID</strong></td>
                                             <td><strong>Name</strong></td>
                                             <td><strong>Position</strong></td>
@@ -367,6 +405,7 @@
                                             <td><strong>Age</strong></td>
                                             <td><strong>DOB</strong></td>
                                             <td><strong>Salary</strong></td>
+                                            <th>Status</th>
                                             <td><strong><strong>Actions</strong></strong></td>
                                         </tr>
                                     </tfoot>
@@ -396,4 +435,5 @@
     <script src="assets/js/validate_faculty.members.js"></script>
     <script src="assets/js/faculty_absence.js"></script>
 </body>
+
 </html>

@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const startDate = document.getElementById('start_date');
     const salary = document.getElementById('salary');
     const phoneNumber = document.getElementById('phone_number');
+    const department = document.getElementById('department');
+    const status = document.getElementById('status');
 
     // Error messages
     const errorMessages = {
@@ -16,17 +18,18 @@ document.addEventListener('DOMContentLoaded', function () {
         facultyName: "Faculty name must only contain alphabetic(2-25)",
         position: "Position must be Alphabets(2-25)",
         address: "Address must be between 5 and 50 characters",
-        dob: "Date of birth is required",
+        dob: "Age should be greater than 18",
         startDate: "Start date is required",
         salary: "Salary must be a positive number between 3000 and 100000",
-        phoneNumber: "Phone number must start with 98 or 97 and have 10 digits"
+        phoneNumber: "Phone number must start with 98 or 97 and have 10 digits",
+        department: "Please select a department",
+        status: "Please select the status"
     };
 
     // Function to create an error message element
     function createErrorMessage(message) {
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('error-message');
-        
         errorMessage.style.color = 'red';
         errorMessage.style.fontSize = '12.5px';
         errorMessage.style.padding = '5px';
@@ -38,8 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         errorMessage.textContent = message;
         return errorMessage;
     }
-    
-    
 
     // Function to display error message under input fields
     function showError(input, message) {
@@ -71,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
     startDate.addEventListener('change', validateStartDate);
     salary.addEventListener('input', validateSalary);
     phoneNumber.addEventListener('input', validatePhoneNumber);
+    department.addEventListener('change', validateDepartment);
+    status.addEventListener('change', validateStatus);
 
     function validateFacultyId() {
         const regex = /^TEA-\d{4}-\d{4}$/;
@@ -109,12 +112,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateDob() {
-        if (!dob.value) {
+        const dobValue = dob.value;
+        if (!dobValue) {
+            showError(dob, errorMessages.dob);
+            return;
+        }
+        const dobDate = new Date(dobValue);
+        const today = new Date();
+        const age = today.getFullYear() - dobDate.getFullYear();
+        const monthDifference = today.getMonth() - dobDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+        }
+        if (age < 18) {
             showError(dob, errorMessages.dob);
         } else {
             clearError(dob);
         }
     }
+    
 
     function validateStartDate() {
         if (!startDate.value) {
@@ -138,6 +154,24 @@ document.addEventListener('DOMContentLoaded', function () {
             showError(phoneNumber, errorMessages.phoneNumber);
         } else {
             clearError(phoneNumber);
+        }
+    }
+
+    // Real-time validation for department
+    function validateDepartment() {
+        if (department.value === "") {
+            showError(department, errorMessages.department);
+        } else {
+            clearError(department);
+        }
+    }
+
+    // Real-time validation for status
+    function validateStatus() {
+        if (status.value === "") {
+            showError(status, errorMessages.status);
+        } else {
+            clearError(status);
         }
     }
 

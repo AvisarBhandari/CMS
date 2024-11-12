@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $('#facultyForm').on('submit', function (e) {
-        e.preventDefault();  // Prevent default form submission to allow AJAX
-
+        e.preventDefault();  
         var formData = {
+            department: $('#department').val(), 
             faculty_id: $('#faculty_id').val(),
             faculty_name: $('#faculty_name').val(),
             position: $('#position').val(),
@@ -11,9 +11,13 @@ $(document).ready(function () {
             start_date: $('#start_date').val(),
             salary: $('#salary').val(),
             phone_number: $('#phone_number').val(),
-            edit_mode: $('#edit_mode').val(),  // Pass mode (add or edit)
-            faculty_id_hidden: $('#faculty_id_hidden').val()  // For editing
+            status: $('#status').val(), 
+            edit_mode: $('#edit_mode').val(),  
+            faculty_id_hidden: $('#faculty_id_hidden').val() 
         };
+        console.log("DOB: " + $('#dob').val());
+
+        
 
         console.log('Form data to be sent:', formData);  
 
@@ -35,10 +39,10 @@ $(document).ready(function () {
                     window.location.reload();
                     $('#facultyForm')[0].reset();  
                     $('#submit_button').val('Add Faculty');  
-                    $('#faculty_id_hidden').val('');  // Clear hidden faculty ID
-                    $('#edit_mode').val('add');  // Reset to add mode
-                    $('#facultyForm').show;
-                    fetchData();  // Refresh the faculty table
+                    $('#faculty_id_hidden').val('');  
+                    $('#edit_mode').val('add');  
+                    $('#facultyForm').show();
+                    fetchData();  
                 } else {
                     alert('Error: ' + response.message); 
                 }
@@ -50,7 +54,7 @@ $(document).ready(function () {
             }
         });
     });
-});
+
     // Function to fetch and display faculty data in the table
     function fetchData() {
         console.log('Fetching faculty data...');  
@@ -65,6 +69,7 @@ $(document).ready(function () {
                     console.log('Processing faculty:', faculty); 
                     dataHtml += `
                         <tr>
+                            <td>${faculty.department}</td> <!-- Display department -->
                             <td>${faculty.faculty_id}</td>
                             <td>${faculty.faculty_name}</td>
                             <td>${faculty.position}</td>
@@ -73,6 +78,7 @@ $(document).ready(function () {
                             <td>${faculty.start_date}</td>
                             <td>${faculty.salary}</td>
                             <td>${faculty.phone_number}</td>
+                            <td>${faculty.status}</td> <!-- Display status -->
                             <td>
                                 <a href="#" onclick="editFaculty('${faculty.faculty_id}')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning" style="font-size: 27px;">
@@ -92,7 +98,7 @@ $(document).ready(function () {
                         </tr>
                     `;
                 });
-                $("#faculty_table_body").html(dataHtml);  // Insert data into table body
+                $("#faculty_table_body").html(dataHtml);  
             },
             error: function (xhr, status, error) {
                 console.log("Error fetching data:", status, error);  
@@ -101,10 +107,9 @@ $(document).ready(function () {
         });
     }
 
-    // Fetch data on page load
+   
     fetchData();
 
-    // Function to delete faculty data
     window.deleteData = function (facultyId) {
         console.log("Deleting faculty with ID:", facultyId);  
     
@@ -131,7 +136,7 @@ $(document).ready(function () {
         }
     };
 
-    // Function to edit faculty data
+    
     window.editFaculty = function (facultyId) {
         console.log("Editing faculty with ID:", facultyId);  
         if (event) {
@@ -147,7 +152,8 @@ $(document).ready(function () {
                 console.log("Fetched faculty data:", response); 
     
                 if (response.status === 'success') {
-                    // Populate the form with the fetched data
+                 
+                    $('#department').val(response.data.department); 
                     $('#faculty_id').val(response.data.faculty_id);
                     $('#faculty_name').val(response.data.faculty_name);
                     $('#position').val(response.data.position);
@@ -156,15 +162,16 @@ $(document).ready(function () {
                     $('#start_date').val(response.data.start_date);
                     $('#salary').val(response.data.salary);
                     $('#phone_number').val(response.data.phone_number);
+                    $('#status').val(response.data.status); 
     
                     console.log("Faculty data populated for editing");
     
-                    // Set the form to edit mode
+                    
                     $('#faculty_id_hidden').val(response.data.faculty_id);
                     $('#submit_button').val('Update Faculty');  
                     $('#edit_mode').val('edit');  
     
-                    // Open the modal for editing
+                    
                     $('#editModal').modal('show');
                     
 
@@ -177,7 +184,7 @@ $(document).ready(function () {
                         'transition': 'left 0.3s ease'  
                     });
     
-                    // Optionally expand the dropdown if it's closed
+                   
                     $('#dropdownbtn').parent().addClass('show');  
                     $('#facultyForm').show();  
                 } else {
@@ -190,4 +197,4 @@ $(document).ready(function () {
             }
         });
     };
-
+});

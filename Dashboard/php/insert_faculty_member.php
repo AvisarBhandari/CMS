@@ -1,43 +1,58 @@
 <?php
-// Include the database connection file
+
 include 'db_connect.php';
 
-// Set header for JSON response
+
 header('Content-Type: application/json');
 
-// Enable error reporting (optional, for debugging)
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve and sanitize form input data
+   
+    if (!$conn) {
+        echo json_encode(['status' => 'error', 'message' => 'Database connection failed']);
+        exit;
+    }
+
+    // Sanitize and validate the POST data
     $faculty_id = mysqli_real_escape_string($conn, $_POST['faculty_id']);
     $faculty_name = mysqli_real_escape_string($conn, $_POST['faculty_name']);
     $position = mysqli_real_escape_string($conn, $_POST['position']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
-    $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
+    $dob = $_POST['dob'];
+    $start_date = $_POST['start_date'];
     $salary = mysqli_real_escape_string($conn, $_POST['salary']);
     $phone_number = mysqli_real_escape_string($conn, $_POST['phone_number']);
+    $department = mysqli_real_escape_string($conn, $_POST['department']);
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
 
-    // Prepare the SQL statement with placeholders for binding
-    $sql = "INSERT INTO faculty (faculty_id, faculty_name, position, address, dob, start_date, salary, phone_number) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-    // Initialize the prepared statement
-    $stmt = mysqli_prepare($conn, $sql);
-
-    // Check if the prepared statement was successfully created
-    if ($stmt === false) {
-        echo json_encode(['status' => 'error', 'message' => 'Failed to prepare statement']);
+   
+    if (empty($dob) || !strtotime($dob) || empty($start_date) || !strtotime($start_date)) {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid Date(s) provided']);
         exit;
     }
 
-    // Bind the parameters to the prepared statement
+   
+    $dob = date('Y-m-d', strtotime($dob));
+    $start_date = date('Y-m-d', strtotime($start_date));
+
+   
+    $sql = "INSERT INTO faculty (department, faculty_id, faculty_name, position, address, dob, start_date, salary, phone_number, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+  
+    $stmt = mysqli_prepare($conn, $sql);
+
+  
+    if ($stmt === false) {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to prepare statement: ' . mysqli_error($conn)]);
+        exit;
+    }
+
+   
     mysqli_stmt_bind_param(
         $stmt,
-        'ssssssds', // Bind parameters (s for strings, d for decimal)
+        'sssssdssss', 
+        $department,
         $faculty_id,
         $faculty_name,
         $position,
@@ -45,37 +60,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $dob,
         $start_date,
         $salary,
-        $phone_number
+        $phone_number,
+        $status
     );
 
-    // Execute the prepared statement
+   
     if (mysqli_stmt_execute($stmt)) {
-        // Return success message
+      
         echo json_encode(['status' => 'success', 'message' => 'Faculty added successfully!']);
     } else {
-        // Return error message with details
+      
         echo json_encode(['status' => 'error', 'message' => 'Error: ' . mysqli_stmt_error($stmt)]);
     }
 
-    // Close the statement
+   
     mysqli_stmt_close($stmt);
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 
 
-
-// SQl
-// CREATE TABLE faculty (
-//     faculty_id VARCHAR(13) PRIMARY KEY,
-//     faculty_name VARCHAR(50) NOT NULL,
-//     position VARCHAR(50) NOT NULL,
-//     address VARCHAR(255) NOT NULL,
-//     dob DATE NOT NULL,
-//     start_date DATE NOT NULL,
-//     salary DECIMAL(10,2) NOT NULL,
-//     phone_number VARCHAR(10) NOT NULL,
-//     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+// sql 
+// CREATE TABLE facultys (
+//     department VARCHAR(255) NOT NULL,                
+//     faculty_id VARCHAR(20) NOT NULL UNIQUE,           
+//     faculty_name VARCHAR(255) NOT NULL,               
+//     position VARCHAR(255) NOT NULL,                   
+//     address TEXT NOT NULL,                            
+//     dob DATE NOT NULL,                                
+//     start_date DATE NOT NULL,                         
+//     salary DECIMAL(10, 2) NOT NULL,                   
+//     phone_number VARCHAR(15) NOT NULL,               
+//     status ENUM('Active', 'Inactive') NOT NULL,       
+//     PRIMARY KEY (faculty_id)                         
 // );
-

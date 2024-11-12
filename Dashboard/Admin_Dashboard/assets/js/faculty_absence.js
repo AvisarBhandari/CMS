@@ -8,6 +8,7 @@ function fetchAbsenceData() {
         success: function(response) {
             if (response.success) {
                 updateChart(response.data);
+                
             } else {
                 alert('Failed to load data');
             }
