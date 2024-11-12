@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -18,7 +17,6 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
 </head>
-
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
@@ -277,8 +275,56 @@
                                                     <input type="hidden" id="faculty_id_hidden" name="faculty_id_hidden">        
                                                     <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Add Faculty">
                                                 </form>
-                                                
-                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="position: relative; top:-45px; left:150px" type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                </svg>&nbsp;Mark Attendance
+                                            </button>
+                                            <div class="dropdown-menu" style="width: 1076px; box-shadow: 0px 0px 20px 1px; position: relative; left: 100px">
+                                                <h3 class="text-light text-bg-primary" style="padding-left: 43%; padding-top: 4px; margin-top: -8px; margin-bottom: 14px; height: 41.6px;" id="dropdownbtn">Mark Attendance</h3>
+                                                <form style="padding-bottom: 0px;" id="attendanceForm" method="POST">
+                                                    <div style="margin-top: 30px; margin-right: -1px;">
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Faculty ID</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="text" name="faculty_id" id="faculty_id" placeholder="Enter Faculty ID" required pattern="^TEA-\d{4}-\d{4}$" maxlength="13" minlength="13" autofocus>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Date</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" type="date" name="attendance_date" id="attendance_date" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Attendance <br>Status</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control" name="attendance_status" id="attendance_status" required>
+                                                                        <option value="Present">Present</option>
+                                                                        <option value="Absent">Absent</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        
+                                                        <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Mark Attendance">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -331,12 +377,13 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/faculty_crud.js"></script>
+    <script src="assets/js/faculty_Attandace.js"></script>
     <script src="assets/js/validate_faculty.members.js"></script>
 </body>
 </html>
