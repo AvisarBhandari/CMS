@@ -162,29 +162,37 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xxl-5">
-                            <div class="card shadow mb-4" data-aos="flip-left" data-aos-duration="750" data-aos-delay="350" style="box-shadow: 0px 0px 20px 0px;">
-                                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;box-shadow: 0px 0px;">
-                                    <h6 class="text-primary fw-bold m-0">Grade overview</h6>
-                                </div>
-                                <div class="card-body" style="box-shadow: 0px 0px;">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Active&quot;,&quot;On Leave &quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Status&quot;,&quot;backgroundColor&quot;:[&quot;rgb(0,183,96)&quot;,&quot;#f7e859&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[&quot;890&quot;,&quot;65&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;text&quot;:&quot;Grade&quot;,&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;}}}"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xxl-7">
-                            <div class="card" data-aos="flip-right" data-aos-duration="750" data-aos-delay="200" style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Teacher Absence Patterns</p>
-                                </div>
-                                <div class="card-body" style="height: 352px;">
-                                    <div><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;June&quot;,&quot;July&quot;,&quot;Aug&quot;,&quot;Sept&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Absent &quot;,&quot;backgroundColor&quot;:&quot;#ef2b2d&quot;,&quot;borderColor&quot;:&quot;rgba(105,116,150,0)&quot;,&quot;data&quot;:[&quot;105&quot;,&quot;89&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;45&quot;,&quot;65&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;reverse&quot;:false},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}],&quot;yAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}]}}}"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="row">
+        <!-- Grade Overview Card -->
+        <div class="col-12 col-md-6 col-xl-5">
+            <div class="card shadow mb-4" data-aos="flip-left" data-aos-duration="750" data-aos-delay="350" style="box-shadow: 0px 0px 20px 0px;">
+                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px; box-shadow: 0px 0px;">
+                    <h6 class="text-primary fw-bold m-0">Grade Overview</h6>
+                </div>
+                <div class="card-body p-0" style="box-shadow: 0px 0px;">
+                    <div class="chart-area">
+                        <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Active&quot;,&quot;On Leave&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Status&quot;,&quot;backgroundColor&quot;:[&quot;rgb(0,183,96)&quot;,&quot;#f7e859&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[890,65]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;text&quot;:&quot;Grade&quot;,&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;}}}"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Teacher Absence Patterns Card -->
+        <div class="col-12 col-md-6 col-xl-7">
+            <div class="card shadow mb-4" data-aos="flip-right" data-aos-duration="750" data-aos-delay="200" style="box-shadow: 0px 0px 20px;">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Monthly Teacher Absences</p>
+                </div>
+                <div class="card-body" style="height: 352px;">
+                    <div class="chart-area">
+                        <canvas id="absenceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                 <div class="container-fluid">
                     <div class="card shadow" data-aos="flip-up" data-aos-duration="700" data-aos-delay="400">
                         <div class="card-header py-3">
@@ -378,6 +386,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -385,5 +394,6 @@
     <script src="assets/js/faculty_crud.js"></script>
     <script src="assets/js/faculty_Attandace.js"></script>
     <script src="assets/js/validate_faculty.members.js"></script>
+    <script src="assets/js/faculty_absence.js"></script>
 </body>
 </html>
