@@ -1,19 +1,17 @@
 <?php
-
-include 'db_connect.php';
-
-
 header('Content-Type: application/json');
+include 'db_connect.php'; // Ensure this path is correct
 
+if (!$conn) {
+    echo json_encode(["error" => "Database connection failed."]);
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   
-    if (!$conn) {
-        echo json_encode(['status' => 'error', 'message' => 'Database connection failed']);
-        exit;
-    }
+    // Debugging: Log POST data to check what is being sent
+    file_put_contents('php://stderr', print_r($_POST, true));  // Logs POST data
 
-    // Sanitize and validate the POST data
+    // Sanitize and retrieve POST data
     $faculty_id = mysqli_real_escape_string($conn, $_POST['faculty_id']);
     $faculty_name = mysqli_real_escape_string($conn, $_POST['faculty_name']);
     $position = mysqli_real_escape_string($conn, $_POST['position']);
@@ -22,36 +20,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $start_date = $_POST['start_date'];
     $salary = mysqli_real_escape_string($conn, $_POST['salary']);
     $phone_number = mysqli_real_escape_string($conn, $_POST['phone_number']);
-    $department = mysqli_real_escape_string($conn, $_POST['department']);
+    $department = mysqli_real_escape_string($conn, $_POST['department']);  // 'department' or 'department_id' based on what you're sending
     $status = mysqli_real_escape_string($conn, $_POST['status']);
 
-   
     if (empty($dob) || !strtotime($dob) || empty($start_date) || !strtotime($start_date)) {
         echo json_encode(['status' => 'error', 'message' => 'Invalid Date(s) provided']);
         exit;
     }
 
-   
+    // Convert dates
     $dob = date('Y-m-d', strtotime($dob));
     $start_date = date('Y-m-d', strtotime($start_date));
 
-   
+    // Prepare the SQL query
     $sql = "INSERT INTO faculty (department, faculty_id, faculty_name, position, address, dob, start_date, salary, phone_number, status) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-  
     $stmt = mysqli_prepare($conn, $sql);
 
-  
     if ($stmt === false) {
         echo json_encode(['status' => 'error', 'message' => 'Failed to prepare statement: ' . mysqli_error($conn)]);
         exit;
     }
 
-   
     mysqli_stmt_bind_param(
         $stmt,
-        'sssssdssss', 
+        'sssssdssss',
         $department,
         $faculty_id,
         $faculty_name,
@@ -64,34 +58,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $status
     );
 
-   
+    // Execute the query
     if (mysqli_stmt_execute($stmt)) {
-      
         echo json_encode(['status' => 'success', 'message' => 'Faculty added successfully!']);
     } else {
-      
         echo json_encode(['status' => 'error', 'message' => 'Error: ' . mysqli_stmt_error($stmt)]);
     }
 
-   
     mysqli_stmt_close($stmt);
+} else {
+    echo json_encode(["error" => "Invalid request method"]);
 }
 
-
 mysqli_close($conn);
-
-
-// sql 
-// CREATE TABLE facultys (
-//     department VARCHAR(255) NOT NULL,                
-//     faculty_id VARCHAR(20) NOT NULL UNIQUE,           
-//     faculty_name VARCHAR(255) NOT NULL,               
-//     position VARCHAR(255) NOT NULL,                   
-//     address TEXT NOT NULL,                            
-//     dob DATE NOT NULL,                                
-//     start_date DATE NOT NULL,                         
-//     salary DECIMAL(10, 2) NOT NULL,                   
-//     phone_number VARCHAR(15) NOT NULL,               
-//     status ENUM('Active', 'Inactive') NOT NULL,       
-//     PRIMARY KEY (faculty_id)                         
-// );
+?>

@@ -195,7 +195,7 @@
                 <div class="container py-4 py-xl-5">
                     <div class="text-center text-white-50 bg-primary border rounded border-0 p-3">
                         <div class="row row-cols-2 row-cols-md-4">
-                            <!-- Total Faculty Members -->
+
                             <div class="col" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
                                 <div class="p-3">
                                     <h4 class="display-5 fw-bold text-white mb-0" id="totalFaculty"></h4>
@@ -203,7 +203,7 @@
                                 </div>
                             </div>
 
-                            <!-- Active Faculty Percentage -->
+
                             <div class="col">
                                 <div data-aos="fade-up-right" data-aos-duration="1200" data-aos-delay="600" class="p-3">
                                     <h4 class="display-5 fw-bold text-white mb-0" id="activeFaculty"></h4>
@@ -211,7 +211,7 @@
                                 </div>
                             </div>
 
-                            <!-- Absenteeism Rate -->
+
                             <div class="col">
                                 <div data-aos="fade-down-left" data-aos-duration="1200" data-aos-delay="700"
                                     class="p-3">
@@ -220,11 +220,11 @@
                                 </div>
                             </div>
 
-                            <!-- Present Faculty Percentage -->
+
                             <div class="col">
                                 <div data-aos="fade-left" data-aos-duration="1200" data-aos-delay="800" class="p-3">
                                     <h4 class="display-5 fw-bold text-white mb-0" id="presentFaculty"></h4>
-                                    <p class="mb-0">Present Faculty</p>
+                                    <p class="mb-0">Faculty Attandance</p>
                                 </div>
                             </div>
                         </div>
@@ -403,16 +403,13 @@
                                                             style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
 
-                                                                <div class="col-md-3 col-xxl-1"
-                                                                    style="margin-left: 40px; padding-top: 8px; margin-right: 24px;">
-                                                                    <strong>Department</strong>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <label for="department_dropdown"><strong>Department</strong></label>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <select class="form-control" name="department"
-                                                                        id="department" required>
+                                                                    <select class="form-control" name="department" id="department_dropdown" type="text" required>
                                                                         <option value="">Select Department</option>
-                                                                        <option value="BCA">BCA</option>
-                                                                        <option value="BBS">BBS</option>
+                                                                        <!-- Options populated via AJAX -->
                                                                     </select>
                                                                 </div>
 
@@ -585,6 +582,7 @@
     <script src="assets/js/faculty_absence.js"></script>
     <script src="assets/js/faculty_status.js"></script>
     <script src="assets/js/faculty_stats.js"></script>
+    <script src="assets/js/Department/department_option.js"></script>
 </body>
 
 </html>

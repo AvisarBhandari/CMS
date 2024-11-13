@@ -10,7 +10,8 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                    
-                    alert(response.success);  
+                    alert(response.success);
+                    location.reload();
                     $('#attendanceForm')[0].reset(); 
                 } else if (response.error) {
                     

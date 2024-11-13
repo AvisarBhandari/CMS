@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#facultyForm').on('submit', function (e) {
         e.preventDefault();  
         var formData = {
-            department: $('#department').val(), 
+            department: $('#department_dropdown').val(), 
             faculty_id: $('#faculty_id').val(),
             faculty_name: $('#faculty_name').val(),
             position: $('#position').val(),
@@ -27,33 +27,44 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: url, 
+            url: url,
             data: formData,
             dataType: 'json',
             success: function (response) {
-                console.log('Response:', response);  
+                console.log("Response received:", response);  
 
-                if (response.status === 'success') {
-                    var message = $('#edit_mode').val() === 'edit' ? 'Faculty updated successfully!' : 'Faculty added successfully!';
-                    alert(message);
-                    window.location.reload();
-                    $('#facultyForm')[0].reset();  
-                    $('#submit_button').val('Add Faculty');  
-                    $('#faculty_id_hidden').val('');  
-                    $('#edit_mode').val('add');  
-                    $('#facultyForm').show();
-                    fetchData();  
-                } else {
-                    alert('Error: ' + response.message); 
+                try {
+                    if (typeof response === 'string') {
+                        response = JSON.parse(response);  
+                    }
+
+                    if (response.status === 'success') {
+                        var message = $('#edit_mode').val() === 'edit' ? 'Faculty updated successfully!' : 'Faculty added successfully!';
+                        alert(message);
+                        window.location.reload();  
+                        $('#facultyForm')[0].reset();  
+                        $('#submit_button').val('Add Faculty');  
+                        $('#faculty_id_hidden').val('');  
+                        $('#edit_mode').val('add');  
+                        $('#facultyForm').show();  
+                        fetchData();  
+                    } else {
+                        alert('Error: ' + response.message);  
+                    }
+                } catch (error) {
+                    console.error('Error parsing response:', error);
+                    alert('An error occurred while processing the response.');
                 }
             },
             error: function (xhr, status, error) {
                 console.error('AJAX Error Status:', status);
                 console.error('AJAX Error:', error);
                 console.error('Response Text:', xhr.responseText);
+                alert('An error occurred while submitting the form.');
             }
         });
     });
+
 
     // Function to fetch and display faculty data in the table
     function fetchData() {
@@ -63,13 +74,13 @@ $(document).ready(function () {
             method: "GET",
             dataType: "json",
             success: function (response) {
-                console.log('Response from fetch_faculty_data_display.php:', response);  
+                // console.log('Response from fetch_faculty_data_display.php:', response);  
                 let dataHtml = "";
                 $.each(response, function (index, faculty) {
-                    console.log('Processing faculty:', faculty); 
+                    // console.log('Processing faculty:', faculty); 
                     dataHtml += `
                         <tr>
-                            <td>${faculty.department}</td> <!-- Display department -->
+                            <td>${faculty.department}</td> 
                             <td>${faculty.faculty_id}</td>
                             <td>${faculty.faculty_name}</td>
                             <td>${faculty.position}</td>
@@ -78,7 +89,7 @@ $(document).ready(function () {
                             <td>${faculty.start_date}</td>
                             <td>${faculty.salary}</td>
                             <td>${faculty.phone_number}</td>
-                            <td>${faculty.status}</td> <!-- Display status -->
+                            <td>${faculty.status}</td> 
                             <td>
                                 <a href="#" onclick="editFaculty('${faculty.faculty_id}')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning" style="font-size: 27px;">
@@ -153,7 +164,7 @@ $(document).ready(function () {
     
                 if (response.status === 'success') {
                  
-                    $('#department').val(response.data.department); 
+                    $('#department_dropdown').val(response.data.department); 
                     $('#faculty_id').val(response.data.faculty_id);
                     $('#faculty_name').val(response.data.faculty_name);
                     $('#position').val(response.data.position);

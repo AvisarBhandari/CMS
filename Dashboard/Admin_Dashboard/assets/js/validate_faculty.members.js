@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const startDate = document.getElementById('start_date');
     const salary = document.getElementById('salary');
     const phoneNumber = document.getElementById('phone_number');
-    const department = document.getElementById('department');
+    const department = document.getElementById('department_dropdown');
     const status = document.getElementById('status');
 
     // Error messages
@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
         address: "Address must be between 5 and 50 characters",
         dob: "Age should be greater than 18",
         startDate: "Start date is required",
+        department:"please select the department",
         salary: "Salary must be a positive number between 3000 and 100000",
         phoneNumber: "Phone number must start with 98 or 97 and have 10 digits",
-        department: "Please select a department",
         status: "Please select the status"
     };
 
@@ -36,21 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
         errorMessage.style.marginBottom = '8px';
         errorMessage.style.fontWeight = 'bold';
         errorMessage.style.textAlign = 'center';
-        errorMessage.style.position='relative';
-        errorMessage.style.left='-50px';
+        errorMessage.style.position = 'relative';
+        errorMessage.style.left = '-50px';
         errorMessage.textContent = message;
         return errorMessage;
     }
 
     // Function to display error message under input fields
     function showError(input, message) {
-        // Check if there's already an error message, if so, remove it
         const existingError = input.nextElementSibling;
         if (existingError && existingError.classList.contains('error-message')) {
             existingError.remove();
         }
-
-        // Create and show error message
         const errorMessage = createErrorMessage(message);
         input.parentNode.appendChild(errorMessage);
     }
@@ -72,8 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
     startDate.addEventListener('change', validateStartDate);
     salary.addEventListener('input', validateSalary);
     phoneNumber.addEventListener('input', validatePhoneNumber);
-    department.addEventListener('change', validateDepartment);
     status.addEventListener('change', validateStatus);
+    department.addEventListener('change', validateDepartment);
+
+    function validateDepartment() {
+        if (department.value === "") {
+            showError(department, errorMessages.department);
+        } else {
+            clearError(department);
+        }
+    }
 
     function validateFacultyId() {
         const regex = /^TEA-\d{4}-\d{4}$/;
@@ -85,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateFacultyName() {
-        const regex = /^[A-Za-z\s]+$/;  // Only allows alphabetic characters and spaces
+        const regex = /^[A-Za-z\s]+$/;
         if (facultyName.value.length < 2 || facultyName.value.length > 25 || !regex.test(facultyName.value)) {
             showError(facultyName, errorMessages.facultyName);
         } else {
@@ -101,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(position);
         }
     }
-    
 
     function validateAddress() {
         if (address.value.length < 5 || address.value.length > 50) {
@@ -119,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const dobDate = new Date(dobValue);
         const today = new Date();
-        const age = today.getFullYear() - dobDate.getFullYear();
+        let age = today.getFullYear() - dobDate.getFullYear();
         const monthDifference = today.getMonth() - dobDate.getMonth();
         if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dobDate.getDate())) {
             age--;
@@ -130,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(dob);
         }
     }
-    
 
     function validateStartDate() {
         if (!startDate.value) {
@@ -157,16 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Real-time validation for department
-    function validateDepartment() {
-        if (department.value === "") {
-            showError(department, errorMessages.department);
-        } else {
-            clearError(department);
-        }
-    }
+ 
 
-    // Real-time validation for status
     function validateStatus() {
         if (status.value === "") {
             showError(status, errorMessages.status);
@@ -175,13 +170,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Submit handler (can be used to check if the form is valid)
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form submission to handle validation
-
-        // Check if the form is valid
+        event.preventDefault();
         if (form.checkValidity()) {
-            // Proceed with AJAX submission or any further logic
             alert("Form is valid, submitting data...");
         } else {
             alert("Please correct the errors in the form.");
