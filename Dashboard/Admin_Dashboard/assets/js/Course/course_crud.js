@@ -1,10 +1,10 @@
-// AJAX call for handling course submission
+
 $(document).ready(function() {
     $('#courseForm').on('submit', function(e) {
-        e.preventDefault(); // Prevent the form from submitting the default way
+        e.preventDefault(); 
 
         var formData = {
-            course_code: $('#course_code').val(), // Make sure the course_code is included in the form
+            course_code: $('#course_code').val(), 
             course_name: $('#course_name').val(),
             department: $('#department_dropdown').val(),
             credits: $('#credits').val(),
@@ -19,16 +19,16 @@ $(document).ready(function() {
             type: 'POST',
             url: url,
             data: formData,
-            dataType: 'json',  // Expecting JSON response
+            dataType: 'json',  
             success: function(response) {
                 if (response.status === 'success') {
                     alert(response.message);
-                    window.location.reload();  // Refresh page after success
-                    $('#courseForm')[0].reset();  // Clear form fields
+                    window.location.reload();  
+                    $('#courseForm')[0].reset();  
                     $('#submit_button').val('Add Course');
                     $('#edit_mode').val('add');
                 } else {
-                    alert('Error: ' + response.message);  // Show error message
+                    alert('Error: ' + response.message);  
                 }
             },
             error: function(xhr, status, error) {
@@ -42,19 +42,19 @@ $(document).ready(function() {
 
 
 
-// Fetching course data
+
 function fetchCourses() {
     console.log('Fetching course data...');
     $.ajax({
-        url: "../php/course/fetch_course_data_display.php",  // PHP script to fetch course data
+        url: "../php/course/fetch_course_data_display.php",  
         method: "GET",
         dataType: "json",
         success: function (response) {
             if (response.status === "success") {
                 let dataHtml = "";
                 $.each(response.data, function (index, course) {
-                    // Access the correct department name field
-                    let department = course.department_name || "Not Available";  // Default value if department_name is missing
+                    
+                    let department = course.department_name || "Not Available";  
                     dataHtml += `
                         <tr>
                             <td>${course.course_code}</td>
@@ -84,7 +84,6 @@ function fetchCourses() {
                 });
                 $("#course_table_body").html(dataHtml); 
             } else {
-                // Handle error message from PHP response
                 alert(response.message || "An error occurred while fetching course data.");
             }
         },
@@ -95,26 +94,26 @@ function fetchCourses() {
     });
 }
 
-// Initial data fetch
+
 fetchCourses();
 
-// Deleting a course
+
 window.deleteCourse = function (courseCode) {
     console.log("Deleting course with Code:", courseCode);
     
     if (confirm("Are you sure you want to delete this course?")) {
         $.ajax({
-            url: "../php/course/delete_course.php",  // PHP script to handle course deletion
+            url: "../php/course/delete_course.php",  
             method: "POST",
-            data: { course_code: courseCode },  // Pass course_code instead of course_id
+            data: { course_code: courseCode },  
             dataType: "json",
             success: function (response) {
                 console.log("Delete response:", response);
                 if (response.status === 'success') {
-                    alert(response.message);  // Show success message
-                    fetchCourses();  // Refresh the course list
+                    alert(response.message);  
+                    fetchCourses();  
                 } else {
-                    alert(response.message);  // Show error message
+                    alert(response.message);  
                 }
             },
             error: function (xhr, status, error) {
@@ -129,9 +128,9 @@ window.editCourse = function (courseCode) {
     console.log("Editing course with Code:", courseCode);
 
     $.ajax({
-        url: "../php/course/get_course_data.php",  // PHP script to fetch course data for editing
+        url: "../php/course/get_course_data.php", 
         method: "GET",
-        data: { course_code: courseCode },  // Pass course_code in the request
+        data: { course_code: courseCode },  
         dataType: "json",
         success: function (response) {
             if (response.status === 'success') {
@@ -151,13 +150,13 @@ window.editCourse = function (courseCode) {
                 $('#dropdownbtn').text('Update Course');
                 $('#submit_button').val('Update Course');
 
-                // Target only the specific dropdown using its unique ID
-                $('#courseDropdownButton').dropdown('toggle');  // Opens the dropdown specifically for the course button
+               
+                $('#courseDropdownButton').dropdown('toggle');  
 
-                // Ensure the dropdown stays open
+             
                 $('#courseDropdownButton').next('.dropdown-menu').addClass('show');
 
-                // Make sure the form is visible
+                
                 $('#courseForm').show();
             } else {
                 alert("Error fetching course data for editing.");
