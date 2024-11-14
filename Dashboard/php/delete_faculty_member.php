@@ -1,6 +1,5 @@
 <?php
-include('db_connect.php'); // Include database connection
-
+include('db_connect.php');
 if (isset($_POST['faculty_id'])) {
     $facultyId = $_POST['faculty_id'];
 

@@ -20,10 +20,21 @@
 </head>
 
 <body id="page-top">
+    <?php
+    include '../php/db_connect.php';
+    session_start();
+
+    ?>
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
-                    <div class="sidebar-brand-icon rotate-n-15" style="transform: rotate(3deg);"><img src="assets/img/untitled-1.png" width="103" height="110" style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;"></div>
+                    <div class="sidebar-brand-icon rotate-n-15" style="transform: rotate(3deg);">
+                        
+                    
+                    <img src="assets/img/untitled-1.png" width="103" height="110" style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;"></div>
+                    
+                    
+                    
                     <div class="sidebar-brand-text mx-3"><span style="padding-top: 0px;padding-bottom: 0px;">Academy<br>Keeper</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -135,10 +146,123 @@
                     <div class="row mb-3">
                         <div class="col-lg-4 col-xxl-4">
                             <div class="card mb-3" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">
-                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160">
-                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
-                                </div>
-                            </div>
+    <div class="card-body text-center shadow">
+        <!-- Display the image -->
+        <img class="rounded-circle mb-3 mt-4" id="profileImage" src="assets/img/dogs/image2.jpeg" width="160" height="160">
+        <input type="file" id="fileInput" style="display: none;" accept="image/*">
+
+        <div class="mb-3">
+            <button class="btn btn-primary btn-sm" id="changePhotoBtn" type="button">Change Photo</button>
+        </div>
+    </div>
+</div>
+<script>
+    // Handle the 'Change Photo' button click to open the file input
+    document.getElementById("changePhotoBtn").addEventListener("click", function() {
+        document.getElementById("fileInput").click();
+    });
+
+    // Update the profile image when a new file is selected
+    document.getElementById("fileInput").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Set the new image source to the selected file
+                document.getElementById("profileImage").src = e.target.result;
+                
+                // Optionally, you can upload the new image to the server here
+                uploadProfileImage(file);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Function to upload the image to the server using AJAX
+    function uploadProfileImage(file) {
+        const formData = new FormData();
+        formData.append("profile_image", file);
+
+        fetch("upload-profile-image.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Profile picture updated successfully!");
+            } else {
+                console.error("Error uploading image.");
+            }
+        })
+        .catch(error => {
+            console.error("Error during upload:", error);
+        });
+    }
+</script>
+
+
+<?php
+// Assuming you have an uploaded file and want to store its path in the database
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_image'])) {
+    $status = 'active';  // You can customize the status as needed
+    $uploadDir = 'assets/img/profiles/';  // Define your upload directory
+    $fileName = uniqid() . '.' . pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+    $filePath = $uploadDir . $fileName;
+
+    // Move the uploaded file to the server
+    if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $filePath)) {
+        // Database connection
+        $conn = new mysqli('localhost', 'username', 'password', 'database_name');
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $stmt = $conn->prepare("INSERT INTO profile_pictures (status, image_path) VALUES (?, ?)");
+        $stmt->bind_param("ss", $status, $filePath);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "Image uploaded successfully!";
+        } else {
+            echo "Error uploading image.";
+        }
+
+        $stmt->close();
+        $conn->close();
+    } else {
+        echo "Failed to move uploaded file.";
+    }
+}
+?>
+<?php
+// Fetch the image path from the database
+$id = 1;  // Example ID
+
+$stmt = $conn->prepare("SELECT image_path FROM profile_pictures WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$stmt->bind_result($imagePath);
+$stmt->fetch();
+
+if ($imagePath) {
+    echo "<img src='" . $imagePath . "' alt='Profile Image' />";
+} else {
+    echo "Image not found.";
+}
+
+$stmt->close();
+$conn->close();
+?>
+
+
+
+
+
+
                             <div class="card shadow mb-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="750">
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold"><strong>Basic Information</strong></p>
@@ -262,7 +386,7 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.min.js"></scrip>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
