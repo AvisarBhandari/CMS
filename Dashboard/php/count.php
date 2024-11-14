@@ -2,7 +2,6 @@
 // Start the session
 session_start();
 
-// Include database connection
 include 'db_connect.php';
 
 // Query to get total number of students
@@ -19,10 +18,7 @@ $total_faculty = $result_faculty->num_rows > 0 ? $result_faculty->fetch_assoc()[
 $_SESSION['total_students'] = $total_students;
 $_SESSION['total_faculty'] = $total_faculty;
 
-// Optionally, you can redirect or display something
-// For example, redirect to the dashboard page
-// header('Location: dashboard.php'); 
-// exit(); 
+
 
 // Or just display the data (for testing or debugging)
 echo "Total students: " . $total_students . "<br>";
