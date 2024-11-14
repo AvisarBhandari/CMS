@@ -16,3 +16,8 @@
   margin-bottom: 10px;
 }
 
+.is-invalid + .invalid-feedback {
+  white-space: normal;
+  word-wrap: break-word;
+}
+

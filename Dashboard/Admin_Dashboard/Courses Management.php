@@ -190,15 +190,17 @@
                         <div class="row">
                             <div class="col-md-6 text-nowrap" style="padding-left: 33px;padding-top: 0px;">
                                 <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
-                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button" id="courseDropdownButton"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                             <path d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                                         </svg>&nbsp;Add Course&nbsp;</button>
-                                    <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                        <form action="add_course.php" method="post" style="padding-bottom: 0px;">
-                                            <h3 class="text-bg-primary" style="margin-top: -8px;height: 58.6px;padding-top: 12px;padding-left: 50%;">
-                                                <strong><span style="color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));">Add Course&nbsp;</span></strong>
-                                            </h3>
+                                    <div class="dropdown-menu"
+                                        style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
+                                        <h3 class="text-bg-primary"
+                                            id="dropdownbtn" style="margin-top: -8px;height: 58.6px;padding-top: 12px;padding-left: 50%;">
+                                            Add course
+                                        </h3>
+                                        <form action="" method="post" id="courseForm" style="padding-bottom: 0px;">
                                             <div style="margin-top: 30px;margin-right: -1px;">
                                                 <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
                                                     <div class="row">
@@ -206,13 +208,13 @@
                                                             <strong>Course Code</strong>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input class="form-control" type="number" name="course_code" placeholder="Enter Course Code" required="">
+                                                            <input class="form-control" type="text" name="course_code" id="course_code" placeholder="Enter Course Code" required="">
                                                         </div>
                                                         <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;">
                                                             <strong>Course Name</strong>
                                                         </div>
                                                         <div class="col-md-3" style="margin-left: 31px;">
-                                                            <input class="form-control" type="text" name="course_name" placeholder="Enter Course Name" required="" minlength="2" maxlength="25">
+                                                            <input class="form-control" type="text" name="course_name" id="course_name" placeholder="Enter Course Name" required="" minlength="2" maxlength="25">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,7 +233,7 @@
                                                             <strong>Credits</strong>
                                                         </div>
                                                         <div class="col-md-3" style="margin-left: 31px;">
-                                                            <input class="form-control" type="number" name="credits" required="" placeholder="Enter the Credit score" max="100" min="1">
+                                                            <input class="form-control" type="number" name="credits" id="credits" required="" step="0.01"  placeholder="Enter the Credit Hour" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,24 +243,28 @@
                                                             <strong>Semester&nbsp;</strong>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input class="form-control" type="number" name="sem" placeholder="Enter the semester" min="1">
+                                                            <input class="form-control" type="number" name="semester" id="sem" placeholder="Enter the semester" min="1">
                                                         </div>
                                                         <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;">
                                                             <strong>Status&nbsp;</strong>
                                                         </div>
                                                         <div class="col-md-3" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;">
                                                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                                <input type="radio" id="btnradio1" class="btn-check" name="course_status" autocomplete="off" checked value="active">
-                                                                <label class="form-label btn btn-outline-primary" for="btnradio1">Active</label>
-                                                                <input type="radio" id="btnradio2" class="btn-check" name="course_status" autocomplete="off" value="in_active">
-                                                                <label class="form-label btn btn-outline-primary" for="btnradio2">Inactive</label>
+                                                                <input type="radio" id="active_status" class="btn-check" name="course_status" autocomplete="off"  value="active">
+                                                                <label class="form-label btn btn-outline-primary" for="active_status">Active</label>
+
+                                                                <input type="radio" id="inactive_status" class="btn-check" name="course_status" autocomplete="off" value="inactive">
+                                                                <label class="form-label btn btn-outline-primary" for="inactive_status">Inactive</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" id="edit_mode" name="edit_mode" value="add">
+                                            <input type="hidden" id="course_id_hidden" name="course_id_hidden">
                                             <input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="add_course" value="Add Course">
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -279,58 +285,8 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>12313141</td>
-                                        <td>Accountant</td>
-                                        <td>BCA</td>
-                                        <td>20</td>
-                                        <td class="text-start">2 , 6</td>
-                                        <td><i class="typcn typcn-tick text-success"></i>Active</td>
-                                        <td style="margin-top: 0px;padding-top: 12px;padding-bottom: 0px;"><a id="edit" class="course_edit" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                    <path d="M16 5l3 3"></path>
-                                                </svg></a><a id="delete" class="course_delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                    <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                </svg></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>13123121</td>
-                                        <td>DSA</td>
-                                        <td>BCA</td>
-                                        <td>20</td>
-                                        <td class="text-start">3</td>
-                                        <td><i class="typcn typcn-delete text-danger"></i>In Active</td>
-                                        <td style="padding-bottom: 0px;padding-top: 12px;"><a id="edit-1" class="course_edit" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                    <path d="M16 5l3 3"></path>
-                                                </svg></a><a id="delete-1" class="course_delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                    <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                </svg></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>23131211</td>
-                                        <td>Accounting</td>
-                                        <td>BBS</td>
-                                        <td>20</td>
-                                        <td class="text-start">3</td>
-                                        <td><i class="typcn typcn-tick text-success"></i>Active</td>
-                                        <td style="padding-bottom: 0px;padding-top: 12px;"><a id="edit-2" class="course_edit" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                    <path d="M16 5l3 3"></path>
-                                                </svg></a><a id="delete-2" class="course_delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                    <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                </svg></a></td>
-                                    </tr>
+                                <tbody id="course_table_body">
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -377,6 +333,8 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/Department/department_option.js"></script>
+    <script src="assets/js/Course/course_crud.js"></script>
+    <script src="assets/js/Course/course_validation.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 

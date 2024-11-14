@@ -15,48 +15,36 @@ document.addEventListener('DOMContentLoaded', function () {
     // Error messages
     const errorMessages = {
         facultyId: "Faculty ID must be in the format TEA-1234-5678",
-        facultyName: "Faculty name must only contain alphabetic(2-25)",
-        position: "Position must be Alphabets(2-25)",
+        facultyName: "Faculty name must only contain<br> alphabetic characters (2-25)",
+        position: "Position must contain alphabetic characters (2-25)",
         address: "Address must be between 5 and 50 characters",
         dob: "Age should be greater than 18",
         startDate: "Start date is required",
-        department:"please select the department",
+        department: "Please select the department",
         salary: "Salary must be a positive number between 3000 and 100000",
-        phoneNumber: "Phone number must start with 98 or 97 and have 10 digits",
+        phoneNumber: "Phone number must start with <br>98 or 97 and have 10 digits",
         status: "Please select the status"
     };
 
-    // Function to create an error message element
-    function createErrorMessage(message) {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('error-message');
-        errorMessage.style.color = 'red';
-        errorMessage.style.fontSize = '12.5px';
-        errorMessage.style.padding = '5px';
-        errorMessage.style.marginBottom = '8px';
-        errorMessage.style.fontWeight = 'bold';
-        errorMessage.style.textAlign = 'center';
-        errorMessage.style.position = 'relative';
-        errorMessage.style.left = '-50px';
-        errorMessage.textContent = message;
-        return errorMessage;
-    }
-
-    // Function to display error message under input fields
+    // Function to display error message
     function showError(input, message) {
-        const existingError = input.nextElementSibling;
-        if (existingError && existingError.classList.contains('error-message')) {
-            existingError.remove();
+        input.classList.add("is-invalid");
+        let errorElement = input.nextElementSibling;
+        if (!errorElement || !errorElement.classList.contains("invalid-feedback")) {
+            errorElement = document.createElement("div");
+            errorElement.classList.add("invalid-feedback");
+            input.parentNode.appendChild(errorElement);
         }
-        const errorMessage = createErrorMessage(message);
-        input.parentNode.appendChild(errorMessage);
+        errorElement.innerHTML = message;
     }
+    
 
-    // Function to remove the error message
+    // Function to clear the error message
     function clearError(input) {
-        const existingError = input.nextElementSibling;
-        if (existingError && existingError.classList.contains('error-message')) {
-            existingError.remove();
+        input.classList.remove("is-invalid");
+        let errorElement = input.nextElementSibling;
+        if (errorElement && errorElement.classList.contains("invalid-feedback")) {
+            errorElement.remove();
         }
     }
 
@@ -160,8 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
- 
-
     function validateStatus() {
         if (status.value === "") {
             showError(status, errorMessages.status);
@@ -172,7 +158,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        if (form.checkValidity()) {
+        validateFacultyId();
+        validateFacultyName();
+        validatePosition();
+        validateAddress();
+        validateDob();
+        validateStartDate();
+        validateSalary();
+        validatePhoneNumber();
+        validateStatus();
+        validateDepartment();
+
+        const isValidForm = form.querySelectorAll('.is-invalid').length === 0;
+        if (isValidForm) {
             alert("Form is valid, submitting data...");
         } else {
             alert("Please correct the errors in the form.");
