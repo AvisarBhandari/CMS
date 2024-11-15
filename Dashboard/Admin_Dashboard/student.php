@@ -21,13 +21,13 @@
 </head>
 
 <body id="page-top">
-<?php
-// Start the session to access the session variables
-session_start();
+    <?php
+    // Start the session to access the session variables
+    session_start();
 
-// Get the data from session
-$total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
-?>
+    // Get the data from session
+    $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
+    ?>
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
@@ -151,8 +151,8 @@ $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students
                                     </svg></div>
                                 <div class="px-3">
                                     <h2 class="fw-bold mb-0">
-                                        <?php  echo $total_students;?>
-                                    </span></h2>
+                                        <?php echo $total_students; ?>
+                                        </span></h2>
                                     <p class="mb-0">Today'sStudent</p>
                                 </div>
                             </div>
@@ -257,48 +257,122 @@ $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students
                                                 </svg>&nbsp;Add Student</button>
                                             <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
                                                 <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
-                                                <form style="padding-bottom: 0px;">
-                                                    <div style="margin-top: 30px;margin-right: -1px;">
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                <form style="padding-bottom: 0px;" method="post" action="../php/student/insert_student.php">
+                                                    <div style="margin-top: 30px; margin-right: -1px;">
+
+                                                        <!-- Student ROLL NO and Name -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Student ID</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="text" name="student_code" placeholder="Enter Student ID" required="" min="8" max="8" pattern="^STU\d{4}-\d{4}$" maxlength="13" minlength="1" autofocus=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Student Name</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="text" name="student_name" placeholder="Enter StudentName" required="" minlength="2" maxlength="25" autofocus=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>ROLL NO</strong></div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="student_roll" type="text" name="student_roll" placeholder="Enter Student Roll No" autofocus>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Student Name</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" id="student_name" type="text" name="student_name" placeholder="Enter Student Name">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+
+                                                        <!-- Gender and Email -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Department&nbsp;</strong></div>
-                                                                <div class="col-md-3"><select class="border rounded form-select" name="dep" required="" autofocus="">
-                                                                        <optgroup label="Department ">
-                                                                            <option value="" selected="">Department </option>
-                                                                            <option value="bca">BCA</option>
-                                                                            <option value="bbs">BBS</option>
-                                                                        </optgroup>
-                                                                    </select></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Address&nbsp;</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="number" name="student_address " required="" placeholder="Enter Address"></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Gender</strong></div>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-select" id="gender" name="gender" required>
+                                                                        <option value="" selected>Select Gender</option>
+                                                                        <option value="male">Male</option>
+                                                                        <option value="female">Female</option>
+                                                                        <option value="other">other</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Email</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" id="email" type="email" name="email" placeholder="Enter Email" required>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>D.O.B</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="date" name="student_dob" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Admission Date</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="date" style="width: 247.85px;" required="" name="student_start"></div>
+
+                                                        <!-- Department and Semester -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Department</strong></div>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-select" name="department" id="department" required>
+                                                                        <option value="">Select Department</option>
+                                                                        <!-- Options populated through  AJAX -->
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Course</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <select class="form-select" name="course" id="course" required>
+                                                                        <option value="">Select Course</option>
+                                                                        <!-- Options populated through  AJAX -->
+                                                                    </select>
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Monthly Fees&nbsp;</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="number" name="monthly_fees" placeholder="Enter the Fees" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Phone number&nbsp;</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="tel" name="Phone_no" placeholder="Enter the Phone Number " required="" pattern="(98|97)\d{8}$" maxlength="13" minlength="10"></div>
+
+                                                        <!-- Phone No. and Course -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Phone No.</strong></div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="phone_no" type="tel" name="phone_no" placeholder="Enter Phone Number" required pattern="(98|97)\d{8}$">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Semester</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <select class="form-select" id="semester" name="semester" required>
+                                                                        <option value="">Select Semester</option>
+                                                                        <!--courses populated through AJAX!-->
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
+
+
+                                                        <!-- D.O.B and Admission Date -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>D.O.B</strong></div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="dob" type="date" name="dob" required>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Admission Date</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" id="admission_date" type="date" name="admission_date" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Parent Name and Phone No. -->
+                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Parent Name</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="parent_name" type="text" name="parent_name" placeholder="Enter Parent Name" required minlength="2" maxlength="50">
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Parent's Phone</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" id="parent_phone_no" type="tel" name="parent_phone_no" placeholder="Enter Parent's Phone Number" required pattern="(98|97)\d{8}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                     </div>
-                                                </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
+
+                                                    <!-- Hidden Fields and Submit Button -->
+                                                    <input type="hidden" id="edit_mode" name="edit_mode" value="add">
+                                                    <input type="hidden" id="student_id_hidden" name="faculty_id_hidden">
+                                                    <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Add Student">
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -460,6 +534,9 @@ $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+
+    <script src="assets/js/Course/course_options.js"></script>
+    <script src="assets/js/Student/validate_student.js"></script>
 </body>
 
 </html>
