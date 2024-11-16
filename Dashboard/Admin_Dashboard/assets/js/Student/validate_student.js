@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const studentNameInput = document.getElementById('student_name');
     const parentNameInput = document.getElementById('parent_name');
     const phoneNoInput = document.getElementById('phone_no');
-    const parentPhoneNoInput = document.getElementById('parent_phone_no');
     const departmentDropdown = document.getElementById('department');
+    const addressInput = document.getElementById('address');
     const courseDropdown = document.getElementById('course');
     const genderDropdown = document.getElementById('gender');
     const emailInput = document.getElementById('email');
@@ -73,6 +73,15 @@ document.addEventListener("DOMContentLoaded", function () {
             showError(genderDropdown, "You must select a gender.");
         } else {
             showSuccess(genderDropdown);
+        }
+    }
+
+    function validateAddress() {
+        const value = addressInput.value.trim();
+        if (value.length < 5 || value.length > 50) {
+            showError(addressInput, "Address must be between 5 and 50 characters.");
+        } else {
+            showSuccess(addressInput);
         }
     }
 
@@ -148,11 +157,15 @@ document.addEventListener("DOMContentLoaded", function () {
     studentNameInput.addEventListener("input", () => validateName(studentNameInput, "Student Name"));
     parentNameInput.addEventListener("input", () => validateName(parentNameInput, "Parent Name"));
     phoneNoInput.addEventListener("input", () => validatePhoneNo(phoneNoInput, "Phone No"));
-    parentPhoneNoInput.addEventListener("input", () => validatePhoneNo(parentPhoneNoInput, "Parent Phone No"));
     emailInput.addEventListener("input", validateEmail);
     dobInput.addEventListener("change", validateDob);
-    semesterInput.addEventListener("input", validateSemester);
+    addressInput.addEventListener("input", validateAddress);
+    semesterInput.addEventListener("change", validateSemester);
     admissionDateInput.addEventListener("change", validateAdmissionDate);
+    departmentDropdown.addEventListener("change",validateDepartment);
+    genderDropdown.addEventListener("change",validateGender);
+    courseDropdown.addEventListener("change",validateCourse);
+
 
     // Form submit event to prevent submission if there are invalid fields
     form.addEventListener("submit", function (event) {
@@ -160,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         validateName(studentNameInput, "Student Name");
         validateName(parentNameInput, "Parent Name");
         validatePhoneNo(phoneNoInput, "Phone No");
-        validatePhoneNo(parentPhoneNoInput, "Parent Phone No");
+        validateAddress();
         validateDepartment();  
         validateCourse();      
         validateGender();

@@ -260,7 +260,7 @@
                                             </div>
                                             <input type="hidden" id="edit_mode" name="edit_mode" value="add">
                                             <input type="hidden" id="course_id_hidden" name="course_id_hidden">
-                                            <input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="add_course" value="Add Course">
+                                            <input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="add_course" value="Add Course" id="submit_Button">
                                         </form>
 
                                     </div>

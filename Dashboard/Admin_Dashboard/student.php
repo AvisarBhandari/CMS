@@ -249,15 +249,15 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap">
+                                <div class="col-md-6 text-nowrap" >
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" id="studentDropdownButton" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                                                 </svg>&nbsp;Add Student</button>
                                             <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                                <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
-                                                <form style="padding-bottom: 0px;" method="post" action="../php/student/insert_student.php">
+                                                <h3 class="text-light text-bg-primary" id="dropdownbtn" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Student</h3>
+                                                <form style="padding-bottom: 0px;" method="post" id="studentForm">
                                                     <div style="margin-top: 30px; margin-right: -1px;">
 
                                                         <!-- Student ROLL NO and Name -->
@@ -310,7 +310,7 @@
                                                                         <!-- Options populated through  AJAX -->
                                                                     </select>
                                                                 </div>
-                                                                
+
                                                             </div>
                                                         </div>
 
@@ -346,7 +346,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- Parent Name and Phone No. -->
+                                                        <!-- Parent Name and Address -->
                                                         <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
@@ -356,10 +356,10 @@
                                                                     <input class="form-control" id="parent_name" type="text" name="parent_name" placeholder="Enter Parent Name" required minlength="2" maxlength="50">
                                                                 </div>
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
-                                                                    <strong>Parent's Phone</strong>
+                                                                    <strong>Adress</strong>
                                                                 </div>
                                                                 <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" id="parent_phone_no" type="tel" name="parent_phone_no" placeholder="Enter Parent's Phone Number" required pattern="(98|97)\d{8}">
+                                                                    <input class="form-control" id="address" type="text" name="address" placeholder="Enter Student's adress">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -370,7 +370,7 @@
                                                     <!-- Hidden Fields and Submit Button -->
                                                     <input type="hidden" id="edit_mode" name="edit_mode" value="add">
                                                     <input type="hidden" id="student_id_hidden" name="faculty_id_hidden">
-                                                    <input class="btn btn-primary" type="submit" style="margin-left: 807px;" value="Add Student">
+                                                    <input class="btn btn-primary" type="submit" style="margin-left: 807px;" id="submit_button" value="Add Student">
                                                 </form>
 
                                             </div>
@@ -385,137 +385,26 @@
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
+                                            <th>Roll No</th>
                                             <th>Name</th>
-                                            <th>ID</th>
-                                            <th>Department&nbsp;</th>
-                                            <th>Address&nbsp;</th>
-                                            <th>Attendance</th>
+                                            <th>Gender</th>
+                                            <th>Email</th>
+                                            <th>Department</th>
+                                            <th>Course</th>
+                                            <th>Phone No.</th>
+                                            <th>Semester</th>
+                                            <th>D.O.B</th>
                                             <th>Admission Date</th>
-                                            <th>Monthly Fees</th>
-                                            <th><strong>Actions</strong></th>
+                                            <th>Parent Name</th>
+                                            <th>Address</th>
+                                            <th>Actions</th>
+
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>12313131</td>
-                                            <td>Accountant</td>
-                                            <td>Parsa</td>
-                                            <td class="text-success">Present&nbsp;</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                            <td><a id="edit" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Angelica Ramos</td>
-                                            <td>12312312</td>
-                                            <td>Chief Executive Officer(CEO)</td>
-                                            <td class="text-success-emphasis">parsa</td>
-                                            <td class="text-success">Present&nbsp;</td>
-                                            <td>2009/10/09<br></td>
-                                            <td>$1,200,000</td>
-                                            <td><a id="edit-1" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete-1" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>1231231</td>
-                                            <td>Assistant Professor</td>
-                                            <td>Parsa</td>
-                                            <td class="text-success">Present&nbsp;</td>
-                                            <td>2009/01/12<br></td>
-                                            <td>$86,000</td>
-                                            <td><a id="edit-2" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete-2" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>12312313</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td class="text-danger">Absent</td>
-                                            <td>2012/10/13<br></td>
-                                            <td>$132,000</td>
-                                            <td><a id="edit-3" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete-3" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brenden Wagner</td>
-                                            <td>13123131</td>
-                                            <td>Software Engineer</td>
-                                            <td>San Francisco</td>
-                                            <td class="text-danger">Absent&nbsp;</td>
-                                            <td>2011/06/07<br></td>
-                                            <td>$206,850</td>
-                                            <td><a id="edit-4" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete-4" class="faculty_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></td>
-                                        </tr>
+                                    <tbody id="studentTable">
+
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td><strong>Name</strong></td>
-                                            <td><strong>ID</strong></td>
-                                            <td><strong>Department&nbsp;</strong></td>
-                                            <td><strong>Address&nbsp;</strong></td>
-                                            <td><strong>Attendance&nbsp;</strong></td>
-                                            <td><strong><strong><span style="color: rgb(133, 135, 150);">Admission Date</span></strong></strong></td>
-                                            <td><strong>Monthly Fees</strong></td>
-                                            <td><strong><strong>Actions</strong></strong></td>
-                                        </tr>
-                                    </tfoot>
                                 </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -534,7 +423,7 @@
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
-
+    <script src="assets/js/Student/student_crud.js"></script>
     <script src="assets/js/Course/course_options.js"></script>
     <script src="assets/js/Student/validate_student.js"></script>
 </body>
