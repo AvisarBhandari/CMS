@@ -249,7 +249,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap" >
+                                <div class="col-md-6 text-nowrap">
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
                                         <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" id="studentDropdownButton" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                     <path d="M0 0h24v24H0z" fill="none"></path>
@@ -378,7 +378,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
+                                        <label class="form-label">
+                                            <input
+                                                type="search"
+                                                class="form-control form-control-sm"
+                                                aria-controls="dataTable"
+                                                id="searchInput"
+                                                placeholder="Search(Roll no/name)"
+                                                oninput="fetchStudents(this.value)">
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -398,7 +408,6 @@
                                             <th>Parent Name</th>
                                             <th>Address</th>
                                             <th>Actions</th>
-
                                         </tr>
                                     </thead>
                                     <tbody id="studentTable">

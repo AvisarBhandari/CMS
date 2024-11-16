@@ -67,17 +67,19 @@ $(document).ready(function () {
 });
 
 
-function fetchStudents() {
-    console.log('Fetching student data...');
+function fetchStudents(searchQuery = '') {
+    console.log('Fetching student data with searchQuery:', searchQuery);
+
     $.ajax({
         url: "../php/student/fetch_student_data_display.php", 
         method: "GET",
+        data: { searchQuery: searchQuery }, 
         dataType: "json",
         success: function (response) {
             if (response.status === "success") {
                 let dataHtml = "";
                 $.each(response.data, function (index, student) {
-                    dataHtml += `
+                    const studentRow = `
                         <tr>
                             <td>${student.student_roll}</td>
                             <td>${student.student_name}</td>
@@ -109,18 +111,22 @@ function fetchStudents() {
                             </td>
                         </tr>
                     `;
+                    dataHtml += studentRow;
                 });
+
                 $("#studentTable").html(dataHtml);
             } else {
+                $("#studentTable").html('<tr><td colspan="13" class="text-center">No students found.</td></tr>');
                 alert(response.message || "An error occurred while fetching student data.");
             }
         },
         error: function (xhr, status, error) {
-            console.log("Error fetching data:", status, error);
+            console.error("Error fetching data:", status, error);
             alert("An error occurred while fetching student data.");
         }
     });
 }
+
 
 fetchStudents();
 
@@ -144,7 +150,7 @@ window.editStudent = function (rollNo) {
                 $("#student_name").val(student.student_name);
                 $("#gender").val(student.gender);
                 $("#email").val(student.email);
-                $("#department").val(student.department_name); // Set department field
+                $("#department").val(student.department_name); 
                 
                 // Trigger the department change event to load courses
                 $('#department').trigger('change');
