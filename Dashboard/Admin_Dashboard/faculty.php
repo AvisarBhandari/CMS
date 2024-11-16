@@ -407,7 +407,7 @@
                                                                     <label for="department_dropdown"><strong>Department</strong></label>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <select class="form-control" name="department" id="department_dropdown" type="text" required>
+                                                                    <select class="form-control" name="department" id="department" type="text" required>
                                                                         <option value="">Select Department</option>
                                                                         <!-- Options populated via AJAX -->
                                                                     </select>
@@ -582,7 +582,7 @@
     <script src="assets/js/faculty_absence.js"></script>
     <script src="assets/js/faculty_status.js"></script>
     <script src="assets/js/faculty_stats.js"></script>
-    <script src="assets/js/Department/department_option.js"></script>
+    <script src="assets/js/Department/departments_data.js"></script>
 </body>
 
 </html>

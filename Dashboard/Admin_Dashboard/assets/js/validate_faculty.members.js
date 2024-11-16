@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const startDate = document.getElementById('start_date');
     const salary = document.getElementById('salary');
     const phoneNumber = document.getElementById('phone_number');
-    const department = document.getElementById('department_dropdown');
+    const department = document.getElementById('department');
     const status = document.getElementById('status');
 
     // Error messages

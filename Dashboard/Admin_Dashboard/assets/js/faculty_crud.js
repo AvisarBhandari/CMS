@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#facultyForm').on('submit', function (e) {
         e.preventDefault();  
         var formData = {
-            department: $('#department_dropdown').val(), 
+            department: $('#department').val(), 
             faculty_id: $('#faculty_id').val(),
             faculty_name: $('#faculty_name').val(),
             position: $('#position').val(),
@@ -164,7 +164,7 @@ $(document).ready(function () {
     
                 if (response.status === 'success') {
                  
-                    $('#department_dropdown').val(response.data.department); 
+                    $('#department').val(response.data.department); 
                     $('#faculty_id').val(response.data.faculty_id);
                     $('#faculty_name').val(response.data.faculty_name);
                     $('#position').val(response.data.position);

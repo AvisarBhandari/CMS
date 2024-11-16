@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include 'db_connect.php'; // Ensure this path is correct
+include 'db_connect.php'; 
 
 if (!$conn) {
     echo json_encode(["error" => "Database connection failed."]);
@@ -8,7 +8,6 @@ if (!$conn) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Debugging: Log POST data to check what is being sent
     file_put_contents('php://stderr', print_r($_POST, true));  // Logs POST data
 
     // Sanitize and retrieve POST data
@@ -20,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $start_date = $_POST['start_date'];
     $salary = mysqli_real_escape_string($conn, $_POST['salary']);
     $phone_number = mysqli_real_escape_string($conn, $_POST['phone_number']);
-    $department = mysqli_real_escape_string($conn, $_POST['department']);  // 'department' or 'department_id' based on what you're sending
+    $department = mysqli_real_escape_string($conn, $_POST['department']); 
     $status = mysqli_real_escape_string($conn, $_POST['status']);
 
     if (empty($dob) || !strtotime($dob) || empty($start_date) || !strtotime($start_date)) {
@@ -71,4 +70,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 mysqli_close($conn);
-?>
+
