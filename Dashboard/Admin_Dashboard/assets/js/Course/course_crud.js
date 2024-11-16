@@ -6,7 +6,7 @@ $(document).ready(function() {
         var formData = {
             course_code: $('#course_code').val(), 
             course_name: $('#course_name').val(),
-            department: $('#department_dropdown').val(),
+            department: $('#department').val(),
             credits: $('#credits').val(),
             semester: $('#sem').val(),
             course_status: $('input[name="course_status"]:checked').val(),
@@ -137,7 +137,7 @@ window.editCourse = function (courseCode) {
                 // Fill form with course data
                 $('#course_code').val(response.data.course_code);
                 $('#course_name').val(response.data.course_name);
-                $('#department_dropdown').val(response.data.department_name);
+                $('#department').val(response.data.department_name);
                 $('#credits').val(response.data.credits);
                 $('#sem').val(response.data.semester);
                 $('input[name="course_status"][value="' + response.data.status + '"]').prop('checked', true);

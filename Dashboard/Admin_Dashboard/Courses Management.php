@@ -222,7 +222,7 @@
                                                             <strong>Department</strong>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <select class="form-control" name="department" id="department_dropdown" required>
+                                                            <select class="form-control" name="department" id="department" required>
                                                                 <option value="">Select Department</option>
                                                                 <!-- Options populated through  AJAX -->
                                                             </select>
@@ -319,7 +319,7 @@
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script src="assets/js/Department/department_option.js"></script>
+    <script src="assets/js/Department/departments_data.js"></script>
     <script src="assets/js/Course/course_crud.js"></script>
     <script src="assets/js/Course/course_validation.js"></script>
     <script src="assets/js/Course/course_stats.js"></script>

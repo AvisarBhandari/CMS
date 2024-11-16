@@ -226,7 +226,7 @@
                                     <h6 class="text-primary fw-bold m-0">Department-Wise Enrollment Distribution</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;BCA&quot;,&quot;BBS&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Depaetment&quot;,&quot;backgroundColor&quot;:[&quot;rgb(30,122,109)&quot;,&quot;rgb(249,232,20)&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[&quot;2000&quot;,&quot;1500&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;,&quot;fontColor&quot;:&quot;#6777ef&quot;,&quot;fontSize&quot;:14},&quot;reverse&quot;:false,&quot;position&quot;:&quot;bottom&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;display&quot;:false}}}"></canvas></div>
+                                    <div class="chart-area"><canvas id="departmentEnrollmentChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
@@ -436,6 +436,7 @@
     <script src="assets/js/Course/course_options.js"></script>
     <script src="assets/js/Student/validate_student.js"></script>
     <script src="assets/js/Student/student_enrollment_data.js"></script>
+    <script src="assets/js/Student/student_department_data.js"></script>
 </body>
 
 </html>

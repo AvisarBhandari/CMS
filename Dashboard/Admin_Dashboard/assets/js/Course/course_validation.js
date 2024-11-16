@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const courseCodeInput = document.getElementById('course_code');
     const courseNameInput = document.getElementById('course_name');
-    const departmentDropdown = document.getElementById('department_dropdown');
+    const departmentDropdown = document.getElementById('department');
     const creditsInput = document.getElementById('credits');
     const semesterInput = document.getElementById('sem');
     const statusRadios = document.getElementsByName('course_status');
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     courseNameInput.addEventListener("input", validateCourseName);
     creditsInput.addEventListener("input", validateCredits);
     semesterInput.addEventListener("input", validateSemester);
-    departmentDropdown.addEventListener("change", validateDepartment);
+    // departmentDropdown.addEventListener("change", validateDepartment);
     for (const radio of statusRadios) {
         radio.addEventListener("change", validateStatus);
     }
