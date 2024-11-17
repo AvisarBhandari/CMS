@@ -96,6 +96,7 @@ if ($result->num_rows > 0) {
 } 
 $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
 
+
     ?>
 
 
@@ -107,10 +108,10 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user" style="font-size: 13px;"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="Courses%20Management.html"><i class="fas fa-book" style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="faculty.html"><i class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link" href="student.html"><i class="far fa-user" style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.php"><i class="fas fa-user" style="font-size: 13px;"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="Courses%20Management.php"><i class="fas fa-book" style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.php"><i class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link" href="student.php"><i class="far fa-user" style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -201,7 +202,7 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar.png"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
