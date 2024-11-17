@@ -25,8 +25,13 @@
     // Start the session to access the session variables
     session_start();
 
+
     // Get the data from session
     $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
+    $totalAttendance = isset($_SESSION['totalAttendance']) ? $_SESSION['totalAttendance'] : 0; 
+
+    $absentStudent = $total_students - $totalAttendance;
+    $_SESSION['absentStudent'] = $absentStudent;
     ?>
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
@@ -153,7 +158,7 @@
                                     <h2 class="fw-bold mb-0">
                                         <?php echo $total_students; ?>
                                         </span></h2>
-                                    <p class="mb-0">Today'sStudent</p>
+                                    <p class="mb-0">Today's Student</p>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +169,11 @@
                                         <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4"></path>
                                     </svg></div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">454</h2>
+                                    <h2 class="fw-bold mb-0">
+                                        <?php
+                                        echo $totalAttendance;
+                                        ?>
+                                    </h2>
                                     <p class="mb-0">Today's Attendance</p>
                                 </div>
                             </div>
@@ -175,7 +184,11 @@
                                         <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"></path>
                                     </svg></div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">113</h2>
+                                    <h2 class="fw-bold mb-0">
+                                        <?php
+                                        echo $absentStudent;
+                                        ?>
+                                    </h2>
                                     <p class="mb-0">Today's Absent Student</p>
                                 </div>
                             </div>

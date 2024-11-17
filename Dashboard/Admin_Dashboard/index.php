@@ -51,10 +51,11 @@ if ($result->num_rows > 0) {
     
     // Store the total attendance count in the variable
     $totalAttendance = $row['TotalAttendance'];
-
+    $_SESSION['totalAttendance'] = $totalAttendance;
 
 } else {
     $totalAttendance = 0; // Assign a default value in case there are no records
+    $_SESSION['totalAttendance'] = $totalAttendance;
 }
 
 // If we have total students and total attendance, calculate attendance percentage
@@ -578,34 +579,7 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                                 </div>
                                 <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                             </div>
-                            <div class="card shadow mb-4" data-aos="fade-left" data-aos-duration="1200" style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Recent Activity</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-11 me-2">
-                                                <h6 class="text-info mb-0">Enrolled</h6><small>John Doe enrolled in BCA</small>
-                                            </div>
-                                        </div><span class="text-xs">10:30 AM</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-11 me-2">
-                                                <h6 class="text-info mb-0">Event</h6><small>New event 'Annual Sports Day' added</small>
-                                            </div>
-                                        </div><span class="text-xs">11:30 AM</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-11 me-2">
-                                                <h6 class="text-info mb-0">Profile updated</h6><small>Jane Smith's profile updated</small>
-                                            </div>
-                                        </div><span class="text-xs">11:30 AM</span>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </div>
