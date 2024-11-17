@@ -204,59 +204,7 @@
 </script>
 
 
-<?php
-// Assuming you have an uploaded file and want to store its path in the database
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_image'])) {
-    $status = 'active';  // You can customize the status as needed
-    $uploadDir = 'assets/img/profiles/';  // Define your upload directory
-    $fileName = uniqid() . '.' . pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
-    $filePath = $uploadDir . $fileName;
 
-    // Move the uploaded file to the server
-    if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $filePath)) {
-        // Database connection
-        $conn = new mysqli('localhost', 'username', 'password', 'database_name');
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $stmt = $conn->prepare("INSERT INTO profile_pictures (status, image_path) VALUES (?, ?)");
-        $stmt->bind_param("ss", $status, $filePath);
-        $stmt->execute();
-
-        if ($stmt->affected_rows > 0) {
-            echo "Image uploaded successfully!";
-        } else {
-            echo "Error uploading image.";
-        }
-
-        $stmt->close();
-        $conn->close();
-    } else {
-        echo "Failed to move uploaded file.";
-    }
-}
-?>
-<?php
-// Fetch the image path from the database
-$id = 1;  // Example ID
-
-$stmt = $conn->prepare("SELECT image_path FROM profile_pictures WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$stmt->bind_result($imagePath);
-$stmt->fetch();
-
-if ($imagePath) {
-    echo "<img src='" . $imagePath . "' alt='Profile Image' />";
-} else {
-    echo "Image not found.";
-}
-
-$stmt->close();
-$conn->close();
-?>
 
 
 
@@ -360,13 +308,13 @@ $conn->close();
                                         </div>
                                         <div class="card-body">
                                             <form>
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38" name="address"></div>
+                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Los Angeles" name="city"></div>
+                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Parsa" name="city"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="USA" name="country"></div>
+                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="Nepal" name="country"></div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
