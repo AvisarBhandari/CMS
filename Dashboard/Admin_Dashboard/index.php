@@ -25,76 +25,74 @@
     <?php
     include '../php/db_connect.php';
     session_start();
-// Query to get total number of students
-$student_query = "SELECT COUNT(*) AS total_students FROM student";
-$result_student = $conn->query($student_query);
-$total_students = $result_student->num_rows > 0 ? $result_student->fetch_assoc()['total_students'] : 0;
+    // Query to get total number of students
+    $student_query = "SELECT COUNT(*) AS total_students FROM student";
+    $result_student = $conn->query($student_query);
+    $total_students = $result_student->num_rows > 0 ? $result_student->fetch_assoc()['total_students'] : 0;
 
-// Query to get total number of faculty members
-$faculty_query = "SELECT COUNT(*) AS total_faculty FROM faculty";
-$result_faculty = $conn->query($faculty_query);
-$total_faculty = $result_faculty->num_rows > 0 ? $result_faculty->fetch_assoc()['total_faculty'] : 0;
+    // Query to get total number of faculty members
+    $faculty_query = "SELECT COUNT(*) AS total_faculty FROM faculty";
+    $result_faculty = $conn->query($faculty_query);
+    $total_faculty = $result_faculty->num_rows > 0 ? $result_faculty->fetch_assoc()['total_faculty'] : 0;
 
-// Store data in session variables
-$_SESSION['total_students'] = $total_students;
-$_SESSION['total_faculty'] = $total_faculty;
+    // Store data in session variables
+    $_SESSION['total_students'] = $total_students;
+    $_SESSION['total_faculty'] = $total_faculty;
 
-$sql = "SELECT COUNT(*) AS TotalAttendance FROM attendance";
+    $sql = "SELECT COUNT(*) AS TotalAttendance FROM attendance";
 
-// Execute the query
-$result = $conn->query($sql);
+    // Execute the query
+    $result = $conn->query($sql);
 
-// Check if the query was successful and retrieve the result
-if ($result->num_rows > 0) {
-    // Fetch the result as an associative array
-    $row = $result->fetch_assoc();
-    
-    // Store the total attendance count in the variable
-    $totalAttendance = $row['TotalAttendance'];
-    $_SESSION['totalAttendance'] = $totalAttendance;
+    // Check if the query was successful and retrieve the result
+    if ($result->num_rows > 0) {
+        // Fetch the result as an associative array
+        $row = $result->fetch_assoc();
 
-} else {
-    $totalAttendance = 0; // Assign a default value in case there are no records
-    $_SESSION['totalAttendance'] = $totalAttendance;
-}
+        // Store the total attendance count in the variable
+        $totalAttendance = $row['TotalAttendance'];
+        $_SESSION['totalAttendance'] = $totalAttendance;
+    } else {
+        $totalAttendance = 0; // Assign a default value in case there are no records
+        $_SESSION['totalAttendance'] = $totalAttendance;
+    }
 
-// If we have total students and total attendance, calculate attendance percentage
-if ($total_students > 0) {
-    // Calculate attendance percentage
-    $attendancePercentage = ($totalAttendance / $total_students) * 100;
-    $_SESSION['attendancePercentage'] = round($attendancePercentage, 2);  // Round to 2 decimal places
+    // If we have total students and total attendance, calculate attendance percentage
+    if ($total_students > 0) {
+        // Calculate attendance percentage
+        $attendancePercentage = ($totalAttendance / $total_students) * 100;
+        $_SESSION['attendancePercentage'] = round($attendancePercentage, 2);  // Round to 2 decimal places
 
-} else {
-    $_SESSION['attendancePercentage'] = 0;  // Default to 0% if no students
-}
+    } else {
+        $_SESSION['attendancePercentage'] = 0;  // Default to 0% if no students
+    }
 
-// Now calculate the total present students based on the attendance percentage
-if ($total_students > 0 && isset($_SESSION['attendancePercentage'])) {
-    // Calculate the total present students
-    $totalPresent = ($totalAttendance / 100) * $total_students;  // This formula works as you're calculating presence from the attendance records
-    $_SESSION['totalPresent'] = round($totalPresent);  // Round to the nearest integer
+    // Now calculate the total present students based on the attendance percentage
+    if ($total_students > 0 && isset($_SESSION['attendancePercentage'])) {
+        // Calculate the total present students
+        $totalPresent = ($totalAttendance / 100) * $total_students;  // This formula works as you're calculating presence from the attendance records
+        $_SESSION['totalPresent'] = round($totalPresent);  // Round to the nearest integer
 
-    // Output total present students
-} else {
-    $_SESSION['totalPresent'] = 0;  // Default to 0 if there are no students or percentage
-}
-
+        // Output total present students
+    } else {
+        $_SESSION['totalPresent'] = 0;  // Default to 0 if there are no students or percentage
+    }
 
 
-$sql = "SELECT COUNT(*) AS departmentCount FROM department";
 
-// Execute the query
-$result = $conn->query($sql);
+    $sql = "SELECT COUNT(*) AS departmentCount FROM department";
 
-// Check if the query was successful and retrieve the result
-if ($result->num_rows > 0) {
-    // Fetch the result as an associative array
-    $row = $result->fetch_assoc();
-    
-    $_SESSION['totalCourse'] = $row['departmentCount'];
-    
-} 
-$totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
+    // Execute the query
+    $result = $conn->query($sql);
+
+    // Check if the query was successful and retrieve the result
+    if ($result->num_rows > 0) {
+        // Fetch the result as an associative array
+        $row = $result->fetch_assoc();
+
+        $_SESSION['totalCourse'] = $row['departmentCount'];
+    }
+    $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
 
 
     ?>
@@ -247,7 +245,7 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                                                 </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-96 0 512 512" width="1em" height="1em" fill="currentColor" class="fa-2x text-gray-300">
-                                                
+
                                                 <path d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H152z"></path>
                                             </svg></div>
                                     </div>
@@ -364,54 +362,7 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                                     <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-9 me-2">
-                                                <h6 class="text-info mb-0">Nov 10</h6><small>College Open Day</small>
-                                            </div>
-                                            <div class="col"><a id="edit" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></div>
-                                        </div><span class="text-xs">10:30 AM</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-9 me-2">
-                                                <h6 class="text-info mb-0">Nov 15&nbsp;</h6><small>First-term Exams Start</small>
-                                            </div>
-                                            <div class="col"><a id="edit-1" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete-1" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></div>
-                                        </div><span class="text-xs">11:30 AM</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-xxl-9 me-2">
-                                                <h6 class="text-info mb-0">Nov 20</h6><small>Faculty Meeting</small>
-                                            </div>
-                                            <div class="col"><a id="edit" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0" style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                        <path d="M16 5l3 3"></path>
-                                                    </svg></a><a id="delete" class="event_action" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger pt-xxl-0 mt-xxl-0" style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                                    </svg></a></div>
-                                        </div><span class="text-xs">11:30 AM</span>
-                                    </li>
+                                    <!-- Events will be dynamically populated here -->
                                 </ul>
                             </div>
                         </div>
@@ -504,103 +455,124 @@ $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
                                             </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
                                         </div>
                                     </div>
-                                    <div class="dropdown" style="margin-left: 112px;"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                    <div class="dropdown" style="margin-left: 112px;">
+                                        <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" type="button" id="EventdropdDownButton">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                 <path d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                            </svg>&nbsp;Manage Events&nbsp;</button>
-                                        <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                            <form style="padding-bottom: 0px;">
-                                                <h3 class="text-bg-primary" style="margin-top: -8px;height: 46.6px;padding-top: 6px;padding-left: 50%;"><strong><span style="color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));">Add Event</span></strong></h3>
-                                                <div style="margin-top: 30px;margin-right: -1px;width: 1130.4px;"></div>
+                                            </svg>&nbsp;Manage Events&nbsp;
+                                        </button>
+                                        <div class="dropdown-menu" style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
+                                            <form style="padding-bottom: 0;" id="eventForm">
+                                                <h3 class="text-bg-primary" style="margin-top: -8px; height: 46.6px; padding-top: 6px; text-align: center;" id="dropDownText">
+                                                    <strong>Add Event</strong>
+                                                </h3>
+                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-6 col-xxl-4"><strong>Event Date</strong></div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control-lg" type="date" id="event_date" name="event_date" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-6 col-xxl-4"><strong>Event Name</strong></div>
+                                                        <div class="col-md-6">
+                                                            <input type="text" id="event_name" name="event_name" class="form-control-lg" style="width: 100%; height: 71.4px;" required></>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-6 col-xxl-4"><strong>Event Time</strong></div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control-lg" type="time" id="event_time" name="event_time" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end" style="margin-right: 15px;">
+                                                    <input class="btn btn-primary" type="submit" id="submit_button" value="Add Event">
+                                                </div>
+                                                <input type="hidden" id="event_id" name="event_id" value=""> 
+                                                <input type="hidden" id="edit_mode" name="edit_mode" value="add">
                                             </form>
-                                            <div class="container" style="padding-bottom: 0px;margin-bottom: 24px;">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xxl-4"><strong>Date of Event</strong></div>
-                                                    <div class="col-md-6"><input class="form-control-lg" type="date" name="event_date" value="event" required=""></div>
-                                                </div>
+                                        </div>
+                                        <div class="dropdown" style="margin-left: 112px;"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                </svg>&nbsp;Add Student</button>
+                                            <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
+                                                <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
+                                                <form style="padding-bottom: 0px;">
+                                                    <div style="margin-top: 30px;margin-right: -1px;">
+                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Student ID</strong></div>
+                                                                <div class="col-md-3"><input class="form-control" type="text" name="student_code" placeholder="Enter Student ID" required="" min="8" max="8" pattern="^STU\d{4}-\d{4}$" maxlength="13" minlength="1" autofocus=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>StudentName</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="text" name="student_name" placeholder="Enter StudentName" required="" minlength="2" maxlength="25" autofocus=""></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Department&nbsp;</strong></div>
+                                                                <div class="col-md-3"><select class="border rounded form-select" name="dep" required="" autofocus="">
+                                                                        <optgroup label="Department ">
+                                                                            <option value="" selected="">Department </option>
+                                                                            <option value="bca">BCA</option>
+                                                                            <option value="bbs">BBS</option>
+                                                                        </optgroup>
+                                                                    </select></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Address&nbsp;</strong></div>
+                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="number" name="student_address " required="" placeholder="Enter Address"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                            <div class="row mb-xxl-3">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>D.O.B</strong></div>
+                                                                <div class="col-md-3"><input class="form-control" type="date" name="student_dob" required=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Admission Date</strong></div>
+                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="date" style="width: 247.85px;" required="" name="student_start"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                            <div class="row mb-xxl-3">
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Monthly Fees&nbsp;</strong></div>
+                                                                <div class="col-md-3"><input class="form-control" type="number" name="monthly_fees" placeholder="Enter the Fees" required=""></div>
+                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Phone number&nbsp;</strong></div>
+                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="tel" name="Phone_no" placeholder="Enter the Phone Number " required="" pattern="(98|97)\d{8}$" maxlength="13" minlength="10"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
                                             </div>
-                                            <div class="container" style="padding-bottom: 0px;margin-bottom: 24px;">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xxl-4" style="padding-top: 22px;"><strong>Event Name</strong></div>
-                                                    <div class="col-md-6"><textarea style="width: 638.4px;height: 71.4px;" required=""></textarea></div>
-                                                </div>
-                                            </div><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
                                         </div>
                                     </div>
-                                    <div class="dropdown" style="margin-left: 112px;"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
-                                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                            </svg>&nbsp;Add Student</button>
-                                        <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                            <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
-                                            <form style="padding-bottom: 0px;">
-                                                <div style="margin-top: 30px;margin-right: -1px;">
-                                                    <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Student ID</strong></div>
-                                                            <div class="col-md-3"><input class="form-control" type="text" name="student_code" placeholder="Enter Student ID" required="" min="8" max="8" pattern="^STU\d{4}-\d{4}$" maxlength="13" minlength="1" autofocus=""></div>
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>StudentName</strong></div>
-                                                            <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="text" name="student_name" placeholder="Enter StudentName" required="" minlength="2" maxlength="25" autofocus=""></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Department&nbsp;</strong></div>
-                                                            <div class="col-md-3"><select class="border rounded form-select" name="dep" required="" autofocus="">
-                                                                    <optgroup label="Department ">
-                                                                        <option value="" selected="">Department </option>
-                                                                        <option value="bca">BCA</option>
-                                                                        <option value="bbs">BBS</option>
-                                                                    </optgroup>
-                                                                </select></div>
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Address&nbsp;</strong></div>
-                                                            <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="number" name="student_address " required="" placeholder="Enter Address"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                        <div class="row mb-xxl-3">
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>D.O.B</strong></div>
-                                                            <div class="col-md-3"><input class="form-control" type="date" name="student_dob" required=""></div>
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Admission Date</strong></div>
-                                                            <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="date" style="width: 247.85px;" required="" name="student_start"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                        <div class="row mb-xxl-3">
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Monthly Fees&nbsp;</strong></div>
-                                                            <div class="col-md-3"><input class="form-control" type="number" name="monthly_fees" placeholder="Enter the Fees" required=""></div>
-                                                            <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Phone number&nbsp;</strong></div>
-                                                            <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="tel" name="Phone_no" placeholder="Enter the Phone Number " required="" pattern="(98|97)\d{8}$" maxlength="13" minlength="10"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
-                                        </div>
-                                    </div>
+                                    <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                                 </div>
-                                <div class="card-body pb-xxl-0 mb-xxl-5"></div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/earning_data.js"></script>
-    <script src="assets/js/fee_data.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                    </div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/aos.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/js/earning_data.js"></script>
+        <script src="assets/js/fee_data.js"></script>
+        <script src="assets/js/Events/event_crud.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
