@@ -209,34 +209,33 @@
                         <div class="col-xxl-5" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Grade overview</h6>
+                                    <h6 class="text-primary fw-bold m-0">Gender Wise Enrollment past Twelve Months</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Grade&quot;,&quot;backgroundColor&quot;:[&quot;rgb(0,255,10)&quot;,&quot;rgb(143,255,0)&quot;,&quot;rgb(235,255,0)&quot;,&quot;rgb(255,245,0)&quot;,&quot;rgba(163,67,67,0.64)&quot;,&quot;rgb(255,0,0)&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[&quot;1196&quot;,&quot;8900&quot;,&quot;1070&quot;,&quot;2900&quot;,&quot;890&quot;,&quot;690&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;text&quot;:&quot;Grade&quot;,&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;}}}"></canvas></div>
-                                </div>
+                                    <div class="chart-area"><canvas id="genderChart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container" style="margin-left: -1px;">
+                <div class="container" style="margin-left: -2px;">
                     <div class="row">
                         <div class="col-md-6 col-xxl-4" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="250">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Department-Wise Enrollment Distribution</h6>
+                                    <h6 class="text-primary fw-bold m-0">Department-Wise Enrollment past Twelve Months</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area"><canvas id="departmentEnrollmentChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-7" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
+                        <div class=" col-md-6 col-xxl-7" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Student Demographics</h6>
+                                    <h6 class="text-primary fw-bold m-0">Course-Wise Enrollment past Twelve Months</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;18-20&quot;,&quot;21-23&quot;,&quot;23-25&quot;,&quot;25+&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Male&quot;,&quot;backgroundColor&quot;:&quot;#3a75c4&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0)&quot;,&quot;data&quot;:[&quot;2000&quot;,&quot;100&quot;,&quot;500&quot;,&quot;150&quot;,&quot;100&quot;,&quot;200&quot;,&quot;149&quot;,&quot;250&quot;,&quot;200&quot;,&quot;250&quot;,&quot;150&quot;,&quot;360&quot;]},{&quot;label&quot;:&quot;Female&quot;,&quot;backgroundColor&quot;:&quot;#d6009e&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0.04)&quot;,&quot;data&quot;:[&quot;2000&quot;,&quot;100&quot;,&quot;500&quot;,&quot;150&quot;,&quot;100&quot;,&quot;200&quot;,&quot;149&quot;,&quot;250&quot;,&quot;200&quot;,&quot;250&quot;,&quot;150&quot;,&quot;360&quot;]},{&quot;label&quot;:&quot;Other&quot;,&quot;backgroundColor&quot;:&quot;#ffed38&quot;,&quot;borderColor&quot;:&quot;rgba(78,115,223,0.04)&quot;,&quot;data&quot;:[&quot;2000&quot;,&quot;100&quot;,&quot;500&quot;,&quot;150&quot;,&quot;100&quot;,&quot;200&quot;,&quot;149&quot;,&quot;250&quot;,&quot;200&quot;,&quot;250&quot;,&quot;150&quot;,&quot;360&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                <div class="card-body" style="width:auto;">
+                                    <div class="chart-area"><canvas id="courseInrollmentChart" ></canvas></div>
                                 </div>
                             </div>
                         </div>
@@ -437,6 +436,8 @@
     <script src="assets/js/Student/validate_student.js"></script>
     <script src="assets/js/Student/student_enrollment_data.js"></script>
     <script src="assets/js/Student/student_department_data.js"></script>
+    <script src="assets/js/Student/course_enrollment_data.js"></script>
+    <script src="assets/js/Student/gender_data.js"></script>
 </body>
 
 </html>
