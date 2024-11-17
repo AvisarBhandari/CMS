@@ -1,8 +1,5 @@
 <?php
-// Start the session
-session_start();
 
-include 'db_connect.php';
 
 // Query to get total number of students
 $student_query = "SELECT COUNT(*) AS total_students FROM student";
