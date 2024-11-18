@@ -11,7 +11,7 @@ if (isset($_GET['department_name'])) {
     $departmentName = $_GET['department_name'];
 
     
-    $query = "SELECT course_code, course_name, semester FROM courses WHERE department_name = ?";
+    $query = "SELECT course_code, course_name, course_type FROM courses WHERE department_name = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $departmentName);
 

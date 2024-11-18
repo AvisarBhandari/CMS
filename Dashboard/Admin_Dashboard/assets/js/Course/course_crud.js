@@ -8,9 +8,10 @@ $(document).ready(function() {
             course_name: $('#course_name').val(),
             department: $('#department').val(),
             credits: $('#credits').val(),
-            semester: $('#sem').val(),
+            course_type:$('#course_type').val(),
+            course_fee:$('#course_fee').val(),
             course_status: $('input[name="course_status"]:checked').val(),
-            edit_mode: $('#edit_mode').val(),  // either 'edit' or 'add'
+            edit_mode: $('#edit_mode').val(),
         };
 
         var url = formData.edit_mode === 'edit' ? '../php/course/update_course.php' : '../php/course/insert_course.php';
@@ -61,7 +62,8 @@ function fetchCourses() {
                             <td>${course.course_name}</td>
                             <td>${department}</td>
                             <td>${course.credits}</td>
-                            <td>${course.semester}</td>
+                            <td>${course.course_type}</td>
+                             <td>${course.course_fee}</td>
                             <td>${course.status}</td>
                             <td>
                                 <a href="#" onclick="editCourse('${course.course_code}')">
@@ -134,12 +136,12 @@ window.editCourse = function (courseCode) {
         dataType: "json",
         success: function (response) {
             if (response.status === 'success') {
-                // Fill form with course data
                 $('#course_code').val(response.data.course_code);
                 $('#course_name').val(response.data.course_name);
                 $('#department').val(response.data.department_name);
                 $('#credits').val(response.data.credits);
-                $('#sem').val(response.data.semester);
+                $('#course_type').val(response.data.course_type);
+                $('#course_fee').val(response.data.course_fee);
                 $('input[name="course_status"][value="' + response.data.status + '"]').prop('checked', true);
 
                 // Set hidden fields

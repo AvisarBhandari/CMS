@@ -534,6 +534,7 @@
                                             <th>DOB</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+                                            <th>Phone No</th>
                                             <th>Status</th>
                                             <th><strong>Actions</strong></th>
                                         </tr>

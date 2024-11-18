@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $department = mysqli_real_escape_string($conn, $_POST['department']);
     $course = mysqli_real_escape_string($conn, $_POST['course']);
     $phone_no = mysqli_real_escape_string($conn, $_POST['phone_no']);
-    $semester = mysqli_real_escape_string($conn, $_POST['semester']);
     $dob = mysqli_real_escape_string($conn, $_POST['dob']);
     $admission_date = mysqli_real_escape_string($conn, $_POST['admission_date']);
     $parent_name = mysqli_real_escape_string($conn, $_POST['parent_name']);
@@ -53,10 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!preg_match('/^(98|97)\d{8}$/', $phone_no)) {
         $errors[] = "Invalid Phone Number. Must start with 98 or 97 and be 10 digits long.";
-    }
-
-    if ($semester < 1 || $semester > 8) {
-        $errors[] = "Invalid Semester. Enter a value between 1 and 8.";
     }
 
     $dob_date = DateTime::createFromFormat('Y-m-d', $dob);
@@ -89,10 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
+    if (!isset($_POST['dob']) || empty($_POST['dob'])) {
+        error_log("DOB field is empty or not set.");
+    }
+
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $conn->prepare("INSERT INTO students_info (student_roll, student_name, gender, email, password, department_name, course_code, phone_no, semester, dob, admission_date, parent_name, address) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    // Modified the insert query to remove the semester field
+    $stmt = $conn->prepare("INSERT INTO students_info (student_roll, student_name, gender, email, password, department_name, course_code, phone_no, dob, admission_date, parent_name, address) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if ($stmt === false) {
         error_log("Error preparing SQL statement: " . $conn->error);
@@ -100,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    $stmt->bind_param('sssssssisssss', $student_roll, $student_name, $gender, $email, $hashed_password, $department, $course, $phone_no, $semester, $dob, $admission_date, $parent_name, $address);
+    // Removed the semester variable from the bind_param
+    $stmt->bind_param('sssssssissss', $student_roll, $student_name, $gender, $email, $hashed_password, $department, $course, $phone_no, $dob, $admission_date, $parent_name, $address);
 
     if ($stmt->execute()) {
         error_log("Student data inserted successfully.");
@@ -113,4 +114,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $conn->close();
 }
-

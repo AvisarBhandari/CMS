@@ -28,7 +28,7 @@
 
     // Get the data from session
     $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
-    $totalAttendance = isset($_SESSION['totalAttendance']) ? $_SESSION['totalAttendance'] : 0; 
+    $totalAttendance = isset($_SESSION['totalAttendance']) ? $_SESSION['totalAttendance'] : 0;
 
     $absentStudent = $total_students - $totalAttendance;
     $_SESSION['absentStudent'] = $absentStudent;
@@ -226,152 +226,141 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area"><canvas id="genderChart"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container" style="margin-left: -2px;">
-                    <div class="row">
-                        <div class="col-md-6 col-xxl-4" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="250">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Department-Wise Enrollment past Twelve Months</h6>
+                        <div class="container" style="margin-left: -2px;">
+                            <div class="row">
+                                <div class="col-md-6 col-xxl-4" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="250">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
+                                            <h6 class="text-primary fw-bold m-0">Department-Wise Enrollment past Twelve Months</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart-area"><canvas id="departmentEnrollmentChart"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-md-6 col-xxl-7" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
+                                            <h6 class="text-primary fw-bold m-0">Course-Wise Enrollment past Twelve Months</h6>
+                                        </div>
+                                        <div class="card-body" style="width:auto;">
+                                            <div class="chart-area"><canvas id="courseInrollmentChart"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400" data-aos-once="true">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Students list</p>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas id="departmentEnrollmentChart"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-md-6 col-xxl-7" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center" style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Course-Wise Enrollment past Twelve Months</h6>
-                                </div>
-                                <div class="card-body" style="width:auto;">
-                                    <div class="chart-area"><canvas id="courseInrollmentChart" ></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400" data-aos-once="true">
-                    <div class="card shadow">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Students list</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" id="studentDropdownButton" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
-                                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                </svg>&nbsp;Add Student</button>
-                                            <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                                <h3 class="text-light text-bg-primary" id="dropdownbtn" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Student</h3>
-                                                <form style="padding-bottom: 0px;" method="post" id="studentForm">
-                                                    <div style="margin-top: 30px; margin-right: -1px;">
+                                    <div class="row">
+                                        <div class="col-md-6 text-nowrap">
+                                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" id="studentDropdownButton" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                        </svg>&nbsp;Add Student</button>
+                                                    <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
+                                                        <h3 class="text-light text-bg-primary" id="dropdownbtn" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Student</h3>
+                                                        <form style="padding-bottom: 0px;" method="post" id="studentForm">
+                                                            <div style="margin-top: 30px; margin-right: -1px;">
 
-                                                        <!-- Student ROLL NO and Name -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>ROLL NO</strong></div>
-                                                                <div class="col-md-3">
-                                                                    <input class="form-control" id="student_roll" type="text" name="student_roll" placeholder="Enter Student Roll No" autofocus>
+                                                                <!-- Student ROLL NO and Name -->
+                                                                <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>ROLL NO</strong></div>
+                                                                        <div class="col-md-3">
+                                                                            <input class="form-control" id="student_roll" type="text" name="student_roll" placeholder="Enter Student Roll No" autofocus>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Student Name</strong></div>
+                                                                        <div class="col-md-3" style="margin-left: 31px;">
+                                                                            <input class="form-control" id="student_name" type="text" name="student_name" placeholder="Enter Student Name">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Student Name</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" id="student_name" type="text" name="student_name" placeholder="Enter Student Name">
+
+                                                                <!-- Gender and Email -->
+                                                                <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Gender</strong></div>
+                                                                        <div class="col-md-3">
+                                                                            <select class="form-select" id="gender" name="gender" required>
+                                                                                <option value="" selected>Select Gender</option>
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                                <option value="other">other</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Email</strong></div>
+                                                                        <div class="col-md-3" style="margin-left: 31px;">
+                                                                            <input class="form-control" id="email" type="email" name="email" placeholder="Enter Email" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Department and course -->
+                                                                <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Department</strong></div>
+                                                                        <div class="col-md-3">
+                                                                            <select class="form-select" name="department" id="department" required>
+                                                                                <option value="">Select Department</option>
+                                                                                <!-- Options populated through  AJAX -->
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Course</strong></div>
+                                                                        <div class="col-md-3" style="margin-left: 31px;">
+                                                                            <select class="form-select" name="course" id="course" required>
+                                                                                <option value="">Select Course</option>
+                                                                                <!-- Options populated through  AJAX -->
+                                                                            </select>
+                                                                        </div>
+
+                                                                    </div>
+                                                            </div>
+                                                            <!-- D.O.B and Admission Date -->
+                                                            <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>D.O.B</strong></div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control" id="dob" type="date" name="dob" required>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Admission Date</strong></div>
+                                                                    <div class="col-md-3" style="margin-left: 31px;">
+                                                                        <input class="form-control" id="admission_date" type="date" name="admission_date" required>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
-                                                        <!-- Gender and Email -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Gender</strong></div>
-                                                                <div class="col-md-3">
-                                                                    <select class="form-select" id="gender" name="gender" required>
-                                                                        <option value="" selected>Select Gender</option>
-                                                                        <option value="male">Male</option>
-                                                                        <option value="female">Female</option>
-                                                                        <option value="other">other</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Email</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" id="email" type="email" name="email" placeholder="Enter Email" required>
+                                                            <!-- Parent Name and Address -->
+                                                            <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                        <strong>Parent Name</strong>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control" id="parent_name" type="text" name="parent_name" placeholder="Enter Parent Name" required minlength="2" maxlength="50">
+                                                                    </div>
+                                                                    <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
+                                                                        <strong>Adress</strong>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="margin-left: 31px;">
+                                                                        <input class="form-control" id="address" type="text" name="address" placeholder="Enter Student's adress">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
-                                                        <!-- Department and Semester -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Department</strong></div>
-                                                                <div class="col-md-3">
-                                                                    <select class="form-select" name="department" id="department" required>
-                                                                        <option value="">Select Department</option>
-                                                                        <!-- Options populated through  AJAX -->
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Course</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <select class="form-select" name="course" id="course" required>
-                                                                        <option value="">Select Course</option>
-                                                                        <!-- Options populated through  AJAX -->
-                                                                    </select>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Phone No. and Course -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
                                                                 <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>Phone No.</strong></div>
                                                                 <div class="col-md-3">
                                                                     <input class="form-control" id="phone_no" type="tel" name="phone_no" placeholder="Enter Phone Number" required pattern="(98|97)\d{8}$">
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Semester</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <select class="form-select" id="semester" name="semester" required>
-                                                                        <option value="">Select Semester</option>
-                                                                        <!--courses populated through AJAX!-->
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- D.O.B and Admission Date -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;"><strong>D.O.B</strong></div>
-                                                                <div class="col-md-3">
-                                                                    <input class="form-control" id="dob" type="date" name="dob" required>
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;"><strong>Admission Date</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" id="admission_date" type="date" name="admission_date" required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Parent Name and Address -->
-                                                        <div class="container" style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                    <strong>Parent Name</strong>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <input class="form-control" id="parent_name" type="text" name="parent_name" placeholder="Enter Parent Name" required minlength="2" maxlength="50">
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px; padding-top: 7px;">
-                                                                    <strong>Adress</strong>
-                                                                </div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" id="address" type="text" name="address" placeholder="Enter Student's adress">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -383,74 +372,73 @@
                                                     <input type="hidden" id="edit_mode" name="edit_mode" value="add">
                                                     <input type="hidden" id="student_id_hidden" name="faculty_id_hidden">
                                                     <input class="btn btn-primary" type="submit" style="margin-left: 807px;" id="submit_button" value="Add Student">
-                                                </form>
+                                                    </form>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                                        <label class="form-label">
-                                            <input
-                                                type="search"
-                                                class="form-control form-control-sm"
-                                                aria-controls="dataTable"
-                                                id="searchInput"
-                                                placeholder="Search(Roll no/name)"
-                                                oninput="fetchStudents(this.value)">
-                                        </label>
+                                    <div class="col-md-6">
+                                        <div class="text-md-end dataTables_filter" id="dataTable_filter">
+                                            <label class="form-label">
+                                                <input
+                                                    type="search"
+                                                    class="form-control form-control-sm"
+                                                    aria-controls="dataTable"
+                                                    id="searchInput"
+                                                    placeholder="Search(Roll no/name)"
+                                                    oninput="fetchStudents(this.value)">
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Roll No</th>
-                                            <th>Name</th>
-                                            <th>Gender</th>
-                                            <th>Email</th>
-                                            <th>Department</th>
-                                            <th>Course</th>
-                                            <th>Phone No.</th>
-                                            <th>Semester</th>
-                                            <th>D.O.B</th>
-                                            <th>Admission Date</th>
-                                            <th>Parent Name</th>
-                                            <th>Address</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="studentTable">
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Roll No</th>
+                                                <th>Name</th>
+                                                <th>Gender</th>
+                                                <th>Email</th>
+                                                <th>Department</th>
+                                                <th>Course</th>
+                                                <th>Phone No.</th>
+                                                <th>D.O.B</th>
+                                                <th>Admission Date</th>
+                                                <th>Parent Name</th>
+                                                <th>Address</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="studentTable">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/Student/student_crud.js"></script>
-    <script src="assets/js/Course/course_options.js"></script>
-    <script src="assets/js/Student/validate_student.js"></script>
-    <script src="assets/js/Student/student_enrollment_data.js"></script>
-    <script src="assets/js/Student/student_department_data.js"></script>
-    <script src="assets/js/Student/course_enrollment_data.js"></script>
-    <script src="assets/js/Student/gender_data.js"></script>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                    </div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/aos.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/js/Student/student_data_crud.js"></script>
+        <script src="assets/js/Course/course_options.js"></script>
+        <script src="assets/js/Student/validate_student.js"></script>
+        <script src="assets/js/Student/student_enrollment_data.js"></script>
+        <script src="assets/js/Student/student_department_data.js"></script>
+        <script src="assets/js/Student/course_enrollment_data.js"></script>
+        <script src="assets/js/Student/gender_data.js"></script>
 </body>
 
 </html>

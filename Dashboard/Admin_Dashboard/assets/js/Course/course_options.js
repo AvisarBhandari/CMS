@@ -11,7 +11,6 @@ $(document).ready(function() {
                     $departmentDropdown.empty();
                     $departmentDropdown.append('<option value="">Select Department</option>');
 
-
                     departments.forEach(function(department) {
                         const option = `<option value="${department.name}">${department.name}</option>`;
                         $departmentDropdown.append(option);
@@ -28,7 +27,6 @@ $(document).ready(function() {
         });
     }
 
-   
     $('#department').change(function() {
         const departmentName = $(this).val(); 
 
@@ -40,10 +38,10 @@ $(document).ready(function() {
                 success: function(response) {
                     try {
                         const courseDropdown = $('#course'); 
-                        const semesterDropdown = $('#semester'); 
+                        const courseTypeDropdown = $('#course_type');
 
                         courseDropdown.empty();  
-                        semesterDropdown.empty();  
+                        courseTypeDropdown.empty();  
 
                         if (response.length > 0) {
                             courseDropdown.append('<option value="">Select Course</option>');
@@ -63,39 +61,5 @@ $(document).ready(function() {
             });
         }
     });
-
-   
-    $('#course').change(function() {
-        const courseCode = $(this).val();  
-
-        if (courseCode) {
-            $.ajax({
-                url: "../php/course/get_semester.php", 
-                type: "GET",
-                data: { course_code: courseCode }, 
-                success: function(response) {
-                    try {
-                        const semesterDropdown = $('#semester');  
-                        semesterDropdown.empty();  // Clear previous semester options
-
-                        if (response.length > 0) {
-                            response.forEach(function(semester) {
-                                semesterDropdown.append(`<option value="${semester}">${semester}</option>`);
-                            });
-                        } else {
-                            semesterDropdown.append('<option value="">No semester available</option>');
-                        }
-                    } catch (error) {
-                        console.error('Error parsing semester response:', error, response);
-                    }
-                },
-                error: function() {
-                    console.error('Error fetching semester');
-                }
-            });
-        }
-    });
-
-  
     loadDepartments();
 });

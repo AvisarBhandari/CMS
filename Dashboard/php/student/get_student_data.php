@@ -10,7 +10,7 @@ if (isset($_POST['roll_no'])) {
 
     try {
       
-        $query = "SELECT student_roll, student_name, gender, email, department_name, course_code, phone_no, semester, dob, admission_date, parent_name, address, student_id
+        $query = "SELECT student_roll, student_name, gender, email, department_name, course_code, phone_no, dob, admission_date, parent_name, address, student_id
                   FROM students_info
                   WHERE student_roll = ?"; 
 

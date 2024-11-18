@@ -4,18 +4,14 @@ header('Content-Type: application/json');
 include "../db_connect.php";
 
 try {
-  
     $searchQuery = isset($_GET['searchQuery']) ? trim($_GET['searchQuery']) : '';
 
-    
-    $query = "SELECT student_roll, student_name, gender, email, department_name, course_code, phone_no, semester, dob, admission_date, parent_name, address FROM students_info";
+    $query = "SELECT student_roll, student_name, gender, email, department_name, course_code, phone_no, dob, admission_date, parent_name, address FROM students_info";
 
-   
     if (!empty($searchQuery)) {
         $query .= " WHERE student_roll LIKE ? OR student_name LIKE ?";
     }
 
-  
     $stmt = $conn->prepare($query);
 
     if (!empty($searchQuery)) {

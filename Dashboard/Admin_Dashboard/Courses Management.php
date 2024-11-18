@@ -139,7 +139,7 @@
                         <div class="col" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="550">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
-                                  
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-book">
                                         <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"></path>
                                     </svg>
@@ -153,7 +153,7 @@
                         <div class="col" data-aos="fade-up-right" data-aos-duration="1200" data-aos-delay="650">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
-                                   
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-fire">
                                         <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"></path>
                                     </svg>
@@ -167,7 +167,7 @@
                         <div class="col" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="850">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
-                                  
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-graph-down">
                                         <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"></path>
                                     </svg>
@@ -231,17 +231,21 @@
                                                             <strong>Credits</strong>
                                                         </div>
                                                         <div class="col-md-3" style="margin-left: 31px;">
-                                                            <input class="form-control" type="number" name="credits" id="credits" required="" max="8" min="1" step="0.01" placeholder="Enter the Credit Hour">
+                                                            <input class="form-control" type="number" name="credits" id="credits" required=""  placeholder="Enter the Credit Hour">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
                                                     <div class="row">
                                                         <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;">
-                                                            <strong>Semester&nbsp;</strong>
+                                                            <strong>Course Type&nbsp;</strong>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input class="form-control" type="number" name="semester" id="sem" placeholder="Enter the semester" min="1">
+                                                            <select id="course_type" class="form-select" name="course_type">
+                                                                <option value="">Select Course type</option>
+                                                                <option value="Yearly Based">Yearly Based</option>
+                                                                <option value="Semester Based">Semester Based</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;">
                                                             <strong>Status&nbsp;</strong>
@@ -255,6 +259,17 @@
                                                                 <label class="form-label btn btn-outline-primary" for="inactive_status">Inactive</label>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
+                                                    <div class="row">
+                                                        <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;">
+                                                            <strong>Course Fee&nbsp;</strong>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <input class="form-control" type="number" name="course_fee" id="course_fee" required="" placeholder="Enter the course Fee">
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,7 +293,8 @@
                                         <th>Course Name</th>
                                         <th>Department</th>
                                         <th>Credits Hour</th>
-                                        <th>Semester</th>
+                                        <th>Course Type</th>
+                                        <th>Course Fee</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -292,7 +308,8 @@
                                         <td><strong>Course Name</strong></td>
                                         <td><strong>Department</strong></td>
                                         <td><strong>Credits Hour</strong></td>
-                                        <td><strong>Semester</strong></td>
+                                        <td><strong>Course Type</strong></td>
+                                        <td><strong>Course Fee</strong></td>
                                         <td><strong>Status</strong></td>
                                         <td><strong><strong>Actions</strong></strong></td>
                                     </tr>
@@ -321,7 +338,7 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/Department/departments_data.js"></script>
     <script src="assets/js/Course/course_crud.js"></script>
-    <script src="assets/js/Course/course_validation.js"></script>
+   <script src="assets/js/Course/course_Validation.js"></script>
     <script src="assets/js/Course/course_stats.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>

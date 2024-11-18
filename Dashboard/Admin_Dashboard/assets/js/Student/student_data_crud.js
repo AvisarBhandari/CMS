@@ -9,7 +9,6 @@ $(document).ready(function () {
             department: $('#department').val(),
             course: $('#course').val(),
             phone_no: $('#phone_no').val(),
-            semester: $('#semester').val(),
             dob: $('#dob').val(),
             admission_date: $('#admission_date').val(),
             parent_name: $('#parent_name').val(),
@@ -77,6 +76,7 @@ function fetchStudents(searchQuery = '') {
         dataType: "json",
         success: function (response) {
             if (response.status === "success") {
+                console.log("Response from PHP:", response); 
                 let dataHtml = "";
                 $.each(response.data, function (index, student) {
                     const studentRow = `
@@ -88,7 +88,6 @@ function fetchStudents(searchQuery = '') {
                             <td>${student.department_name}</td>
                             <td>${student.course_code}</td>
                             <td>${student.phone_no}</td>
-                            <td>${student.semester}</td>
                             <td>${student.dob}</td>
                             <td>${student.admission_date}</td>
                             <td>${student.parent_name}</td>
@@ -156,7 +155,6 @@ window.editStudent = function (rollNo) {
                 $('#department').trigger('change');
 
                 $("#phone_no").val(student.phone_no);
-                $("#semester").val(student.semester); 
                 $("#dob").val(student.dob);
                 $("#admission_date").val(student.admission_date);
                 $("#parent_name").val(student.parent_name);
@@ -200,8 +198,9 @@ window.deleteStudent = function (studentRoll) {
             success: function (response) {
                 console.log("Response from PHP:", response);  
                 if (response.status === 'success') {
-                    alert(response.message);  
-                    fetchData();  
+                    alert(response.message); 
+                    window.location.reload(); 
+                    fetchStudents();  
                 } else {
                     alert(response.message);  
                 }
