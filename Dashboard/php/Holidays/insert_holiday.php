@@ -37,6 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode($response);
         exit;
     }
+    
+    if (strlen($reason) < 5) {
+        $response['status'] = 'error';
+        $response['message'] = 'Reason cannot be less then 5 characters.';
+        echo json_encode($response);
+        exit;
+    }
 
     if (!preg_match("/^[a-zA-Z\s]+$/", $reason)) {
         $response['status'] = 'error';

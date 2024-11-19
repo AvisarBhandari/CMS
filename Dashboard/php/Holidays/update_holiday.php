@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode($response);
         exit;
     }
-    if (strlen($reason) < 100) {
+    if (strlen($reason) < 5) {
         $response['status'] = 'error';
-        $response['message'] = 'Reason cannotbe less then 5 characters.';
+        $response['message'] = 'Reason cannot be less then 5 characters.';
         echo json_encode($response);
         exit;
     }
