@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strtotime($event_date) < strtotime(date('Y-m-d'))) {
         $response['status'] = 'error';
         $response['message'] = 'Event date cannot be in the past.';
+    } elseif (strlen($event_name) < 5) {
+        $response['status'] = 'error';
+        $response['message'] = 'Event name must be at least 5 characters long.';
     } else {
 
         $stmt = $conn->prepare("INSERT INTO events (event_name, event_date, event_time) VALUES (?, ?, ?)");

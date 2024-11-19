@@ -505,8 +505,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                         <input class="btn btn-primary" type="submit"
                                                             style="margin-left: 807px;" value="Mark Attendance">
                                                     </div>

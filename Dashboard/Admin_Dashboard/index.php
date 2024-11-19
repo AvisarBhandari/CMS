@@ -361,10 +361,19 @@
                                 <div class="card-header py-3">
                                     <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
                                 </div>
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush" id="eventList">
                                     <!-- Events will be dynamically populated here -->
                                 </ul>
                             </div>
+                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200" style="box-shadow: 0px 0px 20px;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+                                </div>
+                                <ul id="holidayList" class="list-group list-group-flush">
+                                    <!-- Holidays will be dynamically populated here -->
+                                </ul>
+                            </div>
+
                         </div>
                         <div class="col">
                             <div class="card shadow mb-4"></div>
@@ -460,11 +469,11 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
                                                 <path d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                            </svg>&nbsp;Manage Events&nbsp;
+                                            </svg>&nbsp;Add Events&nbsp;
                                         </button>
                                         <div class="dropdown-menu" style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
                                             <form style="padding-bottom: 0;" id="eventForm">
-                                                <h3 class="text-bg-primary" style="margin-top: -8px; height: 46.6px; padding-top: 6px; text-align: center;" id="dropDownText">
+                                                <h3 class="text-bg-primary" style="margin-top: -8px; height: 46.6px; padding-top: 6px; text-align: center;" id="form_heading">
                                                     <strong>Add Event</strong>
                                                 </h3>
                                                 <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
@@ -494,60 +503,65 @@
                                                 <div class="text-end" style="margin-right: 15px;">
                                                     <input class="btn btn-primary" type="submit" id="submit_button" value="Add Event">
                                                 </div>
-                                                <input type="hidden" id="event_id" name="event_id" value=""> 
+                                                <input type="hidden" id="event_id" name="event_id" value="">
                                                 <input type="hidden" id="edit_mode" name="edit_mode" value="add">
                                             </form>
                                         </div>
-                                        <div class="dropdown" style="margin-left: 112px;"><button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1" aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside" type="button"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
-                                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                </svg>&nbsp;Add Student</button>
-                                            <div class="dropdown-menu" style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                                <h3 class="text-light text-bg-primary" style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">Add Faculty</h3>
-                                                <form style="padding-bottom: 0px;">
-                                                    <div style="margin-top: 30px;margin-right: -1px;">
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Student ID</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="text" name="student_code" placeholder="Enter Student ID" required="" min="8" max="8" pattern="^STU\d{4}-\d{4}$" maxlength="13" minlength="1" autofocus=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>StudentName</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="text" name="student_name" placeholder="Enter StudentName" required="" minlength="2" maxlength="25" autofocus=""></div>
+                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                            <div class="dropdown">
+                                                <button id="HolidayDropdownButton"
+                                                    class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                    data-bs-auto-close="outside"
+                                                    style="position: relative; top:5px;" type="button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
+                                                        width="1em" fill="currentColor"
+                                                        style="width: 24px;height: 24px;font-size: 22px;">
+                                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                    </svg>&nbsp;Add Holiday
+                                                </button>
+                                                <div class="dropdown-menu"
+                                                    style="width: 1076px; box-shadow: 0px 0px 20px 1px; position: relative; left: 100px">
+                                                    <h3 class="text-light text-bg-primary"
+                                                        style="padding-left: 43%; padding-top: 4px; margin-top: -8px; margin-bottom: 14px; height: 41.6px;"
+                                                        id="form_heading_holiday">Add Holiday</h3>
+                                                    <form style="padding-bottom: 0px;" id="holidayForm" method="POST">
+                                                        <div style="margin-top: 30px; margin-right: -1px;">
+                                                            <div class="container"
+                                                                style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-xxl-1"
+                                                                        style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                        <strong>Holiday Date</strong>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control" type="date"
+                                                                            name="holiday_date" id="holiday_date"
+                                                                            placeholder="Enter Holiday Date" required>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-xxl-1"
+                                                                        style="margin-left: 210px; padding-top: 7px;">
+                                                                        <strong>Reason</strong>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="margin-left: 31px;">
+                                                                        <input class="form-control" type="text"
+                                                                            name="reason" id="reason" style="width: 100%; height: 71.4px;"
+                                                                            placeholder="Enter Holiday Reason" required>
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            <input type="hidden" id="edit_mode" value="add">
+                                                            <input type="hidden" id="holiday_id">
+
+                                                            <input class="btn btn-primary" type="submit"
+                                                                style="margin-left: 807px;" value="Add Holiday" id="submit_button_holiday">
                                                         </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Department&nbsp;</strong></div>
-                                                                <div class="col-md-3"><select class="border rounded form-select" name="dep" required="" autofocus="">
-                                                                        <optgroup label="Department ">
-                                                                            <option value="" selected="">Department </option>
-                                                                            <option value="bca">BCA</option>
-                                                                            <option value="bbs">BBS</option>
-                                                                        </optgroup>
-                                                                    </select></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Address&nbsp;</strong></div>
-                                                                <div class="col-md-3" style="margin-left: 31px;"><input class="form-control" type="number" name="student_address " required="" placeholder="Enter Address"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>D.O.B</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="date" name="student_dob" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Admission Date</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="date" style="width: 247.85px;" required="" name="student_start"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="container" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                            <div class="row mb-xxl-3">
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;"><strong>Monthly Fees&nbsp;</strong></div>
-                                                                <div class="col-md-3"><input class="form-control" type="number" name="monthly_fees" placeholder="Enter the Fees" required=""></div>
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 210px;padding-top: 7px;"><strong>Phone number&nbsp;</strong></div>
-                                                                <div class="col-md-3 ps-xxl-1" style="margin-left: 31px;padding-left: 50px;padding-top: 2px;padding-bottom: 0px;margin-top: -3px;"><input class="form-control" type="tel" name="Phone_no" placeholder="Enter the Phone Number " required="" pattern="(98|97)\d{8}$" maxlength="13" minlength="10"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form><input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="Add Course " value="Add Faculty ">
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                                 </div>
@@ -572,6 +586,9 @@
         <script src="assets/js/earning_data.js"></script>
         <script src="assets/js/fee_data.js"></script>
         <script src="assets/js/Events/event_crud.js"></script>
+        <script src="assets/js/Holidays/holiday_crud.js"></script>
+        <script src="assets/js/Holidays/validate_holiday.js"></script>
+        <script src="assets/js/Events/validate_event.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
