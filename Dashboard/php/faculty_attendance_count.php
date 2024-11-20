@@ -8,8 +8,8 @@ try {
    
     $query = "
         SELECT MONTH(attendance_date) AS month, COUNT(*) AS absent_count
-        FROM faculty_attendance
-        WHERE attendance_status = 'Absent'
+        FROM faculty_attendances
+        WHERE status = 'Absent'
         GROUP BY MONTH(attendance_date)
         ORDER BY MONTH(attendance_date)
     ";
@@ -33,13 +33,4 @@ try {
     echo json_encode(['success' => false, 'error' => 'Server error: ' . $e->getMessage()]);
 }
 
-//sql
-// CREATE TABLE faculty_attendance (
-//     attendance_id INT AUTO_INCREMENT PRIMARY KEY,  
-//     faculty_id VARCHAR(255) NOT NULL,              
-//     attendance_date DATE NOT NULL,                 
-//     attendance_status ENUM('Present', 'Absent') NOT NULL,  
-//     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
-//     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
-//     FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id) ON DELETE CASCADE 
-// );
+

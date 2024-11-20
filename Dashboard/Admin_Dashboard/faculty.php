@@ -440,148 +440,127 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                                aria-expanded="false" data-bs-toggle="dropdown"
-                                                data-bs-auto-close="outside"
-                                                style="position: relative; top:-45px; left:180px" type="button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
-                                                    width="1em" fill="currentColor"
-                                                    style="width: 24px;height: 24px;font-size: 22px;">
-                                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                </svg>&nbsp;Mark Attendance
-                                            </button>
-                                            <div class="dropdown-menu"
-                                                style="width: 1076px; box-shadow: 0px 0px 20px 1px; position: relative; left: 100px">
-                                                <h3 class="text-light text-bg-primary"
-                                                    style="padding-left: 43%; padding-top: 4px; margin-top: -8px; margin-bottom: 14px; height: 41.6px;"
-                                                    id="dropdownbtn">Mark Attendance</h3>
-                                                <form style="padding-bottom: 0px;" id="attendanceForm" method="POST">
-                                                    <div style="margin-top: 30px; margin-right: -1px;">
-                                                        <div class="container"
-                                                            style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1"
-                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                    <strong>Faculty ID</strong>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <input class="form-control" type="text"
-                                                                        name="faculty_id" id="faculty_id"
-                                                                        placeholder="Enter Faculty ID" required
-                                                                        pattern="^TEA-\d{4}-\d{4}$" maxlength="13"
-                                                                        minlength="13" autofocus>
-                                                                </div>
-                                                                <div class="col-md-3 col-xxl-1"
-                                                                    style="margin-left: 210px; padding-top: 7px;">
-                                                                    <strong>Date</strong>
-                                                                </div>
-                                                                <div class="col-md-3" style="margin-left: 31px;">
-                                                                    <input class="form-control" type="date"
-                                                                        name="attendance_date" id="attendance_date"
-                                                                        required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="container"
-                                                            style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xxl-1"
-                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                    <strong>Attendance <br>Status</strong>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <select class="form-control"
-                                                                        name="attendance_status" id="attendance_status"
-                                                                        required>
-                                                                        <option value="Present">Present</option>
-                                                                        <option value="Absent">Absent</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <input class="btn btn-primary" type="submit"
-                                                            style="margin-left: 807px;" value="Mark Attendance">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4" style="margin-left: 500px; margin-top: -40px;">
+                                    <div class="text-end dataTables_filter" id="dataTable_filter">
+                                        <label class="form-label d-block">
+                                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
-                                            class="form-label"><input type="search" class="form-control form-control-sm"
-                                                aria-controls="dataTable" placeholder="Search"></label></div>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                        aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                        style="position: relative; top:-45px; left:180px" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                            style="width: 24px;height: 24px;font-size: 22px;">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                        </svg>&nbsp;Mark or Edit Attendance
+                                    </button>
+                                    <div class="dropdown-menu"
+                                        style="width: 100%; box-shadow: 0px 0px 20px 1px; position: relative; left: 0; padding: 10px;">
+                                        <h3 class="text-light text-bg-primary text-center py-1 mb-3" id="dropdownbtn" style="font-size: 18px;">Mark or Edit Attendance</h3>
+                                        <form id="attendanceForm" method="POST" style="padding-bottom: 0px;">
+                                            <div style="margin: 15px;">
+                                                <div class="container">
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4"><strong>Today's Date</strong></div>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control form-control-sm" type="date" name="attendance_date" id="attendance_date" required
+                                                                value="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                                                    <table class="table table-bordered table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Faculty ID</th>
+                                                                <th>Name</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="attendanceTable">
+                                                            <!-- Populated via AJAX -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="d-flex justify-content-end gap-2">
+                                                    <button class="btn btn-primary btn-sm" id="addAttendance" type="button">Add</button>
+                                                    <button class="btn btn-primary btn-sm" id="editAttendance" type="button">Edit</button>
+                                                    <button class="btn btn-primary btn-sm" id="updateAttendance" type="button">Update</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                                aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Departmrnt</th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Address&nbsp;</th>
-                                            <th>DOB</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                            <th>Phone No</th>
-                                            <th>Status</th>
-                                            <th><strong>Actions</strong></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="faculty_table_body">
 
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Departmrnt</th>
-                                            <td><strong>ID</strong></td>
-                                            <td><strong>Name</strong></td>
-                                            <td><strong>Position</strong></td>
-                                            <td><strong>Address&nbsp;</strong></td>
-                                            <td><strong>Age</strong></td>
-                                            <td><strong>DOB</strong></td>
-                                            <td><strong>Salary</strong></td>
-                                            <th>Status</th>
-                                            <td><strong><strong>Actions</strong></strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Department</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Address&nbsp;</th>
+                                                <th>DOB</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                                <th>Phone No</th>
+                                                <th>Status</th>
+                                                <th><strong>Actions</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="faculty_table_body">
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Department</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Address&nbsp;</th>
+                                                <th>DOB</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                                <th>Phone No</th>
+                                                <th>Status</th>
+                                                <th><strong>Actions</strong></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/faculty_crud.js"></script>
-    <script src="assets/js/faculty_Attandace.js"></script>
-    <script src="assets/js/validate_faculty.members.js"></script>
-    <script src="assets/js/faculty_absence.js"></script>
-    <script src="assets/js/faculty_status.js"></script>
-    <script src="assets/js/faculty_stats.js"></script>
-    <script src="assets/js/Department/departments_data.js"></script>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                    </div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="assets/js/aos.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/js/faculty_crud.js"></script>
+        <script src="assets/js/validate_faculty.members.js"></script>
+        <script src="assets/js/faculty_absence.js"></script>
+        <script src="assets/js/faculty_status.js"></script>
+        <script src="assets/js/faculty_stats.js"></script>
+        <script src="assets/js/Faculty/faculty_attandance.js"></script>
+        <script src="assets/js/Department/departments_data.js"></script>
 </body>
 
 </html>
