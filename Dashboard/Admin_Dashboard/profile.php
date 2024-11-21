@@ -29,12 +29,12 @@
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
                     <div class="sidebar-brand-icon rotate-n-15" style="transform: rotate(3deg);">
-                        
-                    
-                    <img src="assets/img/untitled-1.png" width="103" height="110" style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;"></div>
-                    
-                    
-                    
+
+                        <img src="assets/img/untitled-1.png" width="103" height="110" style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;">
+                    </div>
+
+
+
                     <div class="sidebar-brand-text mx-3"><span style="padding-top: 0px;padding-bottom: 0px;">Academy<br>Keeper</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -146,71 +146,62 @@
                     <div class="row mb-3">
                         <div class="col-lg-4 col-xxl-4">
                             <div class="card mb-3" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">
-    <div class="card-body text-center shadow">
-        <!-- Display the image -->
-        <img class="rounded-circle mb-3 mt-4" id="profileImage" src="assets/img/dogs/image2.jpeg" width="160" height="160">
-        <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                                <div class="card-body text-center shadow">
+                                    <!-- Display the image -->
+                                    <img class="rounded-circle mb-3 mt-4" id="profileImage" src="assets/img/dogs/image2.jpeg" width="160" height="160">
+                                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
 
-        <div class="mb-3">
-            <button class="btn btn-primary btn-sm" id="changePhotoBtn" type="button">Change Photo</button>
-        </div>
-    </div>
-</div>
-<script>
-    // Handle the 'Change Photo' button click to open the file input
-    document.getElementById("changePhotoBtn").addEventListener("click", function() {
-        document.getElementById("fileInput").click();
-    });
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" id="changePhotoBtn" type="button">Change Photo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                // Handle the 'Change Photo' button click to open the file input
+                                document.getElementById("changePhotoBtn").addEventListener("click", function() {
+                                    document.getElementById("fileInput").click();
+                                });
 
-    // Update the profile image when a new file is selected
-    document.getElementById("fileInput").addEventListener("change", function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
+                                // Update the profile image when a new file is selected
+                                document.getElementById("fileInput").addEventListener("change", function(event) {
+                                    const file = event.target.files[0];
+                                    if (file) {
+                                        const reader = new FileReader();
 
-            reader.onload = function(e) {
-                // Set the new image source to the selected file
-                document.getElementById("profileImage").src = e.target.result;
-                
-                // Optionally, you can upload the new image to the server here
-                uploadProfileImage(file);
-            };
+                                        reader.onload = function(e) {
+                                            // Set the new image source to the selected file
+                                            document.getElementById("profileImage").src = e.target.result;
 
-            reader.readAsDataURL(file);
-        }
-    });
+                                            // Optionally, you can upload the new image to the server here
+                                            uploadProfileImage(file);
+                                        };
 
-    // Function to upload the image to the server using AJAX
-    function uploadProfileImage(file) {
-        const formData = new FormData();
-        formData.append("profile_image", file);
+                                        reader.readAsDataURL(file);
+                                    }
+                                });
 
-        fetch("upload-profile-image.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log("Profile picture updated successfully!");
-            } else {
-                console.error("Error uploading image.");
-            }
-        })
-        .catch(error => {
-            console.error("Error during upload:", error);
-        });
-    }
-</script>
+                                // Function to upload the image to the server using AJAX
+                                function uploadProfileImage(file) {
+                                    const formData = new FormData();
+                                    formData.append("profile_image", file);
 
-
-
-
-
-
-
-
-
+                                    fetch("upload-profile-image.php", {
+                                            method: "POST",
+                                            body: formData
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                console.log("Profile picture updated successfully!");
+                                            } else {
+                                                console.error("Error uploading image.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error("Error during upload:", error);
+                                        });
+                                }
+                            </script>
                             <div class="card shadow mb-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="750">
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold"><strong>Basic Information</strong></p>
