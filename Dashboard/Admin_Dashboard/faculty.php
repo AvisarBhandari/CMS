@@ -403,11 +403,14 @@
                                                             style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
                                                             <div class="row">
 
-                                                                <div class="col-md-3 col-xxl-1" style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                    <label for="department_dropdown"><strong>Department</strong></label>
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <label
+                                                                        for="department_dropdown"><strong>Department</strong></label>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <select class="form-control" name="department" id="department" type="text" required>
+                                                                    <select class="form-control" name="department"
+                                                                        id="department" type="text" required>
                                                                         <option value="">Select Department</option>
                                                                         <!-- Options populated via AJAX -->
                                                                     </select>
@@ -441,18 +444,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4" style="margin-left: 500px; margin-top: -40px;">
-                                    <div class="text-end dataTables_filter" id="dataTable_filter">
-                                        <label class="form-label d-block">
-                                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
-                                        </label>
-                                    </div>
-                                </div>
+
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
                                         aria-expanded="false" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                         style="position: relative; top:-45px; left:180px" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
+                                            width="1em" fill="currentColor"
                                             style="width: 24px;height: 24px;font-size: 22px;">
                                             <path d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
@@ -460,19 +458,22 @@
                                     </button>
                                     <div class="dropdown-menu"
                                         style="width: 100%; box-shadow: 0px 0px 20px 1px; position: relative; left: 0; padding: 10px;">
-                                        <h3 class="text-light text-bg-primary text-center py-1 mb-3" id="dropdownbtn" style="font-size: 18px;">Mark or Edit Attendance</h3>
+                                        <h3 class="text-light text-bg-primary text-center py-1 mb-3" id="dropdownbtn"
+                                            style="font-size: 18px;">Mark or Edit Attendance</h3>
                                         <form id="attendanceForm" method="POST" style="padding-bottom: 0px;">
                                             <div style="margin: 15px;">
                                                 <div class="container">
                                                     <div class="row mb-2">
                                                         <div class="col-md-4"><strong>Today's Date</strong></div>
                                                         <div class="col-md-8">
-                                                            <input class="form-control form-control-sm" type="date" name="attendance_date" id="attendance_date" required
+                                                            <input class="form-control form-control-sm" type="date"
+                                                                name="attendance_date" id="attendance_date" required
                                                                 value="">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                                                <div class="table-responsive"
+                                                    style="max-height: 300px; overflow-y: auto;">
                                                     <table class="table table-bordered table-sm">
                                                         <thead>
                                                             <tr>
@@ -487,12 +488,24 @@
                                                     </table>
                                                 </div>
                                                 <div class="d-flex justify-content-end gap-2">
-                                                    <button class="btn btn-primary btn-sm" id="addAttendance" type="button">Add</button>
-                                                    <button class="btn btn-primary btn-sm" id="editAttendance" type="button">Edit</button>
-                                                    <button class="btn btn-primary btn-sm" id="updateAttendance" type="button">Update</button>
+                                                    <button class="btn btn-primary btn-sm" id="addAttendance"
+                                                        type="button">Add</button>
+                                                    <button class="btn btn-primary btn-sm" id="editAttendance"
+                                                        type="button">Edit</button>
+                                                    <button class="btn btn-primary btn-sm" id="updateAttendance"
+                                                        type="button">Update</button>
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="text-end dataTables_filter" id="dataTable_filter">
+                                        <label class="form-label d-block w-100">
+                                            <input type="search" class="form-control form-control-sm"
+                                                id="facultySearchInput" placeholder="Search by Faculty ID or Name"
+                                                oninput="fetchFaculty(this.value)">
+                                        </label>
                                     </div>
                                 </div>
 
@@ -554,11 +567,11 @@
         <script src="assets/js/chart.min.js"></script>
         <script src="assets/js/bs-init.js"></script>
         <script src="assets/js/theme.js"></script>
-        <script src="assets/js/faculty_crud.js"></script>
         <script src="assets/js/validate_faculty.members.js"></script>
         <script src="assets/js/faculty_absence.js"></script>
         <script src="assets/js/faculty_status.js"></script>
-        <script src="assets/js/faculty_stats.js"></script>
+        <script src="assets/js/Faculty/faculty_stats.js"></script>
+        <script src="assets/js/Faculty/faculty_crud_data.js"></script>
         <script src="assets/js/Faculty/faculty_attandance.js"></script>
         <script src="assets/js/Department/departments_data.js"></script>
 </body>
