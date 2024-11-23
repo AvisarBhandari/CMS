@@ -1,5 +1,5 @@
 <?php
-include '../db_connect.php'; // Ensure this is your database connection file
+include '../db_connect.php'; 
 
 // Fetch current year
 $current_year = date("Y");
@@ -24,4 +24,4 @@ if (count($finance_data) > 0) {
 
 $stmt->close();
 $conn->close();
-?>
+
