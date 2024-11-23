@@ -35,19 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
     function validateEventTime() {
-        const value = eventTimeInput.value;
-        const currentDate = new Date();
-        const currentTime = currentDate.getHours() * 60 + currentDate.getMinutes();
-        
-        const selectedTime = value.split(":");
-        const eventTime = parseInt(selectedTime[0]) * 60 + parseInt(selectedTime[1]);
-        
-        if (eventTime <= currentTime) {
-            showError(eventTimeInput, "Event time must be in the future.");
+        if (!eventTimeInput.value) {
+            showError(eventTimeInput, "Time is required.");
         } else {
             showSuccess(eventTimeInput);
         }
     }
+    
 
    
     function showError(input, message) {
