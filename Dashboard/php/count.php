@@ -2,7 +2,7 @@
 
 
 // Query to get total number of students
-$student_query = "SELECT COUNT(*) AS total_students FROM student";
+$student_query = "SELECT COUNT(*) AS total_students FROM students_info";
 $result_student = $conn->query($student_query);
 $total_students = $result_student->num_rows > 0 ? $result_student->fetch_assoc()['total_students'] : 0;
 

@@ -277,7 +277,6 @@
                                             <input type="hidden" id="course_id_hidden" name="course_id_hidden">
                                             <input class="btn btn-primary" type="submit" style="margin-left: 807px;" name="add_course" value="Add Course" id="submit_Button">
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -315,11 +314,6 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
                         </div>
                     </div>
                 </div>

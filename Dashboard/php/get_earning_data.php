@@ -1,47 +1,32 @@
 <?php
 include 'db_connect.php';
-
-$query = "SELECT month, earnings, expenditures FROM finance";
-$result = $conn->query($query);
+$monthsList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 $months = [];
 $earnings = [];
 $expenditures = [];
+foreach ($monthsList as $month) {
+    $query = "SELECT month, income, expenditure FROM monthlyfinance WHERE month = '$month'";
+    $result = $conn->query($query);
 
-while ($row = $result->fetch_assoc()) {
-    $months[] = $row['month'];
-    $earnings[] = $row['earnings'];
-    $expenditures[] = $row['expenditures'];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $months[] = $row['month'];
+            $earnings[] = $row['income'];
+            $expenditures[] = $row['expenditure'];
+        }
+    }
 }
 
-// Return the data as a JSON object
-echo json_encode([
-    'months' => $months,
-    'earnings' => $earnings,
-    'expenditures' => $expenditures,
-]);
-
+if (empty($months)) {
+    echo json_encode(['error' => 'No data found for any month.']);
+} else {
+    // Return the data as a JSON object
+    echo json_encode([
+        'months' => $months,
+        'earnings' => $earnings,
+        'expenditures' => $expenditures,
+    ]);
+}
 $conn->close();
 
-// SQL 
-// CREATE TABLE finance (
-//     id INT AUTO_INCREMENT PRIMARY KEY,
-//     month VARCHAR(20) NOT NULL,
-//     earnings DECIMAL(10, 2) NOT NULL,
-//     expenditures DECIMAL(10, 2) NOT NULL
-// );
-// INSERT INTO finance (month, earnings, expenditures) VALUES
-// ('Jan', 10000.00, 5000.00),
-// ('Feb', 15000.00, 7000.00),
-// ('Mar', 12000.00, 8000.00),
-// ('Apr', 17000.00, 6000.00),
-// ('May', 16000.00, 10000.00),
-// ('Jun', 19000.00, 11000.00),
-// ('Jul', 21000.00, 8000.00),
-// ('Aug', 22000.00, 9500.00),
-// ('Sep', 25000.00, 10500.00),
-// ('Oct', 20000.00, 15000.00),
-// ('Nov', 18000.00, 13000.00),
-// ('Dec', 23000.00, 14000.00);
-
-?>
