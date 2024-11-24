@@ -575,5 +575,4 @@
         <script src="assets/js/Faculty/faculty_attandance.js"></script>
         <script src="assets/js/Department/departments_data.js"></script>
 </body>
-
 </html>
