@@ -40,8 +40,8 @@ try {
     $holiday_result = $holiday_check->get_result();
     $holiday_check->close();
 
-    if ($holiday_result->num_rows > 0 || date('N', strtotime($attendance_date)) == 7) {
-        throw new Exception("Attendance cannot be marked on holidays or Sundays.");
+    if ($holiday_result->num_rows > 0 || date('N', strtotime($attendance_date)) == 6) {
+        throw new Exception("Attendance cannot be marked on holidays or Saturdays.");
     }
 
     $existing_attendance_check = $conn->prepare("SELECT COUNT(*) FROM faculty_attendances WHERE attendance_date = ?");
