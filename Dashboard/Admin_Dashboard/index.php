@@ -40,7 +40,9 @@
     $_SESSION['total_students'] = $total_students;
     $_SESSION['total_faculty'] = $total_faculty;
 
-    $sql = "SELECT COUNT(*) AS TotalAttendance FROM attendance";
+    $sql = "SELECT COUNT(*) AS TotalAttendance 
+FROM attendance 
+WHERE status = 'Present'";
 
     // Execute the query
     $result = $conn->query($sql);
@@ -425,6 +427,7 @@
                                 <div class="card-header py-3">
                                     <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
                                 </div>
+
                                 <ul class="list-group list-group-flush" id="eventList">
                                     <!-- Events will be dynamically populated here -->
                                 </ul>
@@ -691,6 +694,7 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/aos.min.js"></script>
+
         <script src="assets/js/chart.min.js"></script>
         <script src="assets/js/bs-init.js"></script>
         <script src="assets/js/theme.js"></script>
