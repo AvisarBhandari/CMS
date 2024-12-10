@@ -101,7 +101,7 @@
 
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
-            data-aos="fade-right" data-aos-duration="1200">
+            data-aos="fade-right" data-aos-duration="1200" data-aos-once="true">
             <div class="container-fluid d-flex flex-column p-0"><a
                     class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"
                     style="padding-bottom: 0px;padding-top: 0px;">
@@ -121,13 +121,28 @@
                                 style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="faculty.php"><i
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
-                            href="student.php"><i class="far fa-user"
-                                style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
+                            href="student.html"><i class="far fa-user"
+                                style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a>
+                                <a class="nav-link" href="financial.html">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icon-tabler-moneybag" style="font-size: 14px;">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M9.5 3h5a1.5 1.5 0 0 1 1.5 1.5a3.5 3.5 0 0 1 -3.5 3.5h-1a3.5 3.5 0 0 1 -3.5 -3.5a1.5 1.5 0 0 1 1.5 -1.5z">
+                                </path>
+                                <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+                            </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
+
+
+
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">

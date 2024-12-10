@@ -47,8 +47,9 @@
                     <li class="nav-item"><a class="nav-link" href="faculty.php"><i
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
                             href="student.html"><i class="far fa-user"
-                                style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a><a
-                            class="nav-link active" href="financial.html"><svg xmlns="http://www.w3.org/2000/svg"
+                                style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a>
+                                <a class="nav-link active" href="financial.html">
+                            <svg xmlns="http://www.w3.org/2000/svg"
                                 width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icon-tabler-moneybag" style="font-size: 14px;">
@@ -63,6 +64,8 @@
                         id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
+
+        
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
