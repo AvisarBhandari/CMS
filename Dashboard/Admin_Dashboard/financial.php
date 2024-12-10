@@ -46,9 +46,9 @@
                                 style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="faculty.php"><i
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
-                            href="student.html"><i class="far fa-user"
+                            href="student.php"><i class="far fa-user"
                                 style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a>
-                                <a class="nav-link active" href="financial.html">
+                                <a class="nav-link active" href="financial.php">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round"
