@@ -1,0 +1,34 @@
+.updateStatus {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: transform 0.2s, background-color 0.2s;
+    display: inline-block;
+    width: auto;
+}
+
+.btn-sm.updateStatus {
+    padding: 5px 10px;
+    font-size: 12px;
+    width: 120px;
+}
+
+.updateStatus:hover {
+    transform: scale(1.05);
+    background-color: #0069d9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.updateStatus:active {
+    transform: scale(0.95);
+    background-color: #0056b3;
+    box-shadow: none;
+}
+
+.btn-primary.updateStatus {
+    background-color: #0d6efd;
+}
+
+.btn-danger.updateStatus {
+    background-color: #dc3545;
+}
