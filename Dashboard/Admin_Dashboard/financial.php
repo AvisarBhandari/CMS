@@ -196,17 +196,18 @@
                         </div>
                     </div>
 
+
+                    
                     <div class="row" data-aos="fade-up" data-aos-duration="700" data-aos-delay="700"
                         data-aos-once="true">
-                        <div class="col-lg-7 col-xl-8 col-xxl-12 mx-auto" data-aos="fade-right"
-                            data-aos-duration="1200">
+                        <!-- Fee Payment Overview -->
+                        <div class="col-lg-6 col-xl-6 col-xxl-6 mx-auto" data-aos="fade-right" data-aos-duration="1200">
                             <div class="card shadow-lg mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center bg-light"
                                     style="height: 57.4px;">
-                                    <h6 class="text-dark fw-bold m-0">Students Fee Payment Overview(This period)</h6>
+                                    <h6 class="text-dark fw-bold m-0">Students Fee Payment Overview (This Period)</h6>
                                 </div>
                                 <div class="card-body p-3 d-flex justify-content-center align-items-center">
-                                    <!-- Chart Container, centered horizontally and vertically -->
                                     <div class="chart-area"
                                         style="position: relative; width: 100%; height: 300px; display: flex; justify-content: center; align-items: center;">
                                         <canvas id="feechartt" style="max-width: 80%; max-height: 80%;"></canvas>
@@ -214,7 +215,23 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Salary Payment Overview -->
+                        <div class="col-lg-6 col-xl-6 col-xxl-6 mx-auto" data-aos="fade-left" data-aos-duration="1200">
+                            <div class="card shadow-lg mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center bg-light"
+                                    style="height: 57.4px;">
+                                    <h6 class="text-dark fw-bold m-0">Staff Salary Payment Overview (This Month)</h6>
+                                </div>
+                                <div class="card-body p-3 d-flex justify-content-center align-items-center">
+                                    <div class="chart-area"
+                                        style="position: relative; width: 100%; height: 300px; display: flex; justify-content: center; align-items: center;">
+                                        <canvas id="salaryChart" style="max-width: 80%; max-height: 80%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
 
 
 
@@ -417,6 +434,7 @@
     <script src="assets/js/Student/fee_payment.js"></script>
     <script src="assets/js/Finance/fee_salary_data.js"></script>
     <script src="assets/js/Finance/get_fee_amount.js"></script>
+    <script src="assets/js/Finance/salary_chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
