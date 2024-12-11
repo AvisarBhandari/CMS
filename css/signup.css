@@ -141,6 +141,16 @@ p {
   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 
+.label-password {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transition: all 0.3s ease;
+  color: #aaa;
+  color: #777;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
 .input-wrapper input:focus + .label,
 .input-wrapper input:not(:placeholder-shown) + .label {
   top: -8px;

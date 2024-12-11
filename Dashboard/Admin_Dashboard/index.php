@@ -40,7 +40,9 @@
     $_SESSION['total_students'] = $total_students;
     $_SESSION['total_faculty'] = $total_faculty;
 
-    $sql = "SELECT COUNT(*) AS TotalAttendance FROM attendance";
+    $sql = "SELECT COUNT(*) AS TotalAttendance 
+FROM attendance 
+WHERE status = 'Present'";
 
     // Execute the query
     $result = $conn->query($sql);
@@ -411,27 +413,27 @@
 
 
 
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 mb-4">
-                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
-                            style="box-shadow: 0px 0px 20px;">
-                            <div class="card-header py-3">
-                                <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                                style="box-shadow: 0px 0px 20px;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
+                                </div>
+                                <ul class="list-group list-group-flush" id="eventList">
+                                    <!-- Events will be dynamically populated here -->
+                                </ul>
                             </div>
-                            <ul class="list-group list-group-flush" id="eventList">
-                                <!-- Events will be dynamically populated here -->
-                            </ul>
-                        </div>
-                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
-                            style="box-shadow: 0px 0px 20px;">
-                            <div class="card-header py-3">
-                                <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                                style="box-shadow: 0px 0px 20px;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+                                </div>
+                                <ul id="holidayList" class="list-group list-group-flush">
+                                    <!-- Holidays will be dynamically populated here -->
+                                </ul>
                             </div>
-                            <ul id="holidayList" class="list-group list-group-flush">
-                                <!-- Holidays will be dynamically populated here -->
-                            </ul>
-                        </div>
 
                     </div>
                     <div class="col">
@@ -645,54 +647,55 @@
                                 <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                             </div>
 
-                        </div>
-                        <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
-                            style="box-shadow: 0px 0px 20px;">
-                            <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
                             </div>
-                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
-                                aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Month</th>
-                                            <th>Earnings</th>
-                                            <th>Expenditures</th>
-                                            <th>Net Balance</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="finance_table_body">
-                                        <!-- Dynamic rows will be added here -->
-                                    </tbody>
-                                </table>
+                            <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
+                                style="box-shadow: 0px 0px 20px;">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
+                                </div>
+                                <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Month</th>
+                                                <th>Earnings</th>
+                                                <th>Expenditures</th>
+                                                <th>Net Balance</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="finance_table_body">
+                                            <!-- Dynamic rows will be added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/earning_data.js"></script>
-    <script src="assets/js/Events/event_crud.js"></script>
-    <script src="assets/js/Holidays/holiday_crud.js"></script>
-    <script src="assets/js/Holidays/validate_holiday.js"></script>
-    <script src="assets/js/Events/validate_event.js"></script>
-    <script src="assets/js/Finance/finance_crud.js"></script>
-    <script src="assets/js/Finance/validate_finance.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                    </div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/aos.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/js/earning_data.js"></script>
+        <script src="assets/js/fee_data.js"></script>
+        <script src="assets/js/Events/event_crud.js"></script>
+        <script src="assets/js/Holidays/holiday_crud.js"></script>
+        <script src="assets/js/Holidays/validate_holiday.js"></script>
+        <script src="assets/js/Events/validate_event.js"></script>
+        <script src="assets/js/Finance/finance_crud.js"></script>
+        <script src="assets/js/Finance/validate_finance.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
