@@ -1,3 +1,45 @@
+<?php
+// Start the session at the beginning of the script
+session_start();
+
+// Initialize variables to store form data
+$role = '';
+$id = '';
+$password = '';
+$remember_me = '';
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture form data
+    if (isset($_POST['role'])) {
+        $role = $_POST['role'];  // Get the selected role (admin, faculty, or student)
+    }
+
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];  // Get the ID entered by the user
+    }
+
+    if (isset($_POST['password'])) {
+        $password = $_POST['password'];  // Get the password entered by the user
+    }
+
+    if (isset($_POST['remember-me'])) {
+        $remember_me = $_POST['remember-me'];  // Check if the "Remember me" checkbox is checked
+    }
+
+    // Store form data in session variables
+    $_SESSION['role'] = $role;
+    $_SESSION['id'] = $id;
+    $_SESSION['password'] = $password;
+    $_SESSION['remember_me'] = $remember_me;
+
+    // Redirect to another page to display the data
+    header("Location: display_data.php");
+    exit();
+}
+?>
+
+
 <html>
 
 <head>
@@ -8,8 +50,8 @@
 <link rel="stylesheet" href="../css/globals.css">
 <link rel="stylesheet" href="../css/styleguide.css">
 
-<script src="../js/login.js"></script>
-<script src="../js/login.js"></script>
+<!-- <script src="../js/login.js"></script> -->
+
 
 
 
@@ -46,11 +88,11 @@
 
         <div class="select">
           <div class="option">
-            <input checked="" value="admin" name="fav_language" id="admin" type="radio" class="input" />
+            <input checked="" value="admin" name="role" id="admin" type="radio" class="input" />
             <label for="admin" class="label">Administrator</label>
-            <input value="teacher" name="fav_language" id="teacher" type="radio" class="input" />
-            <label for="teacher" class="label">Teacher</label>
-            <input value="student" name="fav_language" id="student" type="radio" class="input" />
+            <input value="faculty" name="role" id="faculty" type="radio" class="input" />
+            <label for="faculty" class="label">Faculty</label>
+            <input value="student" name="role" id="student" type="radio" class="input" />
             <label for="student" class="label">Student</label>
           </div>
         </div>
@@ -61,18 +103,17 @@
             <input type="text" id="id" name="id" required placeholder=" " />
             <label for="id" class="label">ID</label>
           </div>
-          <div class="input-wrapper">
-            <input type="text" id="college" name="college" placeholder="" />
-            <label for="college" class="label">College</label>
-          </div>
+
           <div class="input-wrapper">
             <input type="password" id="password" name="password" required placeholder=" " />
-            <label for="password" class="label">Password</label>
+            <label for="password" class="label-password">Password</label>
           </div>
         </div>
         <div class="checkbox-group">
           <div class="remember-me">
-            <input type="checkbox" id="remember-me" name="remember-me" />
+            <input type="checkbox" id="remember-me" name="remember-me" 
+            <?php if ($remember_me) echo 'checked'; ?>
+            />
             <label for="remember-me">Remember me</label>
           </div>
           <div id="forgot-pass">
