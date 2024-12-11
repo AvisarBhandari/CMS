@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['remember_me'] = $remember_me;
 
     // Redirect to another page to display the data
-    header("Location: display_data.php");
+    header("Location: authentication.php");
     exit();
 }
 ?>

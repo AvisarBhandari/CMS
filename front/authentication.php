@@ -29,7 +29,7 @@ if ($role == 'admin') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
         // Redirect to Admin Dashboard
-        header('Location: Admin_Dashboard.php');
+        header('Location: ../Dashboard/Admin_Dashboard');
         exit();
     } else {
         echo "Invalid credentials for admin.";
@@ -48,7 +48,7 @@ if ($role == 'faculty') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
         // Redirect to Faculty Dashboard
-        header('Location: Teacher_Dashboard.php');
+        header('Location: ../Dashboard/Teacher_Dashboard');
         exit();
     } else {
         echo "Invalid credentials for faculty.";
@@ -67,7 +67,7 @@ if ($role == 'student') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
         // Redirect to Student Dashboard
-        header('Location: Student_Dashboard.php');
+        header('Location: ../Dashboard/Student_Dashboard');
         exit();
     } else {
         echo "Invalid credentials for student.";
