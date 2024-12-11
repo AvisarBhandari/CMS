@@ -48,24 +48,25 @@
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
                             href="student.php"><i class="far fa-user"
                                 style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a>
-                                <a class="nav-link active" href="financial.php">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icon-tabler-moneybag" style="font-size: 14px;">
+                        <a class="nav-link active" href="financial.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icon-tabler-moneybag"
+                                style="font-size: 14px;">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path
                                     d="M9.5 3h5a1.5 1.5 0 0 1 1.5 1.5a3.5 3.5 0 0 1 -3.5 3.5h-1a3.5 3.5 0 0 1 -3.5 -3.5a1.5 1.5 0 0 1 1.5 -1.5z">
                                 </path>
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
-                            </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a></li>
+                            </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a>
+                    </li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
 
-        
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
@@ -217,317 +218,18 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xxl-6" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="500"
-                            data-aos-once="true">
-                            <div class="card shadow">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Students list</p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6 text-nowrap">
-                                            <div id="dataTable_length" class="dataTables_length"
-                                                aria-controls="dataTable">
-                                                <div class="dropdown"><button
-                                                        class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                                        aria-expanded="false" data-bs-toggle="dropdown"
-                                                        data-bs-auto-close="outside" type="button"><svg
-                                                            xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                            viewBox="0 0 24 24" width="1em" fill="currentColor"
-                                                            style="width: 24px;height: 24px;font-size: 22px;">
-                                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                        </svg>Student Transaction</button>
-                                                    <div class="dropdown-menu"
-                                                        style="width: 1076px;box-shadow: 0px 0px 20px 1px;">
-                                                        <h3 class="text-light text-bg-primary"
-                                                            style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;">
-                                                            Student Transaction</h3>
-                                                        <form style="padding-bottom: 0px;">
-                                                            <div style="margin-top: 30px;margin-right: -1px;">
-                                                                <div class="container"
-                                                                    style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-3 col-xxl-1"
-                                                                            style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;">
-                                                                            <strong>Student ID</strong>
-                                                                        </div>
-                                                                        <div class="col-md-3"><input
-                                                                                class="form-control" type="text"
-                                                                                name="student_code"
-                                                                                placeholder="Enter Student ID"
-                                                                                required="" min="8" max="8"
-                                                                                pattern="^STU\d{4}-\d{4}$"
-                                                                                maxlength="13" minlength="1"
-                                                                                autofocus=""></div>
-                                                                        <div class="col-md-3 col-xxl-1"
-                                                                            style="margin-left: 210px;padding-top: 7px;">
-                                                                            <strong>StudentName</strong>
-                                                                        </div>
-                                                                        <div class="col-md-3"
-                                                                            style="margin-left: 31px;"><input
-                                                                                class="form-control" type="text"
-                                                                                name="student_name"
-                                                                                placeholder="Enter StudentName"
-                                                                                required="" minlength="2" maxlength="25"
-                                                                                autofocus=""></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="container"
-                                                                    style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 15px;margin-top: 8px;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-3 col-xxl-1"
-                                                                            style="margin-left: 40px;margin-top: 0px;padding-top: 8px;margin-right: 24px;">
-                                                                            <strong>Department&nbsp;</strong>
-                                                                        </div>
-                                                                        <div class="col-md-3"><select
-                                                                                class="border rounded form-select"
-                                                                                name="dep" required="" autofocus="">
-                                                                                <optgroup label="Department ">
-                                                                                    <option value="" selected="">
-                                                                                        Department </option>
-                                                                                    <option value="bca">BCA</option>
-                                                                                    <option value="bbs">BBS</option>
-                                                                                </optgroup>
-                                                                            </select></div>
-                                                                        <div class="col-md-3 col-xxl-1"
-                                                                            style="margin-left: 210px;padding-top: 7px;">
-                                                                            <strong>Fee Amount</strong>
-                                                                        </div>
-                                                                        <div class="col-md-3"
-                                                                            style="margin-left: 31px;"><input
-                                                                                class="form-control" type="number"
-                                                                                name="fee" required=""
-                                                                                placeholder="Enter Amount"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form><input class="btn btn-primary" type="submit"
-                                                            style="margin-left: 807px;" name="Add Course "
-                                                            value="Add Faculty ">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
-                                                    class="form-label"><input type="search"
-                                                        class="form-control form-control-sm" aria-controls="dataTable"
-                                                        placeholder="Search"></label></div>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
-                                        aria-describedby="dataTable_info">
-                                        <table class="table my-0" id="dataTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>ID</th>
-                                                    <th>Department&nbsp;</th>
-                                                    <th>Address&nbsp;</th>
-                                                    <th>Due Fees</th>
-                                                    <th class="me-0"><strong>Actions</strong></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Airi Satou</td>
-                                                    <td>12313131</td>
-                                                    <td>Accountant</td>
-                                                    <td>Parsa</td>
-                                                    <td class="text-danger">RS. 162,700</td>
-                                                    <td><a id="edit" class="faculty_action" href="#"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                                height="1em" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0"
-                                                                style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg></a><a id="delete" class="faculty_action"
-                                                            href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                height="1em" viewBox="0 0 24 24" width="1em"
-                                                                fill="currentColor"
-                                                                class="text-danger pt-xxl-0 mt-xxl-0 ms-0"
-                                                                style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                                <path
-                                                                    d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z">
-                                                                </path>
-                                                            </svg></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Angelica Ramos</td>
-                                                    <td>12312312</td>
-                                                    <td>ABC</td>
-                                                    <td class="text-success-emphasis">parsa</td>
-                                                    <td class="text-danger">RS.1,20,000</td>
-                                                    <td><a id="edit-1" class="faculty_action" href="#"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                                height="1em" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0"
-                                                                style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg></a><a id="delete-1" class="faculty_action"
-                                                            href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                height="1em" viewBox="0 0 24 24" width="1em"
-                                                                fill="currentColor"
-                                                                class="text-danger pt-xxl-0 mt-xxl-0 ms-0"
-                                                                style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                                <path
-                                                                    d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z">
-                                                                </path>
-                                                            </svg></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>1231231</td>
-                                                    <td>Assistant Professor</td>
-                                                    <td>Parsa</td>
-                                                    <td class="text-danger">RS. 86,000</td>
-                                                    <td><a id="edit-2" class="faculty_action" href="#"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                                height="1em" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0"
-                                                                style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg></a><a id="delete-2" class="faculty_action"
-                                                            href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                height="1em" viewBox="0 0 24 24" width="1em"
-                                                                fill="currentColor"
-                                                                class="text-danger pt-xxl-0 mt-xxl-0 ms-0"
-                                                                style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                                <path
-                                                                    d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z">
-                                                                </path>
-                                                            </svg></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bradley Greer</td>
-                                                    <td>12312313</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>awd</td>
-                                                    <td class="text-danger">RS. 132,000</td>
-                                                    <td><a id="edit-3" class="faculty_action" href="#"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                                height="1em" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0"
-                                                                style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg></a><a id="delete-3" class="faculty_action"
-                                                            href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                height="1em" viewBox="0 0 24 24" width="1em"
-                                                                fill="currentColor"
-                                                                class="text-danger pt-xxl-0 mt-xxl-0 ms-0"
-                                                                style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                                <path
-                                                                    d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z">
-                                                                </path>
-                                                            </svg></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Brenden Wagner</td>
-                                                    <td>13123131</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>ABC</td>
-                                                    <td class="text-danger">RS. 206,850</td>
-                                                    <td><a id="edit-4" class="faculty_action" href="#"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                                height="1em" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-edit text-warning pt-xxl-0 mt-xxl-0"
-                                                                style="font-size: 27px;padding-top: 0px;margin-top: -13px;">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg></a><a id="delete-4" class="faculty_action"
-                                                            href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                height="1em" viewBox="0 0 24 24" width="1em"
-                                                                fill="currentColor"
-                                                                class="text-danger pt-xxl-0 mt-xxl-0 ms-0"
-                                                                style="font-size: 29px;margin-left: 11px;margin-top: -8px;">
-                                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                                <path
-                                                                    d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z">
-                                                                </path>
-                                                            </svg></a></td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td><strong>Name</strong></td>
-                                                    <td><strong>ID</strong></td>
-                                                    <td><strong>Department&nbsp;</strong></td>
-                                                    <td><strong>Address&nbsp;</strong></td>
-                                                    <td><strong>Due Fees</strong></td>
-                                                    <td><strong><strong>Actions</strong></strong></td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col">
                             <div class="card shadow" data-aos="flip-down" data-aos-duration="700" data-aos-delay="800"
                                 data-aos-once="true">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Faculty Info</p>
+                                    <p class="text-primary m-0 fw-bold">Student Fee info</p>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6 text-nowrap">
                                             <div id="dataTable_length-1" class="dataTables_length"
                                                 aria-controls="dataTable">
-                                                <div class="dropdown"><button id="generateSalaryList"
+                                                <div class="dropdown"><button id="generateFeeBtn"
                                                         class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
                                                         aria-expanded="false" data-bs-toggle="dropdown"
                                                         data-bs-auto-close="outside" type="button"><svg
@@ -536,7 +238,7 @@
                                                             style="width: 24px;height: 24px;font-size: 22px;">
                                                             <path d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                        </svg>Generate Salary List</button>
+                                                        </svg>Generate Fee List</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -547,21 +249,23 @@
                                                         placeholder="Search"></label></div>
                                         </div>
                                     </div>
-                                    <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
+
+
+                                    <div class="table-responsive table mt-2" id="feeTableContainer" role="grid"
                                         aria-describedby="dataTable_info">
-                                        <table class="table my-0" id="dataTable">
+                                        <table class="table my-0" id="feeTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Department</th>
-                                                    <th>Faculty ID</th>
-                                                    <th>Name</th>
-                                                    <th>Salary Amount</th>
+                                                    <th>Roll Number</th>
+                                                    <th>Student Name</th>
+                                                    <th>Installment No</th>
+                                                    <th>Due Date</th>
+                                                    <th>Amount</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="faculty_salary_body">
-                                                <!-- Rows will be dynamically populated here -->
+                                            <tbody id="feeTableBody">
+                                                <!-- Fee records will be dynamically loaded here -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -570,36 +274,146 @@
                         </div>
                     </div>
 
-                  
-
-
-
-                    <div class="row">
-                        <div class="col-lg-7 col-xl-8 col-xxl-12" data-aos="fade-right" data-aos-duration="1200">
-                            <div class="card shadow mb-4"></div>
+                    
+                    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog"
+                        aria-labelledby="paymentModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paymentModalLabel">Pay Fee</h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="paymentForm">
+                                        <!-- Form fields to capture payment details -->
+                                        <div class="form-group">
+                                            <label for="studentRoll">Student Roll Number</label>
+                                            <input type="text" class="form-control" id="studentRoll" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="installmentNo">Installment Number</label>
+                                            <input type="text" class="form-control" id="installmentNo" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="amount">Amount</label>
+                                            <input type="text" class="form-control" id="amount" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="scholarship">Select Scholarship</label>
+                                            <select class="form-control" id="scholarship">
+                                                <!-- Options will be dynamically populated here -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="finalAmount">Final Amount</label>
+                                            <input type="text" class="form-control" id="finalAmount" readonly>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Submit Payment</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card"></div>
+
+
+
+
+
+                    <div class="col">
+                        <div class="card shadow" data-aos="flip-down" data-aos-duration="700" data-aos-delay="800"
+                            data-aos-once="true">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Faculty Info</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 text-nowrap">
+                                        <div id="dataTable_length-1" class="dataTables_length"
+                                            aria-controls="dataTable">
+                                            <div class="dropdown"><button id="generateSalaryList"
+                                                    class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                    aria-expanded="false" data-bs-toggle="dropdown"
+                                                    data-bs-auto-close="outside" type="button"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                                        style="width: 24px;height: 24px;font-size: 22px;">
+                                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                    </svg>Generate Salary List</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-md-end dataTables_filter" id="dataTable_filter-1"><label
+                                                class="form-label"><input type="search"
+                                                    class="form-control form-control-sm" aria-controls="dataTable"
+                                                    placeholder="Search"></label></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Department</th>
+                                                <th>Faculty ID</th>
+                                                <th>Name</th>
+                                                <th>Salary Amount</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="faculty_salary_body">
+                                            <!-- Rows will be dynamically populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8 col-xxl-12" data-aos="fade-right" data-aos-duration="1200">
+                        <div class="card shadow mb-4"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card"></div>
                     </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/Faculty/salary.js"></script>
+    <script src="assets/js/Student/fee_list.js"></script>
+    <script src="assets/js/Student/fee_payment.js"></script>
+    <script src="assets/js/Student/scholarships.js"></script>
 </body>
 
 </html>
