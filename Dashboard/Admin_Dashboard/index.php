@@ -123,17 +123,18 @@
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
                             href="student.html"><i class="far fa-user"
                                 style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a>
-                                <a class="nav-link" href="financial.php">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icon-tabler-moneybag" style="font-size: 14px;">
+                        <a class="nav-link" href="financial.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icon-tabler-moneybag"
+                                style="font-size: 14px;">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path
                                     d="M9.5 3h5a1.5 1.5 0 0 1 1.5 1.5a3.5 3.5 0 0 1 -3.5 3.5h-1a3.5 3.5 0 0 1 -3.5 -3.5a1.5 1.5 0 0 1 1.5 -1.5z">
                                 </path>
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
-                            </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a></li>
+                            </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a>
+                    </li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
@@ -390,319 +391,308 @@
                         </div>
                     </div>
                     <div class="row" data-aos="fade">
-                        <div class="col-lg-7 col-xl-8" data-aos="fade-right" data-aos-duration="1200">
+                        <div class="col-lg-7 col-xl-8 col-xxl-12 mx-auto" data-aos="fade-right"
+                            data-aos-duration="1200">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 57.4px;">
                                     <h6 class="text-primary fw-bold m-0">Earnings Overview</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-container" style="position: relative; height: 300px ;">
-                                        <canvas id="earningsChart"></canvas>
+                                <div class="card-body p-3 d-flex justify-content-center align-items-center">
+                                    <!-- Chart Container, centered horizontally and vertically -->
+                                    <div class="chart-container"
+                                        style="position: relative; width: 100%; height: 300px; display: flex; justify-content: center; align-items: center;">
+                                        <canvas id="earningsChart" style="max-width: 100%; max-height: 100%;"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-xl-4" data-aos="fade-left" data-aos-duration="1200">
-                            <div class="card shadow-lg mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center bg-light"
-                                    style="height: 57.4px;">
-                                    <h6 class="text-dark fw-bold m-0">Students Fee Payment Overview</h6>
-                                </div>
-                                <div class="card-body p-3">
-                                    <div class="chart-area">
-                                        <canvas id="feechart" style="margin-left: 100px;"></canvas>
-                                    </div>
-                                </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
                             </div>
+                            <ul class="list-group list-group-flush" id="eventList">
+                                <!-- Events will be dynamically populated here -->
+                            </ul>
+                        </div>
+                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+                            </div>
+                            <ul id="holidayList" class="list-group list-group-flush">
+                                <!-- Holidays will be dynamically populated here -->
+                            </ul>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
-                                </div>
-                                <ul class="list-group list-group-flush" id="eventList">
-                                    <!-- Events will be dynamically populated here -->
-                                </ul>
+                    <div class="col">
+                        <div class="card shadow mb-4"></div>
+                        <div class="card shadow mb-4" data-aos="fade-left" data-aos-duration="1200"
+                            style="padding-bottom: 0px;height: 267.7px;width: 417.8px;margin-left: 74px;box-shadow: 0px 0px 20px; z-index:2;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary fw-bold m-0">Quick Actions</h6>
                             </div>
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
-                                </div>
-                                <ul id="holidayList" class="list-group list-group-flush">
-                                    <!-- Holidays will be dynamically populated here -->
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col">
-                            <div class="card shadow mb-4"></div>
-                            <div class="card shadow mb-4" data-aos="fade-left" data-aos-duration="1200"
-                                style="padding-bottom: 0px;height: 267.7px;width: 417.8px;margin-left: 74px;box-shadow: 0px 0px 20px; z-index:2;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Quick Actions</h6>
-                                </div>
-                                <div class="card-body pb-xxl-0 mb-xxl-5">
-                                    <div class="dropdown" style="margin-left: 112px;">
-                                        <button
-                                            class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                            aria-expanded="false" data-bs-toggle="dropdown" type="button"
-                                            id="EventdropdDownButton">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
-                                                width="1em" fill="currentColor"
-                                                style="width: 24px;height: 24px;font-size: 22px; z-index: 1;">
-                                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                            </svg>&nbsp;Add Events&nbsp;
-                                        </button>
-                                        <div class="dropdown-menu" style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
-                                            <form style="padding-bottom: 0;" id="eventForm">
-                                                <h3 class="text-bg-primary"
-                                                    style="margin-top: -8px; height: 46.6px; padding-top: 6px; text-align: center;"
-                                                    id="form_heading">
-                                                    <strong>Add Event</strong>
-                                                </h3>
-                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-6 col-xxl-4"><strong>Event Date</strong>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <input class="form-control-lg" type="date" id="event_date"
-                                                                name="event_date" required>
-                                                        </div>
+                            <div class="card-body pb-xxl-0 mb-xxl-5">
+                                <div class="dropdown" style="margin-left: 112px;">
+                                    <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                                        id="EventdropdDownButton">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
+                                            width="1em" fill="currentColor"
+                                            style="width: 24px;height: 24px;font-size: 22px; z-index: 1;">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                        </svg>&nbsp;Add Events&nbsp;
+                                    </button>
+                                    <div class="dropdown-menu" style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
+                                        <form style="padding-bottom: 0;" id="eventForm">
+                                            <h3 class="text-bg-primary"
+                                                style="margin-top: -8px; height: 46.6px; padding-top: 6px; text-align: center;"
+                                                id="form_heading">
+                                                <strong>Add Event</strong>
+                                            </h3>
+                                            <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-6 col-xxl-4"><strong>Event Date</strong>
                                                     </div>
-                                                </div>
-                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-6 col-xxl-4"><strong>Event Name</strong>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <input type="text" id="event_name" name="event_name"
-                                                                class="form-control-lg"
-                                                                style="width: 100%; height: 71.4px;" required></>
-                                                        </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control-lg" type="date" id="event_date"
+                                                            name="event_date" required>
                                                     </div>
-                                                </div>
-                                                <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-6 col-xxl-4"><strong>Event Time</strong>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <input class="form-control-lg" type="time" id="event_time"
-                                                                name="event_time" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-end" style="margin-right: 15px;">
-                                                    <input class="btn btn-primary" type="submit" id="submit_button"
-                                                        value="Add Event">
-                                                </div>
-                                                <input type="hidden" id="event_id" name="event_id" value="">
-                                                <input type="hidden" id="edit_mode" name="edit_mode" value="add">
-                                            </form>
-                                        </div>
-                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                            <div class="dropdown">
-                                                <button id="HolidayDropdownButton"
-                                                    class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                                    aria-expanded="false" data-bs-toggle="dropdown"
-                                                    data-bs-auto-close="outside" style="position: relative; top:5px;"
-                                                    type="button">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                        viewBox="0 0 24 24" width="1em" fill="currentColor"
-                                                        style="width: 24px;height: 24px;font-size: 22px;">
-                                                        <path d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                    </svg>&nbsp;Add Holiday
-                                                </button>
-                                                <div class="dropdown-menu"
-                                                    style="width: 1076px; box-shadow: 0px 0px 20px 1px; position: relative; left: 100px">
-                                                    <h3 class="text-light text-bg-primary"
-                                                        style="padding-left: 43%; padding-top: 4px; margin-top: -8px; margin-bottom: 14px; height: 41.6px;"
-                                                        id="form_heading_holiday">Add Holiday</h3>
-                                                    <form style="padding-bottom: 0px;" id="holidayForm" method="POST">
-                                                        <div style="margin-top: 30px; margin-right: -1px;">
-                                                            <div class="container"
-                                                                style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-xxl-1"
-                                                                        style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                        <strong>Holiday Date</strong>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <input class="form-control" type="date"
-                                                                            name="holiday_date" id="holiday_date"
-                                                                            placeholder="Enter Holiday Date" required>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xxl-1"
-                                                                        style="margin-left: 210px; padding-top: 7px;">
-                                                                        <strong>Reason</strong>
-                                                                    </div>
-                                                                    <div class="col-md-3" style="margin-left: 31px;">
-                                                                        <input class="form-control" type="text"
-                                                                            name="reason" id="reason"
-                                                                            style="width: 100%; height: 71.4px;"
-                                                                            placeholder="Enter Holiday Reason" required>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <input type="hidden" id="edit_mode" value="add">
-                                                            <input type="hidden" id="holiday_id">
-
-                                                            <input class="btn btn-primary" type="submit"
-                                                                style="margin-left: 807px;" value="Add Holiday"
-                                                                id="submit_button_holiday">
-                                                        </div>
-                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 text-nowrap" style="padding-left: 33px; padding-top: 0px;position:relative; top: 5px; left:-32px; ">
-                                            <div id="dataTable_length" class="dataTables_length"
-                                                aria-controls="dataTable"></div>
-                                            <div class="dropdown">
-                                                <button
-                                                    class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                                    aria-expanded="false" data-bs-toggle="dropdown"
-                                                    data-bs-auto-close="outside" type="button"
-                                                    id="recordDropdownButton">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                        viewBox="0 0 24 24" width="1em" fill="currentColor"
-                                                        style="width: 24px; height: 24px; font-size: 22px;">
-                                                        <path d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                    </svg>&nbsp;Add Finance&nbsp;
-                                                </button>
-                                                <div class="dropdown-menu"
-                                                    style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
-                                                    <h3 class="text-bg-primary" id="financedropdownbtn"
-                                                        style="margin-top: -8px; height: 58.6px; padding-top: 12px; padding-left: 50%;">
-                                                        Add Finance
-                                                    </h3>
-                                                    <form action="" method="post" id="recordForm"
-                                                        style="padding-bottom: 0px;">
-                                                        <div style="margin-top: 30px; margin-right: -1px;">
-                                                            <div class="container"
-                                                                style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-xxl-1"
-                                                                        style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                        <strong>Month</strong>
-                                                                    </div>
-                                                                    <div class="col-md-3" style="margin-left: 31px;">
-                                                                        <select class="form-control" name="month"
-                                                                            id="month" required>
-                                                                            <option value="">Select Month</option>
-                                                                            <option value="January">January</option>
-                                                                            <option value="February">February</option>
-                                                                            <option value="March">March</option>
-                                                                            <option value="April">April</option>
-                                                                            <option value="May">May</option>
-                                                                            <option value="June">June</option>
-                                                                            <option value="July">July</option>
-                                                                            <option value="August">August</option>
-                                                                            <option value="September">September</option>
-                                                                            <option value="October">October</option>
-                                                                            <option value="November">November</option>
-                                                                            <option value="December">December</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xxl-1"
-                                                                        style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                        <strong>Earnings</strong>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <input class="form-control" type="number"
-                                                                            name="earnings" id="earnings"
-                                                                            placeholder="Enter Earnings" required>
-                                                                    </div>
+                                            <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-6 col-xxl-4"><strong>Event Name</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="event_name" name="event_name"
+                                                            class="form-control-lg" style="width: 100%; height: 71.4px;"
+                                                            required></>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container" style="padding-bottom: 0; margin-bottom: 24px;">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-6 col-xxl-4"><strong>Event Time</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control-lg" type="time" id="event_time"
+                                                            name="event_time" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-end" style="margin-right: 15px;">
+                                                <input class="btn btn-primary" type="submit" id="submit_button"
+                                                    value="Add Event">
+                                            </div>
+                                            <input type="hidden" id="event_id" name="event_id" value="">
+                                            <input type="hidden" id="edit_mode" name="edit_mode" value="add">
+                                        </form>
+                                    </div>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                        <div class="dropdown">
+                                            <button id="HolidayDropdownButton"
+                                                class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                aria-expanded="false" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" style="position: relative; top:5px;"
+                                                type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
+                                                    width="1em" fill="currentColor"
+                                                    style="width: 24px;height: 24px;font-size: 22px;">
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                </svg>&nbsp;Add Holiday
+                                            </button>
+                                            <div class="dropdown-menu"
+                                                style="width: 1076px; box-shadow: 0px 0px 20px 1px; position: relative; left: 100px">
+                                                <h3 class="text-light text-bg-primary"
+                                                    style="padding-left: 43%; padding-top: 4px; margin-top: -8px; margin-bottom: 14px; height: 41.6px;"
+                                                    id="form_heading_holiday">Add Holiday</h3>
+                                                <form style="padding-bottom: 0px;" id="holidayForm" method="POST">
+                                                    <div style="margin-top: 30px; margin-right: -1px;">
+                                                        <div class="container"
+                                                            style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Holiday Date</strong>
                                                                 </div>
-                                                            </div>
-                                                            <div class="container"
-                                                                style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-xxl-1"
-                                                                        style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
-                                                                        <strong>Expenditures</strong>
-                                                                    </div>
-                                                                    <div class="col-md-3" style="margin-left: 31px;"
-                                                                        style="margin-left: 31px;">
-                                                                        <input class="form-control" type="number"
-                                                                            name="expenditures" id="expenditures"
-                                                                            placeholder="Enter Expenditures" required>
-                                                                    </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="date"
+                                                                        name="holiday_date" id="holiday_date"
+                                                                        placeholder="Enter Holiday Date" required>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 210px; padding-top: 7px;">
+                                                                    <strong>Reason</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <input class="form-control" type="text"
+                                                                        name="reason" id="reason"
+                                                                        style="width: 100%; height: 71.4px;"
+                                                                        placeholder="Enter Holiday Reason" required>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input type="hidden" id="edit_mode" name="edit_mode"
-                                                            value="add">
-                                                        <input type="hidden" id="record_id_hidden"
-                                                            name="record_id_hidden">
+                                                        <input type="hidden" id="edit_mode" value="add">
+                                                        <input type="hidden" id="holiday_id">
+
                                                         <input class="btn btn-primary" type="submit"
-                                                            style="margin-left: 807px;" name="add_record"
-                                                            value="Add Record" id="submitButtonFinance">
-                                                    </form>
-                                                </div>
+                                                            style="margin-left: 807px;" value="Add Holiday"
+                                                            id="submit_button_holiday">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body pb-xxl-0 mb-xxl-5"></div>
+                                    <div class="col-md-6 text-nowrap"
+                                        style="padding-left: 33px; padding-top: 0px;position:relative; top: 5px; left:-32px; ">
+                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                        </div>
+                                        <div class="dropdown">
+                                            <button
+                                                class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                aria-expanded="false" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" type="button" id="recordDropdownButton">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"
+                                                    width="1em" fill="currentColor"
+                                                    style="width: 24px; height: 24px; font-size: 22px;">
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                </svg>&nbsp;Add Finance&nbsp;
+                                            </button>
+                                            <div class="dropdown-menu"
+                                                style="width: 1076px; box-shadow: 0px 0px 20px 1px;">
+                                                <h3 class="text-bg-primary" id="financedropdownbtn"
+                                                    style="margin-top: -8px; height: 58.6px; padding-top: 12px; padding-left: 50%;">
+                                                    Add Finance
+                                                </h3>
+                                                <form action="" method="post" id="recordForm"
+                                                    style="padding-bottom: 0px;">
+                                                    <div style="margin-top: 30px; margin-right: -1px;">
+                                                        <div class="container"
+                                                            style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Month</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;">
+                                                                    <select class="form-control" name="month" id="month"
+                                                                        required>
+                                                                        <option value="">Select Month</option>
+                                                                        <option value="January">January</option>
+                                                                        <option value="February">February</option>
+                                                                        <option value="March">March</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="May">May</option>
+                                                                        <option value="June">June</option>
+                                                                        <option value="July">July</option>
+                                                                        <option value="August">August</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="October">October</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="December">December</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Earnings</strong>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" type="number"
+                                                                        name="earnings" id="earnings"
+                                                                        placeholder="Enter Earnings" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container"
+                                                            style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-xxl-1"
+                                                                    style="margin-left: 40px; margin-top: 0px; padding-top: 8px; margin-right: 24px;">
+                                                                    <strong>Expenditures</strong>
+                                                                </div>
+                                                                <div class="col-md-3" style="margin-left: 31px;"
+                                                                    style="margin-left: 31px;">
+                                                                    <input class="form-control" type="number"
+                                                                        name="expenditures" id="expenditures"
+                                                                        placeholder="Enter Expenditures" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" id="edit_mode" name="edit_mode" value="add">
+                                                    <input type="hidden" id="record_id_hidden" name="record_id_hidden">
+                                                    <input class="btn btn-primary" type="submit"
+                                                        style="margin-left: 807px;" name="add_record" value="Add Record"
+                                                        id="submitButtonFinance">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
+                                <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                             </div>
-                            <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
-                                </div>
-                                <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
-                                    aria-describedby="dataTable_info">
-                                    <table class="table my-0" id="dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Month</th>
-                                                <th>Earnings</th>
-                                                <th>Expenditures</th>
-                                                <th>Net Balance</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="finance_table_body">
-                                            <!-- Dynamic rows will be added here -->
-                                        </tbody>
-                                    </table>
-                                </div>
+
+                        </div>
+                        <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
+                            style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Earnings</th>
+                                            <th>Expenditures</th>
+                                            <th>Net Balance</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="finance_table_body">
+                                        <!-- Dynamic rows will be added here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="bg-white sticky-footer">
-                    <div class="container my-auto">
-                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                    </div>
-                </footer>
-            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-        </div>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/aos.min.js"></script>
-        <script src="assets/js/chart.min.js"></script>
-        <script src="assets/js/bs-init.js"></script>
-        <script src="assets/js/theme.js"></script>
-        <script src="assets/js/earning_data.js"></script>
-        <script src="assets/js/fee_data.js"></script>
-        <script src="assets/js/Events/event_crud.js"></script>
-        <script src="assets/js/Holidays/holiday_crud.js"></script>
-        <script src="assets/js/Holidays/validate_holiday.js"></script>
-        <script src="assets/js/Events/validate_event.js"></script>
-        <script src="assets/js/Finance/finance_crud.js"></script>
-        <script src="assets/js/Finance/validate_finance.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/earning_data.js"></script>
+    <script src="assets/js/Events/event_crud.js"></script>
+    <script src="assets/js/Holidays/holiday_crud.js"></script>
+    <script src="assets/js/Holidays/validate_holiday.js"></script>
+    <script src="assets/js/Events/validate_event.js"></script>
+    <script src="assets/js/Finance/finance_crud.js"></script>
+    <script src="assets/js/Finance/validate_finance.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 

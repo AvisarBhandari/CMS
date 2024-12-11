@@ -136,8 +136,8 @@
                                     <i class="la la-money"></i>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">123+</h2>
-                                    <p class="mb-0">Fee Paid</p>
+                                    <h2 class="fw-bold mb-0 fee-paid-count">0</h2> <!-- Dynamically updated here -->
+                                    <p class="mb-0">Fee Paid(This period)</p>
                                 </div>
                             </div>
                         </div>
@@ -157,8 +157,8 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">45+</h2>
-                                    <p class="mb-0">Fee&nbsp;Pending</p>
+                                    <h2 class="fw-bold mb-0 fee-pending-count">0</h2> <!-- Dynamically updated here -->
+                                    <p class="mb-0">Fee&nbsp;Pending(This period)</p>
                                 </div>
                             </div>
                         </div>
@@ -170,8 +170,8 @@
                                     <i class="material-icons" style="font-size: 36px;">attach_money</i>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">67+</h2>
-                                    <p class="mb-0">Salary Paid&nbsp;</p>
+                                    <h2 class="fw-bold mb-0 salary-paid-count">0</h2> <!-- Dynamically updated here -->
+                                    <p class="mb-0">Salary Paid(This month)&nbsp;</p>
                                 </div>
                             </div>
                         </div>
@@ -188,28 +188,36 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">89</h2>
-                                    <p class="mb-0">Salary&nbsp;Pending</p>
+                                    <h2 class="fw-bold mb-0 salary-pending-count">0</h2>
+                                    <!-- Dynamically updated here -->
+                                    <p class="mb-0">Salary&nbsp;Pending(This month)</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row" data-aos="fade-up" data-aos-duration="700" data-aos-delay="700"
                         data-aos-once="true">
-                        <div class="col-lg-7 col-xl-8 col-xxl-12" data-aos="fade-right" data-aos-duration="1200">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center"
+                        <div class="col-lg-7 col-xl-8 col-xxl-12 mx-auto" data-aos="fade-right"
+                            data-aos-duration="1200">
+                            <div class="card shadow-lg mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center bg-light"
                                     style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Earnings Overview</h6>
+                                    <h6 class="text-dark fw-bold m-0">Students Fee Payment Overview(This period)</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-area"><canvas
-                                            data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;,&quot;20000&quot;,&quot;25000&quot;,&quot;15000&quot;,&quot;10000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;},{&quot;label&quot;:&quot;Expenditures&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;1000&quot;,&quot;500&quot;,&quot;5000&quot;,&quot;20000&quot;,&quot;23000&quot;,&quot;10000&quot;,&quot;2497&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;1500&quot;,&quot;4000&quot;],&quot;backgroundColor&quot;:&quot;rgba(229,5,58,0.04)&quot;,&quot;borderColor&quot;:&quot;rgba(229,5,58,0.49)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas>
+                                <div class="card-body p-3 d-flex justify-content-center align-items-center">
+                                    <!-- Chart Container, centered horizontally and vertically -->
+                                    <div class="chart-area"
+                                        style="position: relative; width: 100%; height: 300px; display: flex; justify-content: center; align-items: center;">
+                                        <canvas id="feechartt" style="max-width: 80%; max-height: 80%;"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="row">
                         <div class="col">
                             <div class="card"></div>
@@ -249,8 +257,6 @@
                                                         placeholder="Search"></label></div>
                                         </div>
                                     </div>
-
-
                                     <div class="table-responsive table mt-2" id="feeTableContainer" role="grid"
                                         aria-describedby="dataTable_info">
                                         <table class="table my-0" id="feeTable">
@@ -262,6 +268,7 @@
                                                     <th>Due Date</th>
                                                     <th>Amount</th>
                                                     <th>Status</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="feeTableBody">
@@ -274,7 +281,8 @@
                         </div>
                     </div>
 
-                    
+
+
                     <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog"
                         aria-labelledby="paymentModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -320,68 +328,62 @@
 
 
 
-
-                    <div class="col">
-                        <div class="card shadow" data-aos="flip-down" data-aos-duration="700" data-aos-delay="800"
-                            data-aos-once="true">
-                            <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold">Faculty Info</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6 text-nowrap">
-                                        <div id="dataTable_length-1" class="dataTables_length"
-                                            aria-controls="dataTable">
-                                            <div class="dropdown"><button id="generateSalaryList"
-                                                    class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
-                                                    aria-expanded="false" data-bs-toggle="dropdown"
-                                                    data-bs-auto-close="outside" type="button"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                        viewBox="0 0 24 24" width="1em" fill="currentColor"
-                                                        style="width: 24px;height: 24px;font-size: 22px;">
-                                                        <path d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                                                    </svg>Generate Salary List</button>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow" data-aos="flip-down" data-aos-duration="700" data-aos-delay="800"
+                                data-aos-once="true">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Faculty Info</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 text-nowrap">
+                                            <div id="dataTable_length-1" class="dataTables_length"
+                                                aria-controls="dataTable">
+                                                <div class="dropdown"><button id="generateSalaryList"
+                                                        class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                        aria-expanded="false" data-bs-toggle="dropdown"
+                                                        data-bs-auto-close="outside" type="button"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                            viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                                            style="width: 24px;height: 24px;font-size: 22px;">
+                                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                        </svg>Generate Salary List</button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="text-md-end dataTables_filter" id="dataTable_filter-1"><label
+                                                    class="form-label"><input type="search"
+                                                        class="form-control form-control-sm" aria-controls="dataTable"
+                                                        placeholder="Search"></label></div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="text-md-end dataTables_filter" id="dataTable_filter-1"><label
-                                                class="form-label"><input type="search"
-                                                    class="form-control form-control-sm" aria-controls="dataTable"
-                                                    placeholder="Search"></label></div>
+
+                                    <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <table class="table my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Department</th>
+                                                    <th>Faculty ID</th>
+                                                    <th>Name</th>
+                                                    <th>Salary Amount</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="faculty_salary_body">
+                                                <!-- Rows will be dynamically populated here -->
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-
-
-                                <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
-                                    aria-describedby="dataTable_info">
-                                    <table class="table my-0" id="dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Department</th>
-                                                <th>Faculty ID</th>
-                                                <th>Name</th>
-                                                <th>Salary Amount</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="faculty_salary_body">
-                                            <!-- Rows will be dynamically populated here -->
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
 
                 <div class="row">
                     <div class="col-lg-7 col-xl-8 col-xxl-12" data-aos="fade-right" data-aos-duration="1200">
@@ -413,7 +415,10 @@
     <script src="assets/js/Faculty/salary.js"></script>
     <script src="assets/js/Student/fee_list.js"></script>
     <script src="assets/js/Student/fee_payment.js"></script>
-    <script src="assets/js/Student/scholarships.js"></script>
+    <script src="assets/js/Finance/fee_salary_data.js"></script>
+    <script src="assets/js/Finance/get_fee_amount.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 
 </html>
