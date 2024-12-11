@@ -111,9 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="checkbox-group">
           <div class="remember-me">
-            <input type="checkbox" id="remember-me" name="remember-me" 
-            <?php if ($remember_me) echo 'checked'; ?>
-            />
+            <input type="checkbox" id="remember-me" name="remember-me" />
             <label for="remember-me">Remember me</label>
           </div>
           <div id="forgot-pass">
@@ -124,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <p class="login-text">
-          Don't have an account? <a class="signup" href="signup.html">Sign up</a>
+          First Time Login? <a class="signup" href="signup.html">Sign up</a>
         </p>
       </form>
     </div>

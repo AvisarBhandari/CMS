@@ -13,69 +13,14 @@ if (!isset($_SESSION['role']) || !isset($_SESSION['id']) || !isset($_SESSION['pa
 $role = $_SESSION['role'];
 $id = $_SESSION['id'];
 $password = $_SESSION['password'];
-
+$remember_me= $_SESSION['remember_me'];
 // Initialize a variable to store user data
-$userData = null;
+echo $role;
+echo $id;
+echo $password;
+echo $remember_me;
 
-// Based on the role, query the appropriate table
-if ($role == 'admin') {
-    // Admin authentication
-    $sql = "SELECT * FROM admin WHERE id = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $id, $password); // "ss" means two strings
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
-        // Redirect to Admin Dashboard
-        header('Location: ../Dashboard/Admin_Dashboard');
-        exit();
-    } else {
-        echo "Invalid credentials for admin.";
-        exit();
-    }
+if($remember_me){
+    echo "Remember me is checked";
 }
-
-if ($role == 'faculty') {
-    // Faculty authentication
-    $sql = "SELECT * FROM faculty WHERE faculty_id = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $id, $password); // "ss" means two strings
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
-        // Redirect to Faculty Dashboard
-        header('Location: ../Dashboard/Teacher_Dashboard');
-        exit();
-    } else {
-        echo "Invalid credentials for faculty.";
-        exit();
-    }
-}
-
-if ($role == 'student') {
-    // Student authentication
-    $sql = "SELECT * FROM students_info WHERE student_id = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $id, $password); // "ss" means two strings
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
-        // Redirect to Student Dashboard
-        header('Location: ../Dashboard/Student_Dashboard');
-        exit();
-    } else {
-        echo "Invalid credentials for student.";
-        exit();
-    }
-}
-
-// If none of the roles matched, show an error
-echo "Invalid role or credentials.";
-exit();
 ?>
