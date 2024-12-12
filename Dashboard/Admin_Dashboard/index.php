@@ -27,7 +27,7 @@
     include '../php/db_connect.php';
     session_start();
     // Query to get total number of students
-    $student_query = "SELECT COUNT(*) AS total_students FROM student";
+    $student_query = "SELECT COUNT(*) AS total_students FROM studentS_info";
     $result_student = $conn->query($student_query);
     $total_students = $result_student->num_rows > 0 ? $result_student->fetch_assoc()['total_students'] : 0;
 
@@ -83,7 +83,7 @@ WHERE status = 'Present'";
 
 
 
-    $sql = "SELECT COUNT(*) AS departmentCount FROM department";
+    $sql = "SELECT COUNT(*) AS departmentCount FROM courses";
 
     // Execute the query
     $result = $conn->query($sql);

@@ -1,5 +1,6 @@
 <?php
 
+include 'db_connect.php'; 
 
 // Query to get total number of students
 $student_query = "SELECT COUNT(*) AS total_students FROM students_info";
@@ -70,7 +71,7 @@ if ($total_students > 0 && isset($_SESSION['attendancePercentage'])) {
 
 
 
-$sql = "SELECT COUNT(*) AS departmentCount FROM department";
+$sql = "SELECT COUNT(*) AS departmentCount FROM courses";
 
 // Execute the query
 $result = $conn->query($sql);
