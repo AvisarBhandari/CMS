@@ -105,7 +105,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         error_log("Student data inserted successfully.");
-        echo json_encode(['status' => 'success', 'message' => 'Student registered successfully']);
+
+        // Append password to the file after successful insertion
+        $file = fopen("student_passwords.txt", "a");
+        if ($file) {
+            $entry = "Student Roll: $student_roll, Name: $student_name, Password: $password\n";
+            fwrite($file, $entry);
+            fclose($file);
+        } else {
+            error_log("Failed to open file for appending password.");
+        }
+
+        echo json_encode(['status' => 'success', 'message' => 'Student registered successfully', 'student_roll' => $student_roll, 'password' => $password]);
     } else {
         error_log("Error executing query: " . $stmt->error);
         echo json_encode(['status' => 'error', 'message' => $stmt->error]);
