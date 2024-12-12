@@ -21,7 +21,7 @@ $userData = null;
 // Based on the role, query the appropriate table
 if ($role == 'admin') {
     // Admin authentication
-    $sql = "SELECT * FROM admin WHERE id = ? AND password = ?";
+    $sql = "SELECT * FROM login WHERE role = 'admin' AND id = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $id, $password); // "ss" means two strings
     $stmt->execute();
@@ -67,7 +67,7 @@ if ($stmt->execute()==false) {
 
 if ($role == 'faculty') {
     // Faculty authentication
-    $sql = "SELECT * FROM faculty WHERE faculty_id = ? AND password = ?";
+    $sql = "SELECT * FROM login WHERE role = 'faculty' AND id = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $id, $password); // "ss" means two strings
     $stmt->execute();
@@ -112,7 +112,7 @@ if ($stmt->execute()==false) {
 
 if ($role == 'student') {
     // Student authentication
-    $sql = "SELECT * FROM students_info WHERE student_id = ? AND password = ?";
+    $sql = "SELECT * FROM login WHERE role = 'student' AND id = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $id, $password); // "ss" means two strings
     $stmt->execute();

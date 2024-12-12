@@ -30,15 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dob = date('Y-m-d', strtotime($dob));
     $start_date = date('Y-m-d', strtotime($start_date));
 
-    // Generate a random password
-    $random_password = bin2hex(random_bytes(8));
-
-    // Hash the password
-    $hashed_password = password_hash($random_password, PASSWORD_DEFAULT);
-
     // Prepare the SQL statement for insertion
-    $sql = "INSERT INTO faculty (department, faculty_id, faculty_name, position, address, dob, start_date, salary, phone_number, status, password) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO faculty (department, faculty_id, faculty_name, position, address, dob, start_date, salary, phone_number, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($conn, $sql);
 
@@ -49,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     mysqli_stmt_bind_param(
         $stmt,
-        'sssssdsssss',
+        'sssssdssss',
         $department,
         $faculty_id,
         $faculty_name,
@@ -60,21 +54,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $salary,
         $phone_number,
         $status,
-        $hashed_password
+
     );
 
     // Execute the query
     if (mysqli_stmt_execute($stmt)) {
         // Append the generated password to the file
         $file = fopen("faculty_passwords.txt", "a"); 
-        $file_entry = "Faculty ID: $faculty_id, Name: $faculty_name,  Password: $random_password\n";
+        $file_entry = "Faculty ID: $faculty_id, Name: $faculty_name\n";
         fwrite($file, $file_entry); 
         fclose($file);  // Close the file
 
         echo json_encode([
             'status' => 'success', 
             'message' => 'Faculty added successfully!',
-            'password' => $random_password 
+            
         ]);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Error: ' . mysqli_stmt_error($stmt)]);

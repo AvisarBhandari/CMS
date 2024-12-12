@@ -45,7 +45,6 @@ $(document).ready(function () {
                 ? "Faculty updated successfully!"
                 : "Faculty added successfully!";
             alert(message);
-            alert("The generated password for the faculty is: " + response.password);
             window.location.reload();
             $("#facultyForm")[0].reset();
             $("#submit_button").val("Add Faculty");
