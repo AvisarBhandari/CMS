@@ -32,13 +32,15 @@ $(document).ready(function () {
                 console.log("Server Response:", response);
 
                 if (response.status === 'success') {
-                    var message =
-                        formData.edit_mode === 'edit'
-                            ? 'Student updated successfully!'
-                            : 'Student added successfully!';
-                    alert(message);
-
+                    let message;
                     
+                    if (formData.edit_mode === 'edit') {
+                        message = `Student updated successfully!`;
+                    } else {
+                        message = `Student added successfully!\n\nStudent Roll: ${response.student_roll}\nPassword: ${response.password}`;
+                    }
+                    
+                    alert(message);
                     window.location.reload();
 
                     // Reset form and switch back to 'add' mode
@@ -63,8 +65,7 @@ $(document).ready(function () {
             }
         });
     });
-});
-
+});  
 
 function fetchStudents(searchQuery = '') {
     console.log('Fetching student data with searchQuery:', searchQuery);
