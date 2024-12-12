@@ -97,7 +97,10 @@ WHERE status = 'Present'";
     }
     $totalCourse = isset($_SESSION['totalCourse']) ? $_SESSION['totalCourse'] : 0;
 
+    $id = $_SESSION['id'];
 
+    
+    
     ?>
 
 
