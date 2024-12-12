@@ -219,6 +219,8 @@
                     data-aos-duration="1150" data-aos-delay="500" style="padding-left: 24px;position: relative;" zin="">
                     <h3 class="text-dark mb-0">Student</h3>
                 </div>
+
+
                 <div class="container py-4 py-xl-5" style="margin-right: 299px;padding-right: 36px;margin-left: 3px;">
                     <div class="row gy-4 row-cols-2 row-cols-md-4">
                         <div class="col" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
@@ -234,11 +236,8 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">
-                                        <?php echo $total_students; ?>
-                                        </span>
-                                    </h2>
-                                    <p class="mb-0">Today's Student</p>
+                                    <h2 class="fw-bold mb-0" id="total_students">0</h2>
+                                    <p class="mb-0">Total Student</p>
                                 </div>
                             </div>
                         </div>
@@ -257,11 +256,7 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">
-                                        <?php
-                                        echo $totalAttendance;
-                                        ?>
-                                    </h2>
+                                    <h2 class="fw-bold mb-0" id="total_attendance">0</h2>
                                     <p class="mb-0">Today's Attendance</p>
                                 </div>
                             </div>
@@ -278,11 +273,7 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">
-                                        <?php
-                                        echo $absentStudent;
-                                        ?>
-                                    </h2>
+                                    <h2 class="fw-bold mb-0" id="absent_students">0</h2>
                                     <p class="mb-0">Today's Absent Student</p>
                                 </div>
                             </div>
@@ -294,7 +285,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                         viewBox="0 0 16 16" class="bi bi-person-fill-add">
                                         <path
-                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0">
+                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0">
                                         </path>
                                         <path
                                             d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4">
@@ -302,13 +293,19 @@
                                     </svg>
                                 </div>
                                 <div class="px-3">
-                                    <h2 class="fw-bold mb-0">89</h2>
+                                    <h2 class="fw-bold mb-0" id="total_enrollments"></h2>
                                     <p class="mb-0">This Month Enrollments</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
                 <div class="container pulse animated" style="margin-left: -1px;">
                     <div class="row">
                         <div class="col-md-6 col-xxl-7" data-aos="flip-right" data-aos-duration="1000"
@@ -627,10 +624,10 @@
                                                         <div class="d-flex justify-content-end gap-2">
                                                             <button class="btn btn-primary btn-sm" id="addAttendance"
                                                                 type="button">Add</button>
-                                                            <button class="btn btn-primary btn-sm" id="editAttendance"  style="display: none;"
-                                                                type="button">Edit</button>
-                                                            <button class="btn btn-primary btn-sm" id="updateAttendance"  style="display: none;"
-                                                                type="button">Update</button>
+                                                            <button class="btn btn-primary btn-sm" id="editAttendance"
+                                                                style="display: none;" type="button">Edit</button>
+                                                            <button class="btn btn-primary btn-sm" id="updateAttendance"
+                                                                style="display: none;" type="button">Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -700,6 +697,7 @@
             <script src="assets/js/Student/course_enrollment_data.js"></script>
             <script src="assets/js/Student/gender_data.js"></script>
             <script src="assets/js/Student/student_attendance_system.js"></script>
+            <script src="assets/js/Student/student_data_stats.js"></script>
 </body>
 
 </html>
