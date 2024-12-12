@@ -99,7 +99,7 @@ WHERE status = 'Present'";
 
     $id = $_SESSION['id'];
 
-    
+    echo $id;
     
     ?>
 

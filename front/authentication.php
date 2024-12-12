@@ -30,7 +30,7 @@ if ($role == 'admin') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
         if($remember_me){
-            $random_name = 'ADM' . substr(bin2hex(random_bytes(5)), 0, 5);
+            $random_name = 'login';
 
 // Generate a random cookie value
 $random_value = bin2hex(random_bytes(10));
@@ -76,8 +76,7 @@ if ($role == 'faculty') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
                 if($remember_me){
-            $random_name = 'TEA' . substr(bin2hex(random_bytes(5)), 0, 5);
-
+$random_name = 'login';
 // Generate a random cookie value
 $random_value = bin2hex(random_bytes(10));
 
@@ -122,8 +121,7 @@ if ($role == 'student') {
         // User found, fetch the data
         $userData = $result->fetch_assoc();
                 if($remember_me){
-            $random_name = 'STU' . substr(bin2hex(random_bytes(5)), 0, 5);
-
+$random_name = 'login';
 // Generate a random cookie value
 $random_value = bin2hex(random_bytes(10));
 
