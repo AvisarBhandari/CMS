@@ -66,11 +66,7 @@ if ($role == 'admin') {
 }
 if ($role == 'faculty') {
     // Faculty authentication
-<<<<<<< HEAD
     $sql = "SELECT * FROM login WHERE role = 'faculty' AND id = ? AND password = ?";
-=======
-    $sql = "SELECT * FROM faculty WHERE faculty_id = ?";
->>>>>>> 69b93cd635a9b417e6de31804051afde5d46e71e
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $id); // "s" means a single string parameter
     $stmt->execute();
@@ -126,11 +122,7 @@ if ($role == 'faculty') {
 
 if ($role == 'student') {
     // Student authentication
-<<<<<<< HEAD
-    $sql = "SELECT * FROM login WHERE role = 'student' AND id = ? AND password = ?";
-=======
     $sql = "SELECT * FROM students_info WHERE student_roll = ?"; // Search by student_roll instead of student_id
->>>>>>> 69b93cd635a9b417e6de31804051afde5d46e71e
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $id); // "s" means a string
     $stmt->execute();
