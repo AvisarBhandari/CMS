@@ -99,7 +99,20 @@ WHERE status = 'Present'";
 
     $id = $_SESSION['id'];
 
-    echo $id;
+    $sql = "SELECT name FROM admin WHERE id = '$id'"; // Be cautious, this is vulnerable to SQL injection if $id is not sanitized
+
+// Run the query
+$result = $conn->query($sql);
+
+// Check if the query returned any result
+if ($result->num_rows > 0) {
+    // Fetch the result (name)
+    $row = $result->fetch_assoc();
+    $_SESSION['name']= $row['name']; // Output the name
+} else {
+    echo "No user found with this ID."; // No matching id found
+}
+
     
     ?>
 
@@ -270,7 +283,11 @@ WHERE status = 'Present'";
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span><img
+                                            class="d-none d-lg-inline me-2 text-gray-600 small">
+                                        <?php
+                                        echo $_SESSION['name'];
+                                        ?>
+                                        </span><img
                                             class="border rounded-circle img-profile"
                                             src="assets/img/avatars/avatar.png"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
