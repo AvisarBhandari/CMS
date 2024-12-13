@@ -1,27 +1,36 @@
 <?php
-    include '../db_connect.php';
-
+include '../db_connect.php';
 
 $currentMonth = date('Y-m-01'); 
-$checkQuery = "SELECT COUNT(*) AS count FROM SalaryTransactions WHERE month_year = '$currentMonth'";
-$checkResult = $conn->query($checkQuery);
-$row = $checkResult->fetch_assoc();
 
-if ($row['count'] == 0) {
-    // Fetch all faculty
-    $facultyQuery = "SELECT faculty_id, salary FROM Faculty";
-    $facultyResult = $conn->query($facultyQuery);
+// Fetch all faculty members
+$facultyQuery = "SELECT faculty_id, salary FROM Faculty";
+$facultyResult = $conn->query($facultyQuery);
 
-    while ($faculty = $facultyResult->fetch_assoc()) {
-        $facultyId = $faculty['faculty_id'];
-        $salaryAmount = $faculty['salary'];
+$generatedCount = 0;
+while ($faculty = $facultyResult->fetch_assoc()) {
+    $facultyId = $faculty['faculty_id'];
+    $salaryAmount = $faculty['salary'];
+    
+    // Check if salary entry exists for this faculty member for the current month
+    $checkFacultyQuery = "SELECT COUNT(*) AS count FROM SalaryTransactions 
+                          WHERE faculty_id = '$facultyId' AND month_year = '$currentMonth'";
+    $checkFacultyResult = $conn->query($checkFacultyQuery);
+    $facultyRow = $checkFacultyResult->fetch_assoc();
+
+    if ($facultyRow['count'] == 0) {
+        // Insert salary transaction for this faculty member
         $insertQuery = "INSERT INTO SalaryTransactions (faculty_id, month_year, status, salary_amount)
                         VALUES ('$facultyId', '$currentMonth', 'unpaid', '$salaryAmount')";
         $conn->query($insertQuery);
+        $generatedCount++;
     }
-    echo "Salary list generated for " . date('F Y');
-} else {
-    echo "Salary list for this month already exists.";
 }
-$conn->close();
 
+if ($generatedCount > 0) {
+    echo "Salary list updated with $generatedCount new records for " . date('F Y');
+} else {
+    echo "No new salary records added. All faculty salaries for this month are already recorded.";
+}
+
+$conn->close();
