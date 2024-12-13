@@ -546,7 +546,7 @@
                                        <h3 class="text-light text-bg-primary"
                                           style="padding-left: 43%;padding-top: 4px;margin-top: -8px;margin-bottom: 14px;height: 41.6px;"
                                           id="dropdownbtn">Add Administrator</h3>
-                                       <form style="padding-bottom: 0px;" id="adminForm">
+                                       <form style="padding-bottom: 0px;"  method="post" action="../php/Faculty/insert_admin.php" id="adminForm" >
                                           <div style="margin-top: 30px; margin-right: -1px;">
                                              <div class="container"
                                                 style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 15px; margin-top: 8px;">
@@ -559,7 +559,7 @@
                                                       <input class="form-control" type="text"
                                                          name="admin_id" id="admin_id"
                                                          placeholder="Enter Admin ID" required
-                                                         pattern="^ADM-\d{4}-\d{4}$" maxlength="13"
+                                                         pattern="^(ADM-\d{4}-\d{4}$" maxlength="13"
                                                          minlength="13" autofocus>
                                                    </div>
                                                    <div class="col-md-3 col-xxl-1"
@@ -723,6 +723,24 @@
          </div>
          <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
       </div>
+          <script src="assets/js/sweetalert.js"></script>
+
+
+
+    <?php
+    if(isset($_SESSION['status']) && $_SESSION['massage']) {
+    ?>
+    <script>
+    swal({
+  title: "<?php echo $_SESSION['massage']; ?>",
+  icon: "<?php echo $_SESSION['status']; ?>",
+});
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['massage']);
+}
+?>
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
