@@ -1,0 +1,303 @@
+<?php
+// Start the session at the beginning of the script
+session_start();
+
+
+
+$name = '';
+$id = '';
+$phone = '';
+$address = '';
+$password = '';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (isset($_POST['name'])) {
+        $name = $_POST['name'];  
+    }
+
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];  
+    }
+
+    if (isset($_POST['phone'])) {
+        $phone = $_POST['phone'];  
+    }
+
+    if (isset($_POST['address'])) {
+        $address = $_POST['address'];  
+      }
+
+
+      
+      if (isset($_POST['password'])) {
+          $password = $_POST['password'];  
+      }
+
+  $role = substr($id, 0, 3);
+
+switch($role) {
+    case 'ADM':
+        $role = 'admin';
+        break;
+    case 'TEA':
+        $role = 'faculty';
+        break;
+    case 'STU':
+        $role = 'student';
+        break;
+    default:
+        header('Location:singup.php');
+}
+
+
+    $_SESSION['name'] = $name;
+    $_SESSION['id'] = $id;
+    $_SESSION['phone'] = $phone;
+    $_SESSION['address'] = $address;
+    $_SESSION['password'] = $password;
+    $_SESSION['role'] = $role;
+
+
+
+
+
+    header("Location: new_acount.php");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="../css/signup.css" />
+  <link rel="stylesheet" href="../css/globals.css" />
+  <link rel="stylesheet" href="../css/styleguide.css" />
+  <link rel="stylesheet" href="../css/loading.css" />
+
+  <script src="../js/loading.js"></script>
+</head>
+
+<body>
+  <div class="loading">
+    <div class="loader">
+      <div>
+        <ul>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg fill="currentColor" viewBox="0 0 90 120">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+        </ul>
+      </div>
+      <span>Loading</span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="image-section">
+      <img src="../img/about.png" alt="Sign Up Image" />
+    </div>
+    <div class="form-section">
+      <div class="logo">
+        <a href="landing.html">
+          <img src="../img/untitled-1-1.png" alt="Logo" class="logoimg" />
+          <div class="text-a">Academy</div>
+          <div class="text-k">Keeper</div>
+        </a>
+      </div>
+      <h2 class="signup">Sign up</h2>
+      <p class="intro-text">
+        Let's get you all set up so you can access your account.
+      </p>
+      <form action="" method="POST">
+
+          <div class="input-wrapper">
+            <input type="text" id="name" name="name" required placeholder=" " />
+            <label for="name" class="label">Name</label>
+            <p class="name_Error"></p>
+          </div>
+        <div class="input-group">
+          <div class="input-wrapper">
+            <input type="text" id="id" name="id" required placeholder="          Eg.STU-1234-2024" />
+            <label for="id" class="label">ID</label>
+            <small class="id_Error"></small>
+          </div>
+          <div class="input-wrapper">
+            <input type="tel" id="phone" name="phone" required placeholder=" " />
+            <label for="phone" class="label">Phone Number</label>
+            <p class="phone_Error"></p>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <input type="text" id="address" name="address" placeholder="" />
+          <label for="address" class="label">Address</label>
+          <p class="address_Error"></p>
+        </div>
+        <div class="input-group">
+          <div class="input-wrapper">
+            <input type="password" id="password" name="password" required placeholder=" " />
+            <label for="password" class="label">Password</label>
+            <p class="password_Error"></p>
+          </div>
+          <div class="input-wrapper">
+            <input type="password" id="confirm-password" name="confirm_password" required placeholder=" " />
+            <label for="confirm-password" class="label">Confirm Password</label>
+            <p class="cPassword_Error"></p>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" name="terms" required />
+          <label>I agree to all the <a href="tearms.html">Terms</a> and
+            <a href="../front/Policies.html">Privacy Policies</a></label>
+        </div>
+
+        <button type="submit" class="btn">Create account</button>
+      </form>
+      
+      <p class="login-text">
+        Already have an account? <a href="../front/Login.html">Login</a>
+      </p>
+    </div>
+  </div>
+    <script>
+        document.getElementById("names").addEventListener("input", validateName);
+        document.getElementById("id").addEventListener("input", validateId);
+        document.getElementById("phone").addEventListener("input", validatePhone);
+        document.getElementById("address").addEventListener("input", validateAddress);
+        document.getElementById("password").addEventListener("input", validatePassword);
+        document.getElementById("confirm-password").addEventListener("input", validateConfirmPassword);
+
+        function validateName() {
+            const nameInput = document.getElementById("name");
+            const nameError = document.querySelector(".name_Error");
+            const namePattern = /^[a-zA-Z]+\s[a-zA-Z]+$/;  // First and Last Name pattern
+
+            if (!namePattern.test(nameInput.value)) {
+                nameError.textContent = "Please enter a valid first and last name.";
+            } else {
+                nameError.textContent = "";
+            }
+        }
+
+        function validateId() {
+            const idInput = document.getElementById("id");
+            const idError = document.querySelector(".id_Error");
+            const idPattern = /^(ADM|STU|TEA)-\d{4}-\d{4}$/; // ID format validation
+
+            if (!idPattern.test(idInput.value)) {
+                idError.textContent = "ID must be in the format: ADM-1234-5678.";
+            } else {
+                idError.textContent = "";
+            }
+        }
+
+        function validatePhone() {
+            const phoneInput = document.getElementById("phone");
+            const phoneError = document.querySelector(".phone_Error");
+            const phonePattern = /^(97|98)\d{8,13}$/; 
+
+            if (!phonePattern.test(phoneInput.value)) {
+                phoneError.textContent = "Phone number invalid.";
+            } else {
+                phoneError.textContent = "";
+            }
+        }
+
+        function validateAddress() {
+            const addressInput = document.getElementById("address");
+            const addressError = document.querySelector(".address_Error");
+
+            if (addressInput.value.trim() === "") {
+                addressError.textContent = "Address cannot be empty.";
+            } else {
+                addressError.textContent = "";
+            }
+        }
+
+        function validatePassword() {
+            const passwordInput = document.getElementById("password");
+            const passwordError = document.querySelector(".password_Error");
+
+            if (passwordInput.value.length < 8) {
+                passwordError.textContent = "Password must be at least 8 characters long.";
+            } else {
+                passwordError.textContent = "";
+            }
+        }
+
+        function validateConfirmPassword() {
+            const passwordInput = document.getElementById("password");
+            const confirmPasswordInput = document.getElementById("confirm-password");
+            const confirmPasswordError = document.querySelector(".cPassword_Error");
+
+            if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordError.textContent = "Passwords do not match.";
+            } else {
+                confirmPasswordError.textContent = "";
+            }
+        }
+        
+    </script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/sweetalert.js"></script>
+
+    <?php
+    if(isset($_SESSION['status']) && $_SESSION['massage']) {
+    ?>
+    <script>
+    swal({
+  title: "<?php echo $_SESSION['massage']; ?>",
+  icon: "<?php echo $_SESSION['status']; ?>",
+});
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['massage']);
+}
+?>
+
+</body>
+
+</html>
