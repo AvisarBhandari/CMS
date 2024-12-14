@@ -1,5 +1,5 @@
 
-        document.getElementById("names").addEventListener("input", validateName);
+        document.getElementById("name").addEventListener("input", validateName);
         document.getElementById("id").addEventListener("input", validateId);
         document.getElementById("phone").addEventListener("input", validatePhone);
         document.getElementById("address").addEventListener("input", validateAddress);
@@ -7,7 +7,7 @@
         document.getElementById("confirm-password").addEventListener("input", validateConfirmPassword);
 
         function validateName() {
-            const nameInput = document.getElementById("names");
+            const nameInput = document.getElementById("name");
             const nameError = document.querySelector(".name_Error");
             const namePattern = /^[a-zA-Z]{3,}\s[a-zA-Z]{3,}$/;  // First and Last Name pattern
 
