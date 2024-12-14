@@ -345,4 +345,4 @@ function validateConfirmPassword() {
 
 </body>
 
-</html>c
+</html>
