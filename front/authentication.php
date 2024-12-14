@@ -1,181 +1,86 @@
 <?php
 include('db_connect.php');
-// Start the session at the beginning of the script
+
+// Start session to manage login state
 session_start();
 
-// Check if session variables are set
-if (!isset($_SESSION['role']) || !isset($_SESSION['id']) || !isset($_SESSION['password'])) {
-    header('Location: Login.php');
-    exit();
-}
+// Retrieve form data
+$id = $_SESSION['id']; // User id (or username)
+$role = $_SESSION['role']; // User role
+$remember_me = $_SESSION['remember_me']; // Optional - could be used for persistent login
 
-// Retrieve data from session variables
-$role = $_SESSION['role'];
-$id = $_SESSION['id'];
-$password = $_SESSION['password'];
-$remember_me = $_SESSION['remember_me'];
+// Check if user exists and password is correct
+$query = "SELECT * FROM login WHERE id = ? AND role = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ss", $id, $role);  // Note we don't bind the password here anymore
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Initialize a variable to store user data
-$userData = null;
+if ($result->num_rows > 0) {
+    // User credentials are valid
+    $user = $result->fetch_assoc();
 
-// Based on the role, query the appropriate table
-if ($role == 'admin') {
-    // Admin authentication
-    $sql = "SELECT * FROM login WHERE role = 'admin' AND id = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $id, $password); // "ss" means two strings
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
-        if ($remember_me) {
-            $random_name = 'login';
+    // Now verify the password using password_verify
+    if (password_verify($_SESSION['password'], $user['password'])) {
+        // Password is correct
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['role'] = $user['role'];
 
-            // Generate a random cookie value
-            $random_value = bin2hex(random_bytes(10));
-
-            // Set the cookie with the generated name and value
-            setcookie($random_name, $random_value, time() + 3600, "/"); // Cookie expires in 1 hour
-
-            // Prepare the SQL query to insert data into the 'cookie' table
-            $sql = "INSERT INTO cookie (id, c_name, c_value) VALUES (?, ?, ?)";
-
-            // Prepare the statement
-            $stmt = $conn->prepare($sql);
-
-            if ($stmt === false) {
-                die("Error preparing the SQL statement: " . $conn->error);
-            }
-
-            // Bind the parameters to the prepared statement
-            $stmt->bind_param("sss", $id, $random_name, $random_value); // "sss" means 3 string parameters
-
-            // Execute the query to insert the data
-            if ($stmt->execute() == false) {
-                echo "Error inserting data into database: " . $stmt->error;
-            }
-        }
-        // Redirect to Admin Dashboard
-        header('Location: ../Dashboard/Admin_Dashboard');
-        exit();
-    } else {
-        header('Location: Login.php');
-        exit();
-    }
-}
-if ($role == 'faculty') {
-    // Faculty authentication
-    $sql = "SELECT * FROM login WHERE role = 'faculty' AND id = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $id); // "s" means a single string parameter
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
-
-        // Verify the provided password with the hashed password in the database
-        if (password_verify($password, $userData['password'])) {
-            if ($remember_me) {
-                $random_name = 'login';
-                // Generate a random cookie value
-                $random_value = bin2hex(random_bytes(10));
-
-                // Set the cookie with the generated name and value
-                setcookie($random_name, $random_value, time() + 3600, "/"); // Cookie expires in 1 hour
-
-                // Prepare the SQL query to insert data into the 'cookie' table
-                $sql = "INSERT INTO cookie (id, c_name, c_value) VALUES (?, ?, ?)";
-
-                // Prepare the statement
-                $stmt = $conn->prepare($sql);
-
-                if ($stmt === false) {
-                    die("Error preparing the SQL statement: " . $conn->error);
-                }
-
-                // Bind the parameters to the prepared statement
-                $stmt->bind_param("sss", $id, $random_name, $random_value); // "sss" means 3 string parameters
-
-                // Execute the query to insert the data
-                if ($stmt->execute() == false) {
-                    echo "Error inserting data into database: " . $stmt->error;
-                }
-            }
-            // Redirect to Faculty Dashboard
-            header('Location: ../Dashboard/Teacher_Dashboard');
-            exit();
-        } else {
-            // Password verification failed
-            header('Location: Login.php');
-            exit();
-        }
-    } else {
-        // User not found
-        header('Location: Login.php');
-        exit();
-    }
-}
-
-
-
-if ($role == 'student') {
-    // Student authentication
-    $sql = "SELECT * FROM students_info WHERE student_roll = ?"; // Search by student_roll instead of student_id
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $id); // "s" means a string
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        // User found, fetch the data
-        $userData = $result->fetch_assoc();
+        // Optionally, set a 'remember me' feature if applicable
+    if ($remember_me) {
+        // Generate a random value for the cookie
+        $cookie_value = bin2hex(random_bytes(16)); // Generate a random 32 character string
+        $cookie_name = 'login';
         
-        // Verify the password
-        if (password_verify($password, $userData['password'])) {
-            if ($remember_me) {
-                $random_name = 'login';
-                // Generate a random cookie value
-                $random_value = bin2hex(random_bytes(10));
-
-                // Set the cookie with the generated name and value
-                setcookie($random_name, $random_value, time() + 3600, "/"); // Cookie expires in 1 hour
-
-                // Prepare the SQL query to insert data into the 'cookie' table
-                $sql = "INSERT INTO cookie (id, c_name, c_value) VALUES (?, ?, ?)";
-
-                // Prepare the statement
-                $stmt = $conn->prepare($sql);
-
-                if ($stmt === false) {
-                    die("Error preparing the SQL statement: " . $conn->error);
-                }
-
-                // Bind the parameters to the prepared statement
-                $stmt->bind_param("sss", $userData['student_id'], $random_name, $random_value); // Use student_id for cookie insertion
-
-                // Execute the query to insert the data
-                if ($stmt->execute() == false) {
-                    echo "Error inserting data into database: " . $stmt->error;
-                }
-            }
-            // Redirect to Student Dashboard
-            header('Location: ../Dashboard/Student_Dashboard');
-            exit();
-        } else {
-            // Password doesn't match
-            header('Location: Login.php?error=invalid_credentials');
-            exit();
+        // Check if a cookie already exists for the user
+        $cookie_check_query = "SELECT * FROM cookie WHERE c_name = 'login' AND id = ?";
+        $cookie_check_stmt = $conn->prepare($cookie_check_query);
+        $cookie_check_stmt->bind_param("s", $id);
+        $cookie_check_stmt->execute();
+        $cookie_check_result = $cookie_check_stmt->get_result();
+        
+        if ($cookie_check_result->num_rows > 0) {
+            // Delete the old cookie if it exists
+            $delete_cookie_query = "DELETE FROM cookie WHERE c_name = 'login' AND id = ?";
+            $delete_cookie_stmt = $conn->prepare($delete_cookie_query);
+            $delete_cookie_stmt->bind_param("s", $id);
+            $delete_cookie_stmt->execute();
         }
-    } else {
-        // No user found
-        header('Location: Login.php?error=user_not_found');
-        exit();
+        
+        // Insert new cookie record into cookie table
+        $insert_cookie_query = "INSERT INTO cookie (id, c_name, c_value) VALUES (?, ?, ?)";
+        $insert_cookie_stmt = $conn->prepare($insert_cookie_query);
+        $insert_cookie_stmt->bind_param("sss", $id, $cookie_name, $cookie_value);
+        $insert_cookie_stmt->execute();
+        
+        // Set the cookie in the user's browser for 30 days
+        setcookie("login", $cookie_value, time() + (30 * 24 * 60 * 60), "/"); // Expires in 30 days
     }
+
+        // Redirect or continue the session
+            if ($role == 'admin') {
+    header('Location: ../Dashboard/Admin_Dashboard');
+    }
+
+    if ($role == 'faculty') {
+        header('Location: ../Dashboard/Teacher_Dashboard');
+    }
+
+    if ($role == 'student') {
+        header('Location: ../Dashboard/Student_Dashboard');
+    } // Example: redirect to the user dashboard
+        exit();
+    } else {
+        $_SESSION['status'] = "error";
+        $_SESSION['message'] = "Invalid password!";
+    }
+} else {
+    $_SESSION['status'] = "error";
+    $_SESSION['message'] = "No such user found!";
 }
 
-// If none of the roles matched, show an error
-header('Location: Login.php');
-exit();
+$stmt->close();
+$conn->close();
 ?>
+
+

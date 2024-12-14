@@ -80,6 +80,7 @@ switch($role) {
   <link rel="stylesheet" href="../css/loading.css" />
 
   <script src="../js/loading.js"></script>
+  <script src="../js/sweetalert.js"></script>
 </head>
 
 <body>
@@ -150,138 +151,182 @@ switch($role) {
       <p class="intro-text">
         Let's get you all set up so you can access your account.
       </p>
-      <form action="" method="POST">
+<form id="myForm" action="" method="POST">
 
-          <div class="input-wrapper">
-            <input type="text" id="name" name="name" required placeholder=" " />
-            <label for="name" class="label">Name</label>
-            <p class="name_Error"></p>
-          </div>
-        <div class="input-group">
-          <div class="input-wrapper">
-            <input type="text" id="id" name="id" required placeholder="          Eg.STU-1234-2024" />
-            <label for="id" class="label">ID</label>
-            <small class="id_Error"></small>
-          </div>
-          <div class="input-wrapper">
-            <input type="tel" id="phone" name="phone" required placeholder=" " />
-            <label for="phone" class="label">Phone Number</label>
-            <p class="phone_Error"></p>
-          </div>
-        </div>
-        <div class="input-wrapper">
-          <input type="text" id="address" name="address" placeholder="" />
-          <label for="address" class="label">Address</label>
-          <p class="address_Error"></p>
-        </div>
-        <div class="input-group">
-          <div class="input-wrapper">
-            <input type="password" id="password" name="password" required placeholder=" " />
-            <label for="password" class="label">Password</label>
-            <p class="password_Error"></p>
-          </div>
-          <div class="input-wrapper">
-            <input type="password" id="confirm-password" name="confirm_password" required placeholder=" " />
-            <label for="confirm-password" class="label">Confirm Password</label>
-            <p class="cPassword_Error"></p>
-          </div>
-        </div>
+  <div class="input-wrapper">
+    <input type="text" id="name" name="name" required placeholder=" " />
+    <label for="name" class="label">Name</label>
+    <p class="name_Error"></p>
+  </div>
 
-        <div class="checkbox-group">
-          <input type="checkbox" name="terms" required />
-          <label>I agree to all the <a href="tearms.html">Terms</a> and
-            <a href="../front/Policies.html">Privacy Policies</a></label>
-        </div>
+  <div class="input-group">
+    <div class="input-wrapper">
+      <input type="text" id="id" name="id" required placeholder="                 Eg. STU-1234-2024" />
+      <label for="id" class="label">ID</label>
+      <small class="id_Error"></small>
+    </div>
 
-        <button type="submit" class="btn">Create account</button>
-      </form>
+    <div class="input-wrapper">
+      <input type="tel" id="phone" name="phone" required placeholder=" " />
+      <label for="phone" class="label">Phone Number</label>
+      <p class="phone_Error"></p>
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <input type="text" id="address" name="address" placeholder="" />
+    <label for="address" class="label">Address</label>
+    <p class="address_Error"></p>
+  </div>
+
+  <div class="input-group">
+    <div class="input-wrapper">
+      <input type="password" id="password" name="password" required placeholder=" " />
+      <label for="password" class="label">Password</label>
+      <p class="password_Error"></p>
+    </div>
+
+    <div class="input-wrapper">
+      <input type="password" id="confirm-password" name="confirm_password" required placeholder=" " />
+      <label for="confirm-password" class="label">Confirm Password</label>
+      <p class="cPassword_Error"></p>
+    </div>
+  </div>
+
+  <div class="checkbox-group">
+    <input type="checkbox" name="terms" required />
+    <label>I agree to all the <a href="tearms.html">Terms</a> and
+      <a href="../front/Policies.html">Privacy Policies</a></label>
+  </div>
+
+  <button type="submit" class="btn">Create account</button>
+</form>
+
+
       
       <p class="login-text">
         Already have an account? <a href="../front/Login.html">Login</a>
       </p>
     </div>
   </div>
-    <script>
-        document.getElementById("names").addEventListener("input", validateName);
-        document.getElementById("id").addEventListener("input", validateId);
-        document.getElementById("phone").addEventListener("input", validatePhone);
-        document.getElementById("address").addEventListener("input", validateAddress);
-        document.getElementById("password").addEventListener("input", validatePassword);
-        document.getElementById("confirm-password").addEventListener("input", validateConfirmPassword);
 
-        function validateName() {
-            const nameInput = document.getElementById("name");
-            const nameError = document.querySelector(".name_Error");
-            const namePattern = /^[a-zA-Z]+\s[a-zA-Z]+$/;  // First and Last Name pattern
 
-            if (!namePattern.test(nameInput.value)) {
-                nameError.textContent = "Please enter a valid first and last name.";
-            } else {
-                nameError.textContent = "";
-            }
-        }
+<script>
+  document.getElementById("name").addEventListener("input", validateName);
+document.getElementById("id").addEventListener("input", validateId);
+document.getElementById("phone").addEventListener("input", validatePhone);
+document.getElementById("address").addEventListener("input", validateAddress);
+document.getElementById("password").addEventListener("input", validatePassword);
+document.getElementById("confirm-password").addEventListener("input", validateConfirmPassword);
 
-        function validateId() {
-            const idInput = document.getElementById("id");
-            const idError = document.querySelector(".id_Error");
-            const idPattern = /^(ADM|STU|TEA)-\d{4}-\d{4}$/; // ID format validation
+// Validate form before submission
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    let formIsValid = true;  // Flag to check if form is valid
 
-            if (!idPattern.test(idInput.value)) {
-                idError.textContent = "ID must be in the format: ADM-1234-5678.";
-            } else {
-                idError.textContent = "";
-            }
-        }
+    // Validate each field
+    formIsValid &= validateName();
+    formIsValid &= validateId();
+    formIsValid &= validatePhone();
+    formIsValid &= validateAddress();
+    formIsValid &= validatePassword();
+    formIsValid &= validateConfirmPassword();
 
-        function validatePhone() {
-            const phoneInput = document.getElementById("phone");
-            const phoneError = document.querySelector(".phone_Error");
-            const phonePattern = /^(97|98)\d{8,13}$/; 
+    // If any validation fails, prevent form submission
+    if (!formIsValid) {
+        event.preventDefault();  // Prevent form submission
+    }
+});
 
-            if (!phonePattern.test(phoneInput.value)) {
-                phoneError.textContent = "Phone number invalid.";
-            } else {
-                phoneError.textContent = "";
-            }
-        }
+// Validate Name
+function validateName() {
+    const nameInput = document.getElementById("name");
+    const nameError = document.querySelector(".name_Error");
+    const namePattern = /^[a-zA-Z]+\s[a-zA-Z]+$/;  // First and Last Name pattern
 
-        function validateAddress() {
-            const addressInput = document.getElementById("address");
-            const addressError = document.querySelector(".address_Error");
+    if (!namePattern.test(nameInput.value)) {
+        nameError.textContent = "Please enter a valid first and last name.";
+        return false;
+    } else {
+        nameError.textContent = "";
+        return true;
+    }
+}
 
-            if (addressInput.value.trim() === "") {
-                addressError.textContent = "Address cannot be empty.";
-            } else {
-                addressError.textContent = "";
-            }
-        }
+// Validate ID
+function validateId() {
+    const idInput = document.getElementById("id");
+    const idError = document.querySelector(".id_Error");
+    const idPattern = /^(ADM|STU|TEA)-\d{4}-\d{4}$/; // ID format validation
 
-        function validatePassword() {
-            const passwordInput = document.getElementById("password");
-            const passwordError = document.querySelector(".password_Error");
+    if (!idPattern.test(idInput.value)) {
+        idError.textContent = "ID must be in the format: ADM-1234-5678.";
+        return false;
+    } else {
+        idError.textContent = "";
+        return true;
+    }
+}
 
-            if (passwordInput.value.length < 8) {
-                passwordError.textContent = "Password must be at least 8 characters long.";
-            } else {
-                passwordError.textContent = "";
-            }
-        }
+// Validate Phone Number
+function validatePhone() {
+    const phoneInput = document.getElementById("phone");
+    const phoneError = document.querySelector(".phone_Error");
+    const phonePattern = /^(97|98)\d{8,13}$/; 
 
-        function validateConfirmPassword() {
-            const passwordInput = document.getElementById("password");
-            const confirmPasswordInput = document.getElementById("confirm-password");
-            const confirmPasswordError = document.querySelector(".cPassword_Error");
+    if (!phonePattern.test(phoneInput.value)) {
+        phoneError.textContent = "Phone number invalid.";
+        return false;
+    } else {
+        phoneError.textContent = "";
+        return true;
+    }
+}
 
-            if (confirmPasswordInput.value !== passwordInput.value) {
-                confirmPasswordError.textContent = "Passwords do not match.";
-            } else {
-                confirmPasswordError.textContent = "";
-            }
-        }
-        
-    </script>
-    <script src="../js/signup.js"></script>
-    <script src="../js/sweetalert.js"></script>
+// Validate Address
+function validateAddress() {
+    const addressInput = document.getElementById("address");
+    const addressError = document.querySelector(".address_Error");
+
+    if (addressInput.value.trim() === "") {
+        addressError.textContent = "Address cannot be empty.";
+        return false;
+    } else {
+        addressError.textContent = "";
+        return true;
+    }
+}
+
+// Validate Password
+function validatePassword() {
+    const passwordInput = document.getElementById("password");
+    const passwordError = document.querySelector(".password_Error");
+
+    if (passwordInput.value.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters long.";
+        return false;
+    } else {
+        passwordError.textContent = "";
+        return true;
+    }
+}
+
+// Validate Confirm Password
+function validateConfirmPassword() {
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
+    const confirmPasswordError = document.querySelector(".cPassword_Error");
+
+    if (confirmPasswordInput.value !== passwordInput.value) {
+        confirmPasswordError.textContent = "Passwords do not match.";
+        return false;
+    } else {
+        confirmPasswordError.textContent = "";
+        return true;
+    }
+}
+
+</script>
+
 
     <?php
     if(isset($_SESSION['status']) && $_SESSION['massage']) {
@@ -300,4 +345,4 @@ switch($role) {
 
 </body>
 
-</html>
+</html>c
