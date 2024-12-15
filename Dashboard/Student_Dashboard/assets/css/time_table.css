@@ -1,0 +1,87 @@
+.container {
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    height: 40px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+/* Timetable Table styles */
+#timetableDisplay {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for table rows */
+tbody tr:hover {
+    background-color: #e9f3ff;
+    cursor: pointer;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    .form-select, .btn-primary {
+        width: 100%;
+    }
+}
