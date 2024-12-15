@@ -1,0 +1,69 @@
+
+#feeInstallmentTable #styledTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+#feeInstallmentTable #styledTable thead tr {
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+#feeInstallmentTable #styledTable th {
+    padding: 12px 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+
+#feeInstallmentTable #styledTable td {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+
+#feeInstallmentTable #styledTable tbody tr:hover {
+    background-color: #dfefff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+#feeInstallmentTable #styledTable tbody tr:nth-child(even) {
+    background-color: #eef6ff;
+}
+
+#feeInstallmentTable #styledTable td,
+#feeInstallmentTable #styledTable th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#toggleTableBtn {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+}
+
+#toggleTableBtn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 86, 179, 0.4);
+}

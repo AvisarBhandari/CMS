@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label-button-label.css">
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
-    
+    <link rel="stylesheet" href="assets/css/fee_table.css">
+
 </head>
 
 <body id="page-top">
@@ -105,36 +106,40 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding-right: 5px;">
                         <h3 class="text-dark mb-0" data-aos="fade-right" data-aos-duration="850" data-aos-delay="500"
-                            data-aos-once="true">Student Dashboard</h3><a
-                            class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i
-                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                            data-aos-once="true">Student Dashboard</h3>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-right" data-aos-duration="850"
-                            data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-primary py-2" style="box-shadow: 0px 0px;">
-                                <div class="card-body">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                                                <span>Assignments Pending</span>
-                                            </div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>3</span></div>
-                                        </div>
-                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg"
-                                                enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24"
-                                                width="1em" fill="currentColor" class="fa-2x text-gray-300">
-                                                <g>
-                                                    <rect fill="none" height="24" width="24"></rect>
-                                                    <path
-                                                        d="M17,12c-2.76,0-5,2.24-5,5s2.24,5,5,5c2.76,0,5-2.24,5-5S19.76,12,17,12z M18.65,19.35l-2.15-2.15V14h1v2.79l1.85,1.85 L18.65,19.35z M18,3h-3.18C14.4,1.84,13.3,1,12,1S9.6,1.84,9.18,3H6C4.9,3,4,3.9,4,5v15c0,1.1,0.9,2,2,2h6.11 c-0.59-0.57-1.07-1.25-1.42-2H6V5h2v3h8V5h2v5.08c0.71,0.1,1.38,0.31,2,0.6V5C20,3.9,19.1,3,18,3z M12,5c-0.55,0-1-0.45-1-1 c0-0.55,0.45-1,1-1c0.55,0,1,0.45,1,1C13,4.55,12.55,5,12,5z">
-                                                    </path>
-                                                </g>
-                                            </svg></div>
+
+                        <div class="container-fluid">
+                            <div class="d-flex justify-content-between align-items-center mb-4"
+                                style="padding-right: 5px;">
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <button id="toggleTableBtn">Show Fee Installments</button>
+
+                                    <div id="feeInstallmentTable" style="display: none;">
+                                        <table id="styledTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Installment No</th>
+                                                    <th>Due Date</th>
+                                                    <th>Status</th>
+                                                    <th>Amount</th>
+                                                    <th>Discount</th>
+                                                    <th>Paid Amount</th>
+                                                    <th>Payment Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="installmentDetails"></tbody>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-down" data-aos-duration="850"
                             data-aos-delay="500" data-aos-once="true">
                             <div class="card shadow border-left-success py-2">
@@ -142,9 +147,10 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                                <span>Outstanding Balance</span>
+                                                <span>Paid Amount</span>
                                             </div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>RS. 5000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="paidAmount"><span>RS. 0</span>
+                                            </div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                                 viewBox="0 0 24 24" width="1em" fill="currentColor"
@@ -153,54 +159,74 @@
                                                 <path
                                                     d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z">
                                                 </path>
-                                            </svg></div>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-up" data-aos-duration="850"
+
+                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-down" data-aos-duration="850"
                             data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-info py-2">
+                            <div class="card shadow border-left-success py-2">
                                 <div class="card-body">
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
-                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Attendance
-                                                    Rate</span></div>
-                                            <div class="row g-0 align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm">
-                                                        <div class="progress-bar bg-info" aria-valuenow="50"
-                                                            aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                                                            <span class="visually-hidden">50%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1">
+                                                <span>Discount Amount</span>
                                             </div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="discountAmount"><span>RS.
+                                                    0</span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                                class="fa-2x text-gray-300">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z">
+                                                </path>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-left" data-aos-duration="800"
+
+                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-down" data-aos-duration="850"
                             data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-warning py-2">
+                            <div class="card shadow border-left-success py-2">
                                 <div class="card-body">
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
-                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Credits
-                                                    Earned</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1">
+                                                <span>Remaining Amount</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="remainingAmount"><span>RS.
+                                                    0</span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-book fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                viewBox="0 0 24 24" width="1em" fill="currentColor"
+                                                class="fa-2x text-gray-300">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z">
+                                                </path>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
                     </div>
                     <div class="row">
                         <div class="col-lg-5 col-xl-4" data-aos="fade-right" data-aos-duration="800"
@@ -212,7 +238,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area" style="position: relative; height: 250px;">
-                                        <canvas id="attendanceDonutChart" ></canvas>
+                                        <canvas id="attendanceDonutChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -249,11 +275,6 @@
                                 </ul>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -273,8 +294,10 @@
     <script src="assets/js/Events/fetch_events.js"></script>
     <script src="assets/js/Events/fetch_holidays.js"></script>
     <script src="assets/js/Attendance/attendance_data.js"></script>
+    <script src="assets/js/Fee/fee_data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/Fee/fee_details.js"></script>
 
 </body>
 
