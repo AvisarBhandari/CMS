@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../php/db_connect.php';
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -62,6 +63,8 @@ session_start();
                                 </path>
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                             </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a>
+                            <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
+
                     </li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
@@ -109,7 +112,20 @@ session_start();
                                         ?>
                                         </span><img
                                             class="border rounded-circle img-profile"
-                                            src="assets/img/untitled-1.png"></a>
+                                            src="<?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+      echo $img;
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
@@ -409,23 +425,15 @@ session_start();
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-7 col-xl-8 col-xxl-12" data-aos="fade-right" data-aos-duration="1200">
-                        <div class="card shadow mb-4"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="bg-white sticky-footer">
+
+                        <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
             </div>
         </footer>
+            </div>
+        </div>
+
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/js/jquery.min.js"></script>

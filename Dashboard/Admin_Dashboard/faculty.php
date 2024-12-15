@@ -1,5 +1,6 @@
 <?php
    session_start();
+   include '../php/db_connect.php';
    ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -62,6 +63,8 @@
                         <span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span>
                      </a>
                   </li>
+                  <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
+
                </ul>
                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                   id="sidebarToggle" type="button"></button></div>
@@ -219,7 +222,20 @@
                                  ?>
                               </span><img
                                  class="border rounded-circle img-profile"
-                                 src="assets/img/avatars/avatar.png"></a>
+                                 src="<?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+      echo $img;
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>"></a>
                               <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                                  <a
                                     class="dropdown-item" href="#"><i

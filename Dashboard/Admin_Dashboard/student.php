@@ -24,6 +24,7 @@
 <body id="page-top">
     <?php
     session_start();
+    include '../php/db_connect.php';
 
 
     $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
@@ -68,6 +69,8 @@
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                             </svg>&nbsp;
                             <span>Financial Management&nbsp;</span></a></li>
+                                                <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
+
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
@@ -200,7 +203,20 @@
                                             echo $_SESSION['name'];
                                             ?>
                                         </span><img class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/avatar.png"></a>
+                                            src="<?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+      echo $img;
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a

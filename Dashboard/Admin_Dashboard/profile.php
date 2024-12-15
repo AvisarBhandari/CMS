@@ -17,14 +17,18 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label-button-label.css">
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    
 </head>
 
 <body id="page-top">
-    <?php
-    include '../php/db_connect.php';
-    session_start();
+<?php
+include '../php/db_connect.php'; // Database connection
+session_start();
 
-    ?>
+
+?>
+
+
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
@@ -55,6 +59,7 @@
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                             </svg>&nbsp;
                             <span>Financial Management&nbsp;</span></a></li>
+                                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -75,81 +80,31 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
-                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
-                                                <div class="bg-warning status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
-                            </li>
+
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">
                                     <?php
                                         echo $_SESSION['name'];
                                         ?>
-                                </span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar.png"></a>
+                                </span>
+                                <img class="border rounded-circle img-profile" src="
+                                <?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+      echo $img;
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>
+    ">
+                            </a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
@@ -165,60 +120,88 @@
                             <div class="card mb-3" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">
                                 <div class="card-body text-center shadow">
                                     <!-- Display the image -->
-                                    <img class="rounded-circle mb-3 mt-4" id="profileImage" src="assets/img/dogs/image2.jpeg" width="160" height="160">
-                                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+<img class="rounded-circle mb-3 mt-4" id="profileImage" 
+src=" 
+<?php
+echo $img;
+?>
+"
+ width="160" height="160">
 
-                                    <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" id="changePhotoBtn" type="button">Change Photo</button>
-                                    </div>
+
+
+
+    <form action="../php/image/upload.php" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="image" accept="image/*" id="fileInput" style="display:none;">
+    
+<div class="mb-3">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('fileInput').click();" id="changePhotoBtn" type="button">Change Photo</button>
+</div>
+</form>
+
+<script>
+  // Trigger the form submission once a file is selected
+  document.getElementById('fileInput').addEventListener('change', function() {
+    if (this.files.length > 0) {
+      // Submit the form once the user selects a file
+      this.form.submit();
+    }
+  });
+</script>
+
+
+<!-- <script>
+// Handle the 'Change Photo' button click to open the file input
+document.getElementById("changePhotoBtn").addEventListener("click", function() {
+    document.getElementById("fileInput").click();
+});
+
+// Update the profile image when a new file is selected
+document.getElementById("fileInput").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Set the new image source to the selected file
+            document.getElementById("profileImage").src = e.target.result;
+
+            // Optionally, you can upload the new image to the server here
+            uploadProfileImage(file);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+// Function to upload the image to the server using AJAX
+function uploadProfileImage(file) {
+    const formData = new FormData();
+    formData.append("profile_image", file);
+
+    fetch("upload-profile-image.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Profile picture updated successfully!");
+        } else {
+            console.error("Error uploading image.");
+        }
+    })
+    .catch(error => {
+        console.error("Error during upload:", error);
+    });
+}
+</script> -->
+
+
                                 </div>
                             </div>
-                            <script>
-                                // Handle the 'Change Photo' button click to open the file input
-                                document.getElementById("changePhotoBtn").addEventListener("click", function() {
-                                    document.getElementById("fileInput").click();
-                                });
-
-                                // Update the profile image when a new file is selected
-                                document.getElementById("fileInput").addEventListener("change", function(event) {
-                                    const file = event.target.files[0];
-                                    if (file) {
-                                        const reader = new FileReader();
-
-                                        reader.onload = function(e) {
-                                            // Set the new image source to the selected file
-                                            document.getElementById("profileImage").src = e.target.result;
-
-                                            // Optionally, you can upload the new image to the server here
-                                            uploadProfileImage(file);
-                                        };
-
-                                        reader.readAsDataURL(file);
-                                    }
-                                });
-
-                                // Function to upload the image to the server using AJAX
-                                function uploadProfileImage(file) {
-                                    const formData = new FormData();
-                                    formData.append("profile_image", file);
-
-                                    fetch("upload-profile-image.php", {
-                                            method: "POST",
-                                            body: formData
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (data.success) {
-                                                console.log("Profile picture updated successfully!");
-                                            } else {
-                                                console.error("Error uploading image.");
-                                            }
-                                        })
-                                        .catch(error => {
-                                            console.error("Error during upload:", error);
-                                        });
-                                }
-                            </script>
+                           
                             <div class="card shadow mb-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="750">
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold"><strong>Basic Information</strong></p>
@@ -236,10 +219,7 @@
                                         <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Role:</strong></div>
                                         <div class="col"><strong class="text-primary-emphasis">ADMIN</strong></div>
                                     </div>
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Email Address:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">abc@info.com</strong></div>
-                                    </div>
+
                                     <div class="row" style="padding-bottom: 9px;">
                                         <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Phone NO.:</strong></div>
                                         <div class="col"><strong class="text-primary-emphasis">98123123123</strong></div>
@@ -299,51 +279,37 @@
                                                         <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                                        <div class="mb-3"><label class="form-label" for="phone_no"><strong>Phone No.</strong></label><input class="form-control" type="number" id="number" placeholder="98....." name="phone_no"></div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
-                                                    </div>
+                                                    <div class="mb-3">
+                                                    <label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
+                                                <div class="row"></div>
+
+
+
+
+
                                                 </div>
                                                 <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="card shadow" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="750">
-                                        <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold">Contact Settings</p>
-                                        </div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Parsa" name="city"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="Nepal" name="country"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
-                                            </form>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
+                            <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
                 </div>
             </footer>
+            </div>
+
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -351,5 +317,26 @@
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+    <script src="assets/js/sweetalert.js"></script>
+
+
+    <?php
+    if(isset($_SESSION['status']) && $_SESSION['massage']) {
+    ?>
+    <script>
+    swal({
+    title: "<?php echo $_SESSION['massage']; ?>",
+    icon: "<?php echo $_SESSION['status']; ?>",
+    });
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['massage']);
+}
+?>
+
+
 </body>
 </html>
