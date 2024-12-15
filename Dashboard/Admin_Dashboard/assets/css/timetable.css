@@ -1,0 +1,153 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Headings */
+h2, h4 {
+    font-size: 24px;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Section Styles */
+.form-section {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Fields */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-select {
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    height: 40px;
+}
+
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(38, 143, 255, 0.5);
+}
+
+.row.mb-3 {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn-custom {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+#fetchSubjects {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+#fetchSubjects:hover {
+    background-color: #0056b3;
+}
+
+#generateTimetable {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+#generateTimetable:hover {
+    background-color: #218838;
+}
+
+#saveTimetable {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+}
+
+#saveTimetable:hover {
+    background-color: #e0a800;
+}
+
+/* Subjects Form Styles */
+#subjectsForm {
+    display: none;
+}
+
+/* Timetable Display */
+#timetableDisplay {
+    display: none;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.table td {
+    background-color: #f8f9fa;
+}
+
+.table td:hover {
+    background-color: #e2e6ea;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-section {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .row.mb-3 {
+        margin-bottom: 10px;
+    }
+
+    .form-select {
+        font-size: 14px;
+    }
+
+    .btn-custom {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .table th, .table td {
+        padding: 8px 10px;
+    }
+}
