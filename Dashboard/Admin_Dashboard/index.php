@@ -63,7 +63,7 @@ WHERE status = 'Present'";
     // If we have total students and total attendance, calculate attendance percentage
     if ($total_students > 0) {
         // Calculate attendance percentage
-        $attendancePercentage = ($totalAttendance / $total_students) * 100;
+        $attendancePercentage = floor(($totalAttendance / $total_students) * 100);
         $_SESSION['attendancePercentage'] = round($attendancePercentage, 2);  // Round to 2 decimal places
     
     } else {
@@ -75,7 +75,7 @@ WHERE status = 'Present'";
         // Calculate the total present students
         $totalPresent = ($totalAttendance / 100) * $total_students;  // This formula works as you're calculating presence from the attendance records
         $_SESSION['totalPresent'] = round($totalPresent);  // Round to the nearest integer
-    
+        
         // Output total present students
     } else {
         $_SESSION['totalPresent'] = 0;  // Default to 0 if there are no students or percentage
@@ -109,6 +109,7 @@ if ($result->num_rows > 0) {
     // Fetch the result (name)
     $row = $result->fetch_assoc();
     $_SESSION['name']= $row['name']; // Output the name
+    $_SESSION['role']='admin';
 } else {
     echo "No user found with this ID."; // No matching id found
 }
@@ -167,7 +168,7 @@ if ($result->num_rows > 0) {
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
                     <div class="container-fluid">
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
-                            data-aos="slide-down" data-aos-duration="1200" data-aos-delay="400">
+                            data-aos="slide-down" data-aos-duration="1200" data-aos-delay="400" data-aos-once="true">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
                                     placeholder="Search for ..." style="height: 38.6px;"><button
                                     class="btn btn-primary py-0" type="button" style="width: 42.6px;height: 37.6px;"><i
@@ -186,99 +187,8 @@ if ($result->num_rows > 0) {
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="badge bg-danger badge-counter">3+</span><i
-                                            class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a
-                                            class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i
-                                                        class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i
-                                                        class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-warning icon-circle"><i
-                                                        class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your
-                                                    account.</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                            Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="badge bg-danger badge-counter">7</span><i
-                                            class="fas fa-envelope fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a
-                                            class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can
-                                                        help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar2.jpeg">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>I have the photos that you ordered last
-                                                        month!</span></div>
-                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar3.jpeg">
-                                                <div class="bg-warning status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Last month's report looks great, I am
-                                                        very happy with the progress so far, keep up the good
-                                                        work!</span></div>
-                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar5.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is
-                                                        because someone told me that people say this to all dogs, even
-                                                        if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                            Alerts</a>
-                                    </div>
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end"
-                                    aria-labelledby="alertsDropdown"></div>
-                            </li>
+
+
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
@@ -290,14 +200,14 @@ if ($result->num_rows > 0) {
                                         </span><img
                                             class="border rounded-circle img-profile"
                                             src="assets/img/avatars/avatar.png"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="profile.php"><i
-                                                class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
-                                            class="dropdown-item" href="#"><i
-                                                class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity
-                                            log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <a class="dropdown-item" href="profile.php">
+                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <div class="dropdown-divider">
+
+                                        </div>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -305,13 +215,13 @@ if ($result->num_rows > 0) {
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade"
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade" data-aos-once="true"
                         data-aos-duration="1200" data-aos-delay="500" style="padding-right: 5px;">
                         <h3 class="text-dark mb-0">Admin Dashboard</h3><a
                             class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i
                                 class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
                     </div>
-                    <div class="row" data-aos="fade" data-aos-duration="1200" data-aos-delay="500">
+                    <div class="row" data-aos="fade" data-aos-duration="1200" data-aos-delay="500" data-aos-once="true">
                         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card shadow border-left-primary py-2" style="box-shadow: 0px 0px;">
                                 <div class="card-body">
@@ -412,9 +322,9 @@ if ($result->num_rows > 0) {
                             </div>
                         </div>
                     </div>
-                    <div class="row" data-aos="fade">
-                        <div class="col-lg-7 col-xl-8 col-xxl-12 mx-auto" data-aos="fade-right"
-                            data-aos-duration="1200">
+                    <div class="row" data-aos="fade" data-aos-once="true">
+                        <div class="col-lg-7 col-xl-8 col-xxl-12 mx-auto" data-aos="fade-right" data-aos-once="true"
+                            data-aos-duration="1200" data-aos-once="true">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 57.4px;">
@@ -436,7 +346,7 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="row">
                         <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200" data-aos-once="true"
                                 style="box-shadow: 0px 0px 20px;">
                                 <div class="card-header py-3">
                                     <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
@@ -445,7 +355,7 @@ if ($result->num_rows > 0) {
                                     <!-- Events will be dynamically populated here -->
                                 </ul>
                             </div>
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200" data-aos-once="true"
                                 style="box-shadow: 0px 0px 20px;">
                                 <div class="card-header py-3">
                                     <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
@@ -458,7 +368,7 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="col">
                         <div class="card shadow mb-4"></div>
-                        <div class="card shadow mb-4" data-aos="fade-left" data-aos-duration="1200"
+                        <div class="card shadow mb-4" data-aos="fade-left" data-aos-duration="1200" data-aos-once="true"
                             style="padding-bottom: 0px;height: 267.7px;width: 417.8px;margin-left: 74px;box-shadow: 0px 0px 20px; z-index:2;">
                             <div class="card-header py-3">
                                 <h6 class="text-primary fw-bold m-0">Quick Actions</h6>
@@ -668,7 +578,7 @@ if ($result->num_rows > 0) {
                             </div>
 
                             </div>
-                            <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
+                            <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500" data-aos-once="true"
                                 style="box-shadow: 0px 0px 20px;">
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>

@@ -20,11 +20,14 @@
 </head>
 
 <body id="page-top">
-    <?php
-    include '../php/db_connect.php';
-    session_start();
+<?php
+include '../php/db_connect.php'; // Database connection
+session_start();
 
-    ?>
+
+?>
+
+
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="padding-bottom: 0px;padding-top: 0px;">
@@ -75,74 +78,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
-                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
-                                                <div class="bg-warning status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
-                            </li>
+
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">
@@ -165,60 +101,97 @@
                             <div class="card mb-3" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">
                                 <div class="card-body text-center shadow">
                                     <!-- Display the image -->
-                                    <img class="rounded-circle mb-3 mt-4" id="profileImage" src="assets/img/dogs/image2.jpeg" width="160" height="160">
-                                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+<img class="rounded-circle mb-3 mt-4" id="profileImage" 
+src=" <?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
 
-                                    <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" id="changePhotoBtn" type="button">Change Photo</button>
-                                    </div>
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      echo 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>
+"
+ width="160" height="160">
+
+
+
+
+    <form action="../php/image/upload.php" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="image" accept="image/*" id="fileInput" style="display:none;">
+    
+<div class="mb-3">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('fileInput').click();" id="changePhotoBtn" type="button">Change Photo</button>
+</div>
+</form>
+
+<script>
+  // Trigger the form submission once a file is selected
+  document.getElementById('fileInput').addEventListener('change', function() {
+    if (this.files.length > 0) {
+      // Submit the form once the user selects a file
+      this.form.submit();
+    }
+  });
+</script>
+
+
+<!-- <script>
+// Handle the 'Change Photo' button click to open the file input
+document.getElementById("changePhotoBtn").addEventListener("click", function() {
+    document.getElementById("fileInput").click();
+});
+
+// Update the profile image when a new file is selected
+document.getElementById("fileInput").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Set the new image source to the selected file
+            document.getElementById("profileImage").src = e.target.result;
+
+            // Optionally, you can upload the new image to the server here
+            uploadProfileImage(file);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+// Function to upload the image to the server using AJAX
+function uploadProfileImage(file) {
+    const formData = new FormData();
+    formData.append("profile_image", file);
+
+    fetch("upload-profile-image.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Profile picture updated successfully!");
+        } else {
+            console.error("Error uploading image.");
+        }
+    })
+    .catch(error => {
+        console.error("Error during upload:", error);
+    });
+}
+</script> -->
+
+
                                 </div>
                             </div>
-                            <script>
-                                // Handle the 'Change Photo' button click to open the file input
-                                document.getElementById("changePhotoBtn").addEventListener("click", function() {
-                                    document.getElementById("fileInput").click();
-                                });
-
-                                // Update the profile image when a new file is selected
-                                document.getElementById("fileInput").addEventListener("change", function(event) {
-                                    const file = event.target.files[0];
-                                    if (file) {
-                                        const reader = new FileReader();
-
-                                        reader.onload = function(e) {
-                                            // Set the new image source to the selected file
-                                            document.getElementById("profileImage").src = e.target.result;
-
-                                            // Optionally, you can upload the new image to the server here
-                                            uploadProfileImage(file);
-                                        };
-
-                                        reader.readAsDataURL(file);
-                                    }
-                                });
-
-                                // Function to upload the image to the server using AJAX
-                                function uploadProfileImage(file) {
-                                    const formData = new FormData();
-                                    formData.append("profile_image", file);
-
-                                    fetch("upload-profile-image.php", {
-                                            method: "POST",
-                                            body: formData
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (data.success) {
-                                                console.log("Profile picture updated successfully!");
-                                            } else {
-                                                console.error("Error uploading image.");
-                                            }
-                                        })
-                                        .catch(error => {
-                                            console.error("Error during upload:", error);
-                                        });
-                                }
-                            </script>
+                           
                             <div class="card shadow mb-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="750">
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold"><strong>Basic Information</strong></p>
@@ -351,5 +324,31 @@
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+    <script src="assets/js/sweetalert.js"></script>
+    <script>
+    swal({
+    title: "<?php echo $_SESSION['massage']; ?>",
+    icon: "success",
+    });
+    </script>
+
+    <?php
+    if(isset($_SESSION['status']) && $_SESSION['massage']) {
+    ?>
+    <script>
+    swal({
+    title: "<?php echo $_SESSION['massage']; ?>",
+    icon: "<?php echo $_SESSION['status']; ?>",
+    });
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['massage']);
+}
+?>
+
+
 </body>
 </html>
