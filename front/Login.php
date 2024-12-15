@@ -1,58 +1,16 @@
-<?php
-// Start the session at the beginning of the script
-session_start();
-
-// Initialize variables to store form data
-$role = '';
-$id = '';
-$password = '';
-$remember_me = '';
-
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the selected role (admin, faculty, or student)
-    if (isset($_POST['role'])) {
-        $role = $_POST['role'];
-    }
-
-    // Get the ID entered by the user
-    if (isset($_POST['id'])) {
-        $id = $_POST['id'];
-    }
-
-    // Get the password entered by the user
-    if (isset($_POST['password'])) {
-        $password = $_POST['password'];
-    }
-
-    // Check if the "Remember me" checkbox is checked
-    $remember_me = isset($_POST['remember-me']) ? $_POST['remember-me'] : '';
-
-    // Store form data in session variables
-    $_SESSION['role'] = $role;
-    $_SESSION['id'] = $id;
-    $_SESSION['password'] = $password;
-    $_SESSION['remember_me'] = $remember_me;
-
-    // Redirect to another page to display the data (authentication.php in this case)
-    header("Location: authentication.php");
-    exit();
-}
-?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Academy Keeper</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/globals.css">
+  <link rel="stylesheet" href="../css/styleguide.css">
 </head>
-<link rel="stylesheet" href="../css/login.css">
-<link rel="stylesheet" href="../css/globals.css">
-<link rel="stylesheet" href="../css/styleguide.css">
-
-<!-- <script src="/js/login.js"></script> -->
 
 <body class="body">
-
   <div class="container">
 
     <div class="sid-img">
@@ -75,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="login-form">
-      <form class="form" action="" method="post">
+      <form class="form" id="login-form" method="post">
         <div class="select">
           <div class="option">
-            <input checked="" value="admin" name="role" id="admin" type="radio" class="input" />
+            <input checked value="admin" name="role" id="admin" type="radio" class="input" />
             <label for="admin" class="label">Administrator</label>
             <input value="faculty" name="role" id="faculty" type="radio" class="input" />
             <label for="faculty" class="label">Faculty</label>
@@ -122,10 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("form");
+      const form = document.querySelector("#login-form");
       const inputs = {
         Id: document.getElementById("id"),
-        rememberMe: document.getElementById("remember-me"),
       };
 
       form.addEventListener("submit", function (event) {
@@ -133,13 +90,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         clearErrors();
         let isValid = validateForm();
 
-        // if (isValid) {
-        //     alert("Login successful!");
-        //     // form.reset();
-        // }
+        if (isValid) {
+          const formData = new FormData(form);
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "process_login.php", true);
+
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              const response = JSON.parse(xhr.responseText);
+              if (response.success) {
+                window.location.href = response.redirect;
+              } else {
+                showError(inputs.Id, response.error);
+              }
+            } else {
+              showError(inputs.Id, "An error occurred. Please try again.");
+            }
+          };
+
+          xhr.send(formData);
+        }
       });
 
-      // Event listeners for real-time validation
+      // Real-time validation
       inputs.Id.addEventListener("input", function () {
         clearErrors();
         if (!validateID(inputs.Id.value)) {
@@ -156,57 +129,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           isValid = false;
         }
 
-        return isValid;  // Return the validation result
-      }
-
-      function validateRequired(value) {
-        return value.trim() !== ""; // Check if the input is not empty
+        return isValid;
       }
 
       function validateID(idValue) {
         let idPattern;
-        
+
         if (idValue.startsWith("STU-")) {
-          idPattern = /^STU-\d{4}-\d{4}$/; // Pattern for student IDs
+          idPattern = /^STU-\d{4}-\d{4}$/;
         } else if (idValue.startsWith("TEA-")) {
-          idPattern = /^TEA-\d{4}-\d{4}$/; // Pattern for teacher IDs
+          idPattern = /^TEA-\d{4}-\d{4}$/;
         } else if (idValue.startsWith("ADM-")) {
-          idPattern = /^ADM-\d{4}-\d{4}$/; // Pattern for admin IDs
+          idPattern = /^ADM-\d{4}-\d{4}$/;
         } else {
-          return false; // Invalid prefix
+          return false;
         }
 
-        return idPattern.test(idValue); // Check if ID matches the pattern
+        return idPattern.test(idValue);
       }
 
       function showError(input, message) {
         const errorSpan = document.createElement("span");
-        errorSpan.className = "error-message"; // Use class for styling
+        errorSpan.className = "error-message";
         errorSpan.textContent = message;
         errorSpan.style.color = "red";
-        input.parentElement.appendChild(errorSpan); // Display error message
+        input.parentElement.appendChild(errorSpan);
       }
 
       function clearErrors() {
-        document.querySelectorAll(".error-message").forEach(error => error.remove()); // Clear all error messages
+        document.querySelectorAll(".error-message").forEach(error => error.remove());
       }
     });
   </script>
 
   <?php
-  if(isset($_SESSION['status']) && isset($_SESSION['message'])) {
+  if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
   ?>
-  <script>
-  swal({
-    title: "<?php echo $_SESSION['message']; ?>",
-    icon: "<?php echo $_SESSION['status']; ?>",
-  });
-  </script>
+    <script>
+      swal({
+        title: "<?php echo $_SESSION['message']; ?>",
+        icon: "<?php echo $_SESSION['status']; ?>",
+      });
+    </script>
   <?php
-  unset($_SESSION['status']);
-  unset($_SESSION['message']);
+    unset($_SESSION['status']);
+    unset($_SESSION['message']);
   }
   ?>
-
 </body>
+
 </html>
