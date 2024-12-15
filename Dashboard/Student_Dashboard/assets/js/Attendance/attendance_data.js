@@ -6,7 +6,6 @@ function fetchAttendanceData() {
     fetch('Student_php/student_attendance_data.php')
         .then(response => response.json())
         .then(data => {
-            // Log the fetched data to the console
             console.log('Fetched data:', data);
 
             if (data.success) {
@@ -22,7 +21,7 @@ function fetchAttendanceData() {
                         labels: ['Present', 'Absent'],
                         datasets: [{
                             data: [presentCount, absentCount],
-                            backgroundColor: ['#28a745', '#dc3545'], // Green for Present, Red for Absent
+                            backgroundColor: ['#28a745', '#dc3545'],
                             borderColor: ['#218838', '#c82333'],
                             borderWidth: 1
                         }]
