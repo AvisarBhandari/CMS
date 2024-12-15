@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile - Academy Keeper</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/aos.min.css">
@@ -24,79 +25,126 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+            background-color: #fafafa;
+            color: #333;
         }
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+
+
         .profile-section {
-            background-color: #f7f7f7;
+            background: linear-gradient(145deg, #f0f8ff, #e0f7fa);
             padding: 30px;
             border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 850px;
+            border: 1px solid #d1e0e6;
         }
+
+
         .profile-section h2 {
-            color: #2c3e50;
-            font-weight: 600;
+            font-size: 26px;
+            font-weight: 700;
+            color: #00796b;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
         }
+
+        .profile-section h2::after {
+            content: "";
+            width: 50px;
+            height: 3px;
+            background-color: #00796b;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+
         .profile-section p {
             font-size: 16px;
-            color: #7f8c8d;
+            color: #607d8b;
+            line-height: 1.6;
+            margin: 5px 0;
         }
+
+
         .profile-section .row {
-            margin-bottom: 15px;
+            margin: 0 -10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
+
         .profile-section .row .col-md-6 {
-            margin-bottom: 15px;
+            padding: 10px;
+            flex: 0 0 48%;
         }
+
         .profile-section .row .col-md-6 p {
-            padding: 5px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
+            padding: 14px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #b0bec5;
+            font-size: 15px;
+            color: #455a64;
         }
+
+
+        .profile-section .row .col-md-6 p:hover {
+            background-color: #e0f7fa;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+
         .profile-section .row .col-md-6 p strong {
-            color: #2980b9;
+            color: #00796b;
+            font-weight: bold;
         }
+
+
         .profile-section .row:nth-child(odd) {
-            background-color: #eaf2f8;
-        }
-        .profile-section .row:nth-child(even) {
             background-color: #ffffff;
         }
-        .navbar {
-            background-color: #1e2a47;
+
+        .profile-section .row:nth-child(even) {
+            background-color: #f5f5f5;
         }
-        .navbar .navbar-brand span {
-            color: #fff;
+
+
+        .profile-section .action-btn {
+            text-align: center;
+            margin-top: 20px;
         }
-        .sidebar {
-            background-color: #2c3e50;
+
+        .profile-section .action-btn button {
+            background-color: #00796b;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .sidebar a {
-            color: #ecf0f1;
+
+        .profile-section .action-btn button:hover {
+            background-color: #004d40;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
         }
-        .sidebar a.active {
-            background-color: #2980b9;
-            color: #fff;
-        }
-        .footer {
-            background-color: #1e2a47;
-            color: #fff;
-            padding: 10px 0;
-        }
-        .footer .text-center {
-            font-size: 14px;
-        }
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #2980b9;
-            color: #fff;
-            border-radius: 50%;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+
+        @media (max-width: 768px) {
+            .profile-section .row .col-md-6 {
+                flex: 0 0 100%;
+                margin-bottom: 10px;
+            }
         }
     </style>
 
@@ -110,16 +158,22 @@
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"
                     style="padding-bottom: 0px;padding-top: 0px;">
                     <div class="sidebar-brand-icon rotate-n-15" style="transform: rotate(3deg);">
-                        <img src="assets/img/untitled-1.png" width="103" height="110" style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;">
+                        <img src="assets/img/untitled-1.png" width="103" height="110"
+                            style="margin-right: -32px;margin-top: -12px;margin-left: -37px;margin-bottom: -6px;">
                     </div>
-                    <div class="sidebar-brand-text mx-3"><span style="padding-top: 0px;padding-bottom: 0px;">Academy<br>Keeper</span></div>
+                    <div class="sidebar-brand-text mx-3"><span
+                            style="padding-top: 0px;padding-bottom: 0px;">Academy<br>Keeper</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="profile.php"><i class="fas fa-user" style="font-size: 13px;"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="time_table.php"><i class="fas fa-calendar-alt" style="font-size: 13px;"></i><span>Time Table&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="exam.php"><i class="fas fa-table"></i><span>Examination</span></a><a class="nav-link"
+                    <li class="nav-item"><a class="nav-link" href="index.php"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.php"><i class="fas fa-user"
+                                style="font-size: 13px;"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="time_table.php"><i class="fas fa-calendar-alt"
+                                style="font-size: 13px;"></i><span>Time Table&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="exam.php"><i
+                                class="fas fa-table"></i><span>Examination</span></a><a class="nav-link"
                             href="Courses%20Management.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                                 height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-book">
                                 <path
@@ -127,7 +181,8 @@
                                 </path>
                             </svg><span class="ps-1">Courses Management&nbsp;</span></a></li>
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle-1" type="button"></button></div>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle-1" type="button"></button></div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -249,4 +304,5 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
+
 </html>
