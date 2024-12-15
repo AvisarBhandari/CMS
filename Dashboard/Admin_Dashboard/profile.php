@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label-button-label.css">
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    
 </head>
 
 <body id="page-top">
@@ -58,6 +59,7 @@ session_start();
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                             </svg>&nbsp;
                             <span>Financial Management&nbsp;</span></a></li>
+                                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -85,7 +87,24 @@ session_start();
                                     <?php
                                         echo $_SESSION['name'];
                                         ?>
-                                </span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar.png"></a>
+                                </span>
+                                <img class="border rounded-circle img-profile" src="
+                                <?php
+    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+
+    if (!empty($result) && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $imageData = $row['image'];
+      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+      echo $img;
+    } else {
+      echo 'No image uploaded yet.';
+    }
+
+    $conn->close();
+    ?>
+    ">
+                            </a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
@@ -102,19 +121,10 @@ session_start();
                                 <div class="card-body text-center shadow">
                                     <!-- Display the image -->
 <img class="rounded-circle mb-3 mt-4" id="profileImage" 
-src=" <?php
-    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
-
-    if (!empty($result) && $result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      $imageData = $row['image'];
-      echo 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
-    } else {
-      echo 'No image uploaded yet.';
-    }
-
-    $conn->close();
-    ?>
+src=" 
+<?php
+echo $img;
+?>
 "
  width="160" height="160">
 
@@ -209,10 +219,7 @@ function uploadProfileImage(file) {
                                         <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Role:</strong></div>
                                         <div class="col"><strong class="text-primary-emphasis">ADMIN</strong></div>
                                     </div>
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Email Address:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">abc@info.com</strong></div>
-                                    </div>
+
                                     <div class="row" style="padding-bottom: 9px;">
                                         <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Phone NO.:</strong></div>
                                         <div class="col"><strong class="text-primary-emphasis">98123123123</strong></div>
@@ -272,51 +279,37 @@ function uploadProfileImage(file) {
                                                         <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                                        <div class="mb-3"><label class="form-label" for="phone_no"><strong>Phone No.</strong></label><input class="form-control" type="number" id="number" placeholder="98....." name="phone_no"></div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
-                                                    </div>
+                                                    <div class="mb-3">
+                                                    <label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
+                                                <div class="row"></div>
+
+
+
+
+
                                                 </div>
                                                 <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="card shadow" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="750">
-                                        <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold">Contact Settings</p>
-                                        </div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Parsa" name="city"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="Nepal" name="country"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
-                                            </form>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="bg-white sticky-footer">
+                            <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
                 </div>
             </footer>
+            </div>
+
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -327,12 +320,7 @@ function uploadProfileImage(file) {
 
 
     <script src="assets/js/sweetalert.js"></script>
-    <script>
-    swal({
-    title: "<?php echo $_SESSION['massage']; ?>",
-    icon: "success",
-    });
-    </script>
+
 
     <?php
     if(isset($_SESSION['status']) && $_SESSION['massage']) {
