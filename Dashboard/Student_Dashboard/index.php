@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/MUSA_button-label-button-label.css">
     <link rel="stylesheet" href="assets/css/MUSA_button-label.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    
 </head>
 
 <body id="page-top">
@@ -207,15 +208,17 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Assignment</h6>
+                                    <h6 class="text-primary fw-bold m-0">Attendance(This Month)</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas
-                                            data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Assignment Completion &quot;,&quot;Assignment Pending&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Assignment Completion vs. Pending&quot;,&quot;backgroundColor&quot;:[&quot;rgb(30,122,109)&quot;,&quot;rgb(229,5,58)&quot;],&quot;borderColor&quot;:[&quot;rgba(0,0,0,0.1)&quot;,&quot;rgba(0,0,0,0.1)&quot;],&quot;data&quot;:[&quot;85&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;,&quot;fontColor&quot;:&quot;#6777ef&quot;,&quot;fontSize&quot;:14},&quot;reverse&quot;:false,&quot;position&quot;:&quot;bottom&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;display&quot;:false}}}"></canvas>
+                                    <div class="chart-area" style="position: relative; height: 250px;">
+                                        <canvas id="attendanceDonutChart" ></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
 
 
                         <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-duration="650" data-aos-delay="550"
@@ -269,6 +272,10 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/Events/fetch_events.js"></script>
     <script src="assets/js/Events/fetch_holidays.js"></script>
+    <script src="assets/js/Attendance/attendance_data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
