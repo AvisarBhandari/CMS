@@ -136,7 +136,8 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                                <span><strong>Assignment Completion Rate</strong></span></div>
+                                                <span><strong>Assignment Completion Rate</strong></span>
+                                            </div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>20%</span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -166,7 +167,8 @@
                                                     <div class="progress progress-sm">
                                                         <div class="progress-bar bg-info" aria-valuenow="50"
                                                             aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                                                            <span class="visually-hidden">50%</span></div>
+                                                            <span class="visually-hidden">50%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,17 +186,15 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 57.4px;">
-                                    <h6 class="text-primary fw-bold m-0">Submission Performance</h6>
+                                    <h6 class="text-primary fw-bold m-0">This Month Attendance</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas
-                                            data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;On Time&quot;,&quot;Late&quot;,&quot;Not Submitting&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;On Time&quot;,&quot;backgroundColor&quot;:[&quot;#3d8e33&quot;,&quot;#e5e811&quot;,&quot;rgb(229,5,58)&quot;],&quot;borderColor&quot;:[&quot;#d77f7f&quot;,&quot;#d77f7f&quot;,&quot;#d77f7f&quot;],&quot;data&quot;:[&quot;1000&quot;,&quot;1000&quot;,&quot;1000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;,&quot;fontColor&quot;:&quot;#6777ef&quot;,&quot;fontSize&quot;:14},&quot;reverse&quot;:false,&quot;position&quot;:&quot;bottom&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;display&quot;:false}}}"></canvas>
+                                    <div class="chart-area"><canvas id="attendanceChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        
                         <div class="col" data-aos="fade-left" data-aos-duration="550" data-aos-delay="400"
                             data-aos-once="true">
                             <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-duration="650" data-aos-delay="550"
@@ -212,34 +212,34 @@
                             </div>
 
 
-                            
-                        <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-duration="650" data-aos-delay="550"
-                            data-aos-once="true">
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"></div>
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+
+                            <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-duration="650" data-aos-delay="550"
+                                data-aos-once="true">
+                                <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"></div>
+                                <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                                    style="box-shadow: 0px 0px 20px;">
+                                    <div class="card-header py-3">
+                                        <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="holiday-list">
+                                        <!-- Holidays will be dynamically loaded here -->
+                                    </ul>
                                 </div>
-                                <ul class="list-group list-group-flush" id="holiday-list">
-                                    <!-- Holidays will be dynamically loaded here -->
-                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                        </div>
-                    </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -249,6 +249,7 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/Events/fetch_events.js"></script>
     <script src="assets/js/Events/fetch_holidays.js"></script>
+    <script src="assets/js/Profile/attendance_data.js"></script>
 </body>
 
 </html>
