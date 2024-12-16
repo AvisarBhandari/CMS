@@ -43,18 +43,15 @@ if ($row['count'] > 0) {
     $statement->bind_param('sss', $imgContent, $id, $role);
     $current_id = $statement->execute() 
     or
-    $_SESSION['status']= "Error";
-    $_SESSION['massage']= "Problem on Image Insert";
-    header("Location: ../../Admin_Dashboard/profile.php");
     die("<b>Error:</b> Problem on Image Insert<br/>" . mysqli_connect_error());
 
 
     if ($current_id) {
-        $_SESSION['status']= "Success";
+        $_SESSION['status']= "success";
         $_SESSION['massage']= "Image uploaded successfully.";
         header("Location: ../../Admin_Dashboard/profile.php");
     } else {
-        $_SESSION['status']= "Error";
+        $_SESSION['status']= "error";
         $_SESSION['massage']= "Image upload failed, please try again.";
         header("Location: ../../Admin_Dashboard/profile.php");
     }
@@ -71,12 +68,12 @@ if ($row['count'] > 0) {
 
 
     if ($current_id) {
-        $_SESSION['status']= "Success";
+        $_SESSION['status']= "success";
         $_SESSION['massage']= "Image uploaded successfully.";
         header("Location: ../../Admin_Dashboard/profile.php");
 
     } else {
-        $_SESSION['status']= "Error";
+        $_SESSION['status']= "error";
         $_SESSION['massage']= "Image upload failed, please try again.";
         header("Location: ../../Admin_Dashboard/profile.php");
     }
@@ -84,7 +81,7 @@ if ($row['count'] > 0) {
 
 }
 else {
-    $_SESSION['status']= "Error";
+    $_SESSION['status']= "error";
     $_SESSION['massage']= "Please select an image file to upload.";
     header("Location: ../../Admin_Dashboard/profile.php");
 }

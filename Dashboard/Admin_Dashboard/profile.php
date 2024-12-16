@@ -151,54 +151,6 @@ echo $img;
 </script>
 
 
-<!-- <script>
-// Handle the 'Change Photo' button click to open the file input
-document.getElementById("changePhotoBtn").addEventListener("click", function() {
-    document.getElementById("fileInput").click();
-});
-
-// Update the profile image when a new file is selected
-document.getElementById("fileInput").addEventListener("change", function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            // Set the new image source to the selected file
-            document.getElementById("profileImage").src = e.target.result;
-
-            // Optionally, you can upload the new image to the server here
-            uploadProfileImage(file);
-        };
-
-        reader.readAsDataURL(file);
-    }
-});
-
-// Function to upload the image to the server using AJAX
-function uploadProfileImage(file) {
-    const formData = new FormData();
-    formData.append("profile_image", file);
-
-    fetch("upload-profile-image.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log("Profile picture updated successfully!");
-        } else {
-            console.error("Error uploading image.");
-        }
-    })
-    .catch(error => {
-        console.error("Error during upload:", error);
-    });
-}
-</script> -->
-
-
                                 </div>
                             </div>
                            
@@ -206,94 +158,69 @@ function uploadProfileImage(file) {
                                 <div class="card-header py-3">
                                     <p class="text-primary m-0 fw-bold"><strong>Basic Information</strong></p>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Full Name:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">
-                                            <?php
-                                        echo $_SESSION['name'];
-                                        ?>
-                                        </strong></div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Role:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">ADMIN</strong></div>
-                                    </div>
 
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Phone NO.:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">98123123123</strong></div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">D.O.B:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">2003/11/30</strong></div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 9px;">
-                                        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Genger:</strong></div>
-                                        <div class="col"><strong class="text-primary-emphasis">Male</strong></div>
-                                    </div>
-                                </div>
+
+                                <div class="card-body status">
+    <div class="row" style="padding-bottom: 9px;">
+        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Full Name:</strong></div>
+        <div class="col"><strong class="text-primary-emphasis" id="user-name">Loading...</strong></div>
+    </div>
+    <div class="row" style="padding-bottom: 9px;">
+        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Role:</strong></div>
+        <div class="col"><strong class="text-primary-emphasis" id="user-role">Loading...</strong></div>
+    </div>
+
+    <div class="row" style="padding-bottom: 9px;">
+        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Phone NO.:</strong></div>
+        <div class="col"><strong class="text-primary-emphasis" id="user-phone">Loading...</strong></div>
+    </div>
+    <div class="row" style="padding-bottom: 9px;">
+        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">D.O.B:</strong></div>
+        <div class="col"><strong class="text-primary-emphasis" id="user-dob">Loading...</strong></div>
+    </div>
+    <div class="row" style="padding-bottom: 9px;">
+        <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Gender:</strong></div>
+        <div class="col"><strong class="text-primary-emphasis" id="user-gender">Loading...</strong></div>
+    </div>
+</div>
+
                             </div>
                         </div>
+
                         <div class="col-lg-8">
-                            <div class="row mb-3 d-none">
-                                <div class="col">
-                                    <div class="card text-white bg-primary shadow">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col">
-                                                    <p class="m-0">Peformance</p>
-                                                    <p class="m-0"><strong>65.2%</strong></p>
-                                                </div>
-                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                            </div>
-                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card text-white bg-success shadow">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col">
-                                                    <p class="m-0">Peformance</p>
-                                                    <p class="m-0"><strong>65.2%</strong></p>
-                                                </div>
-                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                            </div>
-                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="card shadow mb-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="600">
                                         <div class="card-header py-3">
                                             <p class="text-primary m-0 fw-bold">User Settings</p>
                                         </div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="phone_no"><strong>Phone No.</strong></label><input class="form-control" type="number" id="number" placeholder="98....." name="phone_no"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="mb-3">
-                                                    <label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address"></div>
-                                                <div class="row"></div>
+                                        <div class="card-body placeholder_Dynamic">
+<form action="../php/profile/update.php" method="POST">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label" for="username"><strong>Username</strong></label>
+                <input class="form-control" type="text" id="username" placeholder="user.name" name="username">
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label" for="phone_no"><strong>Phone No.</strong></label>
+                <input class="form-control" type="number" id="phone_no" placeholder="98....." name="phone_no">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label class="form-label" for="address"><strong>Address</strong></label>
+            <input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address">
+        </div>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary btn-sm" type="submit">Save Settings</button>
+    </div>
+</form>
 
-
-
-
-
-                                                </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-                                            </form>
                                         </div>
                                     </div>
 
@@ -317,7 +244,7 @@ function uploadProfileImage(file) {
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
-
+    <script src="assets/js/profile/profile.js"></script>
 
     <script src="assets/js/sweetalert.js"></script>
 
@@ -330,7 +257,7 @@ function uploadProfileImage(file) {
     title: "<?php echo $_SESSION['massage']; ?>",
     icon: "<?php echo $_SESSION['status']; ?>",
     });
-    </script>
+    </>
     <?php
     unset($_SESSION['status']);
     unset($_SESSION['massage']);
