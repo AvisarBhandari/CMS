@@ -108,77 +108,50 @@
                                 class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
                     </div>
                     <div class="row mt-0">
-                        <div class="col-md-6 col-xl-3 col-xxl-3 mb-4 me-3 ms-5" data-aos="fade-right"
-                            data-aos-duration="650" data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-primary py-2" style="box-shadow: 0px 0px;">
-                                <div class="card-body">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total
-                                                    Student</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>40,000</span></div>
-                                        </div>
-                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
-                                                height="1em" fill="currentColor" viewBox="0 0 16 16"
-                                                class="bi bi-person fa-2x text-gray-300">
-                                                <path
-                                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z">
-                                                </path>
-                                            </svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 col-xxl-3 mb-4 ms-5 me-3" data-aos="zoom-in"
-                            data-aos-duration="650" data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-success py-2">
-                                <div class="card-body">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                                <span><strong>Assignment Completion Rate</strong></span>
-                                            </div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>20%</span></div>
-                                        </div>
-                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                                viewBox="0 0 24 24" width="1em" fill="currentColor"
-                                                class="fa-2x text-gray-300">
-                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z">
-                                                </path>
-                                            </svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 col-xxl-3 mb-4 ms-5" data-aos="fade-left" data-aos-duration="650"
-                            data-aos-delay="500" data-aos-once="true">
-                            <div class="card shadow border-left-info py-2">
-                                <div class="card-body">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Attendance
-                                                    Rate</span></div>
-                                            <div class="row g-0 align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
+
+                        <div class="container mt-5" id="course-info-container"
+                            style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
+
+                            <div class="col-md-6 col-xl-3 col-xxl-3 mb-4 ms-5" data-aos="fade-left"
+                                data-aos-duration="650" data-aos-delay="500" data-aos-once="true">
+                                <div class="card shadow border-left-info py-2">
+                                    <div class="card-body">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-info fw-bold text-xs mb-1">
+                                                    <span>Salary</span>
                                                 </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm">
-                                                        <div class="progress-bar bg-info" aria-valuenow="50"
-                                                            aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                                                            <span class="visually-hidden">50%</span>
+                                                <div class="row g-0 align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="text-dark fw-bold h5 mb-0 me-3"><span
+                                                                id="salary_amount">₹0.00</span></div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div id="payment_status" class="fw-bold text-red">Not Paid</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row g-0 align-items-center mt-2">
+                                                    <div class="col-auto">
+                                                        <div class="progress progress-sm">
+                                                            <div class="progress-bar bg-info" id="salary_progress_bar"
+                                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                                style="width: 0%;">
+                                                                <span class="visually-hidden">0%</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-lg-5 col-xl-4" data-aos="fade-right" data-aos-duration="550"
@@ -250,6 +223,8 @@
     <script src="assets/js/Events/fetch_events.js"></script>
     <script src="assets/js/Events/fetch_holidays.js"></script>
     <script src="assets/js/Profile/attendance_data.js"></script>
+    <script src="assets/js/Student_data/student_data_display.js"></script>
+    <script src="assets/js/Profile/salary_data.js"></script>
 </body>
 
 </html>

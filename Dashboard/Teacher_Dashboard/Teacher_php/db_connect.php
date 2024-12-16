@@ -1,11 +1,8 @@
 <?php
-
 $servername = "localhost";  
 $username = "root";        
 $password = "";             
 $dbname = "academy_keeper"; 
-
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
