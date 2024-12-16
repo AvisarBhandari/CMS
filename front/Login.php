@@ -1,3 +1,44 @@
+<?php
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture form data
+    // Get the selected role (admin, faculty, or student)
+    if (isset($_POST['role'])) {
+        $role = $_POST['role'];  // Get the selected role (admin, faculty, or student)
+        $role = $_POST['role'];
+    }
+
+    // Get the ID entered by the user
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];  // Get the ID entered by the user
+        $id = $_POST['id'];
+    }
+
+    // Get the password entered by the user
+    if (isset($_POST['password'])) {
+        $password = $_POST['password'];  // Get the password entered by the user
+    }
+        $password = $_POST['password'];
+
+    if (isset($_POST['remember-me'])) {
+        $remember_me = $_POST['remember-me'];  // Check if the "Remember me" checkbox is checked
+    }
+
+    // Check if the "Remember me" checkbox is checked
+    $remember_me = isset($_POST['remember-me']) ? $_POST['remember-me'] : '';
+    // Store form data in session variables
+    $_SESSION['role'] = $role;
+    $_SESSION['id'] = $id;
+    $_SESSION['password'] = $password;
+    $_SESSION['remember_me'] = $remember_me;
+
+
+    // Redirect to another page to display the data
+    // Redirect to another page to display the data (authentication.php in this case)
+    header("Location: authentication.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +74,7 @@
     </div>
 
     <div class="login-form">
-      <form class="form" id="login-form" method="post" action="authentication.php">
+      <form class="form" id="login-form" method="post">
         <div class="select">
           <div class="option">
             <input checked value="admin" name="role" id="admin" type="radio" class="input" />
@@ -116,18 +157,6 @@
         return idPattern.test(idValue);
       }
 
-      function showError(input, message) {
-        const errorSpan = document.createElement("span");
-        errorSpan.className = "error-message";
-        errorSpan.textContent = message;
-        errorSpan.style.color = "red";
-        input.parentElement.appendChild(errorSpan);
-      }
-
-      function clearErrors() {
-        document.querySelectorAll(".error-message").forEach(error => error.remove());
-      }
-    });
   </script>
 
   <?php

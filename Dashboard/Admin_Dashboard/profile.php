@@ -25,7 +25,6 @@
 include '../php/db_connect.php'; // Database connection
 session_start();
 
-
 ?>
 
 
@@ -195,7 +194,8 @@ echo $img;
                                             <p class="text-primary m-0 fw-bold">User Settings</p>
                                         </div>
                                         <div class="card-body placeholder_Dynamic">
-<form action="../php/profile/update.php" method="POST">
+<form action="../php/profile/update.php" method="POST" id="settingsForm">
+
     <div class="row">
         <div class="col">
             <div class="mb-3">
@@ -217,9 +217,11 @@ echo $img;
         </div>
     </div>
     <div class="mb-3">
-        <button class="btn btn-primary btn-sm" type="submit">Save Settings</button>
+        <button value="Save Changes" class="btn btn-primary"></button>
     </div>
 </form>
+
+
 
                                         </div>
                                     </div>
@@ -257,7 +259,7 @@ echo $img;
     title: "<?php echo $_SESSION['massage']; ?>",
     icon: "<?php echo $_SESSION['status']; ?>",
     });
-    </>
+    </script>
     <?php
     unset($_SESSION['status']);
     unset($_SESSION['massage']);

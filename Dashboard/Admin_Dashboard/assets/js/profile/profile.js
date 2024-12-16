@@ -31,24 +31,7 @@ $(document).ready(function() {
                     </div>
                 `);
                 
-                                $('.placeholder_Dynamic').html(`
-                                                                <form>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="${response.name || 'N/A'}" name="username"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="phone_no"><strong>Phone No.</strong></label><input class="form-control" type="number" id="number" placeholder="${response.phone_number || 'N/A'}" name="phone_no"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="mb-3">
-                                                    <label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="${response.address || 'N/A'}" name="address"></div>
-                                                <div class="row"></div>
-                                                </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-                                            </form>
-                `);
+                                
             } else {
                 // Handle error response if no data found
                 $('.card-body').html(`<p>Error fetching data.</p>`);

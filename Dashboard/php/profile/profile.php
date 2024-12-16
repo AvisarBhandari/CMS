@@ -16,9 +16,9 @@ $data = array(); // To store the fetched data
 // Fetch data based on user role
 try {
     if ($role == "admin") {
-        $query = "SELECT * FROM admin WHERE id = ?";
+        $query = "SELECT * FROM admin WHERE id = ? ";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $id);  // Bind user ID
+        $stmt->bind_param("s", $id);  // Bind user ID
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
@@ -36,7 +36,7 @@ try {
     } elseif ($role == "student") {
         $query = "SELECT * FROM students_info WHERE student_roll = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $id);  // Bind student roll (or student id)
+        $stmt->bind_param("s", $id);  // Bind student roll (or student id)
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
@@ -54,7 +54,7 @@ try {
     } elseif ($role == "faculty") {
         $query = "SELECT * FROM faculty WHERE faculty_id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $id);  // Bind faculty id
+        $stmt->bind_param("s", $id);  // Bind faculty id
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {

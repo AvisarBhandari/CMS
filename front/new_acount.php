@@ -3,21 +3,8 @@ session_start();
 
 include ('db_connect.php');
 
-$name =     $_SESSION['name'];
-$id =    $_SESSION['id'] ;
-$phone=    $_SESSION['phone'];
-$address=    $_SESSION['address'] ;
-$password=    $_SESSION['password'] ;
-$role=    $_SESSION['role'];
 
 
-echo "HELLO";
-echo "\n id=".$id;
-echo "\n phone=".$phone;
-echo "\n address=".$address;
-echo "\n password=".$password;
-echo "\n role=".$role;
-echo "\n roless=".$name;
 
 
 if ( $_SESSION['name']&&$_SESSION['id']&&$_SESSION['phone']&&$_SESSION['address']&&$_SESSION['password']&&$_SESSION['role'] )
