@@ -17,13 +17,13 @@ $(document).ready(function() {
                            
                             coursesData.courses.forEach(function(course) {
                                 $.ajax({
-                                    url: 'Teacher_php/get_students_by_course.php', 
+                                    url: 'Teacher_php/get_student_count.php', 
                                     method: 'GET',
                                     data: { course_code: course.course_code },
                                     dataType: 'json',
                                     success: function(studentsData) {
+                                        console.log('Student Count Data:', studentsData)
                                         if (studentsData.success) {
-                                          
                                             var courseCard = `
                                                 <div class="col-md-6 col-xl-3 col-xxl-3 mb-4 me-3 ms-5" data-aos="fade-right"
                                                     data-aos-duration="650" data-aos-delay="500" data-aos-once="true">
