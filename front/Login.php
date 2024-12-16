@@ -33,7 +33,7 @@
     </div>
 
     <div class="login-form">
-      <form class="form" id="login-form" method="post">
+      <form class="form" id="login-form" method="post" action="authentication.php">
         <div class="select">
           <div class="option">
             <input checked value="admin" name="role" id="admin" type="radio" class="input" />
@@ -79,38 +79,6 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("#login-form");
-      const inputs = {
-        Id: document.getElementById("id"),
-      };
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form submission
-        clearErrors();
-        let isValid = validateForm();
-
-        if (isValid) {
-          const formData = new FormData(form);
-          const xhr = new XMLHttpRequest();
-          xhr.open("POST", "process_login.php", true);
-
-          xhr.onload = function () {
-            if (xhr.status === 200) {
-              const response = JSON.parse(xhr.responseText);
-              if (response.success) {
-                window.location.href = response.redirect;
-              } else {
-                showError(inputs.Id, response.error);
-              }
-            } else {
-              showError(inputs.Id, "An error occurred. Please try again.");
-            }
-          };
-
-          xhr.send(formData);
-        }
-      });
 
       // Real-time validation
       inputs.Id.addEventListener("input", function () {
