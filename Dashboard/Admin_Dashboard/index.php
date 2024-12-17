@@ -1,8 +1,9 @@
     <?php
     include '../php/db_connect.php';
     session_start();
-
-    
+    echo $_SESSION['name'];
+    echo $_SESSION['id'];
+        
     ?>
 
 <!DOCTYPE html>
@@ -548,7 +549,7 @@
         function fetchAttendanceData() {
             $.ajax({
                 url: '../php/count.php',  // PHP file that will handle the request
-                type: 'GET',
+                type: 'POST',
                 success: function(response) {
                     // Parse the JSON response from the PHP file
                     var data = JSON.parse(response);
@@ -566,7 +567,7 @@
                     document.getElementById('total_courses').innerHTML = cource_no;
 
                     document.getElementById('attendanceProgressBar').style.width = attendancePercentage + "%";
-                      document.getElementById('attendanceProgressBar').setAttribute('aria-valuenow', attendancePercentage); 
+                    document.getElementById('attendanceProgressBar').setAttribute('aria-valuenow', attendancePercentage); 
 
                 },
                 error: function(xhr, status, error) {
