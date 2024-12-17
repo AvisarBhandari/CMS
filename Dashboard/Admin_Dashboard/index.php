@@ -41,7 +41,7 @@
     $_SESSION['total_faculty'] = $total_faculty;
 
     $sql = "SELECT COUNT(*) AS TotalAttendance 
-FROM attendance 
+FROM student_attendance 
 WHERE status = 'Present'";
 
     // Execute the query
