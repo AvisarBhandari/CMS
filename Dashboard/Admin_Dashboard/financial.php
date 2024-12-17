@@ -287,6 +287,12 @@ include '../php/db_connect.php';
                                                             <path d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                                                         </svg>Generate Fee List</button>
+                                                        <button id="toggleFeeDataBtn"
+                                                        class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                        type="button">
+                                                        Show Data
+                                                    </button>
+                                                        
                                                 </div>
                                             </div>
                                         </div>
@@ -390,6 +396,11 @@ include '../php/db_connect.php';
                                                             <path d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                                                         </svg>Generate Salary List</button>
+                                                        <button id="hideSalaryList"
+                                                        class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                                                        type="button">
+                                                        Hide Data
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -450,6 +461,7 @@ include '../php/db_connect.php';
     <script src="assets/js/Finance/fee_salary_data.js"></script>
     <script src="assets/js/Finance/get_fee_amount.js"></script>
     <script src="assets/js/Finance/salary_chart.js"></script>
+    <script src="assets/js/Finance/hide_button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
