@@ -54,8 +54,7 @@ if (!in_array($syllabus_status, ['Completed', 'Not Completed'])) {
 }
 
 // Prepare SQL query using prepared statements for update
-$query = "UPDATE subjects SET subject_code = ?, subject_name = ?, credits = ?, semester = ?, syllabus_status = ?, course_code = ? 
-          WHERE subject_id = ?";
+$query = "UPDATE subjects SET subject_code = ?, subject_name = ?, credits = ?, semester = ?, syllabus_status = ?, course_code = ? WHERE subject_id = ?";
 
 $stmt = mysqli_prepare($conn, $query);
 if ($stmt) {

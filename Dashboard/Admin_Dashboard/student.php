@@ -673,6 +673,11 @@
             <script src="assets/js/Student/gender_data.js"></script>
             <script src="assets/js/Student/student_attendance_system.js"></script>
             <script src="assets/js/Student/student_data_stats.js"></script>
+            <!-- SweetAlert CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.all.min.js"></script>
+
+            <script src="assets/js/sweetalert.js"></script>
 </body>
 
 </html>

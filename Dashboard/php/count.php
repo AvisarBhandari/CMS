@@ -5,90 +5,72 @@ include 'db_connect.php';
 // Query to get total number of students
 $student_query = "SELECT COUNT(*) AS total_students FROM students_info";
 $result_student = $conn->query($student_query);
-$total_students = $result_student->num_rows > 0 ? $result_student->fetch_assoc()['total_students'] : 0;
+if ($result_student) {
+    $total_students = $result_student->fetch_assoc()['total_students'];
+} else {
+    $total_students = 0;
+}
 
 // Query to get total number of faculty members
 $faculty_query = "SELECT COUNT(*) AS total_faculty FROM faculty";
 $result_faculty = $conn->query($faculty_query);
-$total_faculty = $result_faculty->num_rows > 0 ? $result_faculty->fetch_assoc()['total_faculty'] : 0;
-
-// Store data in session variables
-$_SESSION['total_students'] = $total_students;
-$_SESSION['total_faculty'] = $total_faculty;
-
-
-
-// Or just display the data (for testing or debugging)
-echo "Total students: " . $total_students . "<br>";
-echo "Total faculty members: " . $total_faculty . "<br>";
-
-
-$sql = "SELECT COUNT(*) AS TotalAttendance FROM attendance";
-
-// Execute the query
-$result = $conn->query($sql);
-
-// Check if the query was successful and retrieve the result
-if ($result->num_rows > 0) {
-    // Fetch the result as an associative array
-    $row = $result->fetch_assoc();
-    
-    // Store the total attendance count in the variable
-    $totalAttendance = $row['TotalAttendance'];
-
-    // Output the total attendance records
-    echo "Total Attendance Records: " . $totalAttendance . "<br>";
+if ($result_faculty) {
+    $total_faculty = $result_faculty->fetch_assoc()['total_faculty'];
 } else {
-    echo "No attendance records found.<br>";
-    $totalAttendance = 0; // Assign a default value in case there are no records
+    $total_faculty = 0;
 }
 
-// If we have total students and total attendance, calculate attendance percentage
+// Query to get the total attendance of students today
+$sql = "SELECT COUNT(*) AS total_Student_Attendance FROM student_attendance WHERE Status = 'Present' AND attendance_date = CURDATE()";
+$result = $conn->query($sql);
+
+// Check if the query was successful
+if ($result) {
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $total_Student_Attendance = $row['total_Student_Attendance'];
+    } else {
+        $total_Student_Attendance = 0;
+    }
+} else {
+    $total_Student_Attendance = 0;
+}
+
+// Calculate attendance percentage
 if ($total_students > 0) {
-    // Calculate attendance percentage
-    $attendancePercentage = ($totalAttendance / $total_students) * 100;
-    $_SESSION['attendancePercentage'] = round($attendancePercentage, 2);  // Round to 2 decimal places
-
-    // Output attendance percentage
-    echo "Attendance Percentage: " . $_SESSION['attendancePercentage'] . "%<br>";
+    $attendancePercentage = ($total_Student_Attendance / $total_students) * 100;
+    $attendancePercentage = round($attendancePercentage, 2);  // Round to 2 decimal places
+    
 } else {
-    $_SESSION['attendancePercentage'] = 0;  // Default to 0% if no students
-    echo "Attendance Percentage: 0%<br>";
-}
-
-// Now calculate the total present students based on the attendance percentage
-if ($total_students > 0 && isset($_SESSION['attendancePercentage'])) {
-    // Calculate the total present students
-    $totalPresent = ($totalAttendance / 100) * $total_students;  // This formula works as you're calculating presence from the attendance records
-    $_SESSION['totalPresent'] = round($totalPresent);  // Round to the nearest integer
-
-    // Output total present students
-    echo "Total Present Students: " . $_SESSION['totalPresent'] . "<br>";
-} else {
-    $_SESSION['totalPresent'] = 0;  // Default to 0 if there are no students or percentage
-    echo "Total Present Students: 0<br>";
+    $attendancePercentage = 0;  // Default to 0% if no students
 }
 
 
-
-$sql = "SELECT COUNT(*) AS departmentCount FROM courses";
-
-// Execute the query
+$sql = "SELECT COUNT(*) AS cource FROM courses WHERE Status = 'Active'";
 $result = $conn->query($sql);
 
-// Check if the query was successful and retrieve the result
-if ($result->num_rows > 0) {
-    // Fetch the result as an associative array
-    $row = $result->fetch_assoc();
-    
-    // Store the number of departments in the session variable "totalCourse"
-    $_SESSION['totalCourse'] = $row['departmentCount'];
-    
-    // Optionally, you can output the value
-    echo "Total number of departments: " . $_SESSION['totalCourse'] . "<br>";
+// Check if the query was successful
+if ($result) {
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $cource = $row['cource'];
+    } else {
+        $cource = 0;
+    }
 } else {
-    // If no departments are found, handle the error
-    echo "No departments found in the database.<br>";
+    $cource = 0;
 }
+
+// Prepare data to send as JSON response
+$response = array(
+    'total_students' => $total_students,
+    'total_faculty' => $total_faculty,
+    'total_student_attendance' => $total_Student_Attendance,
+    'attendance_percentage' => $attendancePercentage,
+    'cource' => $cource
+);
+
+// Return the response as JSON
+echo json_encode($response);
 
 ?>
