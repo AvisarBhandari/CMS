@@ -217,50 +217,7 @@
    </div>
 </form>
 
-<script>
 
-      function conform_password() {
-        // Use SweetAlert to prompt the user for their password
-        swal({
-            title: "Enter your password",
-            content: {
-                element: "input",
-                attributes: {
-                    placeholder: "Type your password",
-                    type: "password",
-                },
-            },
-            buttons: {
-                cancel: "Cancel",
-                confirm: "Submit"
-            }
-        }).then((password) => {
-            if (password) {
-               console.log(password);
-                // Use AJAX to send password for verification
-                var username = document.getElementById("username").value;
-                var phone_no = document.getElementById("phone_no").value;
-                var address = document.getElementById("address").value;
-
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../php/profile/verify_password.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onload = function() {
-                    if (xhr.status == 200) {
-                        var response = xhr.responseText;
-                        if (response == "success") {
-                            window.location.href = "update.php";
-                        } else {
-                           console.log(response);
-                            swal("Error", "Incorrect password!", "error");
-                        }
-                    }
-                };
-                xhr.send("password=" + encodeURIComponent(password));
-            }
-        });
-    }
-</script>
 
 
 
@@ -287,19 +244,7 @@
       <script src="assets/js/bs-init.js"></script>
       <script src="assets/js/theme.js"></script>
       <script src="assets/js/profile/profile.js"></script>
-      <?php
-         if(isset($_SESSION['status']) && $_SESSION['massage']) {
-         ?>
-      <script>
-         swal({
-         title: "<?php echo $_SESSION['massage']; ?>",
-         icon: "<?php echo $_SESSION['status']; ?>",
-         });
-      </script>
-      <?php
-         unset($_SESSION['status']);
-         unset($_SESSION['massage']);
-         }
-         ?>
+      <script src="assets/js/profile/update.js"></script>
+
    </body>
 </html>
