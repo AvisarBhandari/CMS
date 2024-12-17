@@ -85,10 +85,13 @@ if ($result->num_rows > 0) {
     } else {
         $_SESSION['status'] = "error";
         $_SESSION['message'] = "Invalid password!";
+        header('Location: Login.php');
     }
 } else {
     $_SESSION['status'] = "error";
     $_SESSION['message'] = "No such user found!";
+    header('Location: Login.php');
+
 }
 
 $stmt->close();

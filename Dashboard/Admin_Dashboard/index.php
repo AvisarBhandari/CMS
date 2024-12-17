@@ -113,7 +113,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "No user found with this ID."; // No matching id found
 }
-
+echo $_SESSION['id'];
+echo $_SESSION['name'];
     
     ?>
 
