@@ -43,10 +43,10 @@ foreach ($students as $student) {
         if (mysqli_num_rows($check_result) > 0) {
             // Attendance record exists, update it
             $update_query = "UPDATE student_attendance 
-                             SET status = '$status' 
-                             WHERE course_code = '$course_id' 
-                             AND student_roll = '$student_roll' 
-                             AND attendance_date = '$attendance_date'";
+                                SET status = '$status' 
+                                WHERE course_code = '$course_id' 
+                                AND student_roll = '$student_roll' 
+                                AND attendance_date = '$attendance_date'";
 
             if (mysqli_query($conn, $update_query)) {
                 $response = [

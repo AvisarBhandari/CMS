@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="assets/css/timetable.css">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script src="assets/js/sweetalert.js"></script>
+
+
+
 </head>
 <style>
     /* General body styles */
@@ -41,6 +46,7 @@
     }
 
     /* Modal container styles */
+    
     .modal {
         display: none;
         /* Hidden by default */
@@ -127,6 +133,7 @@
         font-size: 14px;
         width: 100%;
         box-sizing: border-box;
+        height: 61%;
     }
 
     .input-field:focus {
@@ -150,6 +157,12 @@
         background-color: #3a5bb0;
     }
 
+    /* Style for exam start and end time inputs to be on the same row */
+.time-container {
+    display: flex;
+    gap: 10px;  /* Adjust the spacing between the inputs */
+    align-items: center;
+}
     /* Table styles for subjects */
     .subjects-table {
         width: 100%;
@@ -186,53 +199,445 @@
 <body id="page-top">
     <div id="wrapper">
         <!-- Modal for Adding Exam -->
-        <div id="examModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2 class="modal-title">Add New Exam</h2>
-                <form id="examForm" class="form-container" onsubmit="submitForm(event)">
-                    <!-- Universal Exam Details -->
-                    <label class="label" for="examName">Exam Name:</label>
-                    <input type="text" class="input-field" id="examName" name="examName" placeholder="Enter exam name"
-                        required><br>
+<div id="examModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 class="modal-title">Add New Exam</h2>
+        <form id="examForm" class="form-container" onsubmit="submitForm(event)">
+            <!-- Universal Exam Details -->
+            <label class="label" for="examName">Exam Name:</label>
+            <input type="text" class="input-field" id="examName" name="examName" placeholder="Enter exam name" required><br>
 
-                    <label class="label" for="roomNo">Room Number:</label>
-                    <input type="text" class="input-field" id="roomNo" name="roomNo" placeholder="Enter room number"
-                        required><br>
+            <label class="label" for="roomNo">Room Number:</label>
+            <input type="text" class="input-field" id="roomNo" name="roomNo" placeholder="Enter room number" required><br>
 
-                    <label class="label" for="examTime">Exam Time:</label>
-                    <input type="time" class="input-field" id="examTime" name="examTime" required><br>
+            <!-- Exam Start and End Time in the same row -->
+            <label class="label" for="examTimes">Exam Times:</label>
+            <div class="time-container">
+                <label for="examStartTime">Start Time:</label>
+                <input type="time" class="input-field" id="examStartTime" name="examStartTime" required>
 
-                    <!-- Department Selection -->
-                    <label class="label" for="department">Department:</label>
-                    <select class="input-field" id="department" name="department" onchange="populateSubjects()"
-                        required>
-                        <option value="">Select Department</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Physics">Physics</option>
-                    </select><br>
+                <label for="examEndTime">End Time:</label>
+                <input type="time" class="input-field" id="examEndTime" name="examEndTime" required>
+            </div><br>
 
-                    <!-- Table for Subjects and Exam Dates -->
-                    <div id="subjectsTableContainer" style="display:none;">
-                        <table id="subjectsTable" class="subjects-table">
-                            <thead>
-                                <tr>
-                                    <th>Subject</th>
-                                    <th>Exam Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows for subjects will be dynamically added here -->
-                            </tbody>
-                        </table>
-                    </div>
+   <!-- Department Select -->
+    <label for="department">Select Department:</label>
+    <select id="department" onchange="getCourses()">
+        <option value="">Select Department</option>
+        <!-- Department options will be populated dynamically from the database -->
+    </select>
 
-                    <button type="submit" class="btn">Submit</button>
-                    <button type="button" id="cancel_btn_exam" class="btn" onclick="closeModal()">Cancel</button>
-                </form>
+    <!-- Display selected department -->
+    <div id="departmentName" style="margin-top: 10px;"></div>
+
+    <!-- Course Select -->
+    <div id="courseContainer" style="display:none;">
+        <label for="course">Select Course:</label>
+        <select id="course" onchange="getSemesters()">
+            <option value="">Select Course</option>
+        </select>
+    </div>
+
+
+            <!-- Semester Selection -->
+            <div id="semesterContainer" style="display:none;">
+                <label class="label" for="semester">Semester:</label>
+                <select class="input-field"  style="margin-top: 15px;" id="semester" name="semester" onchange="getSubjects()" required>
+                    <option value="">Select Semester</option>
+                </select><br>
             </div>
-        </div>
+
+            <!-- Table for Subjects and Exam Dates -->
+            <div id="subjectsTableContainer" style="display:none;">
+    <table id="subjectsTable" class="subjects-table">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Exam Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows for subjects will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" id="cancel_btn_exam" class="btn" onclick="closeModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+        
+      // Open Modal
+        function openModal() {
+            document.getElementById('examModal').style.display = 'block';
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('examModal').style.display = 'none';
+        }
+
+
+            window.onload = function() {
+            fetchDepartments();
+        };
+
+        // Function to fetch departments from the server
+        function fetchDepartments() {
+            var departmentSelect = document.getElementById('department');
+
+            // Fetch departments from the server (getDepartments.php)
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../php/exam/getDepartments.php', true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var departments = JSON.parse(xhr.responseText);
+                    departments.forEach(function(department) {
+                        var option = document.createElement('option');
+                        option.value = department.name;
+                        option.textContent = department.name;
+                        departmentSelect.appendChild(option);
+                    });
+                }
+            };
+            xhr.send();
+        }
+
+        // Populate Subjects based on Department Selection
+// Populate Courses based on Department
+function getCourses() {
+    var department = document.getElementById('department').value;
+    var courseSelect = document.getElementById('course');
+    var courseContainer = document.getElementById('courseContainer');
+    var departmentNameContainer = document.getElementById('departmentName');
+    
+    // Clear existing courses
+    courseSelect.innerHTML = '<option value="">Select Course</option>';
+    
+    if (department) {
+        // Show course container if department is selected
+        courseContainer.style.display = 'block';
+        departmentNameContainer.textContent = 'Selected Department: ' + department;
+
+        // Send an AJAX request to the server to fetch courses for the selected department
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../php/exam/getCourses.php?department=' + encodeURIComponent(department), true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var courses = JSON.parse(xhr.responseText);
+                if (courses.length > 0) {
+                    courses.forEach(function(course) {
+                        var option = document.createElement('option');
+                        option.value = course.course_code;
+                        option.textContent = course.course_name + ' (' + course.course_type + ')';
+                        option.setAttribute('data-course-type', course.course_type);  // Store course type in the option
+                        courseSelect.appendChild(option);
+                    });
+                } else {
+                    var option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No courses available';
+                    courseSelect.appendChild(option);
+                }
+            }
+        };
+        xhr.send();
+    } else {
+        courseContainer.style.display = 'none'; // Hide if no department selected
+        departmentNameContainer.textContent = ''; // Clear the department name text
+    }
+}
+
+
+
+// Populate Semesters based on Course Selection
+function getSemesters() {
+    var courseSelect = document.getElementById('course');
+    var courseCode = courseSelect.value;  // Get the selected course code
+    var semesterSelect = document.getElementById('semester');
+    
+    // Extract the numeric part from the semester/year value (e.g., "Semester 1" -> 1 or "Year 1" -> 1)
+    var semesterText = semesterSelect.value;
+    var semester = null;
+
+    if (semesterText) {
+        // Use regular expressions to extract the number part after "Semester" or "Year"
+        var match = semesterText.match(/(?:Semester|Year)\s*(\d+)/);
+        if (match) {
+            semester = parseInt(match[1], 10); // Get the number after "Semester" or "Year"
+        }
+    }
+
+    var subjectsTable = document.getElementById('subjectsTable').getElementsByTagName('tbody')[0];
+    
+    // Clear existing subjects
+    subjectsTable.innerHTML = '';
+
+    // Check if both course and semester are selected
+    if (courseCode && !isNaN(semester)) {
+    var courseSelect = document.getElementById('course');
+    var courseCode = courseSelect.value; // Get the selected course code
+    var semesterSelect = document.getElementById('semester');
+    var semesterContainer = document.getElementById('semesterContainer');
+
+    // Clear existing semesters
+    semesterSelect.innerHTML = '<option value="">Select Semester</option>';
+
+    if (courseCode) {
+        // Show semester container if course is selected
+        semesterContainer.style.display = 'block';
+
+        // Get the selected course option element
+        var selectedOption = courseSelect.options[courseSelect.selectedIndex];
+        
+        // Ensure the course option has a data-course-type attribute
+        var courseType = selectedOption.getAttribute('data-course-type');
+        
+        var semesters = [];
+
+        if (courseType === 'Semester Based') {
+            // For Semester Based courses, create 8 semesters
+            for (var i = 1; i <= 8; i++) {
+                semesters.push('Semester ' + i);
+            }
+        } else if (courseType === 'Yearly Based') {
+            // For Yearly Based courses, create 4 semesters (Year 1 and Year 2)
+            semesters = ['Year 1', 'Year 2'];
+        }
+
+        // Populate semester select dropdown
+        semesters.forEach(function(semester) {
+            var option = document.createElement('option');
+            option.value = semester;
+            option.textContent = semester;
+            semesterSelect.appendChild(option);
+        });
+    } else {
+        semesterContainer.style.display = 'none'; // Hide if no course selected
+    }
+}
+}
+
+
+
+
+
+
+
+function getSubjects() {
+    var courseSelect = document.getElementById('course');
+    var courseCode = courseSelect.value;  // Get the selected course code
+    var semesterSelect = document.getElementById('semester');
+    var semesterText = semesterSelect.value;  // Get the selected semester (e.g., "Semester 4")
+
+    var subjectsTable = document.getElementById('subjectsTable').getElementsByTagName('tbody')[0];
+
+    // Clear existing subjects
+    subjectsTable.innerHTML = '';
+
+    // Check if both course and semester are selected
+    if (courseCode && semesterText) {
+        // Make an AJAX request to fetch subjects
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../php/exam/getSubjects.php?course_code=' + encodeURIComponent(courseCode) + '&semester=' + encodeURIComponent(semesterText), true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var subjects = JSON.parse(xhr.responseText);
+                
+                // Show the table container
+                document.getElementById('subjectsTableContainer').style.display = 'block';
+
+                if (subjects.length > 0) {
+                    // Populate subjects in the table
+                    subjects.forEach(function(subject) {
+                        var row = subjectsTable.insertRow();
+
+                        // Insert cells for subject name and exam date input
+                        var cell1 = row.insertCell(0);  // Subject name
+                        var cell2 = row.insertCell(1);  // Exam Date input
+
+                        // Set the text content for the subject name
+                        cell1.textContent = subject.subject_name;
+
+                        // Create the input field for the exam date
+                        var dateInput = document.createElement('input');
+                        dateInput.type = 'date';
+                        dateInput.className = 'exam-date';  // Optional: Add a class for styling or JS targeting
+                        dateInput.name = 'exam_date_' + subject.subject_code;  // Optional: Name based on subject code for easy access
+
+                        // Append the date input to the second cell
+                        cell2.appendChild(dateInput);
+                    });
+                } else {
+                    // If no subjects are found, show a message
+                    var row = subjectsTable.insertRow();
+                    var cell = row.insertCell(0);
+                    cell.colSpan = 2;  // Merge both columns
+                    cell.textContent = 'No subjects found for this course and semester.';
+                }
+            }
+        };
+        xhr.send();
+    } else {
+        // If no course or semester is selected, hide the subject table
+        subjectsTable.innerHTML = '';
+        document.getElementById('subjectsTableContainer').style.display = 'none';
+    }
+}
+
+
+
+
+
+function submitForm(event) {
+    event.preventDefault();
+
+    // Collect universal exam details
+    var department = document.getElementById('department').value;
+    var examName = document.getElementById('examName').value;
+    var roomNo = document.getElementById('roomNo').value;
+    var examStartTime = document.getElementById('examStartTime').value;
+    var examEndTime = document.getElementById('examEndTime').value;
+    var courseSelect = document.getElementById('course');
+    var courseName = courseSelect.options[courseSelect.selectedIndex].text;
+    var semesterSelect = document.getElementById('semester');
+    var semester = semesterSelect.value;
+
+    // Collect subject data
+    var subjects = document.getElementById('subjectsTable').getElementsByTagName('tbody')[0].rows;
+    var formData = [];
+    var examDates = {}; // Object to keep track of dates and avoid duplicates
+
+    // Convert time to Date object for comparison
+    function convertTimeToDate(examDate, time) {
+        var date = new Date(examDate);
+        var [hours, minutes] = time.split(":");
+        date.setHours(hours, minutes, 0, 0);
+        return date;
+    }
+
+    // Loop through each subject row and get the exam date
+    for (var i = 0; i < subjects.length; i++) {
+        var subject = subjects[i].cells[0].textContent;
+        var examDate = subjects[i].cells[1].getElementsByTagName('input')[0].value;
+
+        if (examDate) {
+            // Combine date and time into a Date object
+            var fullExamDateTime = convertTimeToDate(examDate, examStartTime);
+
+            // Check for duplicate exam date
+            if (examDates[examDate]) {
+                // SweetAlert: show warning if exam date already exists
+                swal({
+                    icon: 'warning',
+                    title: 'Duplicate Exam Date',
+                    text: 'You cannot schedule multiple exams on the same date.'
+                });
+                return;
+            }
+
+            // Add date to the dates object to track duplicates
+            examDates[examDate] = true;
+
+            // Calculate the duration in minutes (example: difference between start and end time)
+            var startTime = convertTimeToDate(examDate, examStartTime);
+            var endTime = convertTimeToDate(examDate, examEndTime);
+            var duration = (endTime - startTime) / 60000; // Convert milliseconds to minutes
+
+            // Check for exam duration and gaps
+            if (examStartTime && examEndTime) {
+                if (endTime <= startTime) {
+                    swal({
+                        icon: 'error',
+                        title: 'Invalid Time',
+                        text: 'End time cannot be before start time.'
+                    });
+                    return;
+                }
+
+                // Check time gap between current and the next exam
+                var minGap = 30; // Minimum gap in minutes (example: 30 minutes gap between exams)
+                var prevExamDateTime = formData.length > 0 ? formData[formData.length - 1].examDateTime : null;
+                if (prevExamDateTime) {
+                    var prevEndTime = new Date(prevExamDateTime);
+                    prevEndTime.setMinutes(prevEndTime.getMinutes() + 30); // Set gap of 30 minutes
+                    if (startTime < prevEndTime) {
+                        swal({
+                            icon: 'warning',
+                            title: 'Too Close',
+                            text: 'There should be at least 30 minutes gap between exams.'
+                        });
+                        return;
+                    }
+                }
+            }
+
+            // Add all the collected data into formData array
+            formData.push({
+                department: department,
+                subject: subject,
+                examName: examName,
+                roomNo: roomNo,
+                examDate: examDate,  // Exam date (the start date of the exam)
+                examTime: examStartTime, // Exam start time
+                duration: duration, // Exam duration in minutes
+                location: roomNo, // Room number as location
+                department_name: department, // Department name
+                semester: semester, // Semester (extracted from the dropdown)
+                subject_name: subject // Subject name
+            });
+        } else {
+            // Alert if any exam date is missing
+            swal({
+                icon: 'error',
+                title: 'Missing Exam Date',
+                text: 'Please provide an exam date for all subjects.'
+            });
+            return;
+        }
+    }
+
+    // At this point, data is validated and ready for submission
+    console.log('Exam Data:', formData);
+
+    // Submit data to server using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../php/exam/saveExamRoutine.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        console.log("Server Response: ", xhr.responseText);
+        var response = JSON.parse(xhr.responseText);
+        if (xhr.status === 200) {
+            if (response.status === 'success') {
+                swal({
+                    icon: 'success',
+                    title: 'Exam Routine Saved',
+                    text: 'The exam routine has been successfully saved.'
+                });
+                // Optionally close the modal or reset form
+                closeModal();  // Uncomment if you have a modal to close
+            } else {
+                swal({
+                    icon: 'error',
+                    title: 'Error',
+                    text: response.message || 'An error occurred while saving the exam routine. Please try again.'
+                });
+            }
+        }
+    };
+    xhr.send(JSON.stringify(formData)); // Send the exam data as JSON
+}
+
+</script>
+
+
+
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
             data-aos="fade-right" data-aos-duration="1200">
             <div class="container-fluid d-flex flex-column p-0"><a
@@ -404,7 +809,6 @@
 
 
 
-
                         </div>
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
@@ -415,6 +819,9 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Name</th>
+                                            <th>Department</th>
+                                            <th>Course</th>
+                                            <th>Semester/Year</th>
                                             <th>Room No.</th>
                                         </tr>
                                     </thead>
@@ -423,18 +830,27 @@
                                             <td>2081/11/28</td>
                                             <td>7-30 AM</td>
                                             <td>First Term</td>
+                                            <td>Information And Technology</td>
+                                            <td>BCA</td>
+                                            <td>4</td>
                                             <td>30</td>
                                         </tr>
                                         <tr>
                                             <td>2081/10/09</td>
                                             <td>7-30 AM</td>
                                             <td>Second Term</td>
+                                            <td>Science</td>
+                                            <td>BSC Botanay</td>
+                                            <td>1</td>
                                             <td>10</td>
                                         </tr>
                                         <tr>
                                             <td>2081/01/12</td>
                                             <td>7-30 AM</td>
                                             <td>Third Term</td>
+                                            <td>Information And Technology</td>
+                                            <td>BIT</td>
+                                            <td>1</td>
                                             <td>3</td>
                                         </tr>
                                         <tr></tr>
@@ -445,6 +861,9 @@
                                             <td><strong>Date</strong></td>
                                             <td><strong>Time</strong></td>
                                             <td><strong>Name</strong></td>
+                                            <td><strong>Department</strong></td>
+                                            <td><strong>Course</strong></td>
+                                            <td><strong>Semester/Year</strong></td>
                                             <td><strong>Room No.</strong></td>
                                         </tr>
                                     </tfoot>
@@ -470,104 +889,11 @@
     <script src="assets/js/aos.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script>
-        // Open Modal
-        function openModal() {
-            document.getElementById('examModal').style.display = 'block';
-        }
-
-        // Close Modal
-        function closeModal() {
-            document.getElementById('examModal').style.display = 'none';
-        }
-
-        // Populate Subjects based on Department Selection
-        function populateSubjects() {
-            var department = document.getElementById('department').value;
-            var subjectsTableContainer = document.getElementById('subjectsTableContainer');
-            var subjectsTableBody = document.getElementById('subjectsTable').getElementsByTagName('tbody')[0];
-
-            // Clear the current rows in the table
-            subjectsTableBody.innerHTML = '';
-
-            // Show table if department is selected
-            if (department) {
-                subjectsTableContainer.style.display = 'block';
-
-                // Define subjects for each department
-                var subjects = [];
-                if (department === 'Computer Science') {
-                    subjects = ['Data Structures', 'Algorithms', 'Operating Systems', 'Database Systems'];
-                } else if (department === 'Mathematics') {
-                    subjects = ['Calculus', 'Linear Algebra', 'Probability', 'Statistics'];
-                } else if (department === 'Physics') {
-                    subjects = ['Mechanics', 'Electromagnetism', 'Thermodynamics', 'Quantum Physics'];
-                }
-
-                // Add each subject and an input field for the exam date
-                subjects.forEach(function (subject) {
-                    var row = subjectsTableBody.insertRow();
-
-                    var cell1 = row.insertCell(0);
-                    cell1.textContent = subject;
-
-                    var cell2 = row.insertCell(1);
-                    var inputDate = document.createElement('input');
-                    inputDate.type = 'date';  // Only date, time will be universal
-                    inputDate.name = 'examDate_' + subject;  // Unique name for each subject
-                    inputDate.required = true;
-                    cell2.appendChild(inputDate);
-                });
-            } else {
-                subjectsTableContainer.style.display = 'none'; // Hide table if no department selected
-            }
-        }
-
-        // Form Submission
-        function submitForm(event) {
-            event.preventDefault();
-
-            // Collect universal exam details
-            var department = document.getElementById('department').value;
-            var examName = document.getElementById('examName').value;
-            var roomNo = document.getElementById('roomNo').value;
-            var examTime = document.getElementById('examTime').value;
-
-            // Collect subject data
-            var subjects = document.getElementById('subjectsTable').getElementsByTagName('tbody')[0].rows;
-            var formData = [];
-
-            // Loop through each subject row and get the exam date (apply universal time)
-            for (var i = 0; i < subjects.length; i++) {
-                var subject = subjects[i].cells[0].textContent;
-                var examDate = subjects[i].cells[1].getElementsByTagName('input')[0].value;
-
-                if (examDate) {
-                    // Combine the date with the universal time and create the exam details
-                    var fullExamDateTime = examDate + 'T' + examTime;
-
-                    formData.push({
-                        department: department,
-                        subject: subject,
-                        examName: examName,
-                        roomNo: roomNo,
-                        examDateTime: fullExamDateTime
-                    });
-                } else {
-                    alert('Please provide an exam date for all subjects.');
-                    return;
-                }
-            }
-
-            // For now, log the form data (In practice, send this to the server)
-            console.log('Exam Data:', formData);
-
-            // Close the modal after submitting
-            closeModal();
-        }
-    </script>
-
+    <script src="assets/js/exam/exam.js"></script>
     <script src="assets/js/Timetable/timetable.js"></script>
+    <script src="assets/js/sweetalert.js"></script>
+
+
 </body>
 
 </html>

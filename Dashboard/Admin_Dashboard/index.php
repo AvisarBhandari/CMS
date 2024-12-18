@@ -213,7 +213,7 @@
                                                     <div class="progress progress-sm">
                                                         <div class="progress-bar bg-info" aria-valuenow="50"
                                                             aria-valuemin="0" aria-valuemax="100" style="width: 
-                                                        50%">
+                                                        10%">
 
 
 
@@ -572,8 +572,14 @@
                     document.getElementById('attendance_rate').innerHTML = attendancePercentage + "%";
                     document.getElementById('total_courses').innerHTML = cource_no;
 
-                    document.getElementById('attendanceProgressBar').style.width = attendancePercentage + "%";
-                    document.getElementById('attendanceProgressBar').setAttribute('aria-valuenow', attendancePercentage); 
+                    let progressBar = document.querySelector('.progress-bar.bg-info');
+
+// Update the width of the progress bar
+progressBar.style.width = attendancePercentage + '%';
+
+// Optionally, also update the aria-valuenow attribute
+progressBar.setAttribute('aria-valuenow', attendancePercentage);
+ 
 
                 },
                 error: function(xhr, status, error) {
