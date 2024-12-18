@@ -75,7 +75,7 @@ WHERE status = 'Present'";
         // Calculate the total present students
         $totalPresent = ($totalAttendance / 100) * $total_students;  // This formula works as you're calculating presence from the attendance records
         $_SESSION['totalPresent'] = round($totalPresent);  // Round to the nearest integer
-        
+    
         // Output total present students
     } else {
         $_SESSION['totalPresent'] = 0;  // Default to 0 if there are no students or percentage
@@ -100,21 +100,21 @@ WHERE status = 'Present'";
     $id = $_SESSION['id'];
 
     $sql = "SELECT name FROM admin WHERE id = '$id'"; // Be cautious, this is vulnerable to SQL injection if $id is not sanitized
-
-// Run the query
-$result = $conn->query($sql);
-
-// Check if the query returned any result
-if ($result->num_rows > 0) {
-    // Fetch the result (name)
-    $row = $result->fetch_assoc();
-    $_SESSION['name']= $row['name']; // Output the name
-    $_SESSION['role']='admin';
-} else {
-    echo "No user found with this ID."; // No matching id found
-}
-
     
+    // Run the query
+    $result = $conn->query($sql);
+
+    // Check if the query returned any result
+    if ($result->num_rows > 0) {
+        // Fetch the result (name)
+        $row = $result->fetch_assoc();
+        $_SESSION['name'] = $row['name']; // Output the name
+        $_SESSION['role'] = 'admin';
+    } else {
+        echo "No user found with this ID."; // No matching id found
+    }
+
+
     ?>
 
 
@@ -131,12 +131,19 @@ if ($result->num_rows > 0) {
                             style="padding-top: 0px;padding-bottom: 0px;">Academy<br>Keeper</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                                <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php"><i class="fas fa-user" style="font-size: 13px;"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="Courses Management.php"><i class="fas fa-book" style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="faculty.php"><i class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link" href="student.php"><i class="far fa-user" style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link active" href="index.php"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.php"><i class="fas fa-user"
+                                style="font-size: 13px;"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="Courses Management.php"><i class="fas fa-book"
+                                style="font-size: 13px;"></i><span>Course Management&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.php"><i
+                                class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
+                            href="student.php"><i class="far fa-user"
+                                style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam
+                                Management&nbsp;</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="financial.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -189,24 +196,23 @@ if ($result->num_rows > 0) {
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
                                             class="d-none d-lg-inline me-2 text-gray-600 small">
-                                        <?php
-                                        echo $_SESSION['name'];
-                                        ?>
+                                            <?php
+                                            echo $_SESSION['name'];
+                                            ?>
                                         </span>
-                                        <img                                            class="border rounded-circle img-profile"
-                                            src="<?php
-    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
+                                        <img class="border rounded-circle img-profile" src="<?php
+                                        $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
 
-    if (!empty($result) && $result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      $imageData = $row['image'];
-      echo 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
-    } else {
-      echo 'No image uploaded yet.';
-    }
+                                        if (!empty($result) && $result->num_rows > 0) {
+                                            $row = $result->fetch_assoc();
+                                            $imageData = $row['image'];
+                                            echo 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
+                                        } else {
+                                            echo 'No image uploaded yet.';
+                                        }
 
-    $conn->close();
-    ?>"></a>
+                                        $conn->close();
+                                        ?>"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                                         <a class="dropdown-item" href="profile.php">
                                             <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
@@ -214,7 +220,8 @@ if ($result->num_rows > 0) {
 
                                         </div>
                                         <a class="dropdown-item" href="#">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                            <i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -222,8 +229,8 @@ if ($result->num_rows > 0) {
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade" data-aos-once="true"
-                        data-aos-duration="1200" data-aos-delay="500" style="padding-right: 5px;">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade"
+                        data-aos-once="true" data-aos-duration="1200" data-aos-delay="500" style="padding-right: 5px;">
                         <h3 class="text-dark mb-0">Admin Dashboard</h3><a
                             class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i
                                 class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
@@ -289,7 +296,7 @@ if ($result->num_rows > 0) {
                                                 <div class="col-auto">
                                                     <div class="text-dark fw-bold h5 mb-0 me-3"><span>
                                                             <?php
-                                                            echo $attendancePercentage . "%";
+                                                            echo "50%";
                                                             ?>
                                                         </span></div>
                                                 </div>
@@ -350,27 +357,27 @@ if ($result->num_rows > 0) {
 
 
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200" data-aos-once="true"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
-                                </div>
-                                <ul class="list-group list-group-flush" id="eventList">
-                                    <!-- Events will be dynamically populated here -->
-                                </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            data-aos-once="true" style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary fw-bold m-0">Upcoming Events</h6>
                             </div>
-                            <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200" data-aos-once="true"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
-                                </div>
-                                <ul id="holidayList" class="list-group list-group-flush">
-                                    <!-- Holidays will be dynamically populated here -->
-                                </ul>
+                            <ul class="list-group list-group-flush" id="eventList">
+                                <!-- Events will be dynamically populated here -->
+                            </ul>
+                        </div>
+                        <div class="card shadow mb-4" data-aos="fade-right" data-aos-duration="1200"
+                            data-aos-once="true" style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary fw-bold m-0">Upcoming Holidays</h6>
                             </div>
+                            <ul id="holidayList" class="list-group list-group-flush">
+                                <!-- Holidays will be dynamically populated here -->
+                            </ul>
+                        </div>
 
                     </div>
                     <div class="col">
@@ -584,55 +591,54 @@ if ($result->num_rows > 0) {
                                 <div class="card-body pb-xxl-0 mb-xxl-5"></div>
                             </div>
 
+                        </div>
+                        <div class="card shadow" style="box-shadow: 0px 0px 20px;">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
                             </div>
-                            <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500" data-aos-once="true"
-                                style="box-shadow: 0px 0px 20px;">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold">Income-Expenditure past 12 month</p>
-                                </div>
-                                <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
-                                    aria-describedby="dataTable_info">
-                                    <table class="table my-0" id="dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Month</th>
-                                                <th>Earnings</th>
-                                                <th>Expenditures</th>
-                                                <th>Net Balance</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="finance_table_body">
-                                            <!-- Dynamic rows will be added here -->
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Earnings</th>
+                                            <th>Expenditures</th>
+                                            <th>Net Balance</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="finance_table_body">
+                                        <!-- Dynamic rows will be added here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="bg-white sticky-footer">
-                    <div class="container my-auto">
-                        <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
-                    </div>
-                </footer>
-            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-        </div>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/aos.min.js"></script>
-        <script src="assets/js/chart.min.js"></script>
-        <script src="assets/js/bs-init.js"></script>
-        <script src="assets/js/theme.js"></script>
-        <script src="assets/js/earning_data.js"></script>
-        <script src="assets/js/fee_data.js"></script>
-        <script src="assets/js/Events/event_crud.js"></script>
-        <script src="assets/js/Holidays/holiday_crud.js"></script>
-        <script src="assets/js/Holidays/validate_holiday.js"></script>
-        <script src="assets/js/Events/validate_event.js"></script>
-        <script src="assets/js/Finance/finance_crud.js"></script>
-        <script src="assets/js/Finance/validate_finance.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Academy Keeper 2024</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/earning_data.js"></script>
+    <script src="assets/js/fee_data.js"></script>
+    <script src="assets/js/Events/event_crud.js"></script>
+    <script src="assets/js/Holidays/holiday_crud.js"></script>
+    <script src="assets/js/Holidays/validate_holiday.js"></script>
+    <script src="assets/js/Events/validate_event.js"></script>
+    <script src="assets/js/Finance/finance_crud.js"></script>
+    <script src="assets/js/Finance/validate_finance.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
