@@ -98,10 +98,7 @@
                 <div class="d-sm-flex justify-content-between align-items-center mb-4 me-0 pe-5"
                     style="padding-left: 24px;position: relative;" zin="">
                     <h3 class="text-dark mb-0" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500"
-                        data-aos-once="true">Student</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block"
-                        role="button" data-aos="fade-left" data-aos-duration="550" data-aos-delay="650"
-                        data-aos-once="true" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate
-                        Report</a>
+                        data-aos-once="true">Student</h3>
                 </div>
                 <div class="container-fluid" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400"
                     data-aos-once="true">

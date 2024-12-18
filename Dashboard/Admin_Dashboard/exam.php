@@ -793,10 +793,7 @@ function submitForm(event) {
 
                 <div class="d-sm-flex justify-content-between align-items-center mb-4 pe-5" style="padding-left: 24px;">
                     <h3 class="text-dark mb-0" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500"
-                        data-aos-once="true">Exam Management&nbsp;</h3><a
-                        class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" data-aos="fade-left"
-                        data-aos-duration="800" data-aos-delay="500" data-aos-once="true" href="#"><i
-                            class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                        data-aos-once="true">Exam Management&nbsp;
                 </div>
                 <div class="container-fluid">
                     <div class="card shadow" data-aos="flip-up" data-aos-duration="700" data-aos-delay="400"
