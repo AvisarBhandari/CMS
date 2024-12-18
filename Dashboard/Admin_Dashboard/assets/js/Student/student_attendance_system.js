@@ -120,7 +120,7 @@ function saveAttendance(action) {
                     }).then(function() {
                         location.reload();
                     });
-                       } else {
+                    } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error!',

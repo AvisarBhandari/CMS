@@ -39,7 +39,7 @@ if ($result) {
 // Calculate attendance percentage
 if ($total_students > 0) {
     $attendancePercentage = ($total_Student_Attendance / $total_students) * 100;
-    $attendancePercentage = round($attendancePercentage, 2);  // Round to 2 decimal places
+    $attendancePercentage = round($attendancePercentage, 0);  // Round to 2 decimal places
     
 } else {
     $attendancePercentage = 0;  // Default to 0% if no students
