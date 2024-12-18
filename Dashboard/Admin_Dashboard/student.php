@@ -35,7 +35,7 @@
     ?>
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
-            data-aos="fade-right" data-aos-duration="1200">
+            data-aos="fade-right" data-aos-duration="1200" data-aos-once="true">
             <div class="container-fluid d-flex flex-column p-0"><a
                     class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"
                     style="padding-bottom: 0px;padding-top: 0px;">
@@ -81,7 +81,7 @@
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
                     <div class="container-fluid">
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
-                            data-aos="slide-down" data-aos-duration="1200" data-aos-delay="400">
+                            data-aos="slide-down" data-aos-duration="1200" data-aos-once="true" data-aos-delay="400">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
                                     placeholder="Search for ..." style="height: 38.6px;"><button
                                     class="btn btn-primary py-0" type="button" style="width: 42.6px;height: 37.6px;"><i
@@ -100,48 +100,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="badge bg-danger badge-counter">3+</span><i
-                                            class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a
-                                            class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i
-                                                        class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i
-                                                        class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-warning icon-circle"><i
-                                                        class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your
-                                                    account.</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                            Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="badge bg-danger badge-counter">7</span><i
-                                            class="fas fa-envelope fa-fw"></i></a>
+
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a
                                             class="dropdown-item d-flex align-items-center" href="#">
@@ -193,7 +152,7 @@
                                 <div class="shadow dropdown-list dropdown-menu dropdown-menu-end"
                                     aria-labelledby="alertsDropdown"></div>
                             </li>
-                            <div class="d-none d-sm-block topbar-divider"></div>
+
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
@@ -232,14 +191,14 @@
                     </div>
                 </nav>
                 <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade"
-                    data-aos-duration="1150" data-aos-delay="500" style="padding-left: 24px;position: relative;" zin="">
+                    data-aos-duration="1150" data-aos-delay="500" style="padding-left: 24px;position: relative;" zin="" data-aos-once="true">
                     <h3 class="text-dark mb-0">Student</h3>
                 </div>
 
 
-                <div class="container py-4 py-xl-5" style="margin-right: 299px;padding-right: 36px;margin-left: 3px;">
+                <div class="container py-4 py-xl-5" style="margin-left: -px;">
                     <div class="row gy-4 row-cols-2 row-cols-md-4">
-                        <div class="col" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
+                        <div class="col" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500" data-aos-once="true">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div
                                     class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
@@ -257,7 +216,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col" data-aos="fade-up-right" data-aos-duration="1200" data-aos-delay="600">
+                        <div class="col" data-aos="fade-up-right" data-aos-duration="1200" data-aos-delay="600" data-aos-once="true">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div
                                     class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
@@ -277,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col" data-aos="fade-down-left" data-aos-duration="1200" data-aos-delay="700">
+                        <div class="col" data-aos="fade-down-left" data-aos-duration="1200" data-aos-delay="700" data-aos-once="true">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div
                                     class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
@@ -294,7 +253,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="850">
+                        <div class="col" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="850" data-aos-once="true">
                             <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
                                 <div
                                     class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg">
@@ -322,10 +281,10 @@
 
 
 
-                <div class="container pulse animated" style="margin-left: -1px;">
-                    <div class="row">
-                        <div class="col-md-6 col-xxl-7" data-aos="flip-right" data-aos-duration="1000"
-                            data-aos-delay="250">
+                <div class=" pulse animated" style="margin-left: -1px;">
+                    <div class="row ">
+                        <div class="col-md-6 col-xxl-6" data-aos="flip-right" data-aos-duration="1000"
+                            data-aos-delay="250"  style="margin-left: 100px;" data-aos-once="true">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 54.7px;">
@@ -336,7 +295,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-5" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
+                        <div class="col-xxl-5" data-aos="flip-left" data-aos-once="true" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center"
                                     style="height: 57.4px;">
@@ -348,10 +307,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container" style="margin-left: -2px;">
-                            <div class="row">
+                        <div class="container "  style="margin-left: 150px;" >
+                            <div class="row ">
                                 <div class="col-md-6 col-xxl-4" data-aos="flip-right" data-aos-duration="1000"
-                                    data-aos-delay="250">
+                                    data-aos-delay="250" data-aos-once="true">
                                     <div class="card shadow mb-4">
                                         <div class="card-header d-flex justify-content-between align-items-center"
                                             style="height: 57.4px;">
@@ -364,8 +323,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" col-md-6 col-xxl-7" data-aos="flip-left" data-aos-duration="1000"
-                                    data-aos-delay="250">
+                                <div class=" col-md-6 col-xxl-5" data-aos="flip-left" data-aos-duration="1000"
+                                    data-aos-delay="250" data-aos-once="true">
                                     <div class="card shadow mb-4">
                                         <div class="card-header d-flex justify-content-between align-items-center"
                                             style="height: 57.4px;">
@@ -714,6 +673,11 @@
             <script src="assets/js/Student/gender_data.js"></script>
             <script src="assets/js/Student/student_attendance_system.js"></script>
             <script src="assets/js/Student/student_data_stats.js"></script>
+            <!-- SweetAlert CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.all.min.js"></script>
+
+            <script src="assets/js/sweetalert.js"></script>
 </body>
 
 </html>

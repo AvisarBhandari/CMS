@@ -37,6 +37,8 @@ if ($result->num_rows > 0) {
         
         $_SESSION['id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['name']=$user['name'];
+        $name=$user['name'];
 
         // Optionally, set a 'remember me' feature if applicable
         if ($remember_me=='true') {
@@ -60,9 +62,9 @@ if ($result->num_rows > 0) {
             }
             
             // Insert new cookie record into cookie table
-            $insert_cookie_query = "INSERT INTO cookie (id, c_name, c_value) VALUES (?, ?, ?)";
+            $insert_cookie_query = "INSERT INTO cookie (id, c_name, c_value, name) VALUES (?, ?, ?,?)";
             $insert_cookie_stmt = $conn->prepare($insert_cookie_query);
-            $insert_cookie_stmt->bind_param("sss", $id, $cookie_name, $cookie_value);
+            $insert_cookie_stmt->bind_param("ssss", $id, $cookie_name, $cookie_value, $name);
             $insert_cookie_stmt->execute();
             
             // Set the cookie in the user's browser for 30 days
@@ -85,10 +87,13 @@ if ($result->num_rows > 0) {
     } else {
         $_SESSION['status'] = "error";
         $_SESSION['message'] = "Invalid password!";
+        header('Location: Login.php');
     }
 } else {
     $_SESSION['status'] = "error";
     $_SESSION['message'] = "No such user found!";
+    header('Location: Login.php');
+
 }
 
 $stmt->close();

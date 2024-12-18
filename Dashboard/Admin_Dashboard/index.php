@@ -1,3 +1,11 @@
+    <?php
+    include '../php/db_connect.php';
+    session_start();
+    echo $_SESSION['name'];
+    echo $_SESSION['id'];
+        
+    ?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -23,6 +31,7 @@
 </head>
 
 <body id="page-top">
+<<<<<<< HEAD
     <?php
     include '../php/db_connect.php';
     session_start();
@@ -116,6 +125,8 @@ WHERE status = 'Present'";
 
 
     ?>
+=======
+>>>>>>> 5df88bb8b31213ed2511d33c5fc2db810b4a9098
 
 
     <div id="wrapper">
@@ -243,10 +254,8 @@ WHERE status = 'Present'";
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total
                                                     Student</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>
-                                                    <?php
-                                                    echo $total_students;
-                                                    ?>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="total_students">
+                                                    
                                                 </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
@@ -267,10 +276,8 @@ WHERE status = 'Present'";
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Total
                                                     Faculty</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>
-                                                    <?php
-                                                    echo $total_faculty;
-                                                    ?>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="total_faculty">
+                                                    
                                                 </span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg"
@@ -294,19 +301,20 @@ WHERE status = 'Present'";
                                                     Rate</span></div>
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>
-                                                            <?php
-                                                            echo "50%";
-                                                            ?>
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span id="attendance_rate">
+                                                            
                                                         </span></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm">
                                                         <div class="progress-bar bg-info" aria-valuenow="50"
                                                             aria-valuemin="0" aria-valuemax="100" style="width: 
-                                                        <?php
-                                                        echo $attendancePercentage . " %"; ?>
-                                                            ;"><span class="visually-hidden">50%</span></div>
+                                                        50%">
+
+
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -324,10 +332,8 @@ WHERE status = 'Present'";
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Total
                                                     Courses</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>
-                                                    <?php
-                                                    echo $totalCourse;
-                                                    ?>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="total_courses">
+
                                                 </span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-book fa-2x text-gray-300"></i></div>
@@ -640,7 +646,43 @@ WHERE status = 'Present'";
     <script src="assets/js/Finance/validate_finance.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script type="text/javascript">
+        // Function to fetch data using AJAX
+        function fetchAttendanceData() {
+            $.ajax({
+                url: '../php/count.php',  // PHP file that will handle the request
+                type: 'POST',
+                success: function(response) {
+                    // Parse the JSON response from the PHP file
+                    var data = JSON.parse(response);
+                    
+                    // Store values in JavaScript variables
+                    var totalStudents = data.total_students;
+                    var totalFaculty = data.total_faculty;
+                    var attendancePercentage = data.attendance_percentage;
+                    var cource_no = data.cource;
 
+                    // Display the data in the HTML
+                    document.getElementById('total_students').innerHTML = totalStudents;
+                    document.getElementById('total_faculty').innerHTML = totalFaculty;
+                    document.getElementById('attendance_rate').innerHTML = attendancePercentage + "%";
+                    document.getElementById('total_courses').innerHTML = cource_no;
+
+                    document.getElementById('attendanceProgressBar').style.width = attendancePercentage + "%";
+                    document.getElementById('attendanceProgressBar').setAttribute('aria-valuenow', attendancePercentage); 
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching data: " + error);
+                }
+            });
+        }
+
+        // Fetch data when the page is loaded
+        window.onload = function() {
+            fetchAttendanceData();
+        };
+    </script>
 
 </body>
 

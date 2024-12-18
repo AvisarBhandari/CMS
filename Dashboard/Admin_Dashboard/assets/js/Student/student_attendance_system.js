@@ -110,18 +110,39 @@ function saveAttendance(action) {
             },
             success: function (response) {
                 console.log("Response from PHP:", response);  // Log for debugging
-                
-                // Display the response from PHP in an alert
-                alert(response);
-                location.reload();
+                var res = JSON.parse(response);
+                // Use SweetAlert to display the response
+                if (res.status === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: res.message
+                    }).then(function() {
+                        location.reload();
+                    });
+                       } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: res.message
+                    });
+                }
             },
             error: function () {
-                alert('Error while saving attendance.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error while saving attendance.',
+                });
                 console.error("Error saving attendance");  // Log error for debugging
             }
         });
     } else {
-        alert("Please select a course, date, and attendance status.");
+        Swal.fire({
+            icon: 'warning',
+            title: 'Missing Information',
+            text: 'Please select a course, date, and attendance status.',
+        });
     }
 }
 
