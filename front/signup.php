@@ -1,72 +1,8 @@
 <?php
-// Start the session at the beginning of the script
-session_start();
+session_start(); 
 
-
-
-$name = '';
-$id = '';
-$phone = '';
-$address = '';
-$password = '';
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    if (isset($_POST['name'])) {
-        $name = $_POST['name'];  
-    }
-
-    if (isset($_POST['id'])) {
-        $id = $_POST['id'];  
-    }
-
-    if (isset($_POST['phone'])) {
-        $phone = $_POST['phone'];  
-    }
-
-    if (isset($_POST['address'])) {
-        $address = $_POST['address'];  
-      }
-
-
-      
-      if (isset($_POST['password'])) {
-          $password = $_POST['password'];  
-      }
-
-  $role = substr($id, 0, 3);
-
-switch($role) {
-    case 'ADM':
-        $role = 'admin';
-        break;
-    case 'TEA':
-        $role = 'faculty';
-        break;
-    case 'STU':
-        $role = 'student';
-        break;
-    default:
-        header('Location:singup.php');
-}
-
-
-    $_SESSION['name'] = $name;
-    $_SESSION['id'] = $id;
-    $_SESSION['phone'] = $phone;
-    $_SESSION['address'] = $address;
-    $_SESSION['password'] = $password;
-    $_SESSION['role'] = $role;
-
-
-
-
-
-    header("Location: new_acount.php");
-    exit();
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +16,6 @@ switch($role) {
   <link rel="stylesheet" href="../css/loading.css" />
 
   <script src="../js/loading.js"></script>
-  <script src="../js/sweetalert.js"></script>
 </head>
 
 <body>
@@ -151,7 +86,7 @@ switch($role) {
       <p class="intro-text">
         Let's get you all set up so you can access your account.
       </p>
-<form id="myForm" action="" method="POST">
+<form id="myForm" action="new_acount.php" method="POST">
 
   <div class="input-wrapper">
     <input type="text" id="name" name="name" required placeholder=" " />
@@ -205,7 +140,7 @@ switch($role) {
 
       
       <p class="login-text">
-        Already have an account? <a href="../front/Login.html">Login</a>
+        Already have an account? <a href="../front/Login.php">Login</a>
       </p>
     </div>
   </div>
@@ -327,22 +262,25 @@ function validateConfirmPassword() {
 
 </script>
 
+  <script src="../js/sweetalert.js"></script>
 
-    <?php
-    if(isset($_SESSION['status']) && $_SESSION['massage']) {
-    ?>
-    <script>
-    swal({
-  title: "<?php echo $_SESSION['massage']; ?>",
-  icon: "<?php echo $_SESSION['status']; ?>",
+<?php
+
+if (isset($_SESSION['status']) && isset($_SESSION['massage'])) {
+?>
+<script>
+swal({
+    title: "<?php echo $_SESSION['massage']; ?>",
+    icon: "<?php echo $_SESSION['status']; ?>",
 });
-    </script>
-    <?php
-    unset($_SESSION['status']);
-    unset($_SESSION['massage']);
+</script>
+<?php
+
+// After showing the message, unset the session variables.
+unset($_SESSION['status']);
+unset($_SESSION['massage']);
 }
 ?>
-
 </body>
 
 </html>
