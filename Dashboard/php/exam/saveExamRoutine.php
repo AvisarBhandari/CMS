@@ -24,7 +24,7 @@ foreach ($data as $exam) {
     $subjectName = $exam->subject_name;  // Subject name
 
     // SQL query to insert exam data into exam_routine
-    $sql = "INSERT INTO exam_routine (course_name, exam_date, exam_time, duration, location, department_name, semester, subject_name) 
+    $sql = "INSERT INTO exam_routine (exam_name, exam_date, exam_time, duration, location, department_name, semester, subject_name) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
