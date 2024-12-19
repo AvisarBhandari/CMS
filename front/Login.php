@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="container">
 
     <div class="sid-img">
-      <img class="imag" src="../img/login.jpg" alt="" style="width:770px;hight:792px;">
+      <img class="imag" src="../img/login.jpg" alt="" style="width:770px;height:792px;">
     </div>
 
     <div class="logo">
@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn">Login</button>
 
         <p class="login-text">
-          First Time Login? <a class="signup" href="signup.html">Sign up</a>
+          First Time Login? <a class="signup" href="signup.php">Sign up</a>
         </p>
       </form>
     </div>
