@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -85,11 +86,11 @@
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small">xyz</span><img
+                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $_SESSION['name'];?></span><img
                                             class="border rounded-circle img-profile"
                                             src="assets/img/untitled-1.png"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="#"><i
+                                            class="dropdown-item" href="profile.php"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="../../front/logout.php"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
@@ -102,10 +103,7 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding-right: 5px;">
                         <h3 class="text-dark mb-0" data-aos="fade-right" data-aos-duration="600" data-aos-delay="500"
-                            data-aos-once="true">Faculty Dashboard</h3><a
-                            class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" data-aos="fade-left"
-                            data-aos-duration="500" data-aos-delay="400" data-aos-once="true" href="#"><i
-                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                            data-aos-once="true">Faculty Dashboard</h3>
                     </div>
                     <div class="row mt-0">
 
