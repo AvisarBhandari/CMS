@@ -137,10 +137,10 @@
                               <script>
                                  // Trigger the form submission once a file is selected
                                  document.getElementById('fileInput').addEventListener('change', function() {
-                                   if (this.files.length > 0) {
+                                    if (this.files.length > 0) {
                                      // Submit the form once the user selects a file
-                                     this.form.submit();
-                                   }
+                                       this.form.submit();
+                                    }
                                  });
                               </script>
                            </div>
@@ -245,6 +245,22 @@
       <script src="assets/js/theme.js"></script>
       <script src="assets/js/profile/profile.js"></script>
       <script src="assets/js/profile/update.js"></script>
+      <script src="assets/js/sweetalert.js"></script>
+
+      <?php
+         if (isset($_SESSION['status']) && $_SESSION['massage']) {
+         ?>
+      <script>
+         swal({
+             title: "<?php echo $_SESSION['massage']; ?>",
+             icon: "<?php echo $_SESSION['status']; ?>",
+         });
+      </script>
+      <?php
+         unset($_SESSION['status']);
+         unset($_SESSION['massage']);
+         }
+         ?>
 
    </body>
 </html>

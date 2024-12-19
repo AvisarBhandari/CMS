@@ -810,6 +810,13 @@ function submitForm(event) {
 
 
                         </div>
+
+
+
+
+
+
+
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -826,6 +833,7 @@ function submitForm(event) {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <a href="404.php" target="_blank">
                                         <tr>
                                             <td>2081/11/28</td>
                                             <td>7-30 AM</td>
@@ -835,6 +843,7 @@ function submitForm(event) {
                                             <td>4</td>
                                             <td>30</td>
                                         </tr>
+                                        </a>
                                         <tr>
                                             <td>2081/10/09</td>
                                             <td>7-30 AM</td>

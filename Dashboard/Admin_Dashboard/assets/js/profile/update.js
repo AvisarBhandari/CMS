@@ -49,6 +49,7 @@ xhrUpdate.onload = function() {
         var updateResponse = JSON.parse(xhrUpdate.responseText); // Parse the response
         if (updateResponse.status === "success") {
             swal("Profile Updated", "Your profile has been successfully updated!", "success");
+            
         } else {
             swal("Error", "There was an issue updating your profile.", "error");
         }
