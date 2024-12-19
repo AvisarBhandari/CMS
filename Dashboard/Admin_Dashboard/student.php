@@ -1,3 +1,37 @@
+<?php
+// Start the session to store the image
+session_start();
+include '../php/db_connect.php'; // Database connection
+
+
+$id = $_SESSION['id']; // or $_POST['id']
+$role = $_SESSION['role']; // or $_POST['role']
+
+// SQL query to get the image based on id and role
+$sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
+
+// Execute the query
+$result = mysqli_query($conn, $sql);
+
+// Check if a record was found
+if ($result && mysqli_num_rows($result) > 0) {
+    // Fetch the image data
+    $row = mysqli_fetch_assoc($result);
+    $imageData = $row['image'];
+
+    // Convert the image data to base64 encoding
+    $img = 'data:image/jpeg;base64,' . base64_encode($imageData);
+
+    // Return the base64 image as a JSON response
+
+} 
+
+else{
+    $img = 'assets/img/avatars/avatar.png';
+    exit();}
+// Close the database connection
+mysqli_close($conn);
+?>          
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -23,8 +57,7 @@
 
 <body id="page-top">
     <?php
-    session_start();
-    include '../php/db_connect.php';
+
 
 
     $total_students = isset($_SESSION['total_students']) ? $_SESSION['total_students'] : 0;
@@ -163,25 +196,12 @@
                                             ?>
                                         </span><img class="border rounded-circle img-profile"
                                             src="<?php
-    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
-
-    if (!empty($result) && $result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      $imageData = $row['image'];
-      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
-      echo $img;
-    } else {
-      echo 'No image uploaded yet.';
-    }
-
-    $conn->close();
+    echo $img;
     ?>"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
-                                            class="dropdown-item" href="#"><i
-                                                class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity
-                                            log</a>
+                                            class="dropdown-item" href="">
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>

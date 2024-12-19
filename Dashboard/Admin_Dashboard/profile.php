@@ -1,3 +1,41 @@
+<?php
+// Start the session to store the image
+session_start();
+         include '../php/db_connect.php'; // Database connection
+
+// Get the id and role from request (e.g., from URL or form)
+    $id = $_SESSION['id']; // or $_POST['id']
+    $role = $_SESSION['role']; // or $_POST['role']
+
+$id = $_SESSION['id']; // or $_POST['id']
+$role = $_SESSION['role']; // or $_POST['role']
+
+// SQL query to get the image based on id and role
+$sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
+
+// Execute the query
+$result = mysqli_query($conn, $sql);
+
+// Check if a record was found
+if ($result && mysqli_num_rows($result) > 0) {
+    // Fetch the image data
+    $row = mysqli_fetch_assoc($result);
+    $imageData = $row['image'];
+
+    // Convert the image data to base64 encoding
+    $img = 'data:image/jpeg;base64,' . base64_encode($imageData);
+
+    // Return the base64 image as a JSON response
+
+} 
+
+else{
+    $img = 'assets/img/avatars/avatar.png';
+    exit();}
+// Close the database connection
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
    <head>
@@ -22,9 +60,11 @@
    <body id="page-top">
       <?php
          include '../php/db_connect.php'; // Database connection
-         session_start();
          echo $_SESSION['id'];
+         $id = $_SESSION['id'];
+         $role = $_SESSION['role'];
          echo $_SESSION['name'];
+         echo $_SESSION['role'];
          ?>
       <div id="wrapper">
          <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
@@ -89,18 +129,7 @@
                               </span>
                               <img class="border rounded-circle img-profile" src="
                                  <?php
-                                    $result = $conn->query("SELECT image FROM images ORDER BY id DESC LIMIT 1");
-                                    
-                                    if (!empty($result) && $result->num_rows > 0) {
-                                      $row = $result->fetch_assoc();
-                                      $imageData = $row['image'];
-                                      $img= 'data:image/jpeg;base64,' . base64_encode($imageData) . '';
-                                      echo $img;
-                                    } else {
-                                      echo 'No image uploaded yet.';
-                                    }
-                                    
-                                    $conn->close();
+                                    echo $img;
                                     ?>
                                  ">
                               </a>
@@ -245,7 +274,9 @@
       <script src="assets/js/theme.js"></script>
       <script src="assets/js/profile/profile.js"></script>
       <script src="assets/js/profile/update.js"></script>
+      <script src="assets/js/profile/display.js"></script>
       <script src="assets/js/sweetalert.js"></script>
+
 
       <?php
          if (isset($_SESSION['status']) && $_SESSION['massage']) {

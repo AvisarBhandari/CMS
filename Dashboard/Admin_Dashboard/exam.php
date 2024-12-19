@@ -1,7 +1,37 @@
 <?php
-    session_start();
-    include '../php/db_connect.php';
-    ?>
+// Start the session to store the image
+session_start();
+include '../php/db_connect.php'; // Database connection
+
+
+$id = $_SESSION['id']; // or $_POST['id']
+$role = $_SESSION['role']; // or $_POST['role']
+
+// SQL query to get the image based on id and role
+$sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
+
+// Execute the query
+$result = mysqli_query($conn, $sql);
+
+// Check if a record was found
+if ($result && mysqli_num_rows($result) > 0) {
+    // Fetch the image data
+    $row = mysqli_fetch_assoc($result);
+    $imageData = $row['image'];
+
+    // Convert the image data to base64 encoding
+    $img = 'data:image/jpeg;base64,' . base64_encode($imageData);
+
+    // Return the base64 image as a JSON response
+
+} 
+
+else{
+    $img = 'assets/img/avatars/avatar.png';
+    exit();}
+// Close the database connection
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -703,9 +733,15 @@ function submitForm(event) {
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small">xyz</span><img
+                                            class="d-none d-lg-inline me-2 text-gray-600 small">
+                                        <?php echo $_SESSION['name']; ?>
+                                        </span><img
                                             class="border rounded-circle img-profile"
-                                            src="assets/img/untitled-1.png"></a>
+                                            src="
+                                            <?php
+                                            echo $img;
+                                            ?>
+                                            "></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
@@ -830,7 +866,7 @@ function submitForm(event) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <a href="404.php" target="_blank">
+                                       
                                         <tr>
                                             <td>2081/11/28</td>
                                             <td>7-30 AM</td>
@@ -840,7 +876,67 @@ function submitForm(event) {
                                             <td>4</td>
                                             <td>30</td>
                                         </tr>
-                                        </a>
+                                        
+
+                                        <tr>
+                                            <td>2081/10/09</td>
+                                            <td>7-30 AM</td>
+                                            <td>first term</td>
+                                            <td>Science</td>
+                                            <td>BSC Botanay</td>
+                                            <td>1</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2081/01/12</td>
+                                            <td>7-30 AM</td>
+                                            <td>Third Term</td>
+                                            <td>Information And Technology</td>
+                                            <td>BIT</td>
+                                            <td>1</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Date</strong></td>
+                                            <td><strong>Time</strong></td>
+                                            <td><strong>Name</strong></td>
+                                            <td><strong>Department</strong></td>
+                                            <td><strong>Course</strong></td>
+                                            <td><strong>Semester/Year</strong></td>
+                                            <td><strong>Room No.</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <br><br>
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Name</th>
+                                            <th>Department</th>
+                                            <th>Course</th>
+                                            <th>Semester/Year</th>
+                                            <th>Room No.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                        <tr>
+                                            <td>2081/11/28</td>
+                                            <td>7-30 AM</td>
+                                            <td>First Term</td>
+                                            <td>Information And Technology</td>
+                                            <td>BCA</td>
+                                            <td>4</td>
+                                            <td>30</td>
+                                        </tr>
+                                        
+
                                         <tr>
                                             <td>2081/10/09</td>
                                             <td>7-30 AM</td>
