@@ -145,9 +145,7 @@ include '../php/db_connect.php';
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade"
                         data-aos-duration="1200" data-aos-delay="500" style="padding-right: 5px;">
-                        <h3 class="text-dark mb-0">Financial Management&nbsp;</h3><a
-                            class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i
-                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                        <h3 class="text-dark mb-0">Financial Management&nbsp;</h3>
                     </div>
                     <div class="row" data-aos="fade" data-aos-duration="1200" data-aos-delay="500">
                         <div class="col">

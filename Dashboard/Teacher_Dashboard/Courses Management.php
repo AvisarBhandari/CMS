@@ -105,10 +105,7 @@
                 <div class="d-sm-flex justify-content-between align-items-center mb-4 ms-0 ps-5 pe-5" data-aos="fade"
                     data-aos-duration="1150" data-aos-delay="500">
                     <h3 class="text-dark mb-0" data-aos="fade-right" data-aos-duration="650" data-aos-delay="500"
-                        data-aos-once="true">Course Management&nbsp;</h3><a
-                        class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" data-aos="fade-left"
-                        data-aos-duration="550" data-aos-delay="650" data-aos-once="true" href="#"><i
-                            class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                        data-aos-once="true">Course Management&nbsp;</h3>
                 </div>
                 <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
                     style="box-shadow: 0px 0px 20px;">
