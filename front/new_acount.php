@@ -1,174 +1,114 @@
 <?php
-session_start();
+session_start(); // Start the session at the top.
 
-include ('db_connect.php');
+include('db_connect.php');
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-
-
-if ( $_SESSION['name']&&$_SESSION['id']&&$_SESSION['phone']&&$_SESSION['address']&&$_SESSION['password']&&$_SESSION['role'] )
-{
-    if($role == 'admin'){
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-// Check if the provided values exist in the 'admin' table
-$sql = "SELECT * FROM admin WHERE name = '$name' AND id = '$id' AND phone_number = '$phone' AND address = '$address'";
-
-$result = $conn->query($sql);
-
-// If a matching record is found in the admin table, insert into the login table
-if ($result->num_rows > 0) {
-    // Prepare the insert query for the login table
-    $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
-    
-    // Execute the insert query
-    if ($conn->query($insert_sql) === TRUE) {
-        // Clear session variables
-        unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['dob']);
-        unset($_SESSION['start_date']);
-        unset($_SESSION['salary']);
-        unset($_SESSION['status']);
-        unset($_SESSION['role']);
-        
-        $_SESSION['status'] = "success";
-        $_SESSION['massage'] = "Account created successfully.";
-        header('Location: signup.php');
-    } else {
-        // Clear session variables
-        unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['dob']);
-        unset($_SESSION['start_date']);
-        unset($_SESSION['salary']);
-        unset($_SESSION['status']);
-        unset($_SESSION['role']);
-        
-        $_SESSION['status'] = "error";
-        $_SESSION['massage'] = "Error inserting data.";
-        header('Location: signup.php');
-} 
-
-}
-
+    if (isset($_POST['name'])) {
+        $name = $_POST['name'];  
     }
-    if($role == 'faculty'){
+
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];  
+    }
+
+    if (isset($_POST['phone'])) {
+        $phone = $_POST['phone'];  
+    }
+
+    if (isset($_POST['address'])) {
+        $address = $_POST['address'];  
+    }
+
+    if (isset($_POST['password'])) {
+        $password = $_POST['password'];  
+    }
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-// Check if the provided values exist in the 'faculty' table
-$sql = "SELECT * FROM faculty WHERE faculty_name = '$name' AND faculty_id = '$id' AND phone_number = '$phone' AND address = '$address'";
-
-$result = $conn->query($sql);
-
-// If a matching record is found in the faculty table, insert into the login table
-if ($result->num_rows > 0) {
-    // Prepare the insert query for the login table
-    $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+    $role = substr($id, 0, 3);
     
-    // Execute the insert query
-    if ($conn->query($insert_sql) === TRUE) {
-            unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['password']);
-        unset($_SESSION['role']);
-        $_SESSION['status'] = "success";
-        $_SESSION['massage'] = "Account created successfully.";
-        header('Location: signup.php');
-    } else {
-        unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['password']);
-        unset($_SESSION['role']);
-        $_SESSION['status'] = "error";
-        $_SESSION['massage'] = "Error inserting data into login table.";
-        header('Location: signup.php');
+    switch ($role) {
+        case 'ADM':
+            $role = 'admin';
+            $sql = "SELECT * FROM admin WHERE name = '$name' AND id = '$id' AND phone_number = '$phone' AND address = '$address'";
+            $result = $conn->query($sql);
 
+            if ($result->num_rows > 0) {
+                // Insert into the login table
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                if ($conn->query($insert_sql)) {
+                    $_SESSION['status'] = "success";
+                    $_SESSION['massage'] = "Account created successfully.";
+                    header('Location: signup.php');
+                    exit();
+                } else {
+                    $_SESSION['status'] = "error";
+                    $_SESSION['massage'] = "Error inserting data into login table.";
+                    header('Location: signup.php');
+                    exit();
+                }
+            }
+
+        case 'TEA':
+            $role = 'faculty';
+            $sql = "SELECT * FROM faculty WHERE faculty_name = '$name' AND faculty_id = '$id' AND phone_number = '$phone' AND address = '$address'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Insert into the login table
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                if ($conn->query($insert_sql)) {
+                    $_SESSION['status'] = "success";
+                    $_SESSION['massage'] = "Account created successfully.";
+                    header('Location: signup.php');
+                    exit();
+                } else {
+                    $_SESSION['status'] = "error";
+                    $_SESSION['massage'] = "Error inserting data into login table.";
+                    header('Location: signup.php');
+                    exit();
+                }
+            } else {
+                $_SESSION['status'] = "error";
+                $_SESSION['massage'] = "Invalid faculty details.";
+                header('Location: signup.php');
+                exit();
+            }
+
+
+        case $role= 'STU':
+            $role = 'student';
+            $sql = "SELECT * FROM students_info WHERE student_name = '$name' AND student_roll = '$id' AND phone_no = '$phone' AND address = '$address'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Insert into the login table
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                if ($conn->query($insert_sql) === TRUE) {
+                    $_SESSION['status'] = "success";
+                    $_SESSION['massage'] = "Account created successfully.";
+                    header('Location: signup.php');
+                    exit();
+                } else {
+                    $_SESSION['status'] = "error";
+                    $_SESSION['massage'] = "Error inserting data into login table.";
+                    header('Location: signup.php');
+                    exit();
+                }
+            } else {
+                $_SESSION['status'] = "error";
+                $_SESSION['massage'] = "Invalid student details.";
+                header('Location: signup.php');
+                exit();
+            }
+
+        default:
+            $_SESSION['status'] = "error";
+            $_SESSION['massage'] = "Please fill all the fields.";
+            header('Location: signup.php');
+            exit();
     }
-} else {
-    unset($_SESSION['name']);
-    unset($_SESSION['id']);
-    unset($_SESSION['phone']);
-    unset($_SESSION['address']);
-    unset($_SESSION['password']);
-    unset($_SESSION['role']);
-    $_SESSION['status'] = "error";
-    $_SESSION['massage'] = "Invalid faculty details.";
-    header('Location: signup.php');
-
-}
-    }
-    if($role == 'student'){
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-// Check if the provided values exist in the 'faculty' table
-$sql = "SELECT * FROM students_info WHERE student_name  = '$name' AND student_roll = '$id' AND phone_no = '$phone' AND address = '$address'";
-
-$result = $conn->query($sql);
-
-// If a matching record is found in the faculty table, insert into the login table
-if ($result->num_rows > 0) {
-    // Prepare the insert query for the login table
-    $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
     
-    // Execute the insert query
-    if ($conn->query($insert_sql) === TRUE) {
-        unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['password']);
-        unset($_SESSION['role']);
-        $_SESSION['status'] = "success";
-        $_SESSION['massage'] = "Account created successfully.";
-        header('Location: signup.php');
-    } else {
-        unset($_SESSION['name']);
-        unset($_SESSION['id']);
-        unset($_SESSION['phone']);
-        unset($_SESSION['address']);
-        unset($_SESSION['password']);
-        unset($_SESSION['role']);
-        $_SESSION['status'] = "error";
-        $_SESSION['massage'] = "Error inserting data.";
-        header('Location: signup.php');
-
-    }
-} else {
-    unset($_SESSION['name']);
-    unset($_SESSION['id']);
-    unset($_SESSION['phone']);
-    unset($_SESSION['address']);
-    unset($_SESSION['password']);
-    unset($_SESSION['role']);
-    $_SESSION['status'] = "error";
-    $_SESSION['massage'] = "Invalid details.";
-    header('Location: signup.php');
-
 }
-    }
-    }
-
-else
-{
-    unset($_SESSION['name']);
-    unset($_SESSION['id']);
-    unset($_SESSION['phone']);
-    unset($_SESSION['address']);
-    unset($_SESSION['password']);
-    unset($_SESSION['role']);
-        $_SESSION['status'] = "error";
-        $_SESSION['massage'] = "Please fill all the fields.";
-    header('Location: signup.php');
-}
-
 ?>

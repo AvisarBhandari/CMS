@@ -30,7 +30,6 @@ else{
     $img = 'assets/img/avatars/avatar.png';
     exit();}
 // Close the database connection
-mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -259,7 +258,6 @@ mysqli_close($conn);
     </select>
 
     <!-- Display selected department -->
-    <div id="departmentName" style="margin-top: 10px;"></div>
 
     <!-- Course Select -->
     <div id="courseContainer" style="display:none;">
@@ -272,9 +270,9 @@ mysqli_close($conn);
 
             <!-- Semester Selection -->
             <div id="semesterContainer" style="display:none;">
-                <label class="label" for="semester">Semester:</label>
+                <label class="label" for="semester" id="sem/year">Semester:</label>
                 <select class="input-field"  style="margin-top: 15px;" id="semester" name="semester" onchange="getSubjects()" required>
-                    <option value="">Select Semester</option>
+                    <option value="" id="">Select Semester</option>
                 </select><br>
             </div>
 
@@ -353,7 +351,6 @@ function getCourses() {
     if (department) {
         // Show course container if department is selected
         courseContainer.style.display = 'block';
-        departmentNameContainer.textContent = 'Selected Department: ' + department;
 
         // Send an AJAX request to the server to fetch courses for the selected department
         var xhr = new XMLHttpRequest();
@@ -365,7 +362,7 @@ function getCourses() {
                     courses.forEach(function(course) {
                         var option = document.createElement('option');
                         option.value = course.course_code;
-                        option.textContent = course.course_name + ' (' + course.course_type + ')';
+                        option.textContent = course.course_name ;
                         option.setAttribute('data-course-type', course.course_type);  // Store course type in the option
                         courseSelect.appendChild(option);
                     });
@@ -611,6 +608,7 @@ function submitForm(event) {
             // Add all the collected data into formData array
             formData.push({
                 department: department,
+                courseName: courseName,
                 subject: subject,
                 examName: examName,
                 roomNo: roomNo,
@@ -743,9 +741,9 @@ function submitForm(event) {
                                             ?>
                                             "></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="#"><i
+                                            class="dropdown-item" href="profile.php"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="../../front/logout.php"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -847,123 +845,77 @@ function submitForm(event) {
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Name</th>
-                                            <th>Department</th>
-                                            <th>Course</th>
-                                            <th>Semester/Year</th>
-                                            <th>Room No.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       
-                                        <tr>
-                                            <td>2081/11/28</td>
-                                            <td>7-30 AM</td>
-                                            <td>First Term</td>
-                                            <td>Information And Technology</td>
-                                            <td>BCA</td>
-                                            <td>4</td>
-                                            <td>30</td>
-                                        </tr>
-                                        
+                                <?php
+                                $sql = "SELECT exam_code, exam_date,exam_name, exam_time, department_name, course_name, semester,subject_name, location 
+        FROM exam_routine
+        ORDER BY exam_code, exam_date, exam_time";
 
-                                        <tr>
-                                            <td>2081/10/09</td>
-                                            <td>7-30 AM</td>
-                                            <td>first term</td>
-                                            <td>Science</td>
-                                            <td>BSC Botanay</td>
-                                            <td>1</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2081/01/12</td>
-                                            <td>7-30 AM</td>
-                                            <td>Third Term</td>
-                                            <td>Information And Technology</td>
-                                            <td>BIT</td>
-                                            <td>1</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td><strong>Date</strong></td>
-                                            <td><strong>Time</strong></td>
-                                            <td><strong>Name</strong></td>
-                                            <td><strong>Department</strong></td>
-                                            <td><strong>Course</strong></td>
-                                            <td><strong>Semester/Year</strong></td>
-                                            <td><strong>Room No.</strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                <br><br>
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Name</th>
-                                            <th>Department</th>
-                                            <th>Course</th>
-                                            <th>Semester/Year</th>
-                                            <th>Room No.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       
-                                        <tr>
-                                            <td>2081/11/28</td>
-                                            <td>7-30 AM</td>
-                                            <td>First Term</td>
-                                            <td>Information And Technology</td>
-                                            <td>BCA</td>
-                                            <td>4</td>
-                                            <td>30</td>
-                                        </tr>
-                                        
+// Execute the query
+$result = $conn->query($sql);
 
-                                        <tr>
-                                            <td>2081/10/09</td>
-                                            <td>7-30 AM</td>
-                                            <td>Second Term</td>
-                                            <td>Science</td>
-                                            <td>BSC Botanay</td>
-                                            <td>1</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2081/01/12</td>
-                                            <td>7-30 AM</td>
-                                            <td>Third Term</td>
-                                            <td>Information And Technology</td>
-                                            <td>BIT</td>
-                                            <td>1</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td><strong>Date</strong></td>
-                                            <td><strong>Time</strong></td>
-                                            <td><strong>Name</strong></td>
-                                            <td><strong>Department</strong></td>
-                                            <td><strong>Course</strong></td>
-                                            <td><strong>Semester/Year</strong></td>
-                                            <td><strong>Room No.</strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+// Check if the query returns any rows
+if ($result->num_rows > 0) {
+    // Initialize variables to track unique exam codes
+    $current_exam_code = "";
+    
+    // Start HTML output
+    
+echo '<table class="table my-0" id="dataTable">';
+    echo '<thead>
+            <tr>
+                <th>Exam Date</th>
+                <th>Exam Time</th>
+                <th>Exam Name</th>
+                <th>Department</th>
+                <th>Subject</th>
+                <th>Semester/Year</th>
+                <th>Room No.</th>
+            </tr>
+          </thead>';
+    echo '<tbody>';
+    // Loop through the query result
+    while ($row = $result->fetch_assoc()) {
+        
+        // Check if the exam code has changed
+        if ($current_exam_code !== $row['exam_code']) {
+            if ($current_exam_code !== "") {
+                
+                echo '</tbody>';
+            }
+            $current_exam_code = $row['exam_code'];
+            echo '<thead><tr><th colspan="7" class="text-center">
+            <form method="post">
+            <input type="submit" name="exam_code" value="' . $current_exam_code . '" class="btn btn-danger btn-sm">                                    
+            <input type="submit" name="exam_code" value="' . $current_exam_code . '" class="btn btn-danger btn-sm">                                    
+            </form>
+            </th></tr></thead>';
+            echo '<tbody>';
+        }
+
+        // Display the exam information in table rows
+        echo '<tr>';
+        echo '<td>' . $row['exam_date'] . '</td>';
+        echo '<td>' . $row['exam_time'] . '</td>';
+        echo '<td>' . $row['exam_name'] . '</td>';
+        echo '<td>' . $row['department_name'] . '</td>';
+        echo '<td>' . $row['subject_name'] . '</td>';
+        echo '<td>' . $row['semester'] . '</td>';
+        echo '<td>' . $row['location'] . '</td>';
+        echo '</tr>';
+    }
+
+    // Close the final tbody and table
+    echo '</tbody></table>
+    <br>
+    <br>';
+
+} else {
+    echo "No exam data found.";
+}
+
+// Close the database connection
+$conn->close();
+                                ?>
                             </div>
                         </div>
                     </div>

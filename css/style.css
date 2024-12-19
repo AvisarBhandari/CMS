@@ -1157,6 +1157,7 @@ margin-top: 180px;
 
 .frame .hero-img-png {
   position: relative;
+
   max-width: 660px;
   width: 636px;
   height: 526.74px;
@@ -1172,7 +1173,6 @@ margin-top: 180px;
 
 .hero-img-png {
   display: inline-block;
-
 }
 
 
