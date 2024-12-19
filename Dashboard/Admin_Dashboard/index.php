@@ -151,7 +151,7 @@ mysqli_close($conn);
                                         <div class="dropdown-divider">
 
                                         </div>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="../../front/logout.php">
                                             <i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
