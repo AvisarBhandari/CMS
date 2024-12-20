@@ -211,12 +211,9 @@
         
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
        
-
-
-
-
-            
+        
             <section>
           <div class="section-3">
             <div class="container-8">
@@ -409,48 +406,45 @@
 
 
 
-                <form action="" >
-                <div class="form-wrapper">
-                  <div class="form">
-                    <div class="container-50">
-                      <div class="margin-9">
-                        <div class="container-51">
-                          <div class="label-your-name">Your Name</div>
-                          
-                          <input class="input" required type="text" name="" id="">
+                <form id="emailForm" enctype="multipart/form-data">
+                  <div class="form-wrapper">
+                    <div class="form">
+                      <div class="container-50">
+                        <div class="margin-9">
+                          <div class="container-51">
+                            <div class="label-your-name">Your Name</div>
+                            <input class="input" required type="text" name="c_name" id="c_name">
+                          </div>
+                        </div>
+                        <div class="margin-10">
+                          <div class="container-51">
+                            <div class="label-your-email">Your Email</div>
+                            <input class="input" type="email" required name="c_email" id="c_email">
+                          </div>
+                        </div>
+                        <div class="margin-11">
+                          <div class="container-51">
+                            <div class="label-subject">Subject</div>
+                            <input class="subject" required type="text" name="c_subject" id="c_subject">
+                          </div>
+                        </div>
+                        <div class="margin-12">
+                          <div class="container-52">
+                            <div class="label-message">Message</div>
+                            <textarea class="textarea" required name="c_message" id="c_message" cols="90" rows="10"></textarea>
+                          </div>
+                        </div>
+                        <div class="margin-13">
+                          <div class="button-wrapper">
+                            <button class="link-3" type="submit">
+                              <div class="text-wrapper-28">Send Message</div>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                      <div class="margin-10">
-                        <div class="container-51">
-                          <div class="label-your-email">Your Email</div>
-                          <input class="input" type="email" required name="c_email" id="">
-                        </div>
-                      </div>
-                      <div class="margin-11">
-                        <div class="container-51">
-                          <div class="label-subject">Subject</div>
-                          <input class="subject" required type="text" name="c_subject" id="">
-                        </div>
-                      </div>
-                      <div class="margin-12">
-                        <div class="container-52">
-                          <div class="label-message">Message</div>
-                          <textarea class="textarea" required name="textarea" id="" cols="90" rows="10">
-
-                          </textarea>
-                          
-                        </div>
-                      </div>
-                      <div class="margin-13">
-                        <div class="button-wrapper">
-                          <button class="link-3" onclick="ty()"><div class="text-wrapper-28">
-                            
-
-                            
-                            Send Message
-                            
-                          </div></button>
-                          </form>
+                    </div>
+                  </div>
+                </form>
                         </div>
                       </div>
                     </div>
@@ -626,7 +620,7 @@
           </div>
         </footer>
 
-
-    
+     <script src="PHPMailer-master/send_email.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>
 </html>
