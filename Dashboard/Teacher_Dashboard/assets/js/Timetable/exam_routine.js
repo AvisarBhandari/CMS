@@ -1,16 +1,37 @@
 $(document).ready(function () {
-    $('#semester').change(function () {
-        const semester = $(this).val();
 
-        if (semester) {
+    $.ajax({
+        url: 'Teacher_php/fetch_courses_data.php', 
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                let courseOptions = '<option value="">Select Course</option>';
+                response.courses.forEach(item => {
+                    courseOptions += `<option value="${item.course_code}">${item.course_name}</option>`;
+                });
+                $('#course').html(courseOptions);
+            } else {
+                $('#course').html(`<option>${response.message}</option>`);
+            }
+        },
+        error: function () {
+            $('#course').html('<option>Error fetching courses</option>');
+        }
+    });
+
+    // On course and semester change
+    $('#course, #semester').change(function () {
+        const course_code = $('#course').val();
+        const semester = $('#semester').val();
+
+        if (course_code && semester) {
             $.ajax({
-                url: 'Student_php/exam-routine.php', 
+                url: 'Teacher_php/fetch_exam_routine_display.php', 
                 type: 'POST',
                 dataType: 'json',
-                data: { semester: semester },
+                data: { course_code: course_code, semester: semester },
                 success: function (response) {
-                    // console.log('Response Data:', response); 
-                    // console.log('Course Name:', response.course_name); 
                     if (response.success) {
                         let routineHTML = '';
                         response.data.forEach(item => {
