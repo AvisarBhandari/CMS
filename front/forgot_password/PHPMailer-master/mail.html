@@ -1,0 +1,18 @@
+<form method="POST" enctype="multipart/form-data" action="mail.php">
+    <label for="senderEmail">Your Email:</label>
+    <input type="email" name="senderEmail" required><br>
+
+    <label for="senderName">Your Name:</label>
+    <input type="text" name="senderName" required><br>
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" required><br>
+
+    <label for="message">Message:</label>
+    <textarea name="message" required></textarea><br>
+
+    <label for="attachment">Attachment:</label>
+    <input type="file" name="attachment"><br>
+
+    <button type="submit">Send Email</button>
+</form>
