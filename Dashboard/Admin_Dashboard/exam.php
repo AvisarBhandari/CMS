@@ -689,9 +689,21 @@ function submitForm(event) {
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
                             href="student.php"><i class="far fa-user"
                                 style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="financial.php"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icon-tabler-moneybag"
+                                style="font-size: 14px;">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M9.5 3h5a1.5 1.5 0 0 1 1.5 1.5a3.5 3.5 0 0 1 -3.5 3.5h-1a3.5 3.5 0 0 1 -3.5 -3.5a1.5 1.5 0 0 1 1.5 -1.5z">
+                                </path>
+                                <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+                            </svg>&nbsp;
+                            <span>Financial Management&nbsp;</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="exam.php"><i
                                 class="fas fa-table"></i><span>Exam Management&nbsp;</span></a></li>
-                    <li class="nav-item"></li>
+                    
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
@@ -862,15 +874,7 @@ if ($result->num_rows > 0) {
     
 echo '<table class="table my-0" id="dataTable">';
     echo '<thead>
-            <tr>
-                <th>Exam Date</th>
-                <th>Exam Time</th>
-                <th>Exam Name</th>
-                <th>Department</th>
-                <th>Subject</th>
-                <th>Semester/Year</th>
-                <th>Room No.</th>
-            </tr>
+            
           </thead>';
     echo '<tbody>';
     // Loop through the query result
@@ -883,12 +887,16 @@ echo '<table class="table my-0" id="dataTable">';
                 echo '</tbody>';
             }
             $current_exam_code = $row['exam_code'];
-            echo '<thead><tr><th colspan="7" class="text-center">
-            <form method="post">
-            <input type="submit" name="exam_code" value="' . $current_exam_code . '" class="btn btn-danger btn-sm">                                    
-            <input type="submit" name="exam_code" value="' . $current_exam_code . '" class="btn btn-danger btn-sm">                                    
-            </form>
-            </th></tr></thead>';
+            echo '<thead><tr>
+                <th>Exam Date</th>
+                <th>Exam Time</th>
+                <th>Exam Name</th>
+                <th>Department</th>
+                <th>Subject</th>
+                <th>Semester/Year</th>
+                <th>Room No.</th>
+                <th>Actions</th>
+            </tr></thead>';
             echo '<tbody>';
         }
 
@@ -901,7 +909,27 @@ echo '<table class="table my-0" id="dataTable">';
         echo '<td>' . $row['subject_name'] . '</td>';
         echo '<td>' . $row['semester'] . '</td>';
         echo '<td>' . $row['location'] . '</td>';
-        echo '</tr>';
+        echo '<td> 
+                <div onclick="editStudent('.$current_exam_code.')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning" style="font-size: 27px;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                        <path d="M16 5l3 3"></path>
+                    </svg>
+                </div>
+                <form method="post" action="../php/exam/deleteaxm.php">
+    <input type="hidden" name="exam_code" value=" '.$current_exam_code.'">
+
+    <button type="submit" style="background: none; border: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger" style="font-size: 29px;">
+            <path d="M0 0h24v24H0V0z" fill="none"></path>
+            <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
+        </svg>
+    </button>
+</form>
+
+            </td>';
     }
 
     // Close the final tbody and table
@@ -918,7 +946,7 @@ $conn->close();
                                 ?>
                             </div>
                         </div>
-                    </div>
+                    </div >
                 </div>
             </div>
 
@@ -940,6 +968,63 @@ $conn->close();
     <script src="assets/js/exam/exam.js"></script>
     <script src="assets/js/Timetable/timetable.js"></script>
     <script src="assets/js/sweetalert.js"></script>
+    <script src=""></script>
+    <script>
+        function editStudent(examCode) {
+    // Open the modal
+    openModal();
+
+    // Fetch the exam data based on examCode via AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../php/exam/getExamDetails.php?exam_code=' + encodeURIComponent(examCode), true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+
+            // Populate the form fields with the fetched data
+            document.getElementById('examName').value = data.exam_name;
+            document.getElementById('roomNo').value = data.room_no;
+            document.getElementById('examStartTime').value = data.exam_start_time;
+            document.getElementById('examEndTime').value = data.exam_end_time;
+            document.getElementById('department').value = data.department;
+            document.getElementById('course').value = data.course_code;
+            document.getElementById('semester').value = data.semester;
+
+            // Call functions to populate dependent fields
+            getCourses(); // To populate courses based on department
+            getSemesters(); // To populate semesters based on selected course
+            getSubjects(); // To populate subjects based on selected course and semester
+        }
+    };
+    xhr.send();
+}
+
+// Function to open the modal
+function openModal() {
+    document.getElementById('examModal').style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('examModal').style.display = 'none';
+}
+
+    </script>
+
+<?php
+    if(isset($_SESSION['status']) && $_SESSION['massage']) {
+    ?>
+    <script>
+    swal({
+  title: "<?php echo $_SESSION['massage']; ?>",
+  icon: "<?php echo $_SESSION['status']; ?>",
+});
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['massage']);
+}
+?>
 
 
 </body>

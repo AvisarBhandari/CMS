@@ -1,20 +1,20 @@
 <?php
-// Start the session to store the image
-session_start();
-include '../php/db_connect.php'; // Database connection
+    // Start the session to store the image
+    session_start();
+    include '../php/db_connect.php'; // Database connection
 
 
-$id = $_SESSION['id']; // or $_POST['id']
-$role = $_SESSION['role']; // or $_POST['role']
+    $id = $_SESSION['id']; // or $_POST['id']
+    $role = $_SESSION['role']; // or $_POST['role']
 
-// SQL query to get the image based on id and role
-$sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
+    // SQL query to get the image based on id and role
+    $sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
 
-// Execute the query
-$result = mysqli_query($conn, $sql);
+    // Execute the query
+    $result = mysqli_query($conn, $sql);
 
-// Check if a record was found
-if ($result && mysqli_num_rows($result) > 0) {
+    // Check if a record was found
+    if ($result && mysqli_num_rows($result) > 0) {
     // Fetch the image data
     $row = mysqli_fetch_assoc($result);
     $imageData = $row['image'];
@@ -24,13 +24,13 @@ if ($result && mysqli_num_rows($result) > 0) {
 
     // Return the base64 image as a JSON response
 
-} 
+    } 
 
-else{
+    else{
     $img = 'assets/img/avatars/avatar.png';
     exit();}
-// Close the database connection
-mysqli_close($conn);
+    // Close the database connection
+    mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -84,9 +84,7 @@ mysqli_close($conn);
                                 class="fas fa-table"></i><span>Faculty Management&nbsp;</span></a><a class="nav-link"
                             href="student.php"><i class="far fa-user"
                                 style="font-size: 14px;"></i><span>StudentManagement&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam
-                                Management&nbsp;</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="financial.php">
+                                 <li class="nav-item"><a class="nav-link" href="financial.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" class="icon icon-tabler icon-tabler-moneybag"
@@ -97,6 +95,9 @@ mysqli_close($conn);
                                 </path>
                                 <path d="M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                             </svg><span style="padding-left: 2px;">Financial&nbsp; Management&nbsp;</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="exam.php"><i class="fas fa-table"></i><span>Exam
+                                Management&nbsp;</span></a></li>
+                   
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
