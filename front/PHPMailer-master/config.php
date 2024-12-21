@@ -1,7 +1,7 @@
 <?php
 return [
 
-    'email' => 'mahabirrathod30@gmail.com',
-    'password' => 'lowf vlur qylz xesi',
+    'email' => 'xyz136267@gmail.com',
+    'password' => 'vbyv hxgc cigo klij ',
 ];
      
