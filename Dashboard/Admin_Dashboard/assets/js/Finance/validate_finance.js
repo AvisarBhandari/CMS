@@ -13,30 +13,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Validate Earnings (Should not be negative or exceed 1 crore)
+  
     function validateEarnings() {
-        const earningsValue = earningsInput.value;
-        if (earningsValue === "" || earningsValue < 0) {
-            showError(earningsInput, "Earnings cannot be negative.");
-        } else if (earningsValue > 100000000) {
-            showError(earningsInput, "Earnings cannot exceed 1 crore.");
+        const earningsValue = parseFloat(earningsInput.value); 
+        if (isNaN(earningsValue) || earningsValue < 5000 || earningsValue > 100000000) {
+            if (isNaN(earningsValue) || earningsValue < 5000) {
+                showError(earningsInput, "Earnings must be at least 5000.");
+            } else if (earningsValue > 100000000) {
+                showError(earningsInput, "Earnings cannot exceed 1 crore.");
+            }
         } else {
             showSuccess(earningsInput);
         }
     }
-
-    // Validate Expenditures (Should not be negative or exceed 1 crore)
+    
+   
     function validateExpenditures() {
-        const expendituresValue = expendituresInput.value;
-        if (expendituresValue === "" || expendituresValue < 0) {
-            showError(expendituresInput, "Expenditures cannot be negative.");
-        } else if (expendituresValue > 100000000) {
-            showError(expendituresInput, "Expenditures cannot exceed 1 crore.");
+        const expendituresValue = parseFloat(expendituresInput.value); //
+        if (isNaN(expendituresValue) || expendituresValue < 3000 || expendituresValue > 100000000) {
+            if (isNaN(expendituresValue) || expendituresValue < 3000) {
+                showError(expendituresInput, "Expenditures must be at least 3000.");
+            } else if (expendituresValue > 100000000) {
+                showError(expendituresInput, "Expenditures cannot exceed 1 crore.");
+            }
         } else {
             showSuccess(expendituresInput);
         }
     }
-
     // Show Error
     function showError(input, message) {
         input.classList.add("is-invalid");

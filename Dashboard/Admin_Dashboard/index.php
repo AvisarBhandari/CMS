@@ -563,7 +563,7 @@
     <script src="assets/js/Holidays/validate_holiday.js"></script>
     <script src="assets/js/Events/validate_event.js"></script>
     <script src="assets/js/Finance/finance_crud.js"></script>
-    <script src="assets/js/Finance/validate_finance.js"></script>
+   <script src="assets/js/Finance/validate_finance.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script type="text/javascript">
