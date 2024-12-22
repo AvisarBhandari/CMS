@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         facultyName: "Faculty name must only contain<br> alphabetic characters (2-25)",
         position: "Position must contain alphabetic characters (2-25)",
         address: "Address must be between 5 and 50 characters",
-        dob: "Age should be greater than 18",
+        dob: "Age should be between  18 and 60",
         startDate: "Start date is required",
         department: "Please select the department",
         salary: "Salary must be a positive number between 3000 and 100000",
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dobDate.getDate())) {
             age--;
         }
-        if (age < 18) {
+        if (age < 18 || age > 60) {
             showError(dob, errorMessages.dob);
         } else {
             clearError(dob);
@@ -127,9 +127,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!startDate.value) {
             showError(startDate, errorMessages.startDate);
         } else {
-            clearError(startDate);
+            const selectedDate = new Date(startDate.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+            selectedDate.setHours(0, 0, 0, 0); 
+            
+            if (selectedDate > today) {
+                showError(startDate, "Start date cannot be in the future.");
+            } else {
+                clearError(startDate);
+            }
         }
     }
+    
+    
 
     function validateSalary() {
         if (salary.value < 3000 || salary.value > 100000 || isNaN(salary.value) || salary.value <= 0) {
