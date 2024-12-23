@@ -111,24 +111,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to validate Semester
-    function validateSemester() {
-        const semester = parseInt(semesterInput.value, 10);
-        if (semester < 1 || semester > 8 || isNaN(semester)) {
-            showError(semesterInput, "Semester must be between 1 and 8.");
-        } else {
-            showSuccess(semesterInput);
-        }
-    }
+   
 
     // Function to validate Admission Date
     function validateAdmissionDate() {
-        const admissionDate = admissionDateInput.value;
-        if (!admissionDate) {
-            showError(admissionDateInput, "Admission Date cannot be empty.");
+        const admissionDate = new Date(admissionDateInput.value); 
+        const today = new Date(); 
+        
+       
+        today.setHours(0, 0, 0, 0);
+    
+        if (admissionDate > today) {
+            showError(admissionDateInput, "Admission Date cannot be in the future.");
         } else {
             showSuccess(admissionDateInput);
         }
     }
+    
+    
 
     // Function to display error message
     function showError(input, message) {
