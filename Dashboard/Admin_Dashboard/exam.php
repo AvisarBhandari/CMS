@@ -772,14 +772,14 @@ function submitForm(event) {
                         <form id="timetableForm" class="mb-4">
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <label for="course" class="form-label">Course</label>
-                                    <select id="course" class="form-select" name="course" required>
+                                    <label for="course_fetch" class="form-label">Course</label>
+                                    <select id="course_fetch" class="form-select" name="course" required>
                                         <option value="">Select Course</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="semester" class="form-label">Semester</label>
-                                    <select id="semester" class="form-select" name="semester" required>
+                                    <label for="semester_fetch" class="form-label">Semester</label>
+                                    <select id="semester_fetch" class="form-select" name="semester" required>
                                         <option value="">Select Semester</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>

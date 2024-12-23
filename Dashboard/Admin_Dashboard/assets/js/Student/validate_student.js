@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const today = new Date(); 
         
        
-        today.setHours(0, 0, 0, 0);
+       
     
         if (admissionDate > today) {
             showError(admissionDateInput, "Admission Date cannot be in the future.");
