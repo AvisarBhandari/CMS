@@ -115,18 +115,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to validate Admission Date
     function validateAdmissionDate() {
-        const admissionDate = new Date(admissionDateInput.value); 
-        const today = new Date(); 
-        
-       
-       
-    
-        if (admissionDate > today) {
-            showError(admissionDateInput, "Admission Date cannot be in the future.");
+        if (!admissionDateInput || !admissionDateInput.value) {
+            showError(admissionDateInput, "Admission date is required.");
         } else {
-            showSuccess(admissionDateInput);
+            const selectedDate = new Date(admissionDateInput.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+            selectedDate.setHours(0, 0, 0, 0); 
+    
+            if (selectedDate > today) {
+                showError(admissionDateInput, "Admission date cannot be in the future.");
+            } else {
+                showSuccess(admissionDateInput);
+            }
         }
+        console.log("Validating admission date:", admissionDateInput.value);
     }
+    
     
     
 
@@ -160,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     emailInput.addEventListener("input", validateEmail);
     dobInput.addEventListener("change", validateDob);
     addressInput.addEventListener("input", validateAddress);
-    semesterInput.addEventListener("change", validateSemester);
+  
     admissionDateInput.addEventListener("change", validateAdmissionDate);
     departmentDropdown.addEventListener("change",validateDepartment);
     genderDropdown.addEventListener("change",validateGender);
