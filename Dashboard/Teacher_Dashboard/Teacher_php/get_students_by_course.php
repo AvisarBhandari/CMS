@@ -12,10 +12,11 @@ if (empty($course_code)) {
 try {
     // Query to fetch students
     $query = "SELECT student_id, student_roll, student_name, gender, email, department_name, 
-                     phone_no, dob, admission_date, parent_name, address
-              FROM students_info 
-              WHERE course_code = ?";
-    
+    phone_no, dob, admission_date, parent_name, address
+    FROM students_info 
+    WHERE course_code = ?
+    ORDER BY student_name ASC";
+
     $stmt = $conn->prepare($query);
     if (!$stmt) {
         throw new Exception("Database prepare error: " . $conn->error);
