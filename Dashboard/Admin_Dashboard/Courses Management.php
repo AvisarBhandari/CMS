@@ -500,6 +500,7 @@ echo $img;
     <script src="assets/js/Course/course_crud.js"></script>
     <script src="assets/js/Course/course_Validation.js"></script>
     <script src="assets/js/Course/course_stats.js"></script>
+    <script src="assets/js/Course/validate_subjects.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/Subjects/subject_crud.js"></script>
 </body>
