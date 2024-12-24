@@ -60,10 +60,7 @@
                     <div class="container-fluid">
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
                             data-aos="slide-down" data-aos-duration="1200" data-aos-delay="400">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
-                                    placeholder="Search for ..." style="height: 38.6px;"><button
-                                    class="btn btn-primary py-0" type="button" style="width: 42.6px;height: 37.6px;"><i
-                                        class="fas fa-search"></i></button></div>
+                          
                         </form>
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
