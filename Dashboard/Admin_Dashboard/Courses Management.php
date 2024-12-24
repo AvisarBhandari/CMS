@@ -465,7 +465,7 @@ echo $img;
                                     <input type="text" id="subjectSemester" class="form-control"
                                         placeholder="Enter Semester" required />
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="height:38px; width:250px;">
                                     <label for="syllabusStatus" class="form-label">Syllabus Status</label>
                                     <select id="syllabusStatus" class="form-select" required>
                                         <option value="">Select Status</option>
