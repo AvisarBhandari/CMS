@@ -347,11 +347,11 @@ echo $img;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-left:20px; width:auto;">
                                 <div class="text-md-end dataTables_filter" id="dataTable_filter"
-                                    style="margin-left: 2px;"><label class="form-label"><input type="search"
+                                    style="margin-left: 2px;"><label class="form-label"><input type="search" style="width: 280px;;"
                                             class="form-control form-control-sm" aria-controls="dataTable"
-                                            placeholder="Search"></label></div>
+                                            placeholder="Search by course code or cours name"  onkeyup="fetchCourses(this.value)"></label></div>
                             </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable-1" role="grid"

@@ -42,55 +42,59 @@ $(document).ready(function() {
 });
 
 
+function fetchCourses(searchQuery = "") {
+    console.log("Fetching course data with searchQuery:", searchQuery);
 
-
-function fetchCourses() {
-    console.log('Fetching course data...');
     $.ajax({
-        url: "../php/course/fetch_course_data_display.php",  
+        url: "../php/course/fetch_course_data_display.php",
         method: "GET",
+        data: { searchQuery: searchQuery }, 
         dataType: "json",
         success: function (response) {
             if (response.status === "success") {
                 let dataHtml = "";
-                $.each(response.data, function (index, course) {
-                    
-                    let department = course.department_name || "Not Available";  
-                    dataHtml += `
-                        <tr>
-                            <td>${course.course_code}</td>
-                            <td>${course.course_name}</td>
-                            <td>${department}</td>
-                            <td>${course.credits}</td>
-                            <td>${course.course_type}</td>
-                             <td>${course.course_fee}</td>
-                            <td>${course.status}</td>
-                            <td>
-                                <a href="#" onclick="editCourse('${course.course_code}')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning" style="font-size: 27px;">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                        <path d="M16 5l3 3"></path>
-                                    </svg>
-                                </a>
-                                <a href="#" onclick="deleteCourse('${course.course_code}')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger" style="font-size: 29px;">
-                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
-                                    </svg>
-                                </a>
-                            </td>
-                        </tr>
-                    `;
-                });
+                if (response.data && response.data.length > 0) {
+                    $.each(response.data, function (index, course) {
+                        let department = course.department_name || "Not Available";
+                        dataHtml += `
+                            <tr>
+                                <td>${course.course_code}</td>
+                                <td>${course.course_name}</td>
+                                <td>${department}</td>
+                                <td>${course.credits}</td>
+                                <td>${course.course_type}</td>
+                                <td>${course.course_fee}</td>
+                                <td>${course.status}</td>
+                                <td>
+                                    <a href="#" onclick="editCourse('${course.course_code}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit text-warning" style="font-size: 27px;">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 -2h9a2 2 0 0 0 2 -2v-1"></path>
+                                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                            <path d="M16 5l3 3"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" onclick="deleteCourse('${course.course_code}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="text-danger" style="font-size: 29px;">
+                                            <path d="M0 0h24v24H0V0z" fill="none"></path>
+                                            <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"></path>
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                } else {
+                    dataHtml = '<tr><td colspan="8" class="text-center">No courses found.</td></tr>';
+                }
                 $("#course_table_body").html(dataHtml); 
             } else {
+                $("#course_table_body").html('<tr><td colspan="8" class="text-center">No courses found.</td></tr>');
                 alert(response.message || "An error occurred while fetching course data.");
             }
         },
         error: function (xhr, status, error) {
-            console.log("Error fetching data:", status, error);
+            console.error("Error fetching data:", status, error);
             alert("An error occurred while fetching course data.");
         }
     });
