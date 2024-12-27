@@ -61,20 +61,20 @@ else{
 
 </head>
 <style>
-    /* General body styles */
+ 
     .body-container-exam {
         font-family: 'Sans-serif', Arial, Helvetica, sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f4f4f4;
-        /* Light background color */
+       
     }
 
     #cancel_btn_exam {
         background-color: #e74a3b;
     }
 
-    /* Modal container styles */
+   
     
     .modal {
         display: none;
