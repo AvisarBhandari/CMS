@@ -170,7 +170,7 @@ else{
         outline: none;
     }
 
-    /* Button styling */
+    
     .btn {
         padding: 12px 20px;
         background-color: #4d73e0;
@@ -186,13 +186,13 @@ else{
         background-color: #3a5bb0;
     }
 
-    /* Style for exam start and end time inputs to be on the same row */
+
 .time-container {
     display: flex;
-    gap: 10px;  /* Adjust the spacing between the inputs */
+    gap: 10px;  
     align-items: center;
 }
-    /* Table styles for subjects */
+    
     .subjects-table {
         width: 100%;
         margin-top: 20px;
