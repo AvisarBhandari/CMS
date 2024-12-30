@@ -3838,6 +3838,20 @@ margin-top: 180px;
   border-color: var(--tundora-10);
 }
 
+.horizontal-border {
+  display: flex;
+  flex-direction: column;
+  max-width: 1320px;
+  width: 1320px;
+  align-items: flex-start;
+  gap: 5.25px;
+  padding: 5px 12px 25px;
+  position: relative;
+  flex: 0 0 auto;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-color: var(--tundora-10);
+}
 .frame .paragraph-2 {
   display: flex;
   align-items: flex-start;
@@ -3849,8 +3863,33 @@ margin-top: 180px;
   width: 100%;
   flex: 0 0 auto;
 }
-
+.paragraph-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding: 0px 519.06px 0px 519.05px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
 .frame .copyright {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  margin-left: -37.55px;
+  font-family: var(--open-sans-regular-14-font-family);
+  font-weight: var(--open-sans-regular-14-font-weight);
+  color: #444444;
+  font-size: var(--open-sans-regular-14-font-size);
+  text-align: center;
+  letter-spacing: var(--open-sans-regular-14-letter-spacing);
+  line-height: var(--open-sans-regular-14-line-height);
+  white-space: nowrap;
+  font-style: var(--open-sans-regular-14-font-style);
+}
+.copyright {
   position: relative;
   width: fit-content;
   margin-top: -1px;
@@ -3879,7 +3918,19 @@ margin-top: 180px;
   letter-spacing: 0;
   line-height: 21px;
 }
-
+.strong-arsha {
+  width: fit-content;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  margin-top: -1px;
+  font-family: "Open Sans", Helvetica;
+  color: #444444;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+}
 .frame .text-wrapper-39 {
   position: relative;
   width: fit-content;
@@ -3896,7 +3947,21 @@ margin-top: 180px;
   font-style: var(--open-sans-regular-14-font-style);
 }
 
-
+ .text-wrapper-39 {
+   position: relative;
+   width: fit-content;
+   margin-top: -1px;
+   margin-right: -37.55px;
+   font-family: var(--open-sans-regular-14-font-family);
+   font-weight: var(--open-sans-regular-14-font-weight);
+   color: #444444;
+   font-size: var(--open-sans-regular-14-font-size);
+   text-align: center;
+   letter-spacing: var(--open-sans-regular-14-letter-spacing);
+   line-height: var(--open-sans-regular-14-line-height);
+   white-space: nowrap;
+   font-style: var(--open-sans-regular-14-font-style);
+ }
 .footer_pointy_thing{
   filter: invert(29%) sepia(73%) saturate(747%) hue-rotate(172deg) brightness(95%) contrast(92%);
   width: 20px;
