@@ -215,12 +215,12 @@ else{
     @media (max-width: 768px) {
         .modal-content {
             width: 90%;
-            /* Make the modal take up 90% of the screen on smaller devices */
+           
         }
 
         .btn {
             width: 10%;
-            /* Button takes up full width on smaller screens */
+          
         }
     }
 </style>
