@@ -472,8 +472,8 @@ mysqli_close($conn);
                                                       <input class="form-control" type="text"
                                                          name="admin_id" id="admin_id"
                                                          placeholder="Enter Admin ID" required
-                                                         pattern="^(ADM-\d{4}-\d{4}$" maxlength="13"
-                                                         minlength="13" autofocus>
+                                                       
+                                                        autofocus>
                                                    </div>
                                                    <div class="col-md-3 col-xxl-1"
                                                       style="margin-left: 210px; padding-top: 7px;">
@@ -574,6 +574,7 @@ mysqli_close($conn);
                                           <input class="btn btn-primary" type="submit"
                                              style="margin-left: 807px;" value="Add Admin">
                                        </form>
+                                       <div id="responseMessage"></div>
                                     </div>
                                     </div>
                         </div>
@@ -636,24 +637,27 @@ mysqli_close($conn);
          </div>
          <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
       </div>
-          <script src="assets/js/sweetalert.js"></script>
+      <script src="../js/sweetalert.js"></script>
 
-
-
-    <?php
-    if(isset($_SESSION['status']) && $_SESSION['massage']) {
-    ?>
-    <script>
+<?php
+if (isset($_SESSION['status']) && isset($_SESSION['massage'])) {
+?>
+<script>
     swal({
-  title: "<?php echo $_SESSION['massage']; ?>",
-  icon: "<?php echo $_SESSION['status']; ?>",
-});
-    </script>
-    <?php
+        title: "<?php echo $_SESSION['massage']; ?>",
+        icon: "<?php echo $_SESSION['status']; ?>"
+    }).then(() => {
+        // Redirect to faculty page after the alert is shown
+        window.location.href = "/Academy Keeper/Dashboard/Admin_Dashboard/faculty.php";
+    });
+</script>
+<?php
+    // Clear session messages after displaying the alert
     unset($_SESSION['status']);
     unset($_SESSION['massage']);
 }
 ?>
+
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -669,5 +673,6 @@ mysqli_close($conn);
       <script src="assets/js/Faculty/faculty_crud_data.js"></script>
       <script src="assets/js/Faculty/faculty_attandance.js"></script>
       <script src="assets/js/Department/departments_data.js"></script>
+      <script src="assets/js/Faculty/admin_insert.js"></script>
    </body>
 </html>

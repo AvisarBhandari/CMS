@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
                 if ($conn->query($insert_sql)) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
                 if ($conn->query($insert_sql)) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
+                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
                 if ($conn->query($insert_sql) === TRUE) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
