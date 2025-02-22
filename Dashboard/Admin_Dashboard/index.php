@@ -5,10 +5,9 @@
 
 
     $id = $_SESSION['id']; // or $_POST['id']
-    $role = $_SESSION['role']; // or $_POST['role']
-
+    
     // SQL query to get the image based on id and role
-    $sql = "SELECT image FROM images WHERE id = '$id' AND role = '$role'";
+    $sql = "SELECT image FROM images WHERE id = '$id'";
 
     // Execute the query
     $result = mysqli_query($conn, $sql);

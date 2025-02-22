@@ -60,11 +60,10 @@ mysqli_close($conn);
    <body id="page-top">
       <?php
          include '../php/db_connect.php'; // Database connection
-         echo $_SESSION['id'];
+
          $id = $_SESSION['id'];
          $role = $_SESSION['role'];
-         echo $_SESSION['name'];
-         echo $_SESSION['role'];
+
          ?>
       <div id="wrapper">
          <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" data-aos="fade-right" data-aos-duration="1200">
@@ -196,10 +195,6 @@ mysqli_close($conn);
                                 <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">D.O.B:</strong></div>
                                 <div class="col"><strong class="text-primary-emphasis" id="user-dob">Loading...</strong></div>
                             </div>
-                            <div class="row" style="padding-bottom: 9px;">
-                                <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Gender:</strong></div>
-                                <div class="col"><strong class="text-primary-emphasis" id="user-gender">Loading...</strong></div>
-                            </div>
                         </div>
                         
                      </div>
@@ -236,7 +231,7 @@ mysqli_close($conn);
       <div class="row">
          <div class="mb-3">
             <label class="form-label" for="address"><strong>Address</strong></label>
-            <input class="form-control" type="text" id="address" placeholder="Khairani-8" name="address">
+            <input class="form-control" type="text" id="address" placeholder="Address" name="address">
          </div>
       </div>
 

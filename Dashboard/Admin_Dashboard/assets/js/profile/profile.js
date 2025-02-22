@@ -32,10 +32,7 @@ $(document).ready(function() {
                                 <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">D.O.B:</strong></div>
                                 <div class="col"><strong class="text-primary-emphasis" id="user-dob">${response.dob || 'N/A'}</strong></div>
                             </div>
-                            <div class="row" style="padding-bottom: 9px;">
-                                <div class="col-md-6 col-xxl-5"><strong class="text-primary-emphasis">Gender:</strong></div>
-                                <div class="col"><strong class="text-primary-emphasis" id="user-gender">${response.gender || 'N/A'}</strong></div>
-                            </div>
+                            
                         </div>
                 `);
 
