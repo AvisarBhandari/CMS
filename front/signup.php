@@ -109,7 +109,7 @@ session_start();
   </div>
 
   <div class="input-wrapper">
-    <input type="text" id="address" name="address" placeholder="" />
+    <input type="email" id="address" name="address" placeholder="" />
     <label for="address" class="label">Email Address</label>
     <p class="address_Error"></p>
   </div>
@@ -275,7 +275,7 @@ echo $_SESSION['error'];
 ?>");
 swal({
     title: "<?php echo $_SESSION['massage']; ?>",
-    icon: "<?php echo $_SESSION['status']; ?>",
+    icon: "<?php echo $_SESSION['status']; ?>"
 });
 </script>
 <?php
@@ -283,6 +283,7 @@ swal({
 // After showing the message, unset the session variables.
 unset($_SESSION['status']);
 unset($_SESSION['massage']);
+unset($_SESSION['error']);
 }
 ?>
 </body>
