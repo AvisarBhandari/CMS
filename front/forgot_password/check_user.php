@@ -4,13 +4,27 @@ session_start();
 include 'db_connect.php'; // This file should contain the database connection logic
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
+    $id = $_POST['name'];
     $email = $_POST['email'];
 
-    $_SESSION['name'] = $name;
-    
+    $_SESSION['id'] = $id;
+    $role = substr($id, 0, 3);
+     switch ($role) {
+        case 'ADM':
+            $role = 'admin';
+            break;
+        case 'TEA':
+            $role = 'faculty';
+            break;
+        case 'STU':
+            $role = 'student';
+            break;
+        default:
+            $role = '';
+    }
+    $_SESSION['role'] = $role;
     // Prepare the SQL query to check if name and email exist
-    $sql = "SELECT * FROM students_info WHERE student_name = ? AND email = ?";
+    $sql = "SELECT * FROM login WHERE id = ? AND email = ?";
 
     // Initialize MySQLi statement
     $stmt = $conn->prepare($sql); // Assuming $conn is the MySQLi connection from 'db_connect.php'
@@ -22,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Bind parameters
-    $stmt->bind_param("ss", $name, $email); // 'ss' means two string parameters
+    $stmt->bind_param("ss", $id, $email); // 'ss' means two string parameters
 
     // Execute the statement
     $stmt->execute();
