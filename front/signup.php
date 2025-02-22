@@ -91,40 +91,40 @@ session_start();
   <div class="input-wrapper">
     <input type="text" id="name" name="name" required placeholder=" " />
     <label for="name" class="label">Name</label>
-    <p class="name_Error"></p>
+    <p class="name_Error" style="color:red;"></p>
   </div>
 
   <div class="input-group">
     <div class="input-wrapper">
       <input type="text" id="id" name="id" required placeholder="                 Eg. STU-1234-2024" />
       <label for="id" class="label">ID</label>
-      <small class="id_Error"></small>
+      <small class="id_Error" style="color:red;"></small>
     </div>
 
     <div class="input-wrapper">
       <input type="tel" id="phone" name="phone" required placeholder=" " />
       <label for="phone" class="label">Phone Number</label>
-      <p class="phone_Error"></p>
+      <p class="phone_Error"style="color:red;"></p>
     </div>
   </div>
 
   <div class="input-wrapper">
     <input type="email" id="address" name="address" placeholder="" />
     <label for="address" class="label">Email Address</label>
-    <p class="address_Error"></p>
+    <p class="address_Error"style="color:red;"></p>
   </div>
 
   <div class="input-group">
     <div class="input-wrapper">
       <input type="password" id="password" name="password" required placeholder=" " />
       <label for="password" class="label">Password</label>
-      <p class="password_Error"></p>
+      <p class="password_Error"style="color:red;"></p>
     </div>
 
     <div class="input-wrapper">
       <input type="password" id="confirm-password" name="confirm_password" required placeholder=" " />
       <label for="confirm-password" class="label">Confirm Password</label>
-      <p class="cPassword_Error"></p>
+      <p class="cPassword_Error"style="color:red;"></p>
     </div>
   </div>
 
@@ -219,15 +219,18 @@ function validatePhone() {
 
 // Validate Address
 function validateAddress() {
-    const addressInput = document.getElementById("address");
-    const addressError = document.querySelector(".address_Error");
+    const email = document.getElementById("address");
+    const emailError = document.querySelector(".address_Error");
 
-    if (addressInput.value.trim() === "") {
-        addressError.textContent = "Address cannot be empty.";
-        return false;
+    const emailValue = email.value.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailValue) {
+        emailError.textContent = "Email is required.";
+    } else if (!emailPattern.test(emailValue)) {
+        emailError.textContent = "Please enter a valid email address.";
     } else {
-        addressError.textContent = "";
-        return true;
+        emailError.textContent = ""; // Clear error message if valid
     }
 }
 
@@ -278,6 +281,9 @@ swal({
     icon: "<?php echo $_SESSION['status']; ?>"
 });
 </script>
+
+
+
 <?php
 
 // After showing the message, unset the session variables.
