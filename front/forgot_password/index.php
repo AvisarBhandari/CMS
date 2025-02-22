@@ -32,18 +32,24 @@
     <h3 class="text-center multisteps-form__title">User Info</h3>
     <div class="container">
         <div class="row" style="margin-top: 40px; margin-left: -9px;">
-            <div class="col-md-6"><span class="fs-5">Name</span></div>
-            <div class="col-md-6"><span class="fs-5">Email</span></div>
+            <div class="col-md-6"><span class="fs-5">ID</span>
+        </div>
+            <div class="col-md-6"><span class="fs-5">Email</span>
+        
+    </div>
         </div>
     </div>
     <div class="container">
         <div class="row" style="margin-top: 15px; margin-bottom: 40px;">
             <div class="col-md-6">
                 <input id="name" class="form-control multisteps-form__input" required type="text"
-                    placeholder="Enter your name">
+                    placeholder="Enter your ID" onblur="validateId()">
+                <small class="id_Error" style="color:red;"></small>
+
             </div>
             <div class="col-md-6">
-                <input id="email"  class="form-control multisteps-form__input" required type="email" placeholder="Enter your email">
+                <input id="email"  class="form-control multisteps-form__input" required type="email" placeholder="Enter your email" onblur="validateAddress()">
+                <p class="address_Error"style="color:red;"></p>
             </div>
         </div>
     </div>
@@ -71,8 +77,10 @@
                                     <div class="col-12 col-sm-6">
                                     </div>
                                     <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+
                                         <input class="form-control multisteps-form__input" type="number" id="verify-otp" placeholder="Verification code" style="margin-top: 50px;
-                                        margin-left: 200px;"></div>
+                                        margin-left: 200px;">
+                                        </div>
                                 </div>
                                 <div id="input-grp-single-1" class="form-row mt-4">
                                     
@@ -101,10 +109,12 @@
                                 <div class="container">
                                     <div class="row" style="margin-top: 15px;margin-bottom: 40px;">
                                         <div class="col-md-6">
-                                            <input class="form-control multisteps-form__input" id="password" required type="password"placeholder="Enter your Password">
+                                            <input class="form-control multisteps-form__input" id="password" required type="password"placeholder="Enter your Password" onblur="validatePassword()">
+                                            <p id="password_Error" style="color: red;"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <input class="form-control multisteps-form__input" id="password-conform" required type="password"placeholder="Conform your password">
+                                            <input class="form-control multisteps-form__input" id="password-conform" required type="password"placeholder="Conform your password" onblur="validateConfirmPassword()">
+                                            <p id="cPassword_Error" style="color: red;"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -379,7 +389,7 @@ function verifyOtp() {
                         confirmButtonText: 'Proceed'
                     }).then(() => {
                         // Optionally, redirect or take further action
-                        window.location.href = 'success_page.php';  // Replace with your success page
+                        window.location.href = '../Login.php';  // Replace with your success page
                     });
                 } else {
                     Swal.fire({
@@ -404,6 +414,65 @@ function verifyOtp() {
 
 
 
+
+
+    function validateId() {
+    const idInput = document.getElementById("name");
+    const idError = document.querySelector(".id_Error");
+    const idPattern = /^(ADM|STU|TEA)-\d{4}-\d{4}$/; // ID format validation
+
+    if (!idPattern.test(idInput.value)) {
+        idError.textContent = "ID must be in the format: STU-1234-5678.";
+        return false;
+    } else {
+        idError.textContent = "";
+        return true;
+    }
+}
+
+function validateAddress() {
+    const email = document.getElementById("email");
+    const emailError = document.querySelector(".address_Error");
+
+    const emailValue = email.value.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailValue) {
+        emailError.textContent = "Email is required.";
+    } else if (!emailPattern.test(emailValue)) {
+        emailError.textContent = "Please enter a valid email address.";
+    } else {
+        emailError.textContent = ""; // Clear error message if valid
+    }
+}
+
+function validatePassword() {
+    const passwordInput = document.getElementById("password");
+    const passwordError = document.querySelector(".password_Error");
+
+    if (passwordInput.value.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters long.";
+        return false;
+    } else {
+        passwordError.textContent = "";
+        return true;
+    }
+}
+
+// Validate Confirm Password
+function validateConfirmPassword() {
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("password-conform");
+    const confirmPasswordError = document.querySelector(".cPassword_Error");
+
+    if (confirmPasswordInput.value !== passwordInput.value) {
+        confirmPasswordError.textContent = "Passwords do not match.";
+        return false;
+    } else {
+        confirmPasswordError.textContent = "";
+        return true;
+    }
+}
 
 
 </script>
