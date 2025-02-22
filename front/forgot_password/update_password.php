@@ -20,6 +20,10 @@ if (isset($_POST['password']) && isset($_SESSION['id']) && isset($_SESSION['emai
     $id = $_SESSION['id'];  
     $email = $_SESSION['email'];  
     $role = $_SESSION['role'];  
+
+    unset($_SESSION['id']);
+    unset($_SESSION['email']);
+    unset($_SESSION['role']);
             // Prepare the SQL query to update the password in the 'login' table
             $updateQuery = "UPDATE login SET password = ? WHERE id = ? AND role = ?";
             $updateStmt = $conn->prepare($updateQuery);

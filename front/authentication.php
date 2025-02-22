@@ -16,6 +16,20 @@ if(isset( $_SESSION['remember_me'])){
     $remember_me = 'false';
 } 
 
+$sql = "SELECT COUNT(*) AS count FROM admin";
+$result = $conn->query($sql);
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $rowCount = $row['count'];
+    
+    // If the table is empty, set session variables
+    if ($rowCount == 0 && $_SESSION['password'] == "admin" && $_SESSION['role'] == "admin" && $_SESSION['id'] == "ADM-0000-0000") {
+        $_SESSION['id'] = "ADM-0000-0000";
+        $_SESSION['name'] = "admin";
+            header('Location: ../Dashboard/Admin_Dashboard');
+
+    } else {
 
 // Check if user exists and password is correct
 
@@ -92,10 +106,12 @@ if ($result->num_rows > 0) {
 } else {
     $_SESSION['status'] = "error";
     $_SESSION['message'] = "No such user found!";
+
     header('Location: Login.php');
 
 }
-
+    }
+}
 $stmt->close();
 $conn->close();
 ?>
