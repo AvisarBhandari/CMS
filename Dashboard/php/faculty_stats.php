@@ -4,6 +4,9 @@ include 'db_connect.php';
 header('Content-Type: application/json'); // Ensure correct JSON headers
 
 try {
+    $currentYear = date("Y");   // Get the current year
+    $currentMonth = date("m");  // Get the current month (numeric)
+
     // Query to get total faculty count
     $query_total = "SELECT COUNT(*) as total_count FROM faculty";
     $result_total = $conn->query($query_total);
@@ -14,11 +17,15 @@ try {
     $result_active = $conn->query($query_active);
     $active_faculty = $result_active->fetch_assoc()['active_count'] ?? 0;
 
-    // Query to get attendance data
-    $query_attendance = "SELECT COUNT(*) as total_attendance, 
+    // Query to get attendance data for the current month
+    $query_attendance = "SELECT 
+                                COUNT(*) as total_attendance, 
                                 SUM(CASE WHEN status = 'Present' THEN 1 ELSE 0 END) as present_count,
                                 SUM(CASE WHEN status = 'Absent' THEN 1 ELSE 0 END) as absent_count
-                         FROM faculty_attendances";
+                         FROM faculty_attendances 
+                         WHERE MONTH(attendance_date) = '$currentMonth' 
+                         AND YEAR(attendance_date) = '$currentYear'";
+
     $result_attendance = $conn->query($query_attendance);
     $attendance_data = $result_attendance->fetch_assoc();
 

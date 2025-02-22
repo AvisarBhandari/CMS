@@ -147,6 +147,9 @@ echo $img;
                         </ul>
                     </div>
                 </nav>
+
+
+               
                 <div class="container py-4 py-xl-5">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" data-aos="fade"
                         data-aos-duration="1150" data-aos-delay="500">
@@ -209,6 +212,71 @@ echo $img;
                         </div>
                     </div>
                 </div>
+               
+<div class="card shadow" style="box-shadow: 0px 0px 20px;">
+    <div class="card-header py-3">
+        <p class="text-primary m-0 fw-bold">Department Management</p>
+    </div>
+    <div class="card-body">
+        <!-- Add/Edit Department Dropdown Button -->
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle ps-xxl-0 mt-xxl-0 pt-xxl-1 pb-xxl-1"
+                aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#departmentFormCollapse"
+                type="button" id="departmentDropdownButton">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em"
+                    fill="currentColor" style="width: 24px;height: 24px;font-size: 22px;">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                </svg>&nbsp;Add/Edit Department
+            </button>
+        </div>
+
+        <!-- Add/Edit Department Form -->
+        <div id="departmentFormCollapse" class="collapse mt-3">
+            <form id="departmentForm" class="border p-3 rounded-3"
+                style="border: 1px solid #ddd; background-color: #f9f9f9;">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="department_name" class="form-label">Department Name</label>
+                        <input type="text" id="department_name" class="form-control"
+                            placeholder="Enter Department Name" required />
+                            <span id="nameError" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="department_description" class="form-label">Description</label>
+                        <input type="text" id="department_description" class="form-control"
+                            placeholder="Enter Description" required />
+                            <span id="descriptionError" class="text-danger"></span>
+                    </div>
+                    <span id="formError" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" id="edit_mode" value="add" />
+                <input type="hidden" id="department_id_hidden" />
+
+                <button type="submit" class="btn btn-primary">Save Department</button>
+            </form>
+        </div>
+
+        <!-- Department Table -->
+        <div class="table-responsive mt-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Department Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="department_table_body">
+                    <!-- Populated dynamically through AJAX -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
                 <div class="card shadow" data-aos="flip-up" data-aos-duration="1200" data-aos-delay="500"
                     style="box-shadow: 0px 0px 20px;">
                     <div class="card-header py-3">
@@ -500,6 +568,7 @@ echo $img;
     <script src="assets/js/Course/validate_subjects.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/Subjects/subject_crud.js"></script>
+    <script src="assets/js/Course/department_crud.js"></script>
 </body>
 
 </html>
