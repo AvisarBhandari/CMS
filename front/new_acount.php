@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($_POST['address'])) {
-        $address = $_POST['address'];  
+        $email = $_POST['address'];  
     }
 
     if (isset($_POST['password'])) {
@@ -31,12 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($role) {
         case 'ADM':
             $role = 'admin';
-            $sql = "SELECT * FROM admin WHERE name = '$name' AND id = '$id' AND phone_number = '$phone' AND address = '$address'";
+            $sql = "SELECT * FROM admin WHERE name = '$name' AND id = '$id' AND phone_number = '$phone' ";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
                 if ($conn->query($insert_sql)) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
@@ -44,20 +44,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     exit();
                 } else {
                     $_SESSION['status'] = "error";
+                    $_SESSION['error']= $conn->error;
                     $_SESSION['massage'] = "Error inserting data into login table.";
                     header('Location: signup.php');
                     exit();
                 }
             }
-
+                break;
         case 'TEA':
             $role = 'faculty';
-            $sql = "SELECT * FROM faculty WHERE faculty_name = '$name' AND faculty_id = '$id' AND phone_number = '$phone' AND address = '$address'";
+            $sql = "SELECT * FROM faculty WHERE faculty_name = '$name' AND faculty_id = '$id' AND phone_number = '$phone'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
                 if ($conn->query($insert_sql)) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
@@ -66,25 +67,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     $_SESSION['status'] = "error";
                     $_SESSION['massage'] = "Error inserting data into login table.";
+                    $_SESSION['error']= $conn->error;
                     header('Location: signup.php');
                     exit();
                 }
             } else {
                 $_SESSION['status'] = "error";
                 $_SESSION['massage'] = "Invalid faculty details.";
+                $_SESSION['error']= $conn->error;
                 header('Location: signup.php');
                 exit();
             }
 
+                            break;
 
         case $role= 'STU':
             $role = 'student';
-            $sql = "SELECT * FROM students_info WHERE student_name = '$name' AND student_roll = '$id' AND phone_no = '$phone' AND address = '$address'";
+            $sql = "SELECT * FROM students_info WHERE student_name = '$name' AND student_roll = '$id' AND phone_no = '$phone'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // Insert into the login table
-                $insert_sql = "INSERT INTO login (id, role, name, password) VALUES ('$id', '$role', '$name', '$hashed_password')";
+                $insert_sql = "INSERT INTO login (id, role, name, password,email) VALUES ('$id', '$role', '$name', '$hashed_password','$email')";
                 if ($conn->query($insert_sql) === TRUE) {
                     $_SESSION['status'] = "success";
                     $_SESSION['massage'] = "Account created successfully.";
@@ -93,21 +97,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     $_SESSION['status'] = "error";
                     $_SESSION['massage'] = "Error inserting data into login table.";
+                    $_SESSION['error']= $conn->error;
                     header('Location: signup.php');
                     exit();
                 }
             } else {
                 $_SESSION['status'] = "error";
                 $_SESSION['massage'] = "Invalid student details.";
+                $_SESSION['error']= $conn->error;
                 header('Location: signup.php');
                 exit();
             }
+                break;
 
         default:
             $_SESSION['status'] = "error";
             $_SESSION['massage'] = "Please fill all the fields.";
+            $_SESSION['error']= $conn->error;
             header('Location: signup.php');
             exit();
+                            break;
+
     }
     
 }

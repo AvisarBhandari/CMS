@@ -110,7 +110,7 @@ session_start();
 
   <div class="input-wrapper">
     <input type="text" id="address" name="address" placeholder="" />
-    <label for="address" class="label">Address</label>
+    <label for="address" class="label">Email Address</label>
     <p class="address_Error"></p>
   </div>
 
@@ -267,8 +267,12 @@ function validateConfirmPassword() {
 <?php
 
 if (isset($_SESSION['status']) && isset($_SESSION['massage'])) {
+  $_SESSION['error']
 ?>
 <script>
+console.log("<?php
+echo $_SESSION['error'];
+?>");
 swal({
     title: "<?php echo $_SESSION['massage']; ?>",
     icon: "<?php echo $_SESSION['status']; ?>",
