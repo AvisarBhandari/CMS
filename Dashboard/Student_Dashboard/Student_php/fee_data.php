@@ -39,6 +39,7 @@ if ($result->num_rows > 0) {
     $stmt_fees->execute();
     $result_fees = $stmt_fees->get_result();
 
+    
     $paidAmount = 0;
     $discountAmount = 0;
     $remainingAmount = 0;
@@ -58,7 +59,8 @@ if ($result->num_rows > 0) {
         'success' => true,
         'paid_amount' => $paidAmount,
         'discount_amount' => $discountAmount,
-        'remaining_amount' => $remainingAmount
+        'remaining_amount' => $remainingAmount,
+        'student_id'=>$student_id,
     ]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Student not found']);

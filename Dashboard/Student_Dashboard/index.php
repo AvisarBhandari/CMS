@@ -22,6 +22,65 @@
     <link rel="stylesheet" href="assets/css/fee_table.css">
 
 </head>
+<script>
+let currentStudentId = null;
+
+document.addEventListener('DOMContentLoaded', function () {
+    fetchFeeDetails();
+    fetchInstallmentData(); // Show table immediately
+});
+
+function fetchFeeDetails() {
+    fetch('Student_php/fee_data.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                currentStudentId = data.student_id;
+                document.querySelector('#paidAmount').textContent = `RS. ${data.paid_amount}`;
+                document.querySelector('#discountAmount').textContent = `RS. ${data.discount_amount}`;
+                document.querySelector('#remainingAmount').textContent = `RS. ${data.remaining_amount}`;
+                document.querySelector('#studentId').textContent = currentStudentId;
+            }
+        });
+}
+
+function fetchInstallmentData() {
+    fetch('Student_php/fee_details.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                let html = '';
+                data.installments.forEach(installment => {
+                    const paymentStatus = installment.payment_date || 'Not Paid';
+                    const formatCurrency = amt => `₹${parseFloat(amt).toFixed(2)}`;
+
+                    html += `
+                        <tr>
+                            <td>${installment.installment_no}</td>
+                            <td>${installment.due_date}</td>
+                            <td>${installment.status}</td>
+                            <td>${formatCurrency(installment.amount)}</td>
+                            <td>${formatCurrency(installment.discount)}</td>
+                            <td>${formatCurrency(installment.paid_amount)}</td>
+                            <td>${paymentStatus}</td>
+                            <td>
+                                <form action="Student_php/pay/pay.php" target="_blank" method="post">
+                                    <input type="hidden" name="student_id" value="${currentStudentId}">
+                                    <input type="hidden" name="amount" value="${installment.amount}">
+                                    <input type="submit" value="Pay" class="btn btn-primary">
+                                </form>
+                            </td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('installmentDetails').innerHTML = html;
+            }
+        });
+}
+
+
+</script>
+
 
 <body id="page-top">
     <div id="wrapper">
@@ -113,13 +172,15 @@
                         <div class="container-fluid">
                             <div class="d-flex justify-content-between align-items-center mb-4"
                                 style="padding-right: 5px;">
-                               
+                            
                             </div>
+
+
+
                             <div class="row">
                                 <div class="col-md-12 mb-4">
-                                    <button id="toggleTableBtn">Show Fee Installments</button>
 
-                                    <div id="feeInstallmentTable" style="display: none;">
+                                    <div id="feeInstallmentTable" style="display: block;" >
                                         <table id="styledTable">
                                             <thead>
                                                 <tr>
@@ -130,9 +191,12 @@
                                                     <th>Discount</th>
                                                     <th>Paid Amount</th>
                                                     <th>Payment Date</th>
+                                                    <th>Pay</th>
+
                                                 </tr>
                                             </thead>
-                                            <tbody id="installmentDetails"></tbody>
+                                            <tbody id="installmentDetails">
+                                            
                                             </tbody>
                                         </table>
                                     </div>
@@ -294,10 +358,10 @@
     <script src="assets/js/Events/fetch_events.js"></script>
     <script src="assets/js/Events/fetch_holidays.js"></script>
     <script src="assets/js/Attendance/attendance_data.js"></script>
-    <script src="assets/js/Fee/fee_data.js"></script>
+    <!-- <script src="assets/js/Fee/fee_data.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="assets/js/Fee/fee_details.js"></script>
+    <!-- <script src="assets/js/Fee/fee_details.js"></script> -->
 
 </body>
 
