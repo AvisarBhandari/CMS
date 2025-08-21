@@ -46,7 +46,8 @@ if ($result->num_rows > 0) {
 
     // Now verify the password using password_verify
     
-    if (password_verify($_SESSION['password'], $user['password'])) {
+    // if (password_verify($_SESSION['password'], $user['password']))
+    if (($_SESSION['password']== $user['password'])){
         // Password is correct
         
         $_SESSION['id'] = $user['id'];

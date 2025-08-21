@@ -51,24 +51,30 @@ function fetchInstallmentData() {
             if (data.success) {
                 let html = '';
                 data.installments.forEach(installment => {
-                    const paymentStatus = installment.payment_date || 'Not Paid';
                     const formatCurrency = amt => `₹${parseFloat(amt).toFixed(2)}`;
 
                     html += `
                         <tr>
-                            <td>${installment.installment_no}</td>
                             <td>${installment.due_date}</td>
                             <td>${installment.status}</td>
                             <td>${formatCurrency(installment.amount)}</td>
                             <td>${formatCurrency(installment.discount)}</td>
                             <td>${formatCurrency(installment.paid_amount)}</td>
-                            <td>${paymentStatus}</td>
+                            <td style="color: ${installment.status.toLowerCase() === 'paid' ? 'green' : 'red'};">
+                                ${installment.status}
+                            </td>
                             <td>
-                                <form action="Student_php/pay/pay.php" target="_blank" method="post">
-                                    <input type="hidden" name="student_id" value="${currentStudentId}">
-                                    <input type="hidden" name="amount" value="${installment.amount}">
-                                    <input type="submit" value="Pay" class="btn btn-primary">
-                                </form>
+                                ${
+                                    installment.status.toLowerCase() === 'paid'
+                                        ? `<span style="color: green;">Paid</span>`
+                                        : `
+                                            <form action="Student_php/pay/payment.php" target="_blank" method="post">
+                                                <input type="hidden" name="student_id" value="${currentStudentId}">
+                                                <input type="hidden" name="amount" value="${installment.amount}">
+                                                <input type="submit" value="Pay" class="btn btn-primary">
+                                            </form>
+                                        `
+                                }
                             </td>
                         </tr>
                     `;
@@ -77,6 +83,7 @@ function fetchInstallmentData() {
             }
         });
 }
+
 
 
 </script>
@@ -184,7 +191,6 @@ function fetchInstallmentData() {
                                         <table id="styledTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Installment No</th>
                                                     <th>Due Date</th>
                                                     <th>Status</th>
                                                     <th>Amount</th>
@@ -213,7 +219,7 @@ function fetchInstallmentData() {
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1">
                                                 <span>Paid Amount</span>
                                             </div>
-                                            <div class="text-dark fw-bold h5 mb-0" id="paidAmount"><span>RS. 0</span>
+                                            <div class="text-dark fw-bold h5 mb-0" ><span id="paidAmount" >RS. 0</span>
                                             </div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" height="1em"

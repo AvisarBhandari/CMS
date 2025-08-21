@@ -22,14 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'xyz'; // Your Gmail address
+        $mail->Username = 'xyz136267@gmail.com'; // Your Gmail address
         $mail->Password = ' ';        // Gmail app password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Sender (Static) and Fixed Recipient ()
-        $mail->setFrom('xyz', 'Academy Keeper'); // Fixed sender email (this can be your email)
-        $mail->addAddress('xyz'); // Fixed recipient email (Mahabir's email)
+        $mail->setFrom('xyz136267@gmail.com', 'Academy Keeper'); // Fixed sender email (this can be your email)
+        $mail->addAddress('xyz136267@gmail.com'); // Fixed recipient email (Mahabir's email)
         
         // Set the Reply-To header dynamically
         $mail->addReplyTo($senderEmail, $senderName); // Dynamic reply-to based on form input

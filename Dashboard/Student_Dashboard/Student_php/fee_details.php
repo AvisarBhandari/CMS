@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 include 'db_connect.php';
 header('Content-Type: application/json');
 
@@ -33,7 +34,7 @@ if (!$student_id) {
 
 
 $query = "
-    SELECT installment_no, due_date, status, amount, discount, paid_amount, payment_date
+    SELECT due_date, status, amount, discount, paid_amount, payment_date
     FROM student_fees
     WHERE student_id = ?
     ORDER BY due_date

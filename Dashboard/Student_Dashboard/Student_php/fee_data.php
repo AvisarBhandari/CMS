@@ -45,14 +45,15 @@ if ($result->num_rows > 0) {
     $remainingAmount = 0;
 
     // Process the fee records
-    while ($row_fees = $result_fees->fetch_assoc()) {
-        if ($row_fees['status'] === 'Paid') {
-            $paidAmount += $row_fees['paid_amount'];
-            $discountAmount += $row_fees['discount'];
-        } elseif ($row_fees['status'] === 'Pending') {
-            $remainingAmount += $row_fees['amount'];
-        }
+   while ($row_fees = $result_fees->fetch_assoc()) {
+    if (strtolower($row_fees['status']) === 'paid') {
+        $paidAmount += $row_fees['paid_amount'];
+        $discountAmount += $row_fees['discount'];
+    } elseif (strtolower($row_fees['status']) === 'pending') {
+        $remainingAmount += $row_fees['amount'];
     }
+}
+
 
     // Return the calculated amounts
     echo json_encode([
