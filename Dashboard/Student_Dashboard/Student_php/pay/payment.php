@@ -424,8 +424,8 @@ $conn->close();
 
           // console.log("Current amount:", total);
           totalDisplay.innerText = total;
-          amount_Send = total;
           remaining_amount_custom = Math.max(0, remaining_amount - parsedAmount);
+          amount_Send = parseFloat(parsedAmount);
 
           document.getElementById("remainingFee").innerText = remaining_amount_custom.toLocaleString('en-IN');
 
@@ -563,7 +563,7 @@ $conn->close();
           product_code = data.product_code;
           product_service_charge = data.product_service_charge;
           product_delivery_charge = data.product_delivery_charge;
-          // console.log("amount",amount_Send);
+          console.log("amount", amount_Send);
           // console.log("tax amount",tax_amount);
           // console.log("total amount",total_amount);
           // console.log("product code",product_code);

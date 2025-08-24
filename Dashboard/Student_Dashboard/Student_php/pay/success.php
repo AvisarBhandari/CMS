@@ -1,6 +1,8 @@
 <?php
+include 'number_Format.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amount = $_POST['amount'];
+    $transaction_code = $_POST['transaction_code'];
 }
 ?>
 <!DOCTYPE html>
@@ -106,8 +108,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Payment Successful</h1>
             <br>
             <div class="details">
-                <p><strong>Amount Paid:</strong> <span>₹<?php echo htmlspecialchars($amount); ?></span></p>
+                <p><strong>Amount Paid:</strong> <span>₹<?php echo htmlspecialchars(format_NP_Number($amount)); ?></span></p>
                 <p><strong>Date & Time:</strong> <span><?php echo date("F j, Y, g:i A"); ?></span></p>
+                <p><strong>Transaction Code:</strong> <span><?php echo htmlspecialchars($transaction_code); ?></span></p>
+
                 <p><strong>Payment Method:</strong> <span>Esewa</span></p>
             </div>
             <br>

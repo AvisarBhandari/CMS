@@ -1,4 +1,5 @@
 <?php
+include 'number_Format.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amount = $_POST['amount'];
     // echo "Amount: " . $amount . "<br>";
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="amount">
             <?php
-            echo "₹" . $amount;
+            echo "₹" . format_NP_Number($amount);
             ?></div>
         <div class="message">
             <b>Payment Failed!</b>

@@ -179,6 +179,7 @@ if ($status === 'COMPLETE') {
 ?>
                     <form id="sendForm" method="post" action="success.php">
                         <input type="hidden" name="amount" value="<?php echo htmlspecialchars($sendAmount); ?>">
+                        <input type="hidden" name="transaction_code" value="<?php echo htmlspecialchars($transaction_code); ?>">
                     </form>
 
                     <script>
@@ -244,6 +245,7 @@ if ($status === 'COMPLETE') {
                 ?>
                 <form id="sendForm" method="post" action="success.php">
                     <input type="hidden" name="amount" value="<?php echo htmlspecialchars($sendAmount); ?>">
+                    <input type="hidden" name="transaction_code" value="<?php echo htmlspecialchars($transaction_code); ?>">
                 </form>
 
                 <script>
@@ -261,6 +263,7 @@ if ($status === 'COMPLETE') {
     ?>
     <form id="sendForm" method="post" action="fail.php">
         <input type="hidden" name="amount" value="<?php echo htmlspecialchars($sendAmount); ?>">
+        <input type="hidden" name="transaction_code" value="<?php echo htmlspecialchars($transaction_code); ?>">
     </form>
 
     <script>
